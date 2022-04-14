@@ -1,0 +1,168 @@
+\subsubsection{Körper Komplexer Zahlen}
+Man nennt einen Körper $ \mathbb{K} $ algebraisch abgeschlossen, wenn jedes Polynom $ f \in \mathbb{K}[x] $ mit $ deg~f > 0 $ eine Nullstelle hat.
+
+\paragraph{Bemerkung}
+$ \mathbb{R} $ ist \underline{nicht} algebraisch abgeschlossen.
+
+\paragraph{Intuition}
+Zu $ \mathbb{C} $. Man führt ein formales Symbol $ i $ ein, mit der Eigenschaft $ i^2 = -1 $ ($ i $ ist Nullstelle zu $ x^2+1 $).
+\begin{eqnarray*}
+	C := \{ a+ib : a,b \in \mathbb{R} \} \quad i = \text{imaginäre Einheit}
+\end{eqnarray*}
+
+\paragraph{Formale Definition von $ \mathbb{C} $}
+Die Menge $ \mathbb{C} $ \underline{aller komplexen Zahlen} ist als $ \mathbb{R} x \mathbb{R} $ definiert, mit der Addition 
+\begin{eqnarray*}
+	(a_{1},b_{1})+(a_{2},b_{2}) := (a_{1} + a_{2}, b_{1} + b_{2} )
+\end{eqnarray*} 
+und der Multiplikation
+\begin{eqnarray*}
+	(a_{1},b_{1})\cdot (a_{2},b_{2}) := (a_{1} a_{2} - b_{1} b_{2}, a_{1} b_{2} - a_{2} b_{1})
+\end{eqnarray*}
+$ \forall a_{1,2} ~ b_{1,2} \in \mathbb{R} $
+
+Jede reelle Zahl $ a \in \mathbb{R} $ wird mit $ (a,0) \in \mathbb{C} $ definiert. Wir interpretieren also $ \mathbb{R} $ als Teilmenge von $ \mathbb{C} $.
+\\
+
+Die Zahl $ i := (0,1) \in \mathbb{C} $ heißt die imaginäre Einheit. Somit lässt sich jedes $ z \in \mathbb{C} $ als $ z = a+ib $ mit $ a,b \in \mathbb{R} $ schreiben. Dabei heißt $ a $ der Realteil von $ z $ $ (Re~z) $ und $ b $ der Imaginärteil von z $ (Im~z) $. Die Zahl $ \bar{z} = a -ib $ heißt komplex konjugiert zu $ z $.
+
+\begin{propn}
+	$ \mathbb{C} $ ist ein Körper
+\end{propn}
+
+\begin{proof}
+	$ \mathbb{C} $ ist ein kommutativer Ring mit 1 (lässt sich direkt verifizieren).
+	Wir zeigen, dass für jedes $ z \in \mathbb{C} \backslash \{0\} $ eine Zahl $ w \in \mathbb{C} $ existiert, mit $ z \cdot w = 1 $. Sei $ z = a+ib $ mit $ a,b \in \mathbb{R} $. Man setze $ w := \frac{a-ib}{a^2+b^2} $
+	\begin{eqnarray*}
+		z \cdot w &=& (a+ib)(a-ib) \frac{1}{a^2+b^2} \\
+			&=& (a^2 + b^2) \frac{1}{a^2+b^2} \\
+			&=& 1  
+	\end{eqnarray*}
+\end{proof}
+ 
+ Für $ z = a+ib $ mit $ a,b \in \mathbb{R} $ heißt
+ \begin{eqnarray*}
+ 	|z| =\sqrt{a^2+b^2}
+ \end{eqnarray*}
+ der Betrag von $ z $.
+ 
+ \paragraph{Theorem}
+ Sei $ f \in \mathbb{C}[x] $ mit $ n := deg~f > 0 $. Dann existiert $ \lambda_1, \lambda_2, \ldots, \lambda_n, c  \in \mathbb{C} $ mit
+ \begin{align*}
+ 	f(x) = c(x-\lambda_1) \cdot \ldots \cdot (x - \lambda_n)
+ \end{align*}
+ 
+ \paragraph{Bemerkung}
+ Wenn ein $ \lambda \in \mathbb{C} $ in der Folge $ \lambda_1, \lambda_2, \ldots, \lambda_n $ $ k $-mal vorkommt, dann heißt $ \lambda $ Nullstelle von $ f $ der Vielfachheit $ k $.
+ 
+ \paragraph{Beispiel}
+ \begin{eqnarray*}
+	f &:=& x^2 -2x +1 = (x-1)^2 \quad : \text{ Nullstelle } 1  \text{ der Vielfachheit } 2 \\
+ 	f &:=& x^2 +3x +2 = (x+1)(x+2) \quad : \text{ Nullstellen } -1, -2  \text{ der Vielfachheit von je } 1 \\
+ 	f &:=& x^2 +4 \quad : \text{ Nullstellen } 2i, -2i  \text{ der Vielfachheit von je } 1
+ \end{eqnarray*}
+ 
+ \subsection{Anhang: Eliminationsverfahren zur Lösung von linearen Gleichungssystemen}
+ \subsubsection{lineare Gleichungssysteme}
+ Im folgenden sei $ \mathbb{K} $ ein Körper, $ m,n \in \mathbb{K} $, $ a_{ij},b \in \mathbb{K} \quad  \forall i \in \{1, \ldots, m \}, j \in \{1, \ldots n \} $
+ Wir definieren, das lineare Gleichungssystem:
+ \begin{eqnarray}
+ 	\sum_{j=1}^{n}a_{ij}x_j = b_i \label{B1.1}
+ \end{eqnarray}
+ mit unbekannten $ x_1, \ldots, x_n $ aus $ \mathbb{K} $. Die Menge
+\begin{eqnarray}
+	X := \{(x_1, \ldots, x_n) \in \mathbb{K}^n : (\ref{B1.1})~gilt \} \label{B1.2}
+\end{eqnarray}
+heißt die Lösungsmenge von (\ref{B1.1}).
+
+Das Ziel ist die folgenden Fragen algorithmisch zu enscheiden:
+\begin{itemize}
+	\item
+		Ist $ X = \emptyset $
+	\item
+		Besteht X aus genau einem Element aus $ \mathbb{K}^n $?
+\end{itemize}
+ Außerdem wollen wir in dem Fall $ x \neq \emptyset $ eine explizite Beschreibung von $ X $ ausrechnen.
+ 
+ Man schreibt (\ref{B1.1}) oft als eine Tabelle:
+ \begin{align*}
+	 \begin{tabular}{c|ccc|c}
+	 	& $ x_1 $ & $ \ldots $ &$  x_n  $& \\
+	 	\hline
+	 	$ z_1 $ & $ a_{1,1} $ & $ \ldots $ & $ a_{1,n} $ & $ b_1 $ \\
+	 	$ z_2 $ & $ a_{2,1} $ & $ \ldots $ & $ a_{2,n} $ & $ b_2 $ \\
+	 	\vdots & & \vdots & & \vdots \\
+	 	$ z_m $ & $ a_{m,1} $ & $ \ldots $ & $ a_{m,n} $ & $ b_m $ \\
+	 	\hline
+	  \end{tabular}
+ \end{align*}
+ 
+ Für $ i $ wird durch $ z_i $ die $ i $-te Gleichung bezeichnet ($ z $ für Zeile).
+ 
+ Beispiel: 
+ \begin{tabular}{cc}
+	 $ \begin{cases}
+		 x_1 + x_2 = 15 \\
+		 x_1 - 2x_2 = 3
+	 \end{cases} $ 
+	&
+	 \begin{tabular}{c|cc|c}
+ 	 	& $ x_1 $ &$  x_2  $& \\
+ 	 	\hline
+ 	 	$ z_1 $ & 1 & 1 & 15 \\
+ 	 	$ z_2 $ & 1 & -2 & 3 \\
+ 	 	\hline
+	 \end{tabular}
+ \end{tabular}
+ 
+ \subsubsection{Elementartransformationen eines LGS}
+ Für Gleichungen $ z_i $ und $ z_k $ mit $ i,k \in \{1,\ldots,m\} $ und einem Parameter $ \alpha \in \mathbb{K} $ definieren wir die Gleichung
+ \begin{align*}
+ 	z_i + \alpha z_k : \sum_{j=1}^{n} a_{ij} x_j + \alpha (\sum_{j=1}^{n} a_{kj}x_j) = b_i + \alpha b_k \\
+ 	\sum_{j=1}^{n}(\alpha_{ij} + \alpha a_{kj})x_i = b_i + \alpha b_k
+ \end{align*}
+ Wir führen die folgenden 3 Arten der Elementartransformationen für (\ref{B1.1}) ein:
+ \begin{itemize}
+ 	\item[Typ 1:]
+ 		Für $ i,k \in \{1,\ldots , n\} $ werden die Gleichungen $ z_i $ und $ z_k $ vertauscht. Bezeichnung: $ z_i \leftrightarrow z_k $
+ 	\item[Typ 2:]
+ 		Für $ i \in \{1,\ldots , m\} $ und $ \alpha \in \mathbb{K} \backslash \{0\} $ wird $ z_i $ durch $ \alpha z_i $ ersetzt. Bezeichnung: $ z_i := \alpha z_i $ (Zuweisung)
+ 	\item[Typ 3:]
+ 		 Für $ i,k \in \{1,\ldots , m\} $ mit $ i \neq k $ und für $ \alpha \in \mathbb{K} $ wird $ z_i $ durch $ z_i + \alpha z_k $ ersetzt. Bezeichnung: $ z_i :=  z_i + \alpha z_k $
+ \end{itemize}
+ 
+ \begin{propn}
+ 	Elementartransformationen eines linearen Gleichungssystems ändern die Lösungsmenge des Systems nicht.
+ \end{propn}
+ 
+ \begin{proof}
+ 	Transformation vom Typ 1: klar.
+ 	\begin{itemize}
+ 	 	\item[Typ 2:]
+ 	 		Sei $ i \in \{1,\ldots , m\} $ und $ \alpha \in \mathbb{K} \backslash \{0\} $ ist.
+ 	 		Ist $ z_i $ erfüllt, dann ist auch $ \alpha z_i $ erfüllt. Umgekehrt ist $ \alpha z_i $ erfüllt, dann ist auch $ \alpha^{-1}(\alpha z_i) = z_i $ erfüllt.
+ 	 	\item[Typ 3:]
+ 	 		 Seien $ i,k \in \{1,\ldots , m\} $ und $ \alpha \in \mathbb{K} $. Wenn $ z_i $ und $ z_k $ erfüllt sind, dann sind auch $ z_i + \alpha z_k $ und $ z_k $ erfüllt. Umgekehrt: Wenn $ z_i + \alpha z_k $ und $ z_k $ erfüllt sind, dann sind auch $ (z_i - \alpha z_k ) - \alpha z_k = z_i $ und $ z_k $ erfüllt.
+ 	 \end{itemize}
+ \end{proof}
+ 
+ Für $ i $ und $ j $ sagen wir, dass die Gleichung $ z_i $ die Unbekannte $ x_j $ \underline{enthält}, falls $ a_{ij} \neq 0 $ ist. Ansonsten sagen wir, dass $ z_i $ die Unbekannte $ x_i $ nicht enthält.
+ 
+ \paragraph{Bemerkung}
+ Nach geeigneter Umnummerierung der Variablen $ x_1, \ldots, x_n $ kann man annehmen, dass sich die Pivotelemente in den Positionen $ (1,1), \ldots, (r,r) $ befinden.
+ 
+ Man sagt, dass sich ein lineares Gleichungssystem in der $ reduzierten $ Stufenform befindet, wenn das System in der Stufenform ist, mit Pivotelementen in Positionen $ (1,j_1), \ldots, (r, j_r) $ und zusätzlich gilt das Folgende:
+ \begin{itemize}
+ 	\item
+ 		alle Pivotelemente sind 1
+ 	\item
+ 		$ z_i $ ist die einzige Gleichung in der die gebundene Variable $ x_{j_{i}} $ enthalten ist $ \forall i: 1 \le i \le r $
+ \end{itemize}
+ 
+  \paragraph{Bemerkung}
+  jedes lineare Gleichungssystem lässt sich mithilfe von Elementartransformation in die reduzierte Stufenform überführen.
+  
+  
+  \paragraph{Bemerkung}
+  Im Eliminationsverfahren von Gauß dient der Umordnungsschritt hauptsächlich der Übersichtlichkeit der Zwischenergebnisse. Das Verfahren kann modifiziert werden, sodass man nicht in jedem Schritt eine Umordnung macht.
+ 

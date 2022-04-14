@@ -1,0 +1,1061 @@
+% 12.06.2015
+
+\section{Euklidische Räume und quadratische Formen}
+
+Wir nennen Abbildungen mit Werten aus $ \K $ Funktionen. In diesem Kapitel behandeln wir die folgenden besondere Klassen von Funktionen: bilineare Funktionen, Skalarprodukte, quadratische Formen. Die drei Klassen hängen untereinander zusammen und werden daher gemeinsam behandelt.  Einen Vektorraum mit einem Skalaprodukt nennt man Euklidisch. Die Diskussion der Skalarprodukte nennt man somit die Theorie Euklidischer Räume. 
+
+\subsection{Euklidische Räume}
+
+\subsubsection{Euklidische Räume über $ \R $ und $ \C $: Motivation und Definitionen}
+
+Vektorräume über Körpern $\R$ und $\C$ können mit einer Zusatzstruktur ausgestattet werden, welche uns erlaubt, verschiedene Begriffe Euklidischer Geometrie wie Euklidischer Abstand, Winkel, Drehung, Senkrechte Vektoren, Orthogonale Spiegelung und Orthogonale Projektion einzuführen. Vektorräume mit einer solchen Zusatzstruktur nennt man Euklidisch. Euklidischer Räume über $\R$ sind  anschaulicher als die Euklidische Räume über $\C$, da wir oft den physikalischen Raum der uns umgibt als einen drei-dimensionalen Euklidischen Raum über $\R$ modellieren. Euklidische Räume über $\C$ sind zwar etwas weniger anschaulich aber in vielen Hinsichten ähnlich zu den Euklidischen Räumen über $\R$. Im Folgenden werden wir die Euklidischen Räume über $\R$ und $\C$ gleichzeitig behandeln.  Wir wollen den etwas technischeren Fall vom zugrundeliegenden Körper $\C$ aus zwei Gründen nicht weglassen: einerseits braucht man diesen Fall in verschiedenen Anwendungen (diskrete Fourier-Transformation, Quantenphysik), anderseits braucht man manche Resultate für Euklidische Vektorräume über $\C$ an einigen Stellen als Hilfsmittel zur Behandlung der Euklidischen Räume über $\R$. 
+
+Wodurch soll die Euklidische Struktur definiert werden? Wir haben Begriffe, die für uns untechnisch erscheinen und mit denen wir gut vertraut sind, wie zum Beispiel Abstand und Winkel. Es hat sich während der Entwicklung der linearen Algebra herausgestellt, dass es nicht besonders bequem ist, sich beim \emph{Definieren} von Euklidischen Räumen an diese Begriffe anzulehnen. Es gibt aber einen auf den ersten Blick weniger intuitiven Begriff, der als Grundlage der Euklidischen Struktur seht gut geeignet ist. Dieser Begriff ist das Skalarprodukt. Skalarprodukte haben eine natürliche Definition aus der Perspektive der linearen Algebra: das ist ihr technischer Vorteil. Des Weiteren kann man auf Skalarprodukten basierend die restlichen relevanten Begriffe aus der Euklidischen Geometrie sehr bequem einführen. 
+
+
+Um Euklidische Räume über $\R$ einzuführen, führen wir zuerst bilineare Formen ein. 
+Für einen Vektorraum $V$, heißt eine Funktion $ f : V \times V \to \K $ \emph{bilineare Form} auf $ V $, falls $ f $ in beiden Vektorargumenten linear ist, d.h. $ f(\alpha x + \beta y, u) = \alpha f(x,u) + \beta(y,u) $ sowie $ f(v,\alpha x + \beta y) = \alpha f(v,x) + \beta f(v,y) \enspace \forall \alpha, \beta \in \K, \forall x,y,u,v \in V $. Eine bilineare Form $f$ heißt \emph{symmetrisch}, falls $ f(u,v) = f(v,u)$ für alle $u,v \in  V $ gilt. Setzen wir in eine bilineare Form $f(u,v)$ für $u$ oder $v$ den Nullvektor ein, so erhalten wir natürlich $f(u,v) = 0$. 
+
+
+Sei nun $V$ Vektorraum über $\R$. Dann heißt eine symmetrische bilineare Form $ \scalar{\cdot,\cdot} $ auf $V$ \emph{Skalarprodukt}, falls $ \scalar{u,u} \geq 0 $ und die Gleichung $ \scalar{u,u} = 0 $ nur für den Nullvektor erfüllt ist. Ein Vektorraum $V$ über $ \R $, der mit einem Skalarprodukt $ \scalar{\cdot,\cdot} $ ausgestattet ist, heißt \emph{(reeller) Euklidischer Raum}. Die Funktion $ \norm{u} := \sqrt{\scalar{u,u}} $ von $ \R^n $ nach $ \R $ heißt \emph{Norm}. Geometrisch ist die Norm von $ u $ die Länge des Vektors $ u $. Der Wert $ \norm{u-v} $ heißt \emph{Abstand} zwischen den Punkten  $ u $ und $ v $.
+
+Der Raum $ \R^n $, $ n \in \N $, wird mit folgendem Standard-Skalarprodukt ausgestattet: Für $ x = (x_j)_{j=1}^n $ und $ y = (y_j)_{j=1}^n $ setzt man 
+\[
+	 \scalar{x,y} := x_1y_1 + \ldots + x_ny_n.
+\] Die Norm von $x$ ist also 
+\[
+	\|x\|= \sqrt{x_1^2 + \cdots + x_n^2}. 
+\]
+In Vektorform ist $ \scalar{x,y} = x^\top  y $ und $\|x\| = \sqrt{x^\top x}$ mit Spaltenvektoren $ x $ und $ y $. Im Raum $\R^n$ kann man viele verschiedene Skalarprodukte einführen. Für jede reguläre Matrix $A \in \R^{n \times n}$ ist die bilineare Form $\scalar{Ax,Ay}$ auch ein Skalarprodukt, das eine (andere) Euklidische Struktur in $\R^n$ definiert. Wenn wir aber über $\R^n$ als einen Euklidischen Raum sprechen, meinen wir stillschweigend, dass $\R^n$ die Euklidische Struktur durch das Standard-Skalarprodukt festgelegt ist. 
+
+Als nächste Schritt wollen wir möglichst analog Euklidische Räume über $\C$ einführen. Hier eine kurze Zusammenfassung der Operationen, die wir für komplexe Zahlen benutzen werden: 
+
+\begin{tcolorbox}
+	\begin{wdh}[Komplexe Zahlen]
+		Sei $i$ die imaginäre Einheit in $\C$. 
+		Sei $ z = a + i b \in \C $ mit $ a,b \in \R $. Es gilt 
+		\begin{itemize}
+			\item
+				$ z_1 = a_1 + b_1i, ,z_2 = a_2 + b_2 i\in \C \Rightarrow z_1 \cdot z_2 = (a_1 + b_1i)(a_2 + b_2i)  = a_1 a_2 - b_1 b_2 + (a_1 b_1 + a_2 b_1) i$
+			\item
+				$ \abs{z} = \sqrt{a^2+b^2} $
+			\item
+				$ \overline{z} = a-bi $ heißt die zu $ z = a+bi $ komplex konjugierte Zahl.
+				
+				Für $ z_1,z_2 \in \C $ gilt $ \overline{z_1+z_2} = \overline{z_1} + \overline{z_2} $ und $ \overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2} $.
+		\end{itemize}
+	\end{wdh}
+\end{tcolorbox}
+
+\noindent Skalarprodukte auf Vektorräumen über $ \C $ kann man \emph{nicht} über bilineare Formen einführen. Die Funktion $x^\top y$ ist zum Beispiel bilinear auf $\C^n$. Darauf basierend kann man aber keine Norm einführen,
+ denn für $ x \in \C^n $ ist $ x^\top x $ im Allgemeinen keine nicht-negative reelle Zahl. Wir können uns aber eine andere Funktion anschauen, und zwar 
+Für $ x = (x_1, \ldots, x_n) $ und $ y = (y_1, \ldots, y_n) $ aus $ \C^n $, setzen wir $ \scalar{x,y} := x_1\overline{y_1} + \ldots + x_n \overline{y_n} $. In Vektorschreibweise ist $ \scalar{x,y} = x^\top \overline{y} $ mit Spaltenvektoren $ x $ und $ y $, wobei $ \overline{y} = (\overline{y_1}, \ldots, \overline{y_n}) $. Dies ist das \emph{Standard-Skalarprodukt} im Raum $\C^n$. Es ist klar, dass man für diese Funktion $\scalar{x,x} \ge 0$ für alle $x \in \C^n$ hat. Wir werden sehen, dass das das richtige Konzept eines Skalarprodukts ist. Man beachte auch, dass die Funktion $\scalar{x,y} := x^\top \overline{y}$ das Standard-Skalarprodukt auf $\R^n$ erweitern. Denn $\R^n$ ist Teilmenge von $\C^n$: setzen wir also reelle Vektoren $x,y \in \R^n$ in $x^\top \overline{y}$ ein, so erhalten wir $x^\top y$ (das Standard-Skalarprodukt von $\R^n$). Diese Beobachtung zeigt auch Folgendes: hat man eine Aussage über Vektorräume über $\C$ bewiesen, so ist eine entsprechende Aussage über Vektorräume über $\R$ somit auch abgedeckt. 
+
+Die obigen Überlegungen für $\C^n$ führen zu den den folgenden Begriffen für allgemeine Vektorräume über $\C$. 
+
+Sei $ V $ Vektorraum über $ \C $. Eine Funktion $ f : V \times V \to \C $ heißt \emph{$ 1\frac{1}{2} $-lineare Form} auf $ V $, falls $ f $ folgende Bedingungen erfüllt:
+\begin{enumerate}
+	\item
+		$ f $ ist linear im ersten Vektorargument, d.h.
+		
+		$ f(\alpha x + \beta y, u) = \alpha f(x,u) + \beta f(y,u) \enspace \forall \alpha, \beta \in \K, \forall x,y,u,v \in V $.
+	\item
+		$ f $ ist $ \frac{1}{2} $-linear im zweiten Vektorargument, d.h.
+		
+		$ f(v, \alpha x + \beta y) = \overline{\alpha} f(v,x) + \overline{\beta} f(v,y) \enspace \forall \alpha, \beta \in \K, \forall x,y,u,v \in V $.
+\end{enumerate}
+Eine $ 1\frac{1}{2} $-lineare Form $ f $ auf $ V $ nennt man \emph{hermitesch}, wenn $ f(u,v) = \overline{f(v,u)} $ für alle $u,v \in V$ erfüllt ist. Insbesondere hat man für hermitische Formen $ f(u,u) \in \R $ für alle $u \in V$. 
+
+Eine hermitesche $ 1\frac{1}{2} $-lineare Form $ \scalar{\cdot,\cdot} $ auf Vektorräumen über $ \C $ heißt \emph{Skalarprodukt}, falls $ \scalar{u,u} \geq 0$ für alle $u \in V$ gilt und die Gleichung $ \scalar{u,u} = 0 $ nur für den Nullvektor erfüllt ist. Ein Vektorraum $ V $ über $ \C $, der mit einem Skalarprodukt ausgestattet ist, heißt \emph{(komplexer) Euklidischer Raum}. Oft nennt man solche Räume auch \emph{unitäre Räume}. Die Norm und der Abstand werden auf dieselbe Weise eingeführt, wie im reellen Euklidischen Raum.
+
+%
+\begin{framed}
+Bei den folgenden Betrachtungen bedeutet die Annahme, dass $ V $ ein Euklidischer Raum über $ \K $ ist, dass $ \K $ entweder $ \R $ oder $ \C $ sein soll.
+\end{framed} 
+
+\begin{bem}
+Man behandelt in der Schule die sogenannten binomischen Formeln:\footnote{Diese Namen sind Schulbegriffe, die man außerhalb der Schule in der Fachwelt der Mathematik eigentlich nicht benutzt.} die erste $(a+b)^2 = a^2 + b^2$, die zweite $(a-b)^2 = a^2 - 2 a b + b^2$ und die dritte $(a-b)(a+b) = a^2 - b^2$. Diese Formeln (für Werte $a,b \in \R$) können auf Vektorräume über $\R$ folgendermaßen übertragen werden. Es gilt 
+\begin{align*}
+	\|a  + b\|^2 & = \|a\|^2 + 2 \scalar{a,b} + \|b\|^2,
+\\	\|a-b\|^2 & = \|a\|^2 - 2 \scalar{a,b} + \|b\|^2, 
+\\ \scalar{a-b,a+b} & = \|a\|^2 - \|b\|^2
+\end{align*}
+für beliebige Vektoren $a,b \in V$ eines Euklidischen Raums $V$ über $\R$.   Entsprechende Formeln für Euklidische Räume über $\C$ kann man auch herleiten (die linken Seiten bleiben gleicht, die rechten Seiten sehen aber etwas technischer aus). 
+\end{bem} 
+
+\subsubsection{Die Ungleichung von Cauchy-Schwarz und der Winkel zwischen Vektoren}
+
+Die Ungleichung von Cauchy-Schwarz gehört zu den bekanntesten und nützlichsten Ungleichungen in Mathematik. 
+
+\begin{thm}
+	Sei $ V $ Euklidischer Raum über $ \K $. Dann gilt:
+	\begin{equation}
+		\abs{\scalar{u,v}} \leq \norm{u} \cdot \norm{v} \enspace \forall u,v \in V,
+	\end{equation}
+	wobei Gleichheit genau dann erfüllt ist, wenn $ u $ und $ v $ linear abhängig sind.
+\end{thm}
+\begin{proof}
+	Hier nur für $ \K = \R $. ($ \K = \C $ Aufgabe) \\[10pt]
+	%
+	Seien $ u,v \in V \setminus \set{0} $, da sonst die Behauptung trivial ist. Für jedes $ \lambda \in \R $ gilt
+	\begin{align*}
+		0 &\leq \norm{u - \lambda v}^2 = \norm{u}^2 - 2 \lambda \scalar{u,v} + \lambda^2 \norm{v}^2
+	\end{align*}
+	Wir haben also die Ungleichung 
+	\[
+		\|u\|^2 - 2 \lambda \scalar{u,v} + \lambda^2 \|v\|^2 \ge 0
+	\]
+	erhalten, die von einem Parameter $\lambda \in \R$ abhängig ist. Wir wollen nun die Wahl von $\lambda$ fixieren, die uns die stärkste Ungleichung gibt. Dafür soll die linke Seite minimiert werden. Um das beste $\lambda$ zu fixieren, kann man also z.B. Methoden aus der Analysis (Ableitungen usw.) benutzen. Da die linke Seite lediglich eine quadratische Funktion in $\lambda$ ist, kommt auch ohne Analysis aus. Wir teilen die Gleichung durch $\|v\|^2$ und erhalten 
+	\[
+		\frac{\|u\|^2}{\|v\|^2} - 2 \lambda \frac{\scalar{u,v}}{\|v\|} + \lambda^2  \ge 0
+	\]
+	Dann machen wir die quadratische Ergänzung und erhalten.
+	\begin{equation*}
+		\frac{\norm{u}^2}{\norm{v}^2} - \frac{\scalar{u,v}^2}{\norm{v}^4} + \left( \lambda - \frac{\scalar{u,v}}{\norm{v}^2} \right)^2 \geq 0
+	\end{equation*}
+	Diese Ungleichung wird am schärfsten, wenn der Klammerausdruck 0 ist. Durch Einsetzen von $\lambda = \frac{\scalar{u,v}}{\norm{v}^2}$ erhalten wir also 
+	\begin{align*}
+		\norm{u}^2 \norm{v}^2 & \ge \scalar{u,v}^2,
+	\end{align*}
+	was der Ungleichung in der Behauptung äquivalent ist. 
+	
+	Wir müssen noch den Gleichheitsfall charakterisieren. Lineare Abhängigkeit von $u$ und $v$ ist für die Gleichheit offensichtlich hinreichend. Umgekehrt: gilt die Gleichheit $\|u\| \|v \| = |\scalar{u}{v}|$ für $u,v \in V$ so hat man nach der vorigen Herleitung $\|u - \lambda v\| = 0$ für $\lambda =\frac{\scalar{u,v}}{\norm{v}^2}$. Aus $|u - \lambda v\| =0$ folgt $u - \lambda v -0$, das heißt: $u$ und $v$ sind linear abhängig. 
+\end{proof}
+
+
+\noindent Sei $ V $ ein reeller Euklidischer Raum und $ u,v \in V \setminus \set{0} $. Nach der Ungleichung von Cauchy-Schwarz ist $\scalar{ \frac{u}{\|u\|}, \frac{v}{\|v\|} } = \frac{\frac{u}{v}}{\|u\| \|v\|}$ ein Wert in $[-1,1]$. Ein Wert aus $[-1,1]$ kann eindeutig als $\cos \phi$ mit $\phi \in [0,\pi]$  dargestellt werden. Der Wert $\phi$ heißt der Winkel zwischen $u$ und $v$. 
+
+Das heißt, wir definieren den \emph{Winkel} $ \phi $ zwischen $ u $ und $ v $ als einen eindeutigen Wert $ \phi \in [0,\pi]$ mit $ \cos \phi = \frac{\scalar{u,v}}{\norm{u} \norm{v}} $.
+
+\begin{tcolorbox}
+	\begin{wdh}[Kosinus]
+		Falls man aus der Schule die geometrische Bedeutung von Kosinus nicht weiß, hier eine kurze Erklärung. Wir betrachten die obere Hälfte des Kreises mit Radius eins und Zentrum in $(0,0)$. Dieser Bogen hat die Länge $\pi=3{,}1415926\cdots$. Wir laufen vom rechten Endpunkt $A$ aus entlang des Bogens. Nach $\pi$ Einheiten kommen wir zum linken Endpunkt $B$. Nach $\pi/2$ Einheiten stehen wir ganz oben auf dem Bogen. Wenn wir $\phi \in[0,\pi]$ fixieren und genau $\phi$ Einheiten zurücklegen so landen wir irgendwo auf dem Bogen. Dann schauen wir un die $x$-Koordinate an. Ist $x=1$ so haben wir uns gar nicht bewegt und unser $\phi$ ist $0$. Ist $x=-1$ so haben wir den gesamten Bogen zurückgelegt und unser $\phi$ ist $\pi$. Im Allgemeinen ist unser $x$ ein Wert zwischen $-1$ und $1$. Den Wert $x$ in Abhängigkeit von $\phi$ nennt man Kosinus $\phi$. Wie wir oben besprochen haben gilt $\cos(0) = 1, \cos(\pi/2) = 0$ und $\cos(\pi)=-1$. 
+		\begin{center}
+		\begin{tikzpicture}[scale=2]
+			\draw[->] (-1.5,0) -- (1.5,0) node[below]{$x$}; 
+			\draw[->] (0,-0.2) -- (0,1.5) node[right]{$y$};
+			\draw[thick] (1,0) node[below]{$A$} arc (0:180:1) node[below]{$B$};
+		\end{tikzpicture} 
+		\end{center}
+		Bei Berechnungen mit Kosinus (und Sinus) mit Taschenrechner und anderen technischen Geräten kommt es immer wieder zu Fehlern im Zusammenhang mit dem Format der Eingabe. Man kann nämlich unseren Bogen in $180$ gleichlange Stückchen zerlegen. Die Länge eines solchen Stückchens nennt man Grad. Ein Grad ist somit nichts anderes als $\frac{\pi}{180}$. Wenn man etwa sagt, $\phi$ ist  $60$ Grad, so meint man $\phi = 60 \cdot \frac{\pi}{180} = \frac{\pi}{3}$ (ein Drittel der Länge von unserem Bogen). Bei manchen Taschenrechner ist aber die Angabe von $\phi$ in Grad die Standardeinstellung. Die Angabe von $\phi$ in Grad ist die Angabe von $\frac{\phi \cdot 180}{\pi}$, denn  $\frac{\phi \cdot 180}{\pi}$ Grad ist $\frac{\phi \cdot 180}{\pi} \cdot \frac{\pi}{180} = \phi$. 
+\end{wdh}
+\end{tcolorbox}
+
+\subsubsection{Eigenschaften der Norm und des Abstands}
+\label{sec:7_1_3}
+
+\begin{propn}
+	Sei $ V $ Euklidischer Raum über $ \K $. Dann gilt:
+	\begin{enumerate}
+		\item
+			$ \norm{u} > 0 $ und $ \norm{u} = 0 \Leftrightarrow u = 0 \enspace \forall u \in V $
+		\item
+			$ \norm{\alpha u} = \abs{\alpha} \norm{u} \enspace \forall \alpha \in \K, \forall u \in V $
+		\item
+			$ \norm{u+v} \leq \norm{u} + \norm{v} \enspace \forall u,v \in V $
+	\end{enumerate}
+\end{propn}
+\begin{proof}
+	Übung.
+\end{proof}
+
+Eine Funktion, welche die drei Bedingungen der vorigen Proposition erfüllt, nennt man eine \emph{Norm} auf $V$. 
+
+\noindent Die Ungleichung (iii) wird Dreiecksungleichung genannt. Wenn man über die Abstände zwischen Punkten $ a,b,c \in V $ redet, kann man diese umschreiben: $ \norm{a-c} \leq \norm{a-b} + \norm{b-c} $. Auch der Gleichheitsfall lässt sich analog beschreiben. (Übung)
+
+Auf einem Vektorraum $V$ kann man verschiedene Normen definieren, nicht nur die Euklidischen. Eine Euklidische Norm kommt aber stets mit einem Skalarprodukt, und dieses kann aus der Norm abgelesen werden, wie die folgende Proposition zeigt. 
+
+\begin{propn}
+	Sei $ V $ Euklidischer Raum über $ \R $. Dann gilt: 
+	\begin{equation}
+		\scalar{u,v} = \frac{1}{4} \big( \norm{u+v}^2 - \norm{u-v}^2 \big) \enspace \forall u,v \in V
+	\end{equation}
+\end{propn}
+\begin{proof}
+	Aufgabe.
+\end{proof}
+	
+	
+Das Skalarprodukt wird somit eindeutig durch die Euklidische Norm bestimmt, wie man in der vorigen Proposition im Fall des Körpers der reellen Zahlen zeigt. Eine analoge Aussage für die komplexen Zahlen ist wie folgt: 
+
+\begin{propn}
+	Sei $ V $ Euklidischer Raum über $ \C $ und $ i $ die imaginäre Einheit. Dann gilt:
+	\begin{equation}
+		\scalar{u,v} = \frac{1}{4} \big( \norm{u+v}^2 - \norm{u-v}^2 + i\norm{u+iv}^2 - i\norm{u-iv}^2 \big) \enspace \forall u, v \in V
+	\end{equation}
+\end{propn}
+\begin{proof}
+	Aufgabe.
+\end{proof}
+
+\subsubsection{Orthogonale bzw. Orthonormale Systeme und das Gram-Schmidt-Verfahren}
+
+Vektoren $ u $ und $ v $ eines Euklidischen Raumes $ V $ heißen \emph{orthogonal} (senkrecht), falls $ \scalar{u,v} = 0 $ gilt. Ein Vektorsystem in $ V $ heißt orthogonal, falls die Vektoren dieses Systems ungleich 0 und paarweise orthogonal sind. Jedes orthogonale System ist linear unabhängig (Aufgabe). Ein orthogonales System Vektorsystem heißt \emph{orthonormal}, falls die Norm der Vektoren dieses Systems gleich 1 ist. Die Standard-Basis $ e_1, \ldots, e_n $ von $ \R^n $ ($ n \in  \N $) ist eine Orthonormalbasis (d.h. Basis und orthonormales System).
+
+Hat man in einem $ n $-dimensionalen Euklidischen Raum $ V $ ($ n \in \N $) eine Orthonormalbasis $ \B = (b_1, \ldots, b_n) $, so lässt sich für jeden Vektor $ u \in V $ die Darstellung von $ u $ in $ \B $ durch die Berechnung von $ n $ Skalarprodukten bestimmen:
+\begin{equation*}
+	u_\B = \begin{pmatrix}
+		\scalar{u,b_1} \\ \vdots \\ \scalar{u,b_n}
+	\end{pmatrix}.
+\end{equation*}
+Das ist sehr praktisch. Wenn man etwa im Raum $\K^n$ einen Vektor in einer beliebigen Basis darstellen möchte, muss man ein lineares Gleichungssystem lösen (der Aufwand ist kubisch in $n$, Berechnung von $n$ Skalarprodukten hat dagegen einen quadratischen Aufwand). Die Berechnungen von Skalarprodukten und Normen können in einer gegebenen Basis durchgeführt werden.
+Für $ u,v \in V $ gilt $ \scalar{u,v} = \scalar{u_\B,v_\B} = \sum_{k=1}^{n} \scalar{u,b_k} \overline{\scalar{y,b_k}} $. Daraus folgt auch $ \norm{x} = \norm{x_\B} $. Somit können die Berechnungen im abstrakten Euklidischen Raum $ V $ durch Berechnungen im "konkreten" Euklidischen Raum $ \K^n $ ersetzt werden.
+
+Die Orthonormalbasen sind sehr nützlich. Wenn ein Euklidischer Vektorraum durch eine beliebige Basis gegeben ist, so kann man darauf basierend stets eine Orthonormalbasis ausrechnen. 
+
+\begin{thm}[Existenz einer Orthonormalbasis]
+	Sei $ V $ $ n $-dimensionaler Euklidischer Raum über $ \K $ ($ n \in \N $). Dann besitzt $ V $ eine Orthonormalbasis.
+\end{thm}
+\begin{proof}
+	Es genügt, die Existenz einer Orthogonalbasis zu zeigen (jede Orthogonalbasis kann durch Normierung in eine Orthonormalbasis überführt werden). Wir fixieren eine beliebige Basis $ a_1, \ldots, a_n $ von $ V $ und konstruieren anhand dieser Basis eine Orthogonalbasis $ b_1, \ldots, b_n $.
+	
+	Wir gehen iterativ vor. In der $ i $-ten Iteration hat man bereits eine Orthogonalbasis $ b_1, \ldots, b_{i-1} $ von $ \lin(a_1, \ldots, a_{i-1}) $ zur Verfügung, und erweitert diese Basis zu einer Orthogonalbasis $ b_1, \ldots, b_i $ von $ \lin(a_1, \ldots, a_i) $. 
+	
+	In der ersten Iteration wird $ b_1 = a_1 $ gesetzt. In der $ i $-ten Iteration ($ i \geq 2 $) wählen fixieren wir $b_i$ mit Hilfe der Formel $ b_i = a_i - \sum_{k=1}^{i-1} \gamma_kb_k $, bei der die Koeffizienten $ \gamma_1, \ldots, \gamma_{i-1} \in \K $ festgelegt werden müssen. Die Intuition hinter der Formel ist wie folgt: Wir lassen von $a_i$ ausgehen, den Vektor $b_i$ parallel zu dem Raum $\lin(a_1,\ldots,a_{i-1})$ ``gleiten'', bis er orthogonal zu $\lin(a_1,\ldots,a_{i-1})$ wird. 
+	
+	Die Werte $ \gamma_1, \ldots, \gamma_{i-1} $ werden aus den Bedingungen $ \scalar{b_i,b_j} = 0 $ mit $ j \in \is{1}{i-1} $ bestimmt. Da $ b_1, \ldots, b_{i-1} $ ein Orthogonalsystem ist, erhält man aus den vorigen Bedingungen die Darstellung $ \gamma_j = \scalar{a_i,b_j} / \scalar{b_j,b_j} \enspace \forall j \in \is{1}{i-1} $. Der so gewählte Vektor $ b_i $ ist ungleich 0. Denn sonst wäre $ a_i \in \lin(b_1, \ldots, b_{i-1}) = \lin(a_1, \ldots, a_{i-1}) $, was der linearen Unabhängigkeit von $ a_1, \ldots, a_n $ widerspricht. Nach $ n $ Iterationen hat man die gewünschte Basis konstruiert.
+\end{proof}
+
+\begin{bem}
+	Das Verfahren aus dem vorigen Beweis heißt das Gram-Schmidt-Verfahren. Das Verfahren kann auch in der Sprache der Matrizen formuliert werden. Dann nennt man es die $QR$-Zerlegung. 
+\end{bem}
+
+\begin{klr}[Ergänzung von orthogonalen bzw. orthonormalen Systemen]
+	Sei $ b_1, \ldots, b_m $ ($ m \in \N_0 $) ein orthogonales bzw. orthonormales System in einem $ n $-dimensionalen Euklidischen Raum $ V $ ($ n \in \N $). Dann ist $ m \leq n $ und $ b_1, \ldots, b_m $ kann zu einer Orthogonal- bzw. Orthonormalbasis von $ V $ erweitert werden.
+\end{klr}
+\begin{proof}
+	Erweitere $ b_1, \ldots, b_m $ zu einer beliebigen Basis von $ V $ und orthogonalisiere diese dann diese anschließend mit dem Gram-Schmidt.
+\end{proof}
+
+\subsubsection{Orthogonale Projektion}
+
+Orthogonale Projektion auf einen Untervektorraum ist eine Operation, die man oft in der Praxis benötigt. Lineare Regression in der Statistik sowie die Methode der kleinsten Quadrate sind z.B. nichts anderes als die Umsetzung der orthogonalen Projektion im Kontext der Statistik bzw. Numerik. 
+
+Durch das folgende Theorem wird die orthogonale Projektion eingeführt. 
+
+\begin{thm}
+	Sei $ V $ ein $ n $-dimensionaler Euklidischer Raum über $ \K $ und $ U $ ein Untervektorraum von $ V $. Dann gilt:
+	\begin{enumerate}
+		\item
+			Zu jedem $ x \in V $ existiert ein eindeutiges $ y \in U $ derart, unter allen Vektoren in $U$ der Vektor $y$ bzgl. der Euklidischen Norm zu $x$ am nächsten liegt.  (D.h. $ \norm{x-y} \leq \norm{x-u} \enspace \forall u \in U $) gilt.
+		\item
+			Für jedes $x \in V$ ist $y$ aus (i) der eindeutige Vektor $y$ mit der Eigenschaft, dass $ x- y$ zu jedem Vektor aus $ U $ orthogonal ist.
+		\item
+			Die Abbildung $x \mapsto y$ ist linear. 
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Sei $ u_1, \ldots, u_m $ eine Orthonormal-Basis von $ U $. Wir zeigen, dass für den Vektor
+	\begin{equation}\label{eq:y:wahl} 
+	y = \scalar{x,u_1}u_1 + \ldots + \scalar{x,u_m}u_m
+	\end{equation}
+	die Behauptungen des Theorems erfüllt sind. Wir beginnen mit (ii). Wenn $y-x$ zu jedem Basisvektor $u_i$ von $U$ orthogonal ist, dann ist $y-x$ zu allen Vektoren aus $U$ orthogonal. Für $y$, das durch die vorige Formel gegeben ist, hat man tatsächlich $\scalar{y-x,u_i}$ für alle $i=1,\ldots,m$. Umgekehrt, wenn $y$ ein Vektor aus $U$ ist, für welchen $\scalar{y-x}{u}$ für alle $u \in U$ gilt, dann gilt $\scalar{y-x}{u_i}$ für alle $i=1,\ldots,m$. Wenn wir nun $y$ als Linearkombination $y = \scalar{y}{u_1} u_1 + \cdots + \scalar{y,u_m} u_m$ der Basisvektoren darstellen, so erhalten wir aus den Gleichungen $\scalar{y-x}{u_i} =0$, dass $\scalar{y}{u_i} = \scalar{x}{u_i}$. 
+	
+	Um nun (i) herzuleiten, müssen wir überprüfen, dass der von uns gewählte Vektor $y$ ein eindeutiger Vektor ist, für welchen die Eigenschaft in (i) erfüllt ist. In (i) arbeiten wir mit Abständen. Wir sind auf der Such nach einem Vektor in $U$, der zu $x$ am nächsten Ist. Wir minimieren also $\|x-u\|$ für $u \in U$. Es ist besser das Quadrat der Norm zu minimieren (denn die Norm hatte eine Wurzel in der Definition, die wir gerne vermeiden wollen). Das heißt, wir minimieren $\|x-u\|^2$ für $u \in U$. Nun benutzen wir das $y$ aus \eqref{eq:y:wahl} und formen den Ausdruck $\|x-u\|^2$ folgendermaßen um: 
+	\[
+		\|x-u\|^2= \| (x-y) + (y-u)\|^2 = \|x-y\|^2 + \scalar{x-y}{y-u} + \scalar{y-u}{x-y} + \|y - u\|^2.
+	\]
+	Der Vektor $y-u$ liegt in $U$ und, wie wir in (ii) gesehen haben, ist $x-y$ orthogonal zu jedem Vektor aus $U$. Also hat man 
+	\[
+		\|x-u\|^2 = \|x-y\|^2 + \|y - u\|^2.
+	\]
+	Der quadrierte Abstand von $x$ und $u$ ergibt sich somit als der quadrierte Abstand von $x$ und $y$ plus der Zusatz $\|y - u\|^2$, der von $u$ abhängig ist. Der Zusatz ist genau dann am kleinsten wenn $y = u$ gleich ist. Dies zeigt (i). 
+	
+	
+	(iii) ist das Nebenprodukt des Beweises von (i) und (ii): die rechte Seite von \eqref{eq:y:wahl} ist linear in $x$. 
+\end{proof}
+
+\subsubsection{Orthogonale Untervektorräume, Summen und Orthogonalkomplement}
+
+Im Teil 1 des Kurses haben wir Zerlegungen von Vektorräumen in direkte Summanden eingeführt. Nun führen wir Zerlegungen von Euklidischen Räumen in orthogonale direkte Summanden ein. 
+
+Sei $ V $ Euklidischer Raum über $ \K $ und $ X$ Teilmenge von $V $ ($X$ muss kein Untervektorraum sein.) Dann heißt $ X^\bot := \{ v \in V : \scalar{v,x} = 0 \enspace \forall x \in X \} $ das \emph{Orthogonalkomplement} von $ X $ in $ V $. Mit anderen Worten ist $X^\perp$ die Menge der Vektoren aus $V$ die zu allen Vektoren in $X$ orthogonal sind. $ X^\bot $ ist ein Untervektorraum von $ V $. (Aufgabe)
+
+Zwei Untervektorräume $ U, W $ von $ V $ heißen \emph{orthogonal}, wenn $ \scalar{u,w} = 0 \enspace \forall u \in U, w \in W $. Schreibweise: $ U \bot W $. Ein Vektor $ v \in V $ und ein Untervektorraum $ U $ von $ V $ heißen orthogonal, falls $ \scalar{v,u} = 0 \enspace \forall u \in U $. Schreibweise: $ v \bot U $.
+
+Die Summe von Untervektorräumen $ U_1, \ldots, U_k $ von $ V $ heißt orthogonal, falls $ U_1, \ldots, U_k $ paarweise orthogonal sind. Schreibweise: $ U_1 \obot \ldots \obot U_k $. Jede orthogonale Summe ist direkt. (Aufgabe)
+
+Wenn wir nun einen Untervektorraum $U$ von $V$ fixieren, können wir $V$ in die orthogonale direkte Summe von $U$ und $U^\top$ zerlegen:  
+
+\begin{thm}
+	Sei $ V $ ein $ n $-dimensionaler Euklidischer Raum über $ \K $ und $ U $ ein Untervektorraum von $ V $. Dann gilt $ V = U \obot U^\bot $ und $ (U^\bot)^\bot = U $.
+\end{thm}
+\begin{proof}
+	Es ist $ U \bot U^\bot $ laut Definition von $ (\cdot)^\bot $. Betrachte eine Orthonormalbasis $ u_1, \ldots, $ $ u_m $ von $ U $ und ergänze diese zu einer Orthonormalbasis $ u_1, \ldots, u_n $ von $ V $. Man kann zeigen, dass $ U^\bot = \lin(u_{m+1}, \ldots, u_n) $ gilt. (Aufgabe, einfach).
+	D.h. $ (\lin(u_1, \ldots, u_m))^\bot = \lin(u_{m+1}, \ldots, u_n) $. Daraus folgt:
+	\begin{align*}
+		((\lin(u_1, \ldots, u_m))^\bot)^\bot &= (\lin(u_{m+1}, \ldots, u_n))^\bot \\
+		&= \lin(u_1, \ldots, u_m),
+	\end{align*}
+	d.h. $ (U^\bot)^\bot = U $.
+\end{proof}
+
+\subsection{Lineare Abbildungen Euklidischer Räume}
+
+Manche Abbildungen eines Euklidischen Raums haben ganz besondere Eigenschaften bzgl. der Euklidischen Struktur. Die Bewegungen (unter anderem Drehungen und orthogonale Spiegelungen) sind zum Beispiel sehr interessant: diese Abbildungen ändern die Längen der Vektoren nicht. Außerdem gibt es Abbildungen, die einer \emph{Orthogonalbasis} durch eine Diagonalmatrix darstellbar sind. 
+
+\subsubsection{Adjungierte Abbildung}
+
+Die adjungierte Abbildung ist ein nützliches technisches Werkzeug, mit dem man die oben erwähnten Klassen spezieller linearer Abbildungen schön beschreiben kann. In dem folgenden Theorem wird die adjungierte Abbildung durch die Gleichung $\scalar{F(u),v} = \scalar{u,F^\ast(v)}$ charakterisiert: 
+
+\begin{thm}[Existenz und Eindeutigkeit der adjungierten Abbildung]
+	Sei $ V $ ein $ n $-dimensionaler Euklidischer Raum über $ \K $. Zu jedem $ F \in \Lin(V) $ existiert eine eindeutige Abbildung $ F^\ast \in \Lin(V) $ mit
+	\begin{equation}
+		\scalar{F(u),v} = \scalar{u,F^\ast(v)} \enspace \forall u,v \in V
+		\label{eq:7_2_1:ast}
+	\end{equation}
+	Für die Operation $ F \mapsto F^\ast $ auf $\Lin(V)$ gilt für alle $F, G \in \Lin(G)$ und  $\alpha, \beta \in \K$ Folgendes:
+	\begin{enumerate}
+		\item
+			$ (F^\ast)^\ast = F$
+		\item
+			$ (\alpha F + \beta G)^\ast = \overline{\alpha} F^\ast + \overline{\beta} G^\ast$
+		\item
+			$ (F \circ G)^\ast = G^\ast \circ F^\ast$
+		\item
+			$ \id^\ast = \id $
+		\item
+			Ist $ F$ invertierbar, so ist auch $ F^\ast $ invertierbar, und es gilt $ (F^\ast)^{-1} = (F^{-1})^\ast $.
+	\end{enumerate}
+	Die Abbildung $ F^\ast $ heißt die \emph{adjungierte} Abbildung von $ F $.
+\end{thm}
+\begin{proof} 
+	Sei $ b_1, \ldots, b_n $ eine Orthonormalbasis von $ V $. Wenn $ F^\ast \in \Lin(V) $ eine Abbildung ist, die \eqref{eq:7_2_1:ast} erfüllt, dann ist $ \scalar{F^\ast(x),b_i} = \overline{\scalar{b_i,F^\ast(x)}} = \overline{\scalar{F(b_i),x}} = \scalar{x,F(b_i)} $ und es gilt:
+	\begin{equation*}
+		F^\ast(x) = \sum_{i=1}^{n} \scalar{F^\ast(x),b_i}b_i = \sum_{i=1}^{n} \scalar{x,F(b_i)}b_i,
+	\end{equation*}
+	Dies zeigt die Eindeutigkeit: wenn ein $F^\ast$ mit \eqref{eq:7_2_1:ast} existiert, dann ist das $F^\ast$ in unserer festen Orthonormalbasis eindeutig wie oben beschrieben. 
+	
+	Es bleibt zu zeigen, dass das so definierte $ F^\ast $ die Bedingung \eqref{eq:7_2_1:ast} erfüllt (Existenz). Wir setzen unsere Darstellung von $F^\ast$ in die rechte Seite von \eqref{eq:7_2_1:ast} und transformieren dann die rechte Seite zur linken Seite wie folgt: 
+	\begin{align*}
+		\scalar{ u , F^\ast(v) } & = \scalar{ u , \sum_{i=1}^n \scalar{v,F(b_i)} b_i } & \text{(Einsetzen des Audrucks für $F^\ast(v)$)} 
+		\\ & = \sum_{i=1}^n \overline{\scalar{v,F(b_i)}} \scalar{u, b_i} & \text{(nach $\frac{1}{2}$-Linearität im zweiten Vektorargument)}
+		\\ & = \sum_{i=1}^n \scalar{F(b_i),v} \scalar{u, b_i}
+		\\ & =  \scalar{\sum_{i=1}^n \scalar{u, b_i} F(b_i),v} & \text{(nach Linearität im ersten Vektorargument)}
+		\\ & = \scalar{F \left( \sum_{i=1}^n \scalar{u, b_i} b_i \right),v} & \text{(nach der Linearität von $F$)}
+		\\ & = \scalar{F(u),v}.
+	\end{align*}
+
+	(i), (ii) und (iv) sind Aufgaben. Für (iii) betrachte $ \scalar{(F \circ G)(u),v} = \scalar{F(G(u)),v} = \langle G(u), $ $ F^\ast(v) \rangle = \scalar{u,G^\ast(F^\ast(v))} = \scalar{u, (G^\ast \circ F^\ast)(v)} $ und für (v) ist $ (F^{-1})^\ast \circ F^\ast = (F \circ F^{-1})^\ast = \id \Rightarrow F^\ast $ ist invertierbar und $ (F^\ast)^{-1} = (F^{-1})^\ast $.
+\end{proof}
+
+Die folgenden Proposition präsentiert Dualitätsrelationen zwischen dem Kern und dem Bild der Abbildungen $F$ und $F^\ast$. 
+
+\begin{propn}
+	Sei $ V $ endlich-dimensionaler Euklidischer Raum über $ \K $. Sei $ F \in \Lin(V) $. Dann gilt:
+	\begin{align*}
+		\ker(F^\ast) &= \im(F)^\bot, \\
+		\im(F^\ast) &= \ker(F)^\bot.
+	\end{align*}
+\end{propn}
+\begin{proof}
+	Es ist
+	\begin{align*}
+		 \im(F)^\bot &= \set{u \in V : \scalar{u,y} = 0 \enspace \forall y \in \im(F)} \\
+		 &= \set{u \in V : \scalar{u, F(v)} \enspace \forall v \in V} \\
+		 &= \set{u \in V : \scalar{F^\ast(u), v} \enspace \forall v \in V} \\
+		 &= \set{u \in V : F^\ast(u) = 0} = \ker(F^\ast).
+	\end{align*}
+	Die zweite Gleichung kann man analog beweisen, oder alternativ aus der ersten folgern (mittels (i) aus dem vorigen Theorem und Theorem 7.1.6). %TODO: \ref ergänzen
+\end{proof}
+
+\begin{bem}\
+	\begin{itemize}
+		\item
+			Sei $ A \in \C^{n \times n} $ ($ n \in \N $). Die adjungierte Abbildung zu $ x \mapsto Ax $ ist die Abbildung $ x \mapsto A^\ast x $ mit $ A^\ast = \overline{A}^\top $. (hier bezeichnet $ \overline{A} \in \C^{n \times n}$ die Matrix,  welche durch die Konjugation der Komponenten von $A$ entsteht).
+		\item
+			Sei $ A \in \R^{n \times n} $ ($ n \in \N $). Die adjungierte Abbildung zu $ x \mapsto Ax $ (auf $ \R^n $) ist die Abbildung $ x \mapsto A^\top x $. Bzgl. des Körpers $\R$ benutzen wir als $A^\ast$ als eine andere Bezeichnung für $A^\top$. 
+	\end{itemize}
+\end{bem}
+
+\subsubsection{Lineare Isometrien von Euklidischen Räumen}
+
+In diesem Paragraphen geht es um die linearen Abbildungen, welche die Längen der Vektoren nicht verändert: solche Abbildungen nennt man die linearen Bewegungen oder die linearen Isometrien (Isometrie heißt Abstand erhalten). 
+
+Man kann die linearen Isometrien mit Hilfe der Norm definieren und auf  zwei Weisen äquivalent beschreiben (mit Skalarprodukten und mit Hilfe der adjungierten Abbildung). 
+\begin{thm}[Charakterisierung von linearen Isometrien]
+	Sei $ V $ ein endlich-dimensionaler Euklidischer Raum über $ \K $. Sei $ F \in \Lin(V) $. Dann sind die folgenden Bedingungen äquivalent:
+	\begin{enumerate}
+		\item
+			$ \norm{F(u)} = \norm{u} \enspace \forall u \in V $
+		\item
+			$ \scalar{F(u),F(v)} = \scalar{u,v} \enspace \forall u,v \in V $
+		\item
+			$ F $ ist invertierbar mit $F^{-1} = F^\ast$. 
+	\end{enumerate}
+\end{thm}
+\begin{proof}\
+	\begin{description}[font=\normalfont]
+		\item[(i)$ \Rightarrow $(ii):]
+			folgt aus Proposition \ref*{sec:7_1_3} von Seite \pageref*{sec:7_1_3} (das Skalarprodukt kann mit Hilfe der Normen gewisser Linearkombination von $u$ und $v$ beschrieben werden, das ergibt dass die linke und die rechte Seite der Gleichung in (ii) identisch sind). 
+		\item[(ii)$ \Rightarrow $(iii):]
+			$ \scalar{F(u),F(v)} = \scalar{u,v} \Rightarrow \scalar{(F^\ast \circ F)(u),v} = \scalar{u,v} = \scalar{u,\id(v)} $, d.h. $ F^\ast \circ F = \id^\ast = \id $ und $ F^{-1} = F^\ast $.
+		\item[(iii)$ \Rightarrow $(i):]
+			$ \norm{F(u)}^2 = \scalar{F(u),F(u)} = \scalar{u,(F^\ast \circ F)(u)} = \scalar{u,\id(u)} = \scalar{u,u} = \norm{u}^2 $. \qedhere
+	\end{description}
+\end{proof}
+
+\noindent Lineare Abbildungen, die die Bedingungen (i) -- (iii) wie oben erfüllen, heißen \emph{lineare Isometrien}. Lineare Isometrien reeller Euklidischer Räume heißen \emph{orthogonale Abbildungen}. Lineare Isometrien komplexer Euklidischer Räume heißen \emph{unitäre Abbildungen}.
+
+Wenn für $ A \in \C^{n \times n} $ ($ n \in \N $) die Abbildung $ x \mapsto Ax $ auf $ \C^n $ unitär ist, dann nennt man die Matrix $ A $ \emph{unitär}. Wenn für $ A \in \R^{n \times n} $ ($ n \in \N $) die Abbildung $ x \mapsto Ax $ auf $ \R^n $ orthogonal ist, dann nennt man die Matrix $ A $ \emph{orthogonal}.
+
+Die folgende Proposition charakterisiert die unitären Matrizen auf mehrere Weisen: 
+
+\begin{propn}
+	Sei $ A \in \C^{n \times n} $. Dann sind die folgenden Bedingungen äquivalent:
+	\begin{enumerate}
+		\item
+			$ A $ ist unitär.
+		\item
+			$ AA^\ast = I $.
+		\item
+			Die Zeilen von $ A $ bilden eine Orthonormalbasis von $ \C^n $.
+		\item
+			Die Spalten von $ A $ bilden eine Orthonormalbasis von $ \C^n $.
+	\end{enumerate}
+\end{propn}
+\begin{proof}
+	Aufgabe. 
+\end{proof}
+
+\noindent Eine entsprechende Proposition kann auch für orthogonale Matrizen formuliert werden:
+
+\begin{propn}
+	Sei $ A \in \R^{n \times n} $. Dann sind die folgenden Bedingungen äquivalent:
+	\begin{enumerate}
+		\item
+		$ A $ ist orthogonal.
+		\item
+		$ AA^\top = I $.
+		\item
+		Die Zeilen von $ A $ bilden eine Orthonormalbasis von $ \R^n $.
+		\item
+		Die Spalten von $ A $ bilden eine Orthonormalbasis von $ \R^n $.
+	\end{enumerate}
+\end{propn}
+\begin{proof}
+	Aufgabe. 
+\end{proof}
+
+
+\subsubsection{Diagonalisierung linearer Isometrien}
+
+Es stellt sich heraus, dass alle linearen Isometrien über $\C$ diagonalisierbar sind. Es gilt sogar eine stärkere Eigenschaft: jede lineare Isometrie ist in einer passend gewählten Orthonormalbasis durch eine Diagonalmatrix dargestellt. 
+
+\begin{bem}
+	Sei $ F \in \Lin(V) $ eine lineare Isometrie eines endlich-dimensionalen Euklidischen Raumes $ V $ über $ \K $. Sei $ \lambda \in \K $ Eigenwert von $ F $. Dann gilt $ \abs{\lambda} = 1 $ (Aufgabe). 
+\end{bem}
+
+Ist $u$ Eigenvektor einer linearen Isometrie $F$, dann kann man zeigen, dass $F$ als eine lineare Isometrie innerhalb des Orthogonalkomplements von $u$ aufgefasst werden kann: 
+
+\begin{propn}
+	Sei $ F \in \Lin(V) $ eine lineare Isometrie eines endlich-dimensionalen Euklidischen Raumes $ V $ über $ \K $. Sei $ u \in V \setminus \set{0} $ Eigenvektor von $ F $ und man betrachte das Orthogonalkomplement zum Eigenvektor $u$
+	\[ u^\bot := \{ v \in V : \scalar{v,u} = 0 \}.
+	\] Dann gilt $ F(u^\bot) \subseteq u^\bot $.
+\end{propn}
+\begin{proof}
+	Sei $ y \in F(u^\bot) $, d.h. $ y = F(x) $ mit einem $ x \in V $ derart, dass $ \scalar{x,u} = 0 $ gilt. Für $ y $ wie oben gilt $ \scalar{y,u} = \scalar{F(x),u} = \scalar{x,F^\ast(u)} = \scalar{x,F^{-1}(u)} $. Es ist $ F(u) = \lambda u $ mit $ \lambda \in \K $, $ \abs{\lambda} = 1 $, d.h. $ F^{-1}(u) = \frac{1}{\lambda} u $. Somit gilt $ \scalar{y,u} = \scalar{x,\frac{1}{\lambda}u} = \frac{1}{\overline{\lambda}} \scalar{x,u} = 0 $, d.h. $ y \in u^\bot $.
+\end{proof}
+
+\begin{thm}[Spektralsatz für lineare Isometrie eines komplexen Euklidischen Raums] 
+	Sei $ V $ ein $ n $-dimensionaler Euklidischer Raum über $ \C $. Sei $ F \in \Lin(V) $ eine Isometrie. Dann existiert eine Orthonormalbasis $ \B $ von $ V $, für welche die Matrix $ F_\B $ diagonal ist und die Diagonaleinträge von $ F_\B $ den Betrag 1 haben.
+\end{thm}
+\begin{proof}
+	Das charakteristische Polynom von $ F $ ist ein Polynom vom Grad $ n \geq 1 $ aus $ \C[t] $. Ein solches Polynom hat mindestens eine Nullstelle (vgl. Kapitel 2).
+	% Prof. Averkov: Diese Aussage nennt man den Fundamentalsatz der Algebra. Manche behaupten aber, dies sei weder fundamental noch von Algebra.
+	D.h. $ F $ besitzt einen Eigenwert $ \lambda \in \C $. Sei $ u \in V \setminus \set{0} $ Eigenvektor zu $ \lambda $ mit $ \norm{u} = 1 $. Nach der vorigen Proposition gilt $ F(u^\bot) \subseteq u^\bot $. Somit ist $ F|_{u^\bot} \in \Lin(u^\bot) $ wohldefiniert. Da $ F $ eine lineare Isometrie ist, ist auch $ F|_{u^\bot} $ eine lineare Isometrie.
+	
+	Der Raum $ V $ kann als $ V = \lin(u) \obot u^\bot $ dargestellt werden (vgl. 7.1.6 ), %TODO: \ref{} ergänzen
+	wobei $ \dim(\lin(u)) = 1 $ und $ \dim(u^\bot) = n-1 $ gilt. Nun kann die Basis $ \B = (b_1, \ldots, b_n) $ rekursiv konstruiert werden: Man wählt $ b_1 = u $ und als $ (b_2, \ldots, b_n) $ wählt man eine Orthonormalbasis von $ u^\bot $ aus Eigenvektoren von $ F|_{u^\bot} $. Da jeder Eigenwert von $ F $ den Betrag 1 hat, haben die Diagonaleinträge von $ F_\B $ ebenfalls den Betrag 1.
+\end{proof}
+\begin{bsp}
+	Aufgabe: Diagonalisieren Sie die Matrix
+	\begin{equation*}
+		\begin{pmatrix}
+			\cos \phi & - \sin \phi \\
+			\sin \phi & \cos \phi
+		\end{pmatrix}
+	\end{equation*}
+	mit $ \phi \in \R $ bzgl. $ \C $ mit Hilfe einer Orthonormalbasis. Diese Matrix ist im Fall $ \phi \in \R \setminus \pi\Z $ bzgl. $ \R $ nicht diagonalisierbar!
+\end{bsp}
+
+\subsubsection{Selbstadjungierte Abbildungen}
+
+
+Nun diskutieren wir eine weitere wichtige Klasse von linearen Abbildungen eines Euklidischen Raums: die Klasse der selbstadjungierten Abbildungen. 
+
+Sei $ V $ endlich-dimensionaler Euklidischer Raum über $ \K $ und sei $ F \in \Lin(V) $. Die Abbildung $ F $ heißt \emph{selbstadjungiert}, falls $ F = F^\ast $ gilt, d.h. $ \scalar{F(u),v} = \scalar{u,F(v)} \enspace \forall u,v \in V $. Eine Matrix $ A \in \C^{n \times n} $ heißt \emph{selbstadjungiert}, falls $ A = A^\ast $ gilt. (Insbesondere für $ A \in \R^{n \times n} $ ist $ A = $ selbstadjungiert $ \Leftrightarrow A $ symmetrisch).
+
+Die Eigenwerte selbstadjungierter Abbildungen sind immer reell:
+
+\begin{propn}
+	Sei $ V $ endlich-dimensionaler Euklidischer Raum über $ \C $. Sei $ F \in \Lin(V) $ selbstadjungiert und sei $ \lambda \in \C $ Eigenwert von $ F $. Dann folgt: $ \lambda \in \R $.
+\end{propn}
+\begin{proof}
+	Sei $ u $ Eigenvektor zu $ \lambda $. Dann gilt: $ \lambda\scalar{u,u} = \scalar{\lambda u,u} = \scalar{F(u),u} = \scalar{u,F(u)} = \scalar{u,\lambda u} = \overline{\lambda}\scalar{u,u} $ Es folgt $ \lambda = \overline{\lambda} $ und somit $ \lambda \in \R $.
+\end{proof}
+
+Ist $u$ ein Eigenvektor eines selbstadjungierten Abbildung, so kann man $F$ als eine Abbildung des Orthogonalkomplements $u^\top$ auffassen: 
+\begin{propn}
+	Sei $ V $ endlich-dimensionaler Euklidischer Raum über $ \C $. Sei $ F \in \Lin(V) $ selbstadjungiert und sei $ u \in V \setminus \set{0} $ Eigenvektor von $ F $. Dann gilt $ F(u^\bot) \subseteq u^\bot $.
+\end{propn}
+\begin{proof}
+	Sei $ \lambda $ Eigenwert zu $ u $. Sei $ y \in F(u^\bot) $, d.h. $ y = F(x) $ mit $ x \in V $ und $ \scalar{x,u} = 0 $. Es gilt $ \scalar{y,u} = \scalar{F(x),u} = \scalar{x,F(u)} = \scalar{x,\lambda u} = \overline{\lambda}\scalar{x,u} = 0 $. D.h. $ y \in u^\bot $.
+\end{proof}
+
+
+\subsubsection{Diagonalisierbarkeit von selbstadjungierten Abbildungen komplexer Euklidischer Räume}
+
+Selbstadjungierte Abbildungen sind in einer passend gewählten Orthonormalbasis durch eine Diagonalmatrix dargestellt: 
+
+\begin{thm}
+	Sei $ V $ ein $ n $-dimensionaler Euklidischer Raum über $ \C $. Sei $ F \in \Lin(V) $ selbstadjungiert. Dann existiert eine Orthonormalbasis $ \B $ von $ V $, für welche die Matrix $ F_\B $ diagonal ist und die Diagonalelemente von $ F_\B $ zu $ \R $ gehören.
+\end{thm}
+\begin{proof}
+	Man konstruiert eine Orthonormalbasis $ \B $ aus Eigenvektoren von $ F $ nach einem ähnlichen Muster wie im Beweis von Theorem 7.2.3. %TODO: \ref{} ergänzen
+	Da alle Eigenwerte von $ F $ reell sind, sind auch die Diagonalelemente von $ F_\B $ reell.
+\end{proof}
+
+\begin{klr}
+	Sei $ A \in \C^{n \times n} $ mit $ n \in \N $ selbstadjungiert. Dann existiert eine unitäre Matrix $ U \in \C^{n \times n} $, sodass $ U^\ast A U $ eine Diagonalmatrix ist, deren Diagonalelemente in $ \R $ liegen.
+\end{klr}
+\begin{proof}
+	Folgt direkt aus dem vorigen Theorem.
+\end{proof}
+
+\subsubsection{Diagonalisierung von selbstadjungierten Abbildungen reeller Euklidischer Räume}
+
+Nun diskutieren wir noch die selbstadjungierte Abbildungen reeller Euklidischer Räume. %Dabei benutzen wir das vorige Theorem über die Diagonalisierung selbstadjungierter Abbildungen komplexer Euklidischer Räume als Hilfsmittel. 
+
+\begin{thm}
+	Sei $ V $ $ n $-dimensionaler Euklidischer Raum über $ \R $. Sei $ F \in \Lin(V) $ selbstadjungiert. Dann existiert eine Orthonormalbasis $ \B $ von $ V $, für welche die Matrix $ F_\B $ diagonal ist.
+\end{thm}
+\begin{proof}
+	Sei $ \A $ eine beliebige Orthonormalbasis von $ V $. Da $ F $ selbstadjungiert ist, ist die Matrix $ F_\A $ symmetrisch: Sei $ \A = (a_1, \ldots, a_n) $, dann ist $ F(a_j) = \sum_{i=1}^{n} \scalar{F(a_j),a_i}a_i $ und $ (F_\A){}_{ij} = \scalar{F(a_j),a_i} = \scalar{a_j,F(a_i)} = \scalar{F(a_i),a_j} = (F_\A){}_{ji} $. $ F_\A $ als eine Matrix aus $ \C^{n \times n} $ ist selbstadjungiert. Das charakteristische Polynom von $ F_\A $ hat mindestens eine Nullstelle $ \lambda \in \C $. Nach 7.2.4 %TODO: \ref{} ergänzen
+	gilt $ \lambda \in \R $. Dann ist $ \lambda \in \R $ ein Eigenwert von $ F $. Wir betrachten einen Eigenvektor $ u \in V $ mit $ \norm{u} = 1 $. Ab dieser Stelle verläuft der Beweis analog zum Beweis des Theorems 7.2.3. %TODO: \ref{} ergänzen
+\end{proof}
+
+	Das vorige Theorem wird auch das Theorem über die Hauptachsentransformation genannt. Dazu ein Beispiel:
+
+\begin{bsp}	
+	Wir betrachten die Gleichung $ 34x^2 + 24xy + 41 y^2 = 25 $ in Unbekannten $ x,y \in \R $. Diese Gleichung beschreibt eine Ellipse. Wir möchten herausfinden, wie diese Ellipse ausgerichtet ist. Die Gleichung kann folgendermaßen mit Matrizen und Vektoren geschrieben werden: 
+	\begin{equation}
+		\begin{pmatrix}
+			x & y
+		\end{pmatrix} \cdot
+		\underbrace{\begin{pmatrix}
+			\sfrac{34}{25} & \sfrac{12}{25} \\
+			\sfrac{12}{25} & \sfrac{41}{25}
+		\end{pmatrix}}_{A}
+		\cdot \begin{pmatrix}
+			x \\ y
+		\end{pmatrix} = 1.
+		\label{epllipse} 
+	\end{equation}
+	
+	Die Abbildung $ F(u) = Au $ aus $ \Lin(\R^2) $ ist selbstadjungiert, da $ A = A^\top $ gilt.
+	$ \R^2 $ besitzt eine Orthonormalbasis aus Eigenvektoren von $ F $. Nach etwas Rechnen stellt sich heraus, dass $ a = (4/5, 3/5)^\top $ Eigenvektor zum Eigenwert 2 und $ b = (-3/5, 4/5) $ Eigenvektor zum Eigenwert 1 ist. Das die beiden Vektoren $a$ und $b$ Länge $1$ haben, ist also $ a,b $ die gesuchte Orthonormalbasis (die Orhtonormalbasis ist bis das Ändern von $a$ zu $-a$ und/oder $b$ zu $-b$ eindeutig). Ein Vektor $u \in \R^2$ hat die Koordinaten $\scalar{u,a}$ und $\scalar{u,b}$ in unserer Basis $a,b$. Das bedeutet 
+	\[ u = \scalar{u,a}a + \scalar{u,b}b 
+	\] 
+	Somit hat man 
+	\begin{align*}
+		\scalar{F(u),u} &= \scalar{\scalar{u,a}2a + \scalar{u,b}b,\scalar{u,a}a + \scalar{u,b}b} \\
+		&= 2\underbrace{ \scalar{u,a}}_{\widetilde{x}}{}^2 + \underbrace{\scalar{u,b}}_{\widetilde{y}}{}^2
+	\end{align*}
+	Die Gleichung im neuen Koordinatensystem lautet:
+	\begin{equation*}
+		2\widetilde{x}^2 + \widetilde{y}^2 = 1
+	\end{equation*}
+	Offenbar sind die Vektoren $ a $ und $ b $ die Richtungen der sogenannten Hauptachsen der Ellipse, welche durch die Gleichung \eqref{epllipse} beschrieben ist. 
+	%TODO: Bilder von Phil nachholen und in geeigneter Weise einbinden.
+\end{bsp}
+
+\begin{bsp}[Hauptkomponentenanalyse]
+	Bei der Analyse, wie eine Konfiguration von Punkten $p_1,\ldots, p_k \in \R^n$ ($k \ge 2$) im Raum ``ausgerichtet'' ist, kann die sogenannte Hauptkomponentenanalyse benutzt werden. Dafür zentriert man zuerst die Originalkonfiguration zur Konfiguration $u_1,\ldots,u_k$ mit $u_i := p_i - \overline{p}$ und $\overline{p} := \frac{1}{k} \sum_{i=1}^k p_i$. Jedem $u_i$ wird die symmetrische Matrix $u_i u_i^\top$ vom Rang eins zugeordnet. Der Kern dieser symmetrischen Matrix ist das Orthogonalkomplement von $u_i$; im Fall $u_i \ne 0$ ist $u_i$ der Eigenvektor zum einzigen Nichnulleigenwert, der gleich $u_i^\top u_i = \|u_i\|^2$ ist. Die Matrix $u_i u_i^\top$ behält also die Information die Richtung von $u_i$ und die Länge von $u_i$. Das heißt, für eine einpunktige Konfiguration $u$ wird durch die Angabe einer Orthonormalbasis $b_1,\ldots,b_n$ aus Eigenvektoren zu den Eigenwerten $\lambda,0,\ldots,0$  festgestellt, dass die einpunktige  Konfiguration $u$ entlang $b_1$ ausgerichtet ist der Punkt $u$  in einer der beiden Positionen $\pm \sqrt{\lambda} b_1$ liegt. 
+	
+	Durch die symmetrische Matrix
+	\[	
+	C = \frac{1}{k-1} \sum_{i=1}^k u_i u_i^\top
+	\]
+	werden all die Rang-Eins-Matrizen zu den Vektoren $u_1,\ldots,u_k$ zu einer Matrix zusammengefasst. Die Eigenpaare von $C$ vermitteln die Information darüber, wie die Konfiguration der Vektoren $u_1,\ldots,u_k$ ausgerichtet ist.
+	Die Angabe einer Orthonormalbasis $b_1,\ldots,b_n$ zu Eigenwerten $\lambda_1 \ge \cdots \ge \lambda_n$ geben eine Zusammenfassung, welche ``Tendenzen'' man bei der Ausrichtung und Positionierung der Vektoren  aus $u_1,\ldots,u_k$ hat. 
+	
+	Hierzu noch einige Kommentare: 
+	Aus den Ergebnissen im nächsten Kapitel wird klar, dass alle Eigenwerte von $C$ nichtnegativ sind. Der Konstante Faktor $\frac{1}{k-1}$ ist lediglich für eine Skalierung zuständig. Wieso man den Faktor $\frac{1}{k-1}$ und nicht etwa $\frac{1}{k}$ fixiert, wird in den Kursen zur Statistik und Wahrscheinlichkeitstheorie erklärt (der Unterschied bei der Nutzung des Faktors $\frac{1}{k}$ ist sehr gering, weil das Verhältnis $\frac{k-1}{k}$ für große $k$ nahezu $1$ ist). Die Matrix $C \in \R^{n \times  n}$ nennt man die Stichproben-Kovarianzmatrix zur Stichproble $p_1,\ldots,p_k$ mit Umfang $k$. 
+\end{bsp}
+
+
+\begin{thm}
+	Sei $ A \in \R^{n \times n} $ symmetrisch mit $ n \in \N $. Dann existiert eine orthogonale Matrix $ U \in \R^{n \times n} $, d.h. $ U^\top U = I $, für welche $ U^\top A U $ diagonal ist.
+\end{thm}
+\begin{proof}
+	Folgt direkt aus dem vorigen Theorem.
+\end{proof}
+\begin{bem}
+	Das vorige Theorem wird ebenfalls Theorem über Hauptachsentransformationen genannt.
+\end{bem}
+
+\begin{klr}
+	Zwei Eigenvektoren zu unterschiedlichen Eigenwerten einer selbstadjungierten Abbildung sind zueinander orthogonal.
+\end{klr}
+\begin{proof}
+	Aufgabe.
+\end{proof}
+
+\subsection{Quadratische Formen}
+
+\subsubsection{Motivation und Grundbegriffe}
+
+In der linearen Algebra haben wir uns bis jetzt oft mit linearen Abbildungen und linearen Funktionen beschäftigt. Lineare Funktionen sind Polynomialfunktionen zu Polynomen vom Grad $1$. Man kann natürlich die weiteren Schritte machen und die komplizierteren Fälle vom Grad $2$, $3$ usw. untersuchen. Hierbei ist der Fall vom Grad $2$ aus verschiedenen Gründen besonders wichtig. Einen der Gründe haben wir bereits gesehen: die Norm zum Quadrat in Euklidischen Vektorräumen ist eine quadratische Funktion.
+
+Wir wollen uns also die quadratischen Funktionen genauer anschauen. Etwas präziser beschrieben geht es um die homogenen quadratischen Funktionen. Untersuchungen quadratischer Funktionen könnte man quadratische Algebra nennen, wir werden aber sehen, dass man die quadratische Algebra recht zügig zur linearen Algebra reduzieren kann, sodass man den Begriff quadratische Algebra gar nicht benutzt. Das Zusammenspiel des nichtlinearen und linearen Falls ist oft so: Lineare Algebra führt immer zu nichtlinearen Funktionen und Problemen, während nichtlineare Probleme oft mit Hilfe der linearen Algebra gelöst werden. Beispiele dafür sind wie folgt. Das charakteristische Polynom ist nicht linear. Die Determinante als Funktion der $n^2$ Komponenten ist ebenfalls nicht linear. Die Eigenwertaufgabe $Ax = \lambda x$ ist nicht linear, da man $\lambda$ und $x$ multipliziert und $\lambda$ sowie $x$ unbekannt sind. Beispiele in die andere Richtung: um nichtlineare Probleme zu lösen, werden diese oft linearisiert. Die allgemeine Algebra (die man ganz grob als Theorie der nichtlinearen Algebraischen Mengen und Polynomen beliebiger Polynome beschreiben kann) benutzt die lineare Algebra als eine ``Schlüsseltechnologie''. 
+
+Homogene quadratische Funktionen finden eine wichtige Anwendung bei der Lösung multivariaten Optimierungsaufgaben. Um die Anwendung zu illustrieren beginnen wir zunächst mit einer univariaten Funktion $ f : \R \to \R $, die genügend oft differenzierbar ist. Wir wollen bestimmen, ob $ f $ an einer Stelle, etwa an der 0, ein lokales Minimum erreicht. Durch die  Taylorreihenentwicklung vom Grad $2$ können wir die Funktion wie folgt in Terme zerlegen:
+\begin{equation*}
+	f(x) = \underbrace{f(0)}_{\text{Konstante (egal)}} + \underbrace{f'(0) x}_{\text{der lineare Term}} + \underbrace{\frac{f''(0)}{2}x^2}_{\text{der quadratische Term}} + \underbrace{R(x)}_{\text{Restterm}}
+\end{equation*}
+Die Bedingung $f'(0)$ ist notwendig für ein lokales Minimum, es ist also notwendig, dass der lineare Term identisch null ist.  Wenn die notwendige Bedingung$ f'(0) = 0 $ erfüllt ist, weiß man, dass die Bedingung $ f''(0) > 0 $ für ein lokales Minimum in $0$ hinreichend ist (das alles wissen Sie wahrscheinlich bereits aus dem Analysis-Kurs). Nun schauen wir uns die multivariante Situation an, etwa den Fall von zwei Variablen. Betrachten wir eine zwei-variate Funktion $ f : \R^2 \to \R $, die genügend oft differenzierbar ist. Die Taylorentwicklung vom Grad $2$ im Nullpunkt sieht für diese Funktion sieht so aus: 
+\begin{align*}
+	f(x_1,x_2) =&\ \underbrace{f(0)}_{\text{Konstante}} + \underbrace{(\partial_1f)(0)x_1 + (\partial_2f)(0)x_2}_{\text{der lineare Term}} + \\
+	&\ \underbrace{\frac{(\partial_1^2f)(0)}{2}x_1^2 + (\partial_1\partial_2f)(0)x_1x_2 + \frac{(\partial_2^2f)(0)}{2}x_2^2}_{\text{der quadratische Term}} + \underbrace{R(x)}_{\text{Restterm}}
+\end{align*}
+Auch im Multivariatenfall ist es notwendig für ein lokales Minimum in einem Punkt, dass der lineare Term in diesem Punkt identisch null ist. 
+Die notwendige Bedingung für ein lokales Minimum in $0$ ist somit $ (\partial_1f)(0) = (\partial_2f)(0) = 0 $. Im multivariaten Fall hat man eine hinreichende Bedingung, die analog zur präsentierten Bedingung im univariaten Fall ist.  Wenn der lineare Term identisch null, ist dann reicht es aus, dass der quadratische Term für alle $x$, die Ungleich $0$ ist, strikt positiv ist. Wir wollen also bestimmen können, wann eine homogene quadratische Funktion für alle $x \ne 0$ strikt positiv ist. Im Folgenden werden wir verschiedene Mittel dazu entwickeln. 
+
+%
+Nun sind wir soweit, die Grunddefinitionen zu geben. 
+Für den ``konkreten'' Vektorraum $\K^n$ können quadratische Formen mit Hilfe von Matrizen eingeführt werden. 
+Eine Funktion $ q : \K^n \to \K $ heißt \emph{quadratische Form}, % Form heißt "homogen", d.h. es gibt keine linearen Ausdrücke, etc.
+falls $ q $ als $ q(x) = x^\top Ax $ für eine Matrix $ A \in \K^{n \times n} $ beschrieben werden kann. Mit Komponenten $x=(x_i)_{i=1}^n$ beschrieben, hat man den Ausdruck $q(x) = \sum_{i,j=1}^n a_{i,j} x_i x_j$. Das heißt, $q(x)$ ist Linearkombination der Produkte $x_i x_j$ mit $i,j \in \{1,\dots,n\}$. Ein Beispiel: 
+\[
+	q(x_1,x_2) = x_1^2 - 5 x_1 x_2 + 6 x_2^2
+\]
+ist eine quadratische Form auf $\R^2$. Was ist eine Matrix $A$ dazu? 
+
+(Das Wort Form steht übrigens in Algebra für homogene Funktionen/Polynome. Die Determinante einer $3 \times 3$ Matrix als Funktion ihrer $9$ Komponenten ist zum Beispiel eine kubische Form.)
+
+Für abstrakte Vektorräume werden die quadratischen Formen mit Hilfe der biliearen Formen eingeführt. Es sei daran erinnert, dass wir die bilinearen Formen bereits zur Einführung von Euklidischen Räumen über $\R$ benutzt haben. 
+Sei $ V $ Vektorraum über $ \K $. Eine Funktion $ q : V \to \K $ heißt \emph{quadratische Form}, falls eine bilineare Form $ b $ auf $ V $ existiert, für die $ q(v) = b(v,v) \enspace \forall v \in V $ gilt. Wir setzen also in eine bilineare Form als ersten und zweiten Vektorargument den selben Vektor ein, um eine quadratische Form zu erhalten. 
+
+\subsubsection{Darstellung quadratischer Formen durch symmetrische bilineare Formen}
+
+Bei der Diskussion quadratischer Formen entsteht ein technisches Problem im Bezug auf den gewählten Körper $\K$.  Wenn man sich zum Beispiel voll auf die Körper $\R$ und $\C$ konzentriert, lässt sich dieses Problem komplett vermeiden, wenn man aber auch die endlichen Körper mitberücksichtigen will, dann muss man sich mit dem Problem auseinandersetzen. Quadratische Formen über endlichen Körpern sind für Anwendungen in der Kodierungstheorie und Kryptographie wichtig, das ist einer der Gründe, warum man die Theorie der quadratischen Formen für allgemeine Körper entwickeln will. Das Problem ist wie folgt: In manchen endlichen Körpern gilt die Gleichung $1+ 1 =0$. Das einfachste und wichtigste Beispiel dafür ist der binäre Körper $\K = \{0,1\}$. Der Fall des Körpers mit $1+1=0$ in der Theorie von quadratischen Formen ist ein Ausnahmefall. Wir werden die Theorie für den  ``Regelfall'' $1+1 \ne 0$ entwickeln. 
+
+Die folgende Proposition zeigt Folgendes. Während jede symmetrische bilineare Form eine quadratische Form bestimmt, lässt sich die bilineare Form aus der quadratischen Form in dem ``Regelfall'' rekonstruieren: 
+
+\begin{propn}[Polarisationsformel]
+	Sei im Körper $ \K $ die Bedingung $ 1+1 \neq 0 $ erfüllt. Sei $ V $ Vektorraum über $ \K $. Zu jeder quadratischen Form $ q : V \to \K $ existiert eine eindeutige symmetrische bilineare Form $ f $ mit $ q(v) = f(v,v) \enspace \forall v \in V $. Diese bilineare Form $ f $ ist durch die Gleichung $ f(u,v) = \frac{1}{2}(q(u+v) - q(u) - q(v)) $ bestimmt.
+\end{propn}
+\begin{proof}
+	Aufgabe.
+\end{proof}
+\begin{bem}
+	$ \frac{1}{2} $ ist das inverse Element. Für die Körper $\R$ und $\C$ ist $\frac{1}{2}$ im ganz normalen Sinne (wie in der Schule). Für allgemeine $\K$ sollte $\frac{1}{2}$ im Sinne der Arithmetik von $\K$ verstanden werden, das das inverse Element zu $1+1$. Das ist zum Beispiele die Restklasse von $3$ in $\K = \Z / 5 \Z$.
+\end{bem}
+
+\subsubsection{Basisdarstellungen bilinearer und quadratischer Formen}
+
+Genauso wie bei den anderen Themen der linearen Algebra ist auch bei quadratischen Formen eine Möglichkeit, passende Koordinaten ($=$ eine passende Basis) zu wählen, sehr wichtig. Wir definieren also die Basisdarstellung bilinearer und quadratischer Formen. 
+
+Sei $ V $ ein $ n $-dimensionaler Vektorraum über $ \K $ mit $ n \in \N $ und sei $ f : V \times V \to \K $ bilinear. Sei $ \B= (b_1, \ldots, b_n) $ eine Basis von $ V $. Die Matrix $ f_\B = (f(b_i,b_j)){}_{i,j=1}^n $ heißt die Matrix von $ f $ in der Basis $ \B $.
+
+Für alle $ u,v \in V $ gilt: $ f(u,v) = u_\B^\top f_\B v_\B $ (direkt verifizierbar). Für Basen $ \A $ und $ \B $ von $ V $ hat man die folgende Form (für den Basiswechsel): $ f_\B = T_{\A\gets\B}^\top f_\A T_{\A\gets\B} $ (Beweis: Aufgabe). Beachten Sie hier das folgende: bei Basiswechsel für Matrizen und Abbildungen, hatten wir die inverse der Basiswechsel-Matrix benutzt. Hier benutzen wir dagegen die transponierte Matrix. 
+
+Im Fall eines Körpers $ \K $ mit $ 1+1 \neq 0 $, wird die Darstellung einer quadratischen Form $ q $ auf $ V $ durch $ q_\B = f_\B $ definiert, wo $ f $ die symmetrische bilineare Form zu $ q $ bezeichnet. D.h. $ q_\B = (f(b_i,b_j))_{i,j=1,\ldots,n} = ( \frac{1}{2}(q(b_i+b_j) - q(b_i) - q(b_j) ){}_{i,j=1}^n $.
+
+\subsubsection{Diagonalisierung von quadratischen Formen}
+
+Die einfachsten quadratischen Formen sind die diagonalen Formen, wie etwa $q(x_1,x_2,x_3)= x_1^2 + 2 x_2^3 + 5 x_3^2$ oder $r(x_1,x_2)= x_1^2 - 2 x_2^2$. Im Fall des Körpers $\R$ können wir für solche Formen für uns wichtige Eigenschaften sehr einfach nachweisen: $q$ oben ist zum Beispiele für alle $x \in \R^3 \setminus \{0\}$ strikt positiv, $r$ dagegen kann positive sowie negative Werte annehmen. Wenn also $q$ ein quadratischer Term ist, in einer Taylorentwicklung, bei der lineare Term gleich $0$ ist, dann wissen wir, dass die Funktion, die wir entwickelt haben, im gegebenen Punkt ihr lokales Minimum erreicht. 
+
+Das folgende Theorem präsentiert eine wichtige Botschaft: jede quadratische Form ist in passenden Koordinaten diagonal. Betrachten wir kurz als Beispiel die ganz einfache quadratische Form $h(x_1,x_2) = x_1 x_2$ auf $\R^2$. Die kann als $h(x_1,x_2) = \frac{1}{2} (x_1 + x_2)^2 - \frac{1}{2} (x_1-x_2)^2$ dargestellt werden. Die quadratische Form $h$ ist somit diagonal in den Koordinaten $y_1 = x_1 + x_2$ und $y_2 = x_1 - x_2$. 
+
+\begin{thm}
+	Sei in $ \K $ $ 1+1 \neq 0 $ erfüllt. Sei $ V $ $ n $-dimensionaler Vektorraum und $ q : V \to \K $ eine quadratische Form. Dann existiert eine Basis $ \B $ von $ V $, für welche die Matrix $ q_\B $ diagonal ist.
+\end{thm}
+\begin{proof}
+	Induktion über $ n $. Der Fall $ n = 1 $ ist trivial. Sei die Behauptung für festes $ n-1 $ erfüllt. Sei $ f $ symmetrische bilineare Form zu $ q $. Wenn $ q $ (und somit auch $ f $) identisch 0 ist, dann gilt die Behauptung für eine beliebige Basis von $ V $. Ansonsten wähle ein $ u \in V \setminus \set{0} $ mit $ q(u) \neq 0 $. Betrachte die lineare Funktion $ L(x) = f(u,x) \enspace \forall x \in V $ von $ V $ nach $ \K $. Da $ L(u) = f(u,u) \neq 0 $, ist $ \im(L) = \K $. Somit folgt aus dem Rangsatz $ n = \dim(\im(L)) + \dim(\ker(L)) \Rightarrow \dim(\ker(L)) = n-1 $. Nach Induktionsvoraussetzung existiert eine Basis $ (b_2, \ldots, b_n) $ von $ \ker(L) $, für welche die Matrix der quadratischen Form $ q|_{\ker(L)} $ diagonal ist. Die Behauptung gilt für $ \B = (b_1, \ldots, b_n) $ mit $ b_1 = u $.
+\end{proof}
+
+\begin{bsp}[und Bemerkung]
+	Sei $ n \in \N $, $ A \in \K^{n \times n} $ symmetrisch, $ 1+1 \neq 0 $ in $ \K $, und $ q(x) = x^\top A x $ eine quadratische Form auf $ \K^n $. Wie diagonalisiert man $ q $? \\[10pt]
+	%
+	Etwa für $ A = \begin{pmatrix}
+		0 & 1 & 1 \\
+		1 & 0 & 1 \\
+		1 & 1 & 0
+	\end{pmatrix} \in \R^{3 \times 3} $, d.h. $ q(x_1,x_2,x_3) = 2(x_1x_2+x_2x_3+x_3x_1) $. \\[10pt]
+	%
+	Das Vorgehen ist ähnlich zum Gauß-Verfahren. Allerdings werden in jedem Schritt eine Spalten- und eine entsprechende Zeilenoperation ausgeführt: (Bezeichnungen für Spaltenoperationen: $ s_i \leftrightarrow s_j $, usw. Für Zeilen: $ z_i \leftrightarrow z_j $, usw.)
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{clccclcc}
+		% line 1
+			$ \rightarrow $ & $ s_1 := s_1 + s_2 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				1 & 1 & 1 \\
+				1 & 0 & 1 \\
+				2 & 1 & 0
+			\end{pmatrix} $ &
+			$ \rightarrow $ & $ z_1 := z_1 + z_2 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				2 & 1 & 2 \\
+				1 & 0 & 1 \\
+				2 & 1 & 0
+			\end{pmatrix} $ \\
+		% line 2
+			$ \rightarrow $ & $ s_2 := s_2 - \frac{1}{2} s_1 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				2 & 0 & 2 \\
+				1 & -\frac{1}{2} & 1 \\
+				2 & 0 & 0
+			\end{pmatrix} $ &
+			$ \rightarrow $ & $ z_2 := z_2 - \frac{1}{2} z_1 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				2 & 0 & 2 \\
+				0 & -\frac{1}{2} & 0 \\
+				2 & 0 & 0
+			\end{pmatrix} $ \\
+		% line 3
+			$ \rightarrow $ & $ s_3 := s_3 - s_1 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				2 & 0 & 0 \\
+				0 & -\frac{1}{2} & 1 \\
+				2 & 0 & -2
+			\end{pmatrix} $ &
+			$ \rightarrow $ & $ z_3 := z_3 - z_1 $ & $ \rightarrow $ &
+			$ \begin{pmatrix}
+				2 & 0 & 0 \\
+				0 & -\frac{1}{2} & 0 \\
+				0 & 0 & -2
+			\end{pmatrix} $
+		\end{tabular}
+	\end{table}
+	\noindent Für die Diagonalmatrix $ D = \diag(2,-1/2,-2) $ gilt $ D = M_3^\top M_2^\top M_1^\top A M_1 M_2 M_3 $ bzw. $ D = M^\top AM $, wobei $ M = M_1M_2M_3 $ und
+	\begin{align*}
+		M_1 &= \begin{pmatrix}
+			1 & 0 & 0 \\
+			1 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix} &
+		M_3 &= \begin{pmatrix}
+			1 & 0 & -1 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix} \\
+		M_2 &= \begin{pmatrix}
+			1 & -\frac{1}{2} & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix} &
+		M &= \begin{pmatrix}
+			1 & -\frac{1}{2} & -1 \\
+			1 & \frac{1}{2} & -1 \\
+			0 & 0 & 1
+		\end{pmatrix}
+	\end{align*}
+	D.h. für $ u = (u_1,u_2,u_3) \in \R^3 $ gilt:
+	\begin{equation*}
+		q(Mu) = (Mu)^\top = AMu = u^\top M^\top AMu = u^\top Du = 2u_1^2 - {\textstyle\frac{1}{2}} u_2^2 - 2u_3^2
+	\end{equation*}
+	Um $ M $ auszurechnen genügt es, dieselben Spaltentransformationen mit der Einheitsmatrix beginnend auszuführen:
+	\begin{equation*}
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}
+		\xrightarrow[I \cdot M_1]{}
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			1 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}
+		\xrightarrow[I \cdot M_1M_2]{}
+		\begin{pmatrix}
+			1 & -\frac{1}{2} & 0 \\
+			1 & \frac{1}{2} & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}
+		\xrightarrow[I \cdot M_1M_2M_3]{}
+		\begin{pmatrix}
+			1 & -\frac{1}{2} & -1 \\
+			1 & \frac{1}{2} & -1 \\
+			0 & 0 & 1
+		\end{pmatrix} = M
+	\end{equation*}
+	Wählt man nun $ x = Mu $, so gilt $ 2(x_1x_2 + x_2x_3 + x_3x_1) = q(x) = q(Mu) = 2u_1^2 - \frac{1}{2}u_2^2 - 2u_3^2 $. \\[10pt]
+	%
+	Allgemeiner: Wenn man nur Nullen auf der Diagonale hat, muss man dort Nichtnullelemente erzeugen. Wenn man ein Nichtnullelement dort hat, kann man es verwenden, um die restlichen Elemente der Zeile / Spalte durch 0 zu ersetzen.
+\end{bsp}
+\begin{bem}
+	Im Fall $ \K = \R $ kann eine gegebene quadratische Form $ q : \R^n \to \R $ sogar mit Hilfe einer Orthogonal-Matrix diagonalisiert werden. In diesem Fall müssen aber die Eigenwerte der symmetrischen Matrix $ A $ berechnet werden.
+\end{bem}
+
+\subsubsection{Definitheit, Semidefinitheit und Indefinitheit}
+
+Sei $ V $ Vektorraum über $ \R $ und $ q : V \to \R $ eine quadratische Form. $ q $ heißt
+\begin{itemize}
+	\item
+		\emph{positiv definit}, wenn $ q(v) > 0 \enspace \forall v \in V \setminus \set{0} $
+	\item
+		\emph{positiv semidefinit}, wenn $ q(v) \geq 0 \enspace \forall v \in V $
+	\item
+		\emph{negativ definit}, wenn $ q(v) < 0 \enspace \forall v \in V \setminus \set{0} $
+	\item
+		\emph{negativ semidefinit}, wenn $ q(v) \leq 0 \enspace \forall v \in V $
+	\item
+		\emph{indefinit}, wenn $ x,y \in V $ existieren mit $ q(x) > 0 $ und $ q(y) < 0 $.
+\end{itemize}
+Durch Diagonalisierung einer quadratischen Form kann entschieden werden, welchen der obigen Typen sie hat. Außerdem gilt:
+\begin{align*}
+	q \text{ positiv definit} &\Leftrightarrow -q \text{ negativ definit} \\
+	q \text{ positiv semidefinit} &\Leftrightarrow -q \text{ negativ semidefinit} \\
+\end{align*}
+
+Außerdem benutzt man auch für symmetrische Matrix $A \in \R^{n \times n}$ Begriffe wie oben (positiv semidefinite usw.) im Bezug auf die zugrundeliegende quadratische Form $q(x) = x^\top A x$. 
+
+\begin{bem}[Der Zusammenhang der quadratischen Formen und selbstadjungierten Abbildungen] 
+	Die vorigen Begriffe können auch für selbst-adjungierten Abbildungen definiert werden. Ist $F : V \to V$ eine selbstadjungierte linearen Abbildung auf einem Euklidischen Raum über $\K$, so ist unabhängig davon ob $\K=\C$ oder $\K=\R$ ist die Funktion $q_F(u):=\scalar{ F(u),  u}$ reellwertig, denn $\scalar{ F(u), u} = \scalar{ u, F(u) } = \overline{ \scalar{ u, F(u)}}$. Im Fall von $\K=\R$ ist $q_F(u)$ eine quadratische Form (bei $\K=\C$ aber nicht). Man nennt $F$ positiv-semidefinit wenn $q_F(u) \ge 0$ für alle $u \in V$ erfüllt ist. Die anderen Begriffe, die wir oben für quadratische Formen eingefürt haben, wie positiv definit, negativ definit usw. werden analog definiert. 
+\end{bem} 
+
+\subsubsection{Charakterisierung der Definitheit, Semidefinitheit und Indefinitheit mit Hilfe der Eigenwerte}
+
+Theorie der Eigenwerte spielt auch bei der Untersuchungen quadratischer Formen eine sehr wichtige Rolle, wie das folgende Theorem zeigt. 
+
+\begin{thm}
+	Sei $ q : \R^n \to \R $ quadratische Form mit $ q(x) = x^\top Ax \enspace \forall x \in \R^n $, wobei $ A \in \R^{n \times n} $ eine symmetrische Matrix ist. Dann gilt:
+	\begin{enumerate}
+		\item
+			$ q $ positiv definit $ \Leftrightarrow $ alle Eigenwerte von $ A $ sind positiv,
+		\item
+			$ q $ positiv semidefinit $ \Leftrightarrow $ alle Eigenwerte von $ A $ sind nichtnegativ,
+		\item
+			$ q $ negativ definit $ \Leftrightarrow $ alle Eigenwerte von $ A $ sind negativ,
+		\item
+			$ q $ negativ semidefinit $ \Leftrightarrow $ alle Eigenwerte von $ A $ sind nichtpositiv,
+		\item
+			$ q $ indefinit $ \Leftrightarrow A $ hat positive und negative Eigenwerte.
+	\end{enumerate}
+\end{thm}
+
+\begin{proof} 
+	Da $ A $ symmetrisch ist, existiert eine Orthogonalmatrix $ U $, für welche die Matrix $ U^\top A U $ diagonal ist, d.h. $ D := U^\top A U = \diag(\lambda_1, \ldots, \lambda_n) $ mit $ \lambda_1, \ldots, \lambda_n \in \R $. Es ist $ p_A(t) = p_D(t) = (t-\lambda_1) \cdots (t-\lambda_n) $. Daher ist $ \set{\lambda_1, \ldots, \lambda_n} $ die Menge aller Eigenwerte von $ A $. Betrachte zunächst (i):
+	\begin{align*}
+		&\ q \text{ ist positiv definit} \\
+		\Leftrightarrow&\ q(v) > 0 \enspace \forall v \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ q(Ux) > 0 \enspace \forall x \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ (Ux)^\top AUx > 0 \enspace \forall x \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ x^\top U^\top AU x > 0 \enspace \forall x \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ x^\top D x > 0 \enspace \forall x \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ \lambda_1x_1^2 + \ldots + \lambda_nx_n^2 > 0 \enspace \forall (x_1, \ldots, x_n) \in \R^n \setminus \set{0} \\
+		\Leftrightarrow&\ \lambda_1 > 0, \ldots, \lambda_n > 0
+	\end{align*}
+	Die restlichen Behauptungen werden analog bewiesen.
+\end{proof}
+
+Das vorige Theorem wird oft bei Rechenaufgaben für zwei-variate quadratische Formen benutzt, weil in diesem Fall die Gleichung $p_A(\lambda) = 0$ eine quadratische Gleichung ist und man die Formel für die Lösungen der quadratischen Gleichung bereits in der Schule kennengelernt hat. 
+
+\subsubsection{Charakterisierung der Definitheit, Semidefinitheit und Indefinitheit durch die Koeffizienten des charakteristischen Polynoms}
+\label{sec:7_3_7}
+
+Wenn man mit Hilfe von \ref{sec:7_3_7} entscheiden möchte, ob die gegebene Matrix positiv (semi)definit oder negative (semi)definit ist, muss man die Eigenwerte von $A$ ausrechnen: das ist keine leichte Aufgabe. In dem folgenden Theorem wird gezeigt, wenn man die Aufgabe bewältigt, ohne dass man die Eigenwerte ausrechnen muss. Wenn man das charakteristische Polynom $p_A$ der symmetrischen Matrix $A$ kennt, reicht nämlich ein Blick auf die Koeffizienten von $p_A$. 
+
+
+\begin{thm}
+	Sei $ q : \R^n \to \R $ quadratische Form mit $ q(x) = x^\top A x \enspace \forall x \in \R^n $ für eine symmetrische Matrix $ A \in \R^{n \times n} $ mit $ n \in \N $. Dann gilt:
+	\begin{enumerate}
+		\item
+			$ q $ ist negativ definit $ \Leftrightarrow $ die Koeffizienten von $ p_A $ sind alle positiv.
+		\item
+			$ q $ ist negativ semidefinit $ \Leftrightarrow $ die Koeffizienten von $ p_A $ sind alle nicht-negativ.
+		\item
+			$ q $ ist positiv definit $ \Leftrightarrow $ die Koeffizienten von $ p_{-A}(t) = (-1)^n p_A(-t) $ sind alle positiv.
+		\item
+			$ q $ ist positiv semidefinit $ \Leftrightarrow $ die Koeffizienten von $ p_{-A}(t) = (-1)^n p_A(-t) $ sind alle nicht-negativ.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Wir betrachten $ \lambda_1, \ldots, \lambda_n $ wie im vorigen Beweis, dann ist $ p_A(t) = (t-\lambda_1) \cdots $ $ (t-\lambda_n) $. Sei $ \mu_i = - \lambda_i $ für $ i \in \is{1}{n} $. Dann gilt
+	\begin{equation*}
+		p_A(t) = (t+\mu_1) \cdots (t+\mu_n) = t^n + (\mu_1 + \ldots + \mu_n)t^{n-1} + \ldots + \mu_1 \cdots \mu_n t^0
+	\end{equation*}
+	und demnach:
+	\begin{enumerate}
+		\item
+			$ \begin{aligned}[t]
+				&\ q \text{ ist negativ definit} \\
+				\Leftrightarrow&\ \lambda_i < 0 \enspace \forall i \in \is{1}{n} \\
+				\Leftrightarrow&\ \mu_i > 0 \enspace \forall i \in \is{1}{n} \\
+				\Rightarrow&\ \text{die Koeffizienten von } p_A \text{ sind alle positiv}
+			\end{aligned} $
+			
+			Umgekehrt: seien alle Koeffizienten von $ p_A $ positiv. Für $ \lambda \in \R $ mit $ \lambda \geq 0 $ gilt $ p_A(\lambda) > 0 $. $ \Rightarrow p_A $ hat keine nicht-negativen Nullstellen. $ \Rightarrow $ alle Nullstellen $ \lambda_1, \ldots, $ $ \lambda_n $ sind negativ. $ \Rightarrow q $ ist negativ definit.
+		\item
+			wird analog gezeigt.
+		\item
+			folgt aus (i).
+		\item
+			folgt aus (ii). \qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsubsection{Charakterisierung der Definitheit mit Hauptminoren}
+\label{sec:7_3_8}
+
+Wenn man eine nicht allzu große symmetrische Matrix hat und man herausfindet möchte, ob die quadratische Form dazu positiv oder negativ definit ist, kann man noch das folgende Kriterium benutzen, das auf der Berechnung von sogenannten Hauptminoren basiert. 
+
+\begin{thm}
+	Sei $ q : \R^n \to \R $ quadratische Form mit $ q(x) = x^\top Ax \enspace \forall x \in \R^n $ für eine symmetrische Matrix $ A = (a_{ij}){}_{i,j=1}^n $ mit $ n \in \N $. Für jedes $ k \in \is{1}{n} $ sei $ A_k := (a_{ij}){}_{i,j=1}^k \in \R^{k \times k} $. Dann gilt:
+	\begin{enumerate}
+		\item
+			$ q $ ist positiv definit $ \Leftrightarrow \det(A_k) > 0 \enspace \forall k \in \is{1}{n} $.
+		\item
+			$ q $ ist negativ definit $ \Leftrightarrow (-1)^k\det(A_k) > 0 \enspace \forall k \in \is{1}{n} $.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	(ii) folgt durch Anwendung von (i) zur quadratischen Form $ -q $; zeige also (i):
+	\begin{itemize}
+		\item[\textquote{$ \Rightarrow $}]
+			Sei $ q $ positiv definit. Sei $ k \in \is{1}{n} $. Dann ist die quadratische Form $ q(x_1, \ldots, $ $ x_k, 0, \ldots, 0) $ positiv definit und durch die Matrix $ A_k $ gegeben. $ \det(A_k) > 0 $, denn $ \det(A_k) $ ist ein Koeffizient von $ p_{-A_k}(t) $; vgl. Theorem \ref{sec:7_1_3} (iii).
+		\item[\textquote{$ \Leftarrow $}]
+			Durch Induktion über $ n \in \N $.
+			
+			Sei $ n \geq 2 $ und sei die Aussage (Implikation \textquote{$ \Leftarrow $}) mit $ n-1 $ an der Stelle von $ n $ erfüllt. Sei $ q : \R^n \to \R $ eine quadratische Form mit $ \det(A_k) > 0 \enspace \forall k \in \is{1}{n} $. Aus der Induktionsvoraussetzung folgt, dass die quadratische Form $ q(x_1, \ldots, x_{n-1}, 0) $ auf $ \R^{n-1} $ positiv definit ist, da$ \det(A_1), \ldots, \det(A_{n-1} > 0) $. Wir betrachten eine Orthogonalmatrix $ \widetilde{U} \in \R^{(n-1) \times (n-1)} $, für welche die Matrix $ \widetilde{U}^\top A_{n-1} \widetilde{U} $ diagonal ist, d.h. $ \widetilde{D} := \widetilde{U}^\top A_{n-1} \widetilde{U} = \diag(d_1, \ldots, d_{n-1}) $ mit $ d_1, \ldots, d_{n-1} \in \R $. Da $ q(x_1, \ldots, x_{n-1},0) $ positiv definit ist und durch die Matrix $ A_{n-1} $ darstellbar ist, folgt $ d_1, \ldots, d_{n-1} > 0 $.
+			
+			Wir führen die Matrix $ U := \begin{pmatrix}
+					\widetilde{U} & 0 \\
+					0 & 1
+				\end{pmatrix} \in \R^{n \times n} $ ein. Die Matrix $U$ benutzen wir für einen Koordinatenwechsel. Konkret bedeutet es, dass wir die Matrix $R := U^\top A U$ betrachten. Die Matrix $R$ hat einen Diagonal-Block der Größe $(n-1) \times (n-1)$. Genauer sieht die Struktur von $R$ so aus: 
+			\begin{align*}
+				R =  &= \begin{pmatrix}
+					&&& 0 \\
+					& \widetilde{U}^\top && \vdots \\
+					&&& 0 \\
+					0 & \cdots & 0 & 1
+				\end{pmatrix} \begin{pmatrix}
+					&&& a_{1,n} \\
+					& A_{n-1} && \vdots \\
+					&&& a_{n-1,n} \\
+					a_{n,1} & \cdots & a_{n,n-1} & a_{n,n}
+				\end{pmatrix} \begin{pmatrix}
+					&&& 0 \\
+					& \widetilde{U} && \vdots \\
+					&&& 0 \\
+					0 & \cdots & 0 & 1
+				\end{pmatrix} \\
+				&= \begin{pmatrix}
+					&&& \ast \\
+					& \widetilde{U}^\top A_{n-1} \widetilde{U} && \vdots \\
+					&&& \ast \\
+					\ast & \cdots & \ast & a_{nn}
+				\end{pmatrix}
+				\\ & = \begin{pmatrix}
+					&&& \ast \\
+					& \widetilde{D} && \vdots \\
+					&&& \ast \\
+					\ast & \cdots & \ast & a_{nn}
+				\end{pmatrix} \\
+				&= \begin{pmatrix}
+					d_1 &&& c_1 \\
+					& \ddots && \vdots \\
+					&& d_{n-1} & c_{n-1} \\
+					c_1 & \cdots & c_{n-1} & a_{nn}
+				\end{pmatrix}
+			\end{align*}
+			mit gewissen $ c_1, \ldots, c_{n-1} \in \R $. Um zu zeigen, dass $ q $ positiv ist, reicht es zu zeigen, dass die quadratische Form $ r(x) = x^\top Rx $ positiv definit ist. Um das zu sehen, diagonalisieren wir $r$. Aus der Darstellung von $R$ folgt
+			\begin{align*}
+				r(x_1, \ldots, x_n) &= (d_1x_1^2 + 2c_1x_1x_n) + \ldots + (d_{n-1}x_{n-1}^2 + 2c_{n-1}x_{n-1}x_n) + a_{nn}x_n^2 \
+				\\ &= \sum_{i=1}^{n-1} (d_ix_i^2 + 2c_ix_ix_n) + a_{nn}x_n^2
+			\end{align*}
+			Wir haben $n-1$ Summanden, und der $i$-te Summende ist eine quadratische Funktion in $x_i$. Wir machen für diese Funktion die quadratische Ergänzung und erhalten die Darstellung
+			\begin{align*}
+				r(x_1,\ldots,x_n) &= \sum_{i=1}^{n-1} d_i \left( (x_i + \frac{c_i}{d_i} x_n)^2 - \left(\frac{c_i}{d_i} x_n\right)^2 \right) + a_{nn}x_n^2 
+			\end{align*}
+			Im vorigen Ausdruck hat man viele Terme der Forma Konstante mal $x_n^2$. Wir fassen all diese Terme zusammen und erhalten die übersichtliche Darstellung 
+			\begin{align}
+				r(x_1,\ldots,x_n) &= \sum_{i=1}^{n-1} d_i \left( x_i + \frac{c_i}{d_i} x_n \right)^2 + \left( a_{nn} -  \sum_{i=1}^{n-1} \frac{c_i^2}{d_i} \right) x_n^2. \label{r:diag:repr}
+			\end{align}
+			Das vorige ist die Gewünschte Diagonalisierung. Die Koeffizienten $d_1,\ldots,d_{n-1}$ sind positiv. Wir sollen also nur noch herausfinden, was der Koeffizient von $x_n^2$ ist. Dafür werden wir die Determinante von $R$ in Abhängigkeit vom Koeffizienten von $x_n^2$ darstellen. 
+			Es sei bemerkt, dass $ \det(R) = \det(U^\top A U) = \det(A)$ gilt. Laut unserer Voraussetzung gilt$\det(A)= \det(A_n) > 0 $. Das heißt $\det(R)>0$. Andererseits können wir nun eine Formel für $\det(R)$ mit der Verwendung der elementaren Zeilentransformationen ausrechnen. 
+			Als Erstes ziehen wir aus der $i$-ten Zeile den Faktor $d_i$ heraus, für $i \in  \{1,\ldots,n-1\}$, und erhalten: 
+			\begin{align*}
+				\det(R) &= \det\begin{pmatrix}
+					d_1 &&& c_1 \\
+					& \ddots && \vdots \\
+					&& d_{n-1} & c_{n-1} \\
+					c_1 & \cdots & c_{n-1} & a_{nn}
+				\end{pmatrix} \\
+				&= d_1 \cdots d_{n-1} \det\begin{pmatrix}
+					1 &&& c_1 / d_1 \\
+					& \ddots && \vdots \\
+					&& 1 & c_{n-1} / d_{n-1} \\
+					c_1 & \cdots & c_{n-1} & a_{nn}
+				\end{pmatrix}   
+			\end{align*}
+			Um zur oberen Dreiecksstruktur zu kommen, müssen wir die Koeffizienten $c_1,\ldots,c_{n-1}$ in der letzten Zeile entfernen. Dafür wird von der letzten Zeile eine passende Linearkombination der restlichen Zeilen abgezogen. Wir erhalten 
+			\begin{align*}
+				\det(R) &= d_1 \cdots d_{n-1} \det\begin{pmatrix}
+					1 &&& c_1 / d_1 \\
+					& \ddots && \vdots \\
+					&& 1 & c_{n-1} / d_{n-1} \\
+					0 & \cdots & 0 & a_{nn} - \sum_{i=1}^{n-1} c_i^2 / d_i
+				\end{pmatrix} \\
+				&= \underbrace{d_1 \cdots d_{n-1}}_{>0} \left( a_{nn} - \sum_{i=1}^{n-1} \frac{c_i^2}{d_i} \right).
+			\end{align*}
+			Wir sehen also das der positive Wert $\det(R)$ das Produkt der positiven Werte $d_1,\ldots,d_{n-1}$ und des Koeffizienten $a_{nn} - \sum_{i=1}^{n-1} \frac{c_i^2}{d_i}$. Es folgt 
+			\[
+				a_{nn} - \sum_{i=1}^{n-1} \frac{c_i^2}{d_i} > 0.
+			\]
+			Aus \eqref{r:diag:repr} folgt nun, dass die quadratische Form $r$ positive semidefinit ist. Es bleibt zu zeigen, dass $r$ sogar positiv definit ist. Ist $r(x_1,\ldots,x_n)= 0$ so hat man $x_i + \frac{c_i}{d_i} x_n = 0$ für alle $i \in \{1,\ldots,n-1\}$ und $x_n=0$. Daraus folgt offensichtlich $x_1 = \cdots = x_n=0$. Also ist $r(x) > 0$ für alle $x \in \R^n \setminus \{0\}$, was den Beweis abschließt.  \qedhere
+	\end{itemize}
+\end{proof}
+
+
+Man beachte an dieser Stelle, dass es um das  Hauptminoren-Kriterium ausschließlich um die Defininitheit geht. Man kann nämlich die Semidefiniteheit anhand von Hauptminoren nicht entscheiden. Betrachten wir zum Beispiel die folgenden Matrizen
+\begin{align*}
+	&
+	\begin{pmatrix}
+			0 & 0 & 0
+			\\ 0 & 1 & 0
+			\\ 0 & 0 & 1 
+	\end{pmatrix}, 
+	&
+	&
+\begin{pmatrix}
+	0 & 0 & 0
+	\\ 0 & -1 & 0
+	\\ 0 & 0 & -1 
+\end{pmatrix},
+	&
+	&
+\begin{pmatrix}
+	0 & 0 & 0
+	\\ 0 & 1 & 0
+	\\ 0 & 0 & -1 
+\end{pmatrix}.
+\end{align*}
+Die quadratische Form der ersten Matrix ist positiv semidefinit, die quadratische Form der zweiten Matrix ist negativ semidefinit, und die quadratische Form der dritten Matrix ist indefinit. Diese Unterschiede lassen sich an den Hauptminoren nicht erkennen, denn bei jeder dieser drei Matrizen sind alle drei Hauptminoren gleich $0$. 
+
+Semidefinitheit kann aber trotzdem mit Minoren charakterisiert werden, man braucht aber mehr Minoren (nicht nur die Hauptminoren). 
+
+\subsubsection{Signatur} 
+
+\begin{thm}
+	Sei $A \in \R^{n \times n}$ symmetrische Matrix mit $s$ positiven und $t$ negativen Eigenwerten (mit Berücksichtigung der Vielffachheit). Sei $U \in \R^{n \times n}$ reguläre Matrix, für welche $D=U^\top A U$ Diagonalmatrix ist. Dann hat $D$ genau $s$ positive und genau $t$ negative Diagonalelemente.
+\end{thm} 
+\begin{proof} 
+	Seien $u_1,\ldots,u_n$ die Spalten von $U$, seien $d_1,\ldots,d_n$ die Diagonalelemente von $D$. Seien oBdA $d_1 >0,\ldots,d_i>0$ und  $d_{i+1} \le 0,\ldots, d_n \le 0$. Wir betrachten die Vektorräume $V := \lin(u_1,\ldots,u_i)$ und $W  := \lin(u_{i+1},\ldots,u_n)$ und die quadratische Form $q(x) = x^\top A x$ zu $A$. 
+	
+	Es ist klar, dass die Einschränkung $q|_{V}$ von $q$ auf $V$ positiv definit ist. Analog ist die Einschränkung $q|_{W}$ von $q$ auf $W$ negativ semidefinit. 
+	
+	Seien nun $v_1,\ldots,v_n$ eine Basis aus Eigenvektoren von $A$, wobei $v_1,\ldots,v_s$ die Eigenvektoren zu positiven Eigenwerten von $A$ sind und $v_{s+1},\ldots,v_n$ die Eigenvektoren zu nichtnegativen Eigenwerten. Wir setzen $V' := \lin(v_1,\ldots,v_s)$ und $W' := \lin(v_{s+1},\ldots,v_{s+n})$. Man hat: $q|_{V'}$ is positiv definit, $q|_{W'}$ ist negativ semidefinit. 
+	
+	Die Vektorräume $V$ und $W'$ schneiden sich nur in $0$. Es folgt $n \ge \dim(V \oplus W') = \dim(V) +\dim(W') = i + n- s$. 
+	
+	Die Vektorräume $V'$ und $W$ scheiden sich auch nur in $0$.  Es folgt $n \ge \dim(V' \oplus W) = \dim(V') + \dim(W) = s + n - i$. 
+	
+	Wir erhalten also $i=s$, das heißt, $D$ hat genau $s$ positive Diagonalelemente. Analog kann auch gezeigt werden, dass $D$ genau $t$ negative Diagonalelemente hat. 
+\end{proof} 
+
+Die Information darüber, wie viel positive und wie viel negative Eigenwerte (mit Berücksichtigung der Vielfachheit) eine symmetrische Matrix $A \in \R^{n \times n}$ hat, nennt man die \emph{Signatur} der Matrix $A$. Man spricht auch von der Signatur der quadratischen Form $q(x) = x^\top A x$. 
