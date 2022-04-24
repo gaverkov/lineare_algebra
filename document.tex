@@ -1,0 +1,881 @@
+\usepackage{amsmath}
+\numberwithin{equation}{subsection} 
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{csquotes}
+
+%\usepackage[style=authortitle,    % Zitierstil
+%            pagetracker=true,     % ebd. bei wiederholten Angaben
+%            maxcitenames=3,       % ab 4 Autoren im Text: Autor1 u.a.
+%            backend=biber         % erstellt *.bcf für biber
+%            ]{biblatex}
+
+%\addbibresource{content/lit.bib}
+
+\usepackage{graphicx, float}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{stmaryrd}
+\usepackage{xfrac}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8} %every axis legend/.append style={nodes={text depth=,text width=5.5cm}}
+\usepackage{tcolorbox}
+
+\usepackage{blindtext}
+
+\usepackage{enumitem}
+\usepackage{marginnote}
+\usepackage{calc}
+
+% evt für Zitate von Prof. Averkov
+\usepackage{xcolor,framed}
+\colorlet{shadecolor}{gray!25}
+
+\usepackage{appendix}
+\usepackage{scrtime}
+
+\usepackage{multicol,mathtools}
+
+\usepackage{polynom}
+\polyset{style=B} % \polylongdiv rule! Styles B und C sehen gut aus!
+
+% ==================================================
+%  Neue Funktionen u.ä.
+% ==================================================
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\I}{\mathbb I}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+
+\newcommand{\sign}{\operatorname{sign}} % signum
+\newcommand{\id}{\operatorname{id}} % identity
+\newcommand{\im}{\operatorname{im}} % image
+\newcommand{\rang}{\operatorname{rang}} % rang
+\newcommand{\AverkovRe}{\operatorname{Re}} % real part
+\newcommand{\AverkovIm}{\operatorname{Im}} % imaginary part
+\newcommand{\lin}{\operatorname{lin}} % linear span
+\newcommand{\Lin}{\operatorname{Lin}} % set of linear functions
+\newcommand{\GL}{\operatorname{GL}} % general linear
+\newcommand{\ggT}{\operatorname{ggT}} % german gcd
+\newcommand{\Eig}{\operatorname{Eig}} % eigenraum
+\newcommand{\tr}{\operatorname{tr}} % trace / spur
+\newcommand{\diag}{\operatorname{diag}} % diagonal matrix
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\scalar}[1]{\left\langle #1 \right\rangle}
+
+\newcommand{\is}[2]{\{ #1,\ldots,#2 \}} % IndexSet{first}{last}
+\newcommand{\ot}{\leftarrow} % reverse from \to
+\newcommand{\bordernote}[1]{{\color{darkgray} #1}} % style for line notes and column notes for bordermatrices
+
+\newcommand{\vertical}[1]{\rotatebox[origin=c]{-90}{$ #1 $}}
+\newcommand{\obot}{\mathrel{\tikz[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]{ \node[circle,draw,inner sep=0pt,scale=0.625,line width=0.3pt]{$ \bot $}; }}} % mathrel for spacing like \oplus
+
+\theoremstyle{plain}
+\newtheorem*{propn}{Prop}
+\newtheorem*{thm}{Thm}
+\newtheorem*{lm}{Lem}
+\newtheorem*{klr}{Kor}
+
+\theoremstyle{definition}
+\newtheorem*{bsp}{Bsp}
+\newtheorem*{bspe}{Bsp}
+\newtheorem*{bem}{Bem}
+\newtheorem*{wdh}{Wiederholung}
+
+% Datumsformatierungen:
+\newcommand{\sectionwithdate}[2]
+{\section[#1]{#1 \hfill\normalfont\normalsize #2}}
+\newcommand{\subsectionwithdate}[2]
+{\subsection[#1]{#1 \hfill\normalfont\normalsize #2}}
+\newcommand{\subsubsectionwithdate}[2]
+{\subsubsection[#1]{#1 \hfill\normalfont\normalsize #2}}
+
+% Listenformatierung:
+\renewcommand{\labelenumi}{\normalfont (\roman{enumi})}
+\renewcommand{\labelenumii}{\normalfont (\alph{enumii})}
+\setlist[description]{font=\normalfont\textbf}
+
+% ==================================================
+%  Pakete, die unbedingt zum Schluss stehen müssen
+% ==================================================
+
+\usepackage{hyperref}
+
+% used for long labels in itemize and enumerate
+\newlength{\myindent}
+
+% ==================================================
+%  Titelblatt, Selbstständigkeitserklärung
+% ==================================================
+
+\begin{document}
+	
+	% For every picture that defines or uses external nodes, you'll have to
+	% apply the 'remember picture' style. To avoid some typing, we'll apply
+	% the style to all pictures.
+	\tikzstyle{every picture}+=[remember picture]
+	
+	% Below we mix an ordinary equation with TikZ nodes. Note that we have to
+	% adjust the baseline of the nodes to get proper alignment with the rest of
+	% the equation.
+	\tikzstyle{na} = [baseline=-.5ex]
+	
+	%\pagenumbering{Roman}
+	\input{content/titelseite.tex}
+	
+	% ==================================================
+	%  Inhalt
+	% ==================================================
+	
+	\tableofcontents
+	\cleardoublepage
+	
+	%\pagenumbering{arabic}
+	
+	\input{content/kapitel1.tex}
+	\clearpage
+	\input{content/kapitel2.tex}
+	\clearpage
+	\input{content/appendix1.tex}
+	\clearpage
+	\input{content/kapitel3.tex}
+	\clearpage
+	\input{content/kapitel4.tex}
+	\clearpage
+	\input{content/kapitel5.tex}
+	\clearpage
+	\input{content/kapitel6.tex}
+	\clearpage
+	\input{content/kapitel7.tex}
+	
+	%\clearpage 
+	%\section*{Zusammenfassung und Ausblick} 
+	
+	%\subsection*{Gebrauchtsanweisung für lineare Algebra} 
+	
+	%Wenn man eine Theorie lernt, reicht es nicht aus, nur die Rechenverfahren aus der Theorie zu lernen. In unserem Fall: die Lineare Algebra ist nicht nur das Gauß-Verfahren, die Gramm-Schmidt-Orthogonalisierung und ein paar weitere Algorithmen. 
+	%Eine Theorie ist nur dann nützlich, wenn man die Konzepte und die Strukturen daraus beherrscht. 
+	
+	%Um von einer Theorie in anderen Kontexten Gebrauch machen zu können, soll man insbesondere auch die Fähigkeit entwickeln, die Strukturen zu \emph{erkennen} um sie dann anwenden zu können. Z.B. hatte Vieles was Sie parallel in Analysis 1 und 2 untersuchten, einen indirekten Bezug zur Linearen Algebra (Ableitung $f \mapsto f'$  ist eine lineare Abbildung, die Menge aller konvergenten Folgen ist ein Vektorraum usw.). Sie werden sich also auch in den nachfolgenden mathematischen Kursen mit den Strukturen aus der Linearen Algebra auseinandersetzen, und manchmal werden Sie dabei keine Begriffe aus der linearen Algebra direkt sehen, auch wenn der Stoff direkt auf der linearen Algebra aufgebaut wird. Sie sollen also stets versuchen, aktiv nach den Zusammenhängen zu suchen. Zusammenhänge mit der linearen Algebra sind in allen mathematischen Kursen Ihres Studiums reichlich vorhanden. 
+	
+	\section{Ganzzahlige lineare Algebra} 
+	
+	Wir haben uns bis jetzt mit der linearen Algebra über einem Körper $\K$ beschäftigt. Der Stoff, der in diesem Kapitel präsentiert wird, kann man als Lineare Algebra über dem Ring $\Z$ der ganzen Zahlen auffassen. Lineare Algebra über $\Z$ hat gewisse Ähnlichkeiten zur linearen Algebra Über $\K$, da man aber  bei der ganzzahligen linearen Algebra einen Ring $\Z$ zugrunde legt, und keinen Körper, hat man auch Unterschiede.
+	
+	\subsection{Lösung einer diophantschen linearen Gleichung} 
+	
+	Ein System bzw. Gleichung heißt diopantsch, wenn die Unbekannten dieser Gleichung ganzzahlig sind. Wir beschäftigen uns zuerst mit einer diophantschen linearen Gleichung. Bereits für diesen Fall gibt es sehr interessante Anwendungen. 
+	
+	\subsubsection{Unimodulare  Elementartransformationen}
+	
+	Für lineare Gleichungssysteme, Vektorsysteme, Spalten sowie Zeilen einer Matrix haben wir Elementartransformationen vom Typ 1,2 und 3 eingeführt. Nun führen wir unimodulare Elementartransformationen vom Typ 1,2 und 3. Wir beschränken uns auf Systeme von Vektoren. Seien $a_1,\ldots, a_k \in \Z^n$. Die unimodularen Elementartransformationen sind wie folgt definiert: 
+	\begin{itemize} 
+		\item[] Typ 1: Vertauschen $a_i \leftrightarrow a_j$ von zwei Vektoren $a_i$ und $a_j$ mit $1 \le i, j \le k$. 
+		\item[] Typ 2: Ersetzen von $a_i$ durch $- a_j$, das heißt $a_j := - a_i$ mit $1 \le j \le k$. 
+		\item[] Typ 3: Addieren eines ganzzahligen Vielfachen eines Vektors zu einem anderen Vektor: $a_j := a_j + \beta a_i$ mit $\beta \in \Z$, $1 \le i,j \le k$ und $i \ne j$. 
+	\end{itemize} 
+	Jeder dieser drei Transformationen kann mit Hilfe der Matrix $A = (a_1,\ldots,a_k) \in \Z^{n \times k}$ als die Operationen $A \mapsto A E$ beshrieben werden, wobei $E$  abhängig vom Typ die folge Matrix ist: 
+	\begin{itemize} 
+		\item[] Für Typ 1: $E = I - (e_i+e_j)(e_i+e_j)^\top$ für $i \ne j$ und $E = I$ für $i = j$. 
+		\item[] Für Typ 2:  $E = I - 2 e_i e_i^\top$ 
+		\item[] Für Typ 3: $E = I + \beta e_i e_j^\top$. 
+	\end{itemize} 
+	Die jeweiligen Matrizen nennen wir uinomdulare elementare Matrizen vom Type 1, 2 und 3. Hierbei merken wir, dass die inversen der unimodularen elementaren Transformationen ebenfalls unimodulare elementare Transformationen sind. Das kann man zum Beispiel an den jeweiligen Matrizen verfolgen. Die Matrix $E$ beim Typ 1 und 2 ist selbst-inverse. Die Inverse zur Matrix $E = I + \beta e_i e_j^\top$ im Typ 3 ist $E^{-1} = I - \beta e_i e_j^\top$. Des weiteren merken wir, dass unabhängig vom Typ der Transformation die jeweilige Matrix $E$ eine ganzzahlige Matrix ist, deren Determinanten betragsmäßig gleich eins ist. Solche Matrizen werden wir im folgenden genauer untersuchen. 
+	
+	\subsubsection{Der größte gemeinsame Teiler von zwei Zahlen}
+	
+	\label{ggT:zahlen} 
+	Wir betrachten $v = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \in \Z^2 \setminus \{0\}$. Der größte gemeinsame Teiler $\ggT(v) = \ggT(v_1,v_2)$ der eindeutige Wert $g \in \N$ derart, dass jeder gemeinsame Teiler von $v_1$ und $v_2$ auch den Wert $g$ teilt. 
+	
+	\begin{thm} 
+		Für jedes $v \in \Z^2 \setminus \{0\}$ gibt es ein $u \in \Z^2$ mit $u^\top v = \ggT(v)$. Darüber hinaus existiert ein Algorithmus, der für ein gegebenes $v$ den Vektor $u$ und $\ggT(v)$ berechnet. 
+	\end{thm} 
+	\begin{proof} 
+		Wir zeigen zunächst, dass ein Algorithmus zur Berechnung von $\ggT(v)$ existiert. Anschließend ergänzen wir den Algorithmus, zu einem Algorithmus, der noch zusätzlich den Vektor $u$ berechnet. 
+		
+		
+		Anwendung unimodularer Elementartransformationen zur Komponenten von  $v = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}$ ändern den größten gemeinsame Teiler nicht. Das ist klar für Typ 1, weil die Transformation vom Typ 1 lediglitch $v_1$ und $v_2$ vertauscht. Für Typ 2 ist es ebenfalls klar, weil der größte gemeinsame Teiler nicht von den Vorzeichen von $v_1$ und $v_2$ abhängig ist. Beim Typ 3 müssen wir $\ggT(v_1, v_2 + \alpha v_1) = \ggT(v_1,v_2)$ für $\alpha \in \Z$ nachweisen. Jede natürliche Zahl, die $v_1$ und $v_2$ teilt, teilt auch $v_1$ und $v_2 + \alpha v_1$. Umgekehrt: jede natürliche Zahl, die $v_1$ und $v_2+ \alpha v_1$ teilt, teilt auch $v_1$ und $v_2 = (v_2+ \alpha v_1) - \alpha v_1$. Also ändern die unimodularen Elementartransformationen den größten gemeinsamen Teiler nicht. 
+		
+		Unser Algorithmus zur Berechnung von $\ggT(v)$ transformiert die Komponenten von $v$ mit unimodularen Elementartransfomrationen solange, bis eine der Komponenten gleich $0$ wird.  
+		
+		
+		Nach einer geeigneten Anwendung der Transformationen vom Typ 1 und 2 können wir $0 \le v_1 \le v_2$ erzwingen. Ist $v_1=0$, so wissen wir dass $\ggT(v) = \ggT(0,v_2) = v_2$ ist. Ansonsten teilen wir $v_2$ durch $v_1$ mit Rest: $v_2 = q v_1 + r$ mit $q,r \in \Z$, $q \ge 0$ und $0 \le r < v_1$. Durch die Transformation $v_2 : = v_2 - q v_1$ und anschließendes Vertauschen von $v_1$und $v_2$ wird der Wert von $v_1$ geringer. Nach endlich vielen Runden werden wir also $v_1=0$ erzwingen können. Da man für $v_2 \in \N$ offensichtlich $\ggT(0,v_2) = v_2$, haben wir also den größten gemeinsamen Teiler ausgerechnet. 
+		
+		Um einen geeigneten Vektor zu bestimmen, können wir den obigen Prozess folgendermaßen ergänzen. Wir können den Prozess als Veränderungen eines linearen Gleichungssystems interpretieren. Man startet mit einem trivialen System $I x = v$, deren linke Seit durch die Einheitsmatrix $I \in \Z^{2 \times 2}$ bestimmt ist und transformiert dieses System mit unimodularen Elementartransformationen solange, bis auf der rechten Seite einer der Koeffizienten gleich $0$ ist. Das entspricht der iterativen Anwendung der unimodularen Elementaren Matrizen $E_1,\ldots,E_t$ welche das Originalsystem $Ix = v$ zum System $E_t \cdots E_1 x = E_t \cdots E_1 v$  überführen, bei dem $E_ t \cdots E_1 v = \begin{pmatrix} 0 \\ g \end{pmatrix}$ für ein $g \in \N$ erfüllt ist. Sei $U = E_t \cdots E_1$. Dann hat das transformierte System die Form 
+		\[
+		U x = \begin{pmatrix} 0 \\\ g  \end{pmatrix} 
+		\]
+		Da wir mit dem System $I x = v$ gestartet haben, wissen wir, dass $x=v$ die Lösung des transformierten Systems ist. Wir können also als $u^\top$ die zweite Zeile der Matrix $U$ festlegen. 
+		$u^\top v = \ggT(v)$. 
+	\end{proof} 
+	
+	\begin{bem} 
+		Der Algorithmus zur Bestimmung von $\ggT(v)$ aus dem vorigen Beweis heißt der Euklidische Algorithmus. Der Algorithmus zur Bestimung von $u$ und $\ggT(v)$ aus dem vorigen Theorem heißt der erweiterte Euklidische Algorithmus. 
+	\end{bem} 
+	
+	
+	
+	\begin{bsp} 
+		Ein Beispiel zum erweiterten Euklidischen Algorithmus. $\ggT(119,170)$. 
+		
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				& $x_1$ & $x_2$ & 
+				\\ \hline 
+				(1) & $1$ & $0$ & $119$ 
+				\\		(2) & $0$  & $1$ & $170$
+			\end{tabular}
+		\end{center}  
+		
+		Teilen mit Rest: $170 = 1 \cdot 119 + 51$. Daher $(2) := (2) - (1)$. 
+		
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				& $x_1$ & $x_2$ & 
+				\\ \hline 
+				(1) & $1$ & $0$ & $119$ 
+				\\		(2) & $-1$  & $1$ & $51$
+			\end{tabular} 
+		\end{center} 
+		
+		Teilen mit Rest $119 =2 \cdot 51 + 17$. Daher $(1):= (1) - (2)$. 
+		
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				& $x_1$ & $x_2$ & 
+				\\ \hline 
+				(1) & $3$ & $-2$ & $17$ 
+				\\		(2) & $-1$  & $1$ & $51$
+			\end{tabular} 
+		\end{center} 
+		
+		Teilen mit Rest $51 = 3 \cdot 17 + 0$. Daher $(2) := (2) - 3 (1)$. 
+		
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				& $x_1$ & $x_2$ & 
+				\\ \hline 
+				(1) & $3$ & $-2$ & $17$ 
+				\\		(2) & $-10$  & $7$ & $0$
+			\end{tabular} 
+		\end{center} 
+		
+		Das bedeutet $\ggT(119,170) = 17$ und $ 3 \cdot 119 - 2 \cdot 170 = 17$. 
+		
+		
+	\end{bsp} 
+	
+	
+	\subsubsection{Der Chinesische Restsatz für zwei Restklassenringe} 
+	
+	In diesem Abschnitt arbeiten wir mit verschiedenen Restklassenringen Gleichzeitig. Wir bezeichnen als $[x]_m$ die Restklasse von $x \in \Z$ im Ring $\Z / m \Z$ mit $m \in \N$. 
+	
+	\newcommand{\mymod}[1]{\,(\mathrm{mod} \ #1)}
+	\begin{bem}[Kongruenzen]
+		Seien $q_1, q_2 \in \N$ Zahlen mit $\ggT(q_1, q_2) = 1$ und $b_1, b_2 \in \Z$ Wir bestimmen die Lösungsmenge des folgenden Systems der Kongruenzen
+		\begin{align*}
+			x \equiv b_1 & \mymod{q_1},
+			\\ x \equiv b_2 & \mymod{q_2}.
+		\end{align*}
+		mit einem unbekannten $x \in \Z$. Ein solches Kongruenzensystem behandelt man zum Beispiel im Rahmen des RSA-Verfahrens zur Verschlüsselung von Daten.  
+		
+		Mit dem erweiterten Euklidischen Algorithmus können $a_1, a_2 \in \Z$ mit $1 = a_1 q_1 + a_2 q_2$ bestimmt werden. Da $a_1 q_1$ kongruent zu $1$ modulo $q_2$ ist und $a_2 q_2$ kongruent zu $1$ modulo $q_1$, sehen wir dass $b_1 a_2 q_2 + b_2 a_1 q_1$ eine Lösung unseres Kongruenzensystems ist. Man erhält alle Lösungen, wenn man zu dieser Lösungen alle möglichen Lösungen des homogenen Kongruenzensystems 
+		\begin{align*}
+			x \equiv 0 & \mymod{q_1},
+			\\ x \equiv 0 & \mymod{q_2}.
+		\end{align*}
+		Beim homogenen Kongruenzensystem handelt es sich um die Zahlen $x$, die durch $q_1$ und durch $q_2$ teilbar ist. Da $q_1$ und $q_2$ teilerfremd sind, sind genau die Zahlen die durch das Produkt $q_1 q_2$ teilbar sind. Die Lösungsmenge unseres System der Kongruenzen ist somit 
+		\begin{align*}
+			\{  b_1 a_2 q_2 + b_2 a_1 q_1 + z q_1 q_2  \,:\, z \in \Z \}
+		\end{align*} 
+	\end{bem} 
+	
+	\begin{bem}
+		Das Kongruenzensystem aus der vorigen Bemerkung ist vollständig gelöst, aber wir können aber noch über die Struktur der vorigen Beschreibung nachdenken. 
+		Wir wir sehen ist die Lösungsmenge eine Äquivalenzklasse aus dem Restklassenring $\Z/ q_1 q_2 \Z$ ist. Anderseits spielt die Angabe von $b_i$ nur modulo $q_i$ eine Rolle, weil das addieren zu $b_i$ eines vielfachen von $q_i$ die entsprechende Kongruenz nicht ändert. Unser Beschreibung der Lösungsmenge des Kongruenzensystems zeigt also, dass die Abbildung 
+		\[
+		[x]_{q_1 q_2} \mapsto ([b_1]_{q_1}, [b_2]_{q_2}) = ([x]_{q_1},[x]_{q_2}). 
+		\]
+		von $\Z / q_1 q_2 \Z$ nach $\Z / q_1 \times \Z/ q_2$ eine Bijektion ist, wobei hier $[x]_m$ für die Restklasse von $x$ in $\Z/ m \Z$ steht. 
+		
+		Diese Bijektion ist ein sogenannter Ringisomorphismus. Denn $\Z / q_1q_2 \Z$ ist ein Ring, und $\Z  / q_1 \Z \times \Z / q_2 \Z$ als kartesisches Produkt von zwei Ringen kann ebenfalls mit einer natürlichen Ringstruktur ausgestattet werden, indem man die Elemente daraus komponentenweise addiert und multipliziert. Die Abbildung $[x]_{q_1 q_2} \mapsto ([x]_{q_1} , [x]_{q_2})$, ist ein sogenannter Ringhomomorphismus, denn sie erhält die Ringstruktur (die Null, die Eins, die Addition und die Multiplikation). Die bijektiven Ringhomomorphsmen nennt man Ringisomorphismen. 
+		
+		Für konkrete Berechnungen hat der oben aufgestellte Ringisomorphsimus folgende Auswirkungen. Angenommen, wir möchte ein System $A x =b$ mit $A \in \Z^{m \times n}$ und $b \in \Z^m$ modulo $q_1 q_2$ lösen, und seien $q_1$ und $q_2$ Primzahlen. Dann können wir dieses System einmal bzgl. des Körpers $ \Z / q_1 \Z$ lösen, und einmal bzgl. des Körpers $\Z / q_2 \Z$ und dann aus den so ermittelten Lösungen in den beiden Fälle, die Lösung in $\Z / q_1 q_2 \Z$ berechnen. 
+	\end{bem} 
+	
+	
+	\begin{thm}[Der chinesische Restsatz für zwei Restklassenringe] 
+		Seien $q_1, q_2 \in \N$ teilerfremd. Dann ist die Abbildung 
+		\[
+		[x]_{q_1 q_2} \mapsto ([x]_{q_1}, [x]_{q_2})
+		\]
+		ein Ringisomorphismus von $\Z / q_1 q_2 \Z$ nach $\Z / q_1 \Z \times \Z / q_2 \Z$. 
+	\end{thm}
+	
+	\subsubsection{Eine Anwendung: die RSA-Verschlüsselung}
+	
+	\begin{thm}[Der kleine Satz von Fermat] 
+		Sei $p$ Primzahl. Im Körper $\K = \Z / p\Z$ gilt $a^{p-1} = 1$ für alle $a \in \K \setminus \{0\}$. 
+	\end{thm} 
+	\begin{proof}
+		Wir benutzen die Bijektion $x  \in \K \setminus \{0\}\leftrightarrow y \in \K \setminus \{0\}$ mit $y= ax$ und $x =a^{-1} x$. 
+		
+		
+		Das Produkt aller Elemente aus $\K \setminus \{0\}$ ist somit einerseits $u:=\prod_{x \in \K \setminus \{0\} } x$ und andererseits $\prod_{x \in \K \setminus \{0\}} (a x) = a^{p-1} \prod_{x \in \K \setminus \{0\}} x = a^{p-1} u$.
+		
+		Die Gleichung $a^{p-1} u = u$ kann durch $u$ geteilt werden, weil $u$ als Produkt von Nichtnullelementen von $\K$ ungleich $0$ ist. Das ergibt $a^{p-1} = 1$.
+	\end{proof} 
+	
+	Das RSA-Kryptosystem (die etwa im SSH-Protokoll benutzt wird) basiert auf zwei verschiedenen Primzahlen $p$ und $q$, die pseudozufällig generiert werden, und der Öffentlicheit unbekannt sind, und einem Wert $e \in \N$ mit $\ggT(e,(p-1)(q-1))= 1$. Wie man $p, q$ und $e$ genau generiert, ist wichtig, wird aber hier nicht im Detail diskutiert.  Was wir lediglich dazu bemerken ist Folgendes: man kann effizient testen, ob eine gegeben natürliche Zahl eine Primzahl ist, und die Primzahlen sind dicht genug innerhalb der natürlichen Zahlen verteilt, sodass man beim sukzessiven Durchsuchen ungerader natürlichen Zahlen schnell genug auf eine Primzahl stoßt. 
+	
+	Der Wert $N = pq$ ist der sogenannte Modul des Kryptosystems. Das Paar $(e,N)$ nennt man den öffentlichen Schlüssel. Der private Schlüssel $(d,N)$ wird generiert, indem man anhand $e$ einen Wert $d \in \N$ mit $e d \equiv 1 \mymod{(p-1)(q-1)}$. Da $e$ und $(p-1)(q-1)$ teilerfremd sind, gibt es einen solchen Wert, und dieser Wert kann man mit Hilfe des erweiterten Euklidischen Algorithmus generieren. 
+	
+	Nachdem $e$ und $d$ generiert sind, kann die verschlüsselte Kommunikatino zwischen zwei Teilnehmenden, die man standardmässig Alice und Bob nennt, wie folgt aufgebaut werden. 
+	
+	Alice behält $(d,N)$ als privaten Schlüssel und veröffentlicht $(e,N)$ als den sogenannten öffentlichen Schlüssel. Wenn Bob eine  verschlüsselte Nachricht $m \in  \Z / N \Z$ an Alice schickt, so schickt er $c=m^e$.  Beim Empfang von $c$ berechnet Alice $c^d \in \Z / N \Z$ mit Hilfe des privaten Schlüssels $(d,N)$ und erhält auf diese Weise den Wert $c^d = (m^e)^d = m^{ed}$. Es stellt sich heraus, dass $m^{ed} = m$ gilt. Das heißt, Alice hat die Nachricht $m$ von Bob erhalten. 
+	
+	Dass $m^{ed} = m$ gilt, ist die Grundlage des RSA-Kryptosystems. 
+	
+	\begin{propn}
+		Seien $p,q$ Primzahlen mit $p \ne q$ und und $e ,d \in \N$ Werte mit $ed \equiv 1 \mymod{N}$ und$N:=pq$. Dann gilt $m^{ed} = m$ für alle $m \in \Z / N \Z$. 
+	\end{propn} 
+	\begin{proof} 
+		Nach dem Chinesischen Restsatz ist der Ring $\Z / N \Z$ isomorph zum Ring $\Z / p \Z \times \Z / q \Z$. Wir können also durch den Isomorphismus aus dem Chinesischen Restsatz die Nachricht $m \in \Z / N \Z$ als ein Paar $(a,b) \in \Z / p \Z \times \Z / q\Z$ darstellen. So reduziert sich die Gleichung $m^{ed} = m$ zu zwei Gleichungen $a^{ed} = a$ mit $a \in \Z/ p \Z$ und $b^{ed} = b$ mit $b \in \Z / q \Z$.  Etwas weniger abstrakt lässt sich der Übergang von $m$ zu $a$ und $b$ so erklären: $m $ ist die Restklasse einer ganzen Zahl $z \in \Z$ modulo $N$. Die Bedingung $m^{ed} =m$ kann dann als die Teilbarkeit von $z^{ed} - z$ durch $N = pq$ formuliert werden. Das Letztere ist Äquivalent zur Teilbarkeit von $z^{ed} - z$ durch $p$ und durch $q$. Wir könne also als $a$ die Restklasse von $z$ modulo $p$ und als $b$ die Restklasse von $z$ modulo $q$ fixieren.
+		
+		Wegen $ed \equiv 1 \mymod{(p-1)(q-1)}$ gilt $ed = 1 + k (p-1)(q-1)$ für ein $k \in \Z_{\ge 0}$. Die Gleichungen für $a$ und $b$ können also als 
+		\begin{align*}
+			a^{1 + k (p-1) (q-1) } & = a, 
+			\\ b^{1 + k (p-1) (q-1) } & =b. 
+		\end{align*}
+		umformuliert werden.  Die beiden Gleichungen sind symmetrisch bis auf des Vertauschen der Rollen von $p$ und $q$. Es reicht also eine davon zu zeigen. Ist $a=0$, so ist die Gleichung für $a$ trivial. Im Fall $a \in \K \setminus \{0\}$ erhalten wir aus dem kleinen Satz von Fermat
+		\[
+		a^{1 + k (p-1) (q-1)}  = a \cdot (a^{p-1})^{k (q-1)} = a \cdot 1^{k(q-1)} = a.
+		\]
+	\end{proof} 
+	
+	\begin{bem}[Elektronische Signaturen mit dem RSA-Kryptosystem] 
+		Um eine Nachricht zu signieren, benutzt man eine öffentlich verfügbare Funktion $h$ (eine sogenannte Hashfunktion), welche eine  Nachricht $M$ einer beliebigen Bitlänge, die signiert wird, auf einen Wert $m = h(M) \in \Z / N \Z$ abbildet (der Hashwert hat keine beliebige Bitlänge, weil $N$ festgelegt ist). 
+		
+		Alice schickt eine signierte Nachricht an Bob wie folgt. Sie signiert ihre Nachricht $M$ mit $s=m^d$ mit Hilfe ihres Privatschlüssels. Bob erhält die Nachricht $M$ mit der Signatur $s$. Um die Echtheit der Nachricht zu überprüfen, benutzt Bob den öffentlichen Schlüssel $(e,N)$ von Alice. Bob berechnet zuerst $s^e$. Wie oben gezeigt ist $s^e = (m^d)^e = m^{ed} = m$. Bob erhält also den Hashwert der Nachricht $M$. Zur Prüfung der Nachricht kann nun der Wert $h(M)$ mit $m$ zu verglichen werden. 
+	\end{bem} 
+	
+	\begin{bsp}
+		Ein reales Beispiel eines öffentlichen Schlüssels.  %Hexadezimalformat: 
+		%\begin{verbatim}
+		%fb 11 99 ff 07 33 f6 e8 05 a4 fd 3b 36 ca 68 
+		%e9 4d 7b 97 46 21 16 21 69 c7 15 38 a5 39 37 2e 27 f3 f5 1d f3 b0 8b 2e 
+		%11 1c 2d 6b bf 9f 58 87 f1 3a 8d b4 f1 eb 6d fe 38 6c 92 25 68 75 21 2d 
+		%dd 00 46 87 85 c1 8a 9c 96 a2 92 b0 67 dd c7 1d a0 d5 64 00 0b 8b fd 80 
+		%fb 14 c1 b5 67 44 a3 b5 c6 52 e8 ca 0e f0 b6 fd a6 4a ba 47 e3 a4 e8 94 
+		%23 c0 21 2c 07 e3 9a 57 03 fd 46 75 40 f8 74 98 7b 20 95 13 42 9a 90 b0 
+		%9b 04 97 03 d5 4d 9a 1c fe 3e 20 7e 0e 69 78 59 69 ca 5b f5 47 a3 6b a3 
+		%4d 7c 6a ef e7 9f 31 4e 07 d9 f9 f2 dd 27 b7 29 83 ac 14 f1 46 67 54 cd 
+		%41 26 25 16 e4 a1 5a b1 cf b6 22 e6 51 d3 e8 3f a0 95 da 63 0b d6 d9 3e 
+		%97 b0 c8 22 a5 eb 42 12 d4 28 30 02 78 ce 6b a0 cc 74 90 b8 54 58 1f 0f 
+		%fb 4b a3 d4 23 65 34 de 09 45 99 42 ef 11 5f aa 23 1b 15 15 3d 67 83 7a 
+		%63
+		%\end{verbatim}
+		Der Modul im Dezimalsystem ist eine $617$-stellige Zahl: 
+		\begin{center}
+			\begin{tabular}{rl}
+				$N=$ &316944941931319194507627067708094688403544346666724240087815
+				\\&735154316257460965852803682506212526317946314538155651204243
+				\\&340980505298750717927449356077755915943710216498246601390424
+				\\&373730828301238717415344777795846680213349536805990124654019
+				\\&474582260883704618655528914785850965434061131819506418338731
+				\\&293581466779781458757319881728466979661277553474903218087349
+				\\&304497929069589881438700538136624963724757910769077994156998
+				\\&684944501323144019033703886630577589883833146072520896676339
+				\\&508364526110987991992811450967808280730177742672819293812614
+				\\&151991755996613548301019856966248512826059816155818536279614
+				\\&88141725060004451
+			\end{tabular}
+		\end{center} 
+		
+		Exponent im Dezimalsystem: $e=65\,537$. 
+		
+		Um diese Verschüsselung zu brechen, würde man das $N$ als Produkt von zwei Primzahlen Darstellen müssen: $N = pq$. Aus $p$ und $q$ kann man dann $(p-1)(q-1)$ berechnen und dann den privaten Schlüssel $d$ mit $e d \equiv 1 \mymod{(p-1)(q-1)}$ mit Hilfe des erweiterten Euklidischen Algorithmus ausrechnen. 
+	\end{bsp} 
+	
+	
+	\subsubsection{Eine diophantsche Gleichung in $2$ Variablen} 
+	
+	\begin{thm} 
+		Sei $a \in \Z^2 \setminus \{0\}$ und $b \in \Z$. Die Gleichung $a^\top x = b$ hat genau dann eine ganzzahlige Lösung $x \in \Z^2$, wenn $b$ durch $\ggT(a)$ teilbar ist. Darüber hinaus existiert ein Algorithmus, der für die gegebene Gleichung $a^\top x = b$ entscheidet, ob diese Gleichung eine ganzzahlige Lösung besitzt und ggf. eine solche Lösung bestimmt. 
+	\end{thm} 
+	\begin{proof} 
+		Für jedes $x \in \Z^2$ ist $a^\top x$ durch $\ggT(a)$ teilbar. Die Teilbarkeit von $b$ durch $\ggT(a)$ ist somit notwendig für die Existenz einer ganzzahligen Lösung $x \in \Z^2$. Nach Theorem~\ref{ggT:zahlen} kann ein  $u \in \Z^2$ mit $a^\top u = \ggT(a)$ mit Hilfe des erweiterten Euklidischen Algorithmus berechnet werden. Ist $b$ durch $\ggT(a)$ teilbar, dann ist $ x= \frac{b}{\ggT(a)} u$ eine ganzzahlige Lösung des Systems $a^\top x = b$. 
+	\end{proof} 
+	
+	\begin{bem}
+		Überlegen Sie sich, wie man alle ganzzahlige Lösungen einer solchen Gleichung $a^\top x = b$ bestimmen kann. 
+	\end{bem} 
+	
+	\begin{bsp} 
+		IM AUFBAU: Beispiel aus \ref{ggT:zahlen} fortsetzen. 
+	\end{bsp} 
+	
+	\subsubsection{Eine diophantsche Gleichung in  $n$ Variablen} 
+	
+	Für $v \in \Z^n \setminus \{0\}$ ist der $\ggT(v)$ der Wert $g \in \N$ mit der Eigenschaft, dass jeder Teiler der Komponenten von $v$ auch den Wert $g$ teilt. 
+	
+	\begin{thm} 
+		Für jedes $v \in \Z^n \setminus \{0\}$ gibt es ein $u \in \Z^n$ mit $u^\top v = \ggT(v)$. Darüber hinaus existiert ein Algorithmus, der für ein gegebenes $v$ einen Vektor $u$ und $\ggT(v)$ berechnet. 
+	\end{thm} 
+	\begin{proof} 
+		Der Fall $n =1$ ist trivial. 
+		Wir müssen unseren Beweis des Theorems~\ref{ggT:zahlen} vom Fall $n=2$ auf das allgemeine $n \ge 2$ erweitern. Genau so wie im Fall $n=2$ sehen, wir dass die unimodularen Elementartransformationen der Komponenten von $v$ den Wert $\ggT(v)$ nicht ändern. Wir wollen mit solchen Transformationen den Vektor $v$ zum Vektor der Form $(g,0,\ldots, 0)$ mit $g \in \N$ iterativ überführen. Dafür kann man zum Beispiel folgendermaßen vorgehen: Hat der Vektor $v$ genau eine Nichtnull-Komponente so kann man erzwingen, dass diese Komponente positiv ist und dann ist man fertig. Hat $v$ zwei Nichtnullkomponenten $v_i$ und $v_j$, so kann man auf diesen Komponenten den Euklidischen Algorithmus für zwei Werte laufen lassen, bis eine der beiden Komponenten gleich $0$ wird. Auf diese Weise löscht man iterativ die Nichtnullkomponenten aus, bis am Ende nur eine Nichtnullkomponente übrig bleibt. Um aus diesem Verfahren noch zusätzlich den Vektor $u$ auszurechnen, kann man genauso wie im Fall $n=2$ mit dem trivialen System $I x = v$ beginnen un dieses System iterativ mit unimodularen Elementartransformationen verändern, bis man am Ende zum System der Form 
+		\begin{align*}
+			U x = \begin{pmatrix} g \\ 0 \\ \vdots \\\ 0 \end{pmatrix} 
+		\end{align*} 
+		mit $U \in \Z^{n \times n}$ gelangt. Es ist klar, dass wir $u^\top$ als erste Zeile der Matrix $U$ fixieren können. 
+	\end{proof} 
+	
+	
+	\begin{klr}
+		Sei $a \in \Z^n \setminus \{0\}$ und $b \in \Z$. Die Gleichung $a^\top x = b$ besitzt genau dann eine ganzzahlige Lösung $x \in \Z^n$, wenn $b$ durch $\ggT(a)$ teilbar ist. Darüberhinaus existiert ein Algorithmus, der entscheidet ob $a^\top x = b$ eine ganzzahlige Lösung besitzt und ggf. eine solche Lösung bestimmt. 
+	\end{klr} 
+	\begin{proof} 
+		Der Beweis ist Analog zum Beweis im Fall $n=2$, der bereits diskutiert worden ist. Die Teilbarkeit von $b$ durch $\ggT(a)$ ist notwendig für die Existenz einer ganzzahligen Lösung: ist $x \in \Z^n$ und $a^\top  x = b$, so ist $a^\top x$ durch $\ggT(a)$ teilbar. Somit is auch $b$ durch $\ggT(a)$ teilbar. 
+		
+		Ist $b$ durch $\ggT(a)$ teilbar, so benutzen wir den Algorithmus aus dem Beweis des vorigen Theorems, um ein $u \in \Z^n$ mit $a^\top u = \ggT(a)$ zu bestimmen. Dann ist $x = \frac{b}{\ggT(a)} u $ eine ganzzahlige Lösung von $a^\top x = b$. 
+	\end{proof} 
+	
+	\subsection{Lösung von diophantschen linearen Gleichungsysstemen} 
+	
+	
+	\subsubsection{Hermit'sche Normalform}
+	
+	Man sagt, dass $H = (h_{ij}) \in \Z^{m \times n}$ in einer HNF ist, wenn $m \le n$, $h_{ii} > 0$ und $h_{ij} \ge 0$ und für alle $i,j$ gilt und $h_{ij} < h_{jj}$ für alle $i,j$ mit $1 \le i < j \le m$ erfüllt ist. 
+	
+	\begin{thm}
+		Es existiert ein Algorithmus, der eine gegebene ganzzahlige Matrix $A \in \Z^{m \times n}$ mit dem vollen Zeilenrang mit Hilfe von unimodularen Elementartransformationen der Splaten in eine HNF überführt. Des Weiteren existiert ein Algorithmus der Neben einer HNF $H$ von $A$ auch eine Matrix $U \in \Z^{n \times n}$ mit $|\det(U)|=1$ berechnet, für welche $H = A U$ gilt. 
+	\end{thm} 
+	\begin{proof}
+		\emph{Phase~1:} Wir können den erweiterten Euklidischen Algorithmus benutzen, um mit Hilfe von uETS ($=$ unimodularen Elementartransformationen) die erste Zeile von $A$ ins Format $(a_{11}, 0,\ldots, 0)$ zu überführen. 
+		Dann befindet sich unter den Komponenten $a_{2,2},\ldots,a_{n,2}$ mindestens eine Nichtnullkomponente, weil sonst die zweite Zeile linear abhängig von der ersten Zeile wäre, was der Bedingung $\rang(A) = m$ widerspricht. Wir können die Spalten Nummer $2$ bis $n$ mit uET so verändern, dass nach dieser Änderung die zweite Zeile die Form $(a_{1,2},a_{2,2},0,\ldots,0)$ mit $a_{2,2}  >0$ hat. In der $k$-ten Iteration hat die Untermatrix von  $A$ aus den ersten $k$  Zeilen die Form 
+		\begin{align*}
+			\begin{pmatrix*}
+				a_{1,1} & 0 &   & \cdots & & \cdots & 0 
+				\\					a_{2,1} & a_{2,2} & 0 & \cdots & & \cdots & 0 
+				\\ \vdots  & & \ddots & \ddots &  & & \vdots 
+				\\ a_{k,1} & \cdots & \cdots & a_{k,k} &  0 & \cdots & 0 
+			\end{pmatrix*} 
+		\end{align*} 
+		Ist $k=m$, so ist die erste Phase des Verfahrens abgeschlossen. Ist $k<m$, dann betrachtet man die Zeile Nummer $k+1$ von $A$ und und verändert durch die uET der letzten $n-k$ Spalten die Matrix so, dass $a_{k+1,k+1}>0$ und und $a_{k+1,j} =0$ für $j> k+1$ gilt. Nach endlich vielen Schritten überführt man die Matrix $A$ in die Form: 
+		\begin{align*}
+			A=
+			\begin{pmatrix*}
+				a_{1,1} & 0 &   & \cdots & & \cdots & 0 
+				\\					a_{2,1} & a_{2,2} & 0 & \cdots & & \cdots & 0 
+				\\ \vdots  & & \ddots & \ddots &  & & \vdots 
+				\\ a_{m,1} & \cdots & \cdots & a_{m,m} &  0 & \cdots & 0 
+			\end{pmatrix*} 
+		\end{align*} 
+		\emph{Phase~2:} In der zweiten Phase werden Elemente unterhalb von $a_{1,1},\ldots, a_{m,m}$ modifiziert. Dabei  arbeitet man die Spalten Nummer $1,\ldots,m-1$ in dieser Reihenfolge ab. Die Elemente $a_{j+1,j},\ldots, a_{m,j}$ der $j$-ten Spalten mit $j=1,\ldots, m-1$ werden in dieser Reihenfolge folgendermaßen modifiziert: Man teilt $a_{i,j}$ mit $i=j+1,\ldots,m$ durch $a_{i,i}$ mit Rest, erhält die Darstellung $a_{i,j} = q a_{i,i} + r$ mit $q,r \in Z$ und $0 \le r < a_{i,i}$ und zieht von der $j$-ten Spalte $q$ mal die $i$-te Spalte ab. Auf diese Weise wird die Bedingung $0 \le a_{i,j} < a_{i,i}$ sichergestellt, ohne dass die entsprechende Bedingung für die Elemente der selben Spalte oberhalb von $a_{i,j}$ beeinträchtigt wird. Nach der Terminierung der zweiten Phase befindet sich die Matrix $A$ in der HNF. 
+		
+		\emph{Berechnung der Matrix $U$:} Um die Matrix $U$ aus der Behauptung zu berechnen, kann man jede uET der Spalten von $A$ als die Transformation $A \mapsto A U_i$ für eine elementare unimodulare Matrix $U_i \in \Z^{n \times n}$ auffassen. Während der Ausführung wird also für eine gegebene Matrix $A$ eine Folge $U_1,\ldots,U_t$ von elementaren unimodularen Matrizen bestimmt, für die $H = A U_1 \cdots U_t$ in einer HNF ist. Da jede Matrix $U_i$ ganzzahlig ist, und die Determinante $\pm 1$ hat hat die Matrix $U = U_1 \cdots U_t$ die gewünschten Eigenschaften. 
+	\end{proof} 
+	
+	\begin{bem} 
+		Für die praktische Berechnung der Matrix $U$ aus dem vorigen Beweis startet man mit der Matrix $I_n \in \Z^{n \times n}$ und führt für diese dieselben Spaltentransformuationen durch wie mit der Matrix $A$. Das bedeutet, dass man mit der Matrix 
+		\begin{align*}
+			\begin{pmatrix} 
+				A \\ I_n
+			\end{pmatrix} 
+		\end{align*} 
+		startet, die uET der Spalten durchführt und nach der Terminierung die Matrix 
+		\begin{align*}
+			\begin{pmatrix*} 
+				H \\ U
+			\end{pmatrix*} 
+		\end{align*} 
+		erhält, wobei $H$ die HNF von $A$ ist und $U \in \Z^{n \times n}$ die Matrix mit $|\det(U)|=1$ ist, die $A$ in die HNF $H$ überführt. 
+	\end{bem} 
+	
+	Beispiel in SageMath: 
+	\begin{verbatim}
+		A=matrix(ZZ,[(18,24,102,4)])
+		H,U=A.transpose().hermite_form(transformation=True)
+		print(H)
+		print(U)
+		print(U*A.transpose())
+	\end{verbatim}
+	
+	
+	\subsubsection{Ein Algorithmus zur Lösung von diophantschen linearen Gleichungssystemen} 
+	
+	\begin{thm}
+		Sei $A \in \Z^{m \times n}$ und sei $b \in \Z^m$. Es existieren ein Algorithmus, der verifiziert, ob das System $A x =b$ eine ganzzahlige Lösung $x \in \Z^n$ besitzt und ggf. eine solche Lösung berechnet. 
+	\end{thm} 
+	\begin{proof}
+		Wir können zuerst verifizieren, ob $A x =b$ eine Lösung in $\R^n$ besitzt. Ist das nicht der Fall, so hat man auch keine Lösung in $\Z^n$. Hat $A x= b$ eine Lösung in $\R^n$ so können wir in $A x=b$ nur die nichtredundanten Gleichungen behalten. Dann kommt man zum Fall $A x =b$ mit $\rang(A) = m$. MEHR DETAILS. Man benutzt überführt die Matrix $A$ in die HNF $H$ und berechnet dabei noch eine Matrix $U \in \Z^{n \times n}$ mit $|\det(U)|=1$ und $H = A U$. Wir führen die neuen Variablen $y$ mit $x = U x$ ein und überführen dadurch $A x =b$ zur Gleichung $A U y = b$, das ist die Gleichung $H y = b$. Es sei bemerkt, dass $x \in \Z^n$ zu $y \in \Z^n$ äquivalent ist. 
+		
+		Sei $H  = (T \  0)$, wobei $T$ eine untere Dreiecksmatrix. Die letzte Gleichung hat eine ganzzahlige Lösung genau dann wenn $T^{-1} b$ ganzzahlig ist. In diesem Fall ist $y = \begin{pmatrix} T^{-1} b \\ 0 \end{pmatrix}$ eine ganzzahlige Lösung von $H y =b$. Also ist 
+		\begin{align*}
+			U \begin{pmatrix} T^{-1} b \\ 0 \end{pmatrix} 
+		\end{align*}
+		eine ganzzahlige Lösung von $A x= b$. 
+	\end{proof} 
+	
+	\begin{bsp}
+		IM AUFBAU 
+	\end{bsp} 
+	
+	\subsubsection{Anwendungen zu modularen Gleichungen} 
+	
+	\begin{bem}
+		Es gibt einen effizienten Algorithmus, der für gegebene $b_1,\ldots,b_n \in \Z$ und $q_1,\ldots,q_n \in \Z$ testet, ob das System der Kongruenzgleichungen 
+		\[	
+		x \equiv b_1 (\mathrm{mod} \ q_1), \ldots, x \equiv b_n (\mathrm{mod} \ q_n)
+		\]
+		eine Lösung $x \in \Z$ besitzt und ggf. eine solche Lösung berechnet. 
+		
+		Die Kongruenzgleichung $z \equiv b_i (\mathrm{mod} \ q_i)$ kann man mit der Verwendung einer Zusatzvariablen $y_i \in \Z$ als $z + q_i y_i = b_i$ geschrieben werden. Das überführt das System der Kongruenzen zu einem diophantschen linearen System 
+		\begin{align*}
+			\begin{pmatrix} 1 & q_1 &  &
+				\\ 1 & & q_2 & 
+				\\ \vdots & & & \ddots 
+				\\ 1 & & & & q_n 
+			\end{pmatrix} 
+			\begin{pmatrix} x \\ y_1 \\ \vdots \\ y_n \end{pmatrix} 
+			= 
+			\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix},  
+		\end{align*}
+		das man mit Hilfe von HNF lösen kann. 
+	\end{bem} 
+	
+	\begin{bem}
+		Man betrachte den Restklassenring $ \Z_q  := \Z/ q \Z$ mit $q \in \N$. Sei $A \in \Z^{m \times n}$ und $b \in \Z^m$. Es gibt einen effizienten Algorithmus, der entscheidet, ob das System $A x = b$ eine Lösung $x \in \Z_q^n$ besitzt und ggf. eine solche Lösung berechnet. Ist $q$ eine Primzahl, so ist $\Z_q$ ein Körper, sodasss man einfach das Gauß-Verfahren benutzen kann. Ansonsten ist $\Z_q$ kein Körper, sodass man eine andere Methode benötigt. Wir können die Gleichung $A x = b$ mit den Unbekannten $x \in \Z_q^n$ als die Gleichung $A x + q y = b$ mit den Unbekannten $x \in \Z^n$ und $y \in \Z^m$ interpretieren. Zu dieser Gleichung, die man auch als
+		\begin{align*}
+			\begin{pmatrix} A & q I_m \end{pmatrix} \begin{pmatrix} x \\ y  \end{pmatrix}  = b
+		\end{align*}
+		formulieren kann, kann man die oben entwickelten HNF-basierten Methoden benutzen. 
+	\end{bem} 
+	
+	\subsection{Gitter} 
+	
+	Ein Standardbeispiel eines Gitters ist $\Z^n$, es gibt aber auch andere Gitter. Ein Basiswechsel in einem Gitter erfolgt durch unimodulare Matrizen. Wir beginnen mit einer Charakterisierung von unimodularen Matrizen, führen  danach die Gittern ein und diskutieren einige ihrer Eigenschaften. 
+	
+	\subsubsection{Charakteriseriung von unimodularen Matrizen} 
+	
+	Wir nennen eine Matrix $U \in \Z^{n \times n}$ unimodular, wenn $\det(U) \in \{-1,1\}$ gilt. 
+	
+	\begin{thm}
+		Für $U \in \Z^{n \times n}$ sind die folgenden Bedingungen äquivalent: 
+		\begin{enumerate}
+			\item $U$ ist unimodular
+			\item $U^\top$ ist unimodular 
+			\item $U^{-1}$ ist unimodular. 
+			\item $U$ ist regulär mit $U^{-1} \in \Z^{n \times n}$
+			\item $\{ Uz \,:\, z \in \Z^n\} = \Z^n$. 
+			\item Die HNF von $U$ ist $I$. 
+		\end{enumerate} 
+	\end{thm} 
+	\begin{proof}
+		Die Äquivalenz von (i), (ii) und (iii) folgt aus den Formeln für die Determinante. 
+		
+		(iv) $\Rightarrow$ (v) folgt aus der Bijektion $x  \in \Z^n \leftrightarrow y \in \Z^n$ mit $y = U x$ und $x = U^{-1} y$. 
+		
+		(v) $\Rightarrow$ (iv): Aus (v) folgt die Existenz von $b_1,\ldots,b_n \in \Z^n$ mit $U b_i = e_i$. Die Matrix mit den Spalten $b_1,\ldots,b_n$ ist die ganzzahlige inverse Matrix von $U$. 
+		
+		(i) $\Leftrightarrow$ (iv): Die Richtung (i) $\Rightarrow$ (iv) folgt aus $U^{-1} = U^{\#} / \det(U) = U^{\#}$. Umgekehrt: ist (iv) erfüllt, so gilt $1= \det(U U^{-1} ) = \det(U) \det(U^{-1})$, mit $\det(U), \det(U^{-1}) \in \Z \setminus \{0\}$. Es folgt $\det(U) \in \{-1,1\}$. 
+		
+		(i) $\Leftrightarrow$ (vi): Bei einer regulären quadratischen ganzzahligen Matrix ist die HNF $H$ gleich $I$ gilt genau dann, wenn alle Diagonalemente von $H$ gleich $1$ sind, das letztere ist äquivalent zu $\det(H)=1$. Die HNF $H$ von $U$ lässt sich als $H = U V$ für eine unimodulare Matrix $V$ darstellen. Das Bedeutet, dass bei der HNF von $\det(H) = \det(U)$ gilt. Das zeigt die Äquivalenz von (i) und (vi).   
+	\end{proof} 
+	
+	\subsubsection{Gitter, ihre Dimension und die Determinante} 
+	
+	Sind $b_1,\ldots,b_t \in V$ linear unabhängige Vektoren in einem endlich-dimensionalen Vektorraums $V$ über einem Körper $\K$ mit $\Q \subseteq \K \subseteq \R$, so nennt 
+	\begin{align*}
+		\Lambda := \{ z_1 b_1 + \cdots + z_t b_t \,: \, z_1,\ldots,z_t \in \Z \} 
+	\end{align*}
+	ein Gitter in $V$. Die lineare Hülle $\lin(\Lambda) = \lin(b_1,\ldots,b_t)$ ist $t$-dimensional  und ihre Dimension heißt der Rang oder die Dimension des Gitters $\Lambda$. 
+	Jedes Gitter ist eine Untegruppe von $(V,+)$, aber nicht umgekehrt: $\{ z_1 + \sqrt{2} z_2 \, :  z_1,z_2 \in \Z\}$ ist Untegruppe von $(\R,+)$ aber kein Gitter.
+	
+	Für eine Matrix $B \in \R^{n \times t}$ vom Rang $t$ ist 
+	\[
+	\Lambda(B) := \{ B z \,: \, z \in \Z^t \}
+	\]
+	die Gruppe, die durch die Spalten von $B$ erzeugt ist. Sind die Spalten von $B$ linear unabhängig, so ist $\Lambda(B)$ ein $t$-dimensionales Gitter. 
+	
+	\begin{thm}
+		Seien $A, B \in \R^{n \times n}$ reguläre Matrizen mit $\Lambda(A) = \Lambda(B)$. Dann ist $A^{-1} B$ eine unimodulare Matrix und es gilt insbesondere $|\det(A)| = |\det(B)|$.
+	\end{thm} 
+	\begin{proof}
+		Da die Spalten von $A$ in $\Lambda(B)$ liegen gilt $A = B U$ für eine Matrix $U \in \Z^{n \times n}$. Analog: da die Spalten von $B$ in $\Lambda(A)$ liegen, gilt $B = A V$ für ein $V \in \ Z^{n \times n}$. Es folgt $\det(A) = \det(B) \det(U)$ und $\det(B) = \det(A) \det(V)$, woraus man $\det(A)\det(B) = \det(A) \det(B) \det(U)\det(V)$ folgert. Es gilt also $\det(U), \det(V) \in \{-1,1\}$. Das ergibt die gewünschten Behauptungen. 
+	\end{proof} 
+	
+	Wie im vorigen Theorem gezeigt wurde ist bei der Darstellstellung eines $n$-dimesnionalen Gitters $\Lambda \subseteq  \Z^{n \times n}$ als $\Lambda = \Lambda(A)$ durch eine reguläre Matrix $A \in \Z^{n \times n}$ der Wert $|\det(A)|$ nur von $\Lambda$ abhängig. Diesen Wert, den man als $\det(\Lambda)$ bezeichnet,  nennt man die Determinante von $\Lambda$.
+	
+	\begin{bem}
+		Für nicht-volldimensionale Gitter kann man ebenfalls die Determinante einführen...
+	\end{bem} 
+	
+	\subsubsection{Erzeugung rationalen Gittern} 
+	
+	\begin{thm}
+		Sei $V$ endlich-dimensionaler Vektorraum über $\Q$ und seien $a_1,\ldots,a_m \in V$ ($m \in \N$). Dann ist die Menge
+		\[
+		\Lambda := \{ z_1 a_1 + \cdots + z_m a_m \,:\, z_1,\ldots,z_m \in \Z \} 
+		\]
+		ein Gitter. 
+	\end{thm} 
+	\begin{proof} 
+		Wenn die lineare Hülle von $a_1,\ldots,a_m$ nicht mit $V$ übereinstimmt, können wir uns auf den Untervektorraum $\lin(a_1,\ldots,a_m)$ einschränken. Daher können wir oBdA voraussetzen, dass $V =\lin(a_1,\ldots,a_m)$ gilt. Ist $n=\dim(V)$, so können wir $V$ mit $\Q^n$ identifizieren, d.h., wir nehmen an, $V = \Q^n$. Da wir die Vektoren aus $a_1,\ldots,a_m \in \Q^n$ mit dem gemeinsamen Nenner aller Komponenten dieser Vektoren multiplizieren können, können wir $a_1,\ldots,a_m \in \Z^n$ annehmen. Wir können mit einer unimodularen Matrix $U \in \Z^{m \times m}$ die Matrix $A = (a_1,\ldots,a_m) \in \Z^{n \times m}$ in die HNF $H$ überführen. Das bedeutet $H= (T \ 0) = A U$. Dann ist 
+		\[
+		\Lambda = \{ A z \,:\, z \in \Z^m \} = \{ A U z \,:\, z \in \Z^n \}  = \{ H z \,:\, z \in \Z^n \} = \{ T y \,:\, y \in \Z^m \}.
+		\]
+		Das zeigt, dass $\Lambda$ ein Gitter ist, dass durch die lineare Unabhängigen Spalten der unteren Dreiecksmatrix $T$ erzeugbar ist. 
+	\end{proof} 
+	
+	
+	\subsubsection{Gitter als diskrete Untergruppen von $\R^n$} 
+	
+	Ein Teilmenge $X$ von $\R^n$ nennen wir beschränkt, wenn für eine positive reelle Zahl $\rho>0$ die Bedingung $\|x\| \le \rho$ für alle $x \in X$ erfüllt ist. 
+	Ein Teilmenge $X$ von $\R^n$ nennen wir diskret, wenn jede beschränkte Teilmenge von $X$ endlich ist. Das ist äquivalent dazu, dass die Menge $X$ keine Häufungspunkte besitzt. 
+	
+	\begin{thm}
+		Eine Untergruppe $G$ von $(\R^n,+)$ ist genau dann ein Gitter, wenn $G$ diskret ist. 
+	\end{thm} 
+	\begin{proof}
+		Beweis nach Gruber-Lekkerkerker?
+	\end{proof} 
+	
+	
+	
+	\section{Tensoren und duale Vektorraüme} 
+	
+	\subsection{Einstieg: Tensoren als multidimensionale Arrays} 
+	
+	\subsubsection{Tensoren und ihre Grundoperationen}
+	
+	Genauso wie man Vektorräume ``konkret'' als $\K^n$ oder abstrakt als ein $n$-dimensionaler Vektorraum $V$ über $\K$ behandeln kann, kann man auch Tensoren konkret und abstrakt behandeln. Wir beginnen die Diskussion der Tensoren in der konkreten Umsetzung. Seien $I_1,\ldots, I_k$ endliche Indexmengen. Wir definieren als $\K^{I_1 \times \cdots \times I_k}$ die Menge aller Abbildungen von $I_1 \times \cdots \times I_k$ nach $\K$. Im Fall, $I_j = \{1,\ldots, n_j\}$, bezeichnen wir diese Menge als $\K^{n_1 \times \cdots \times n_k}$. Für $k=1$, erhalten wir die Menge $\K^{n_1}$ der Vektoren in der Dimension $n_1$ und für $k=2$ die Menge der Matrizen der Größe $n_1 \times n_2$. Man nennt die Elemente von $\K^{n_1 \times \cdots \times n_k}$ Tensoren der Ordnung $k$, man sagt auch, dass Elemente aus dieser Menge Tensoren der Größe $n_1 \times \cdots \times n_k$ über $\K$ sind. Die Menge  $\K^{n_1 \times \cdots \times n_k}$ aller Tensoren besitzt eine natürliche Struktur eines $\K$-Vektoraums, sodass man Linearkombinationen von Tensoren mit Koeffizienten in $\K$ betrachten kann. 
+	
+	Darüberhinaus kann man Tensoren auf zwei verschiedene Weisen multiplizieren. Eine davon ist eine Verallgemeinerung der Matrix-Multiplikation. Für Matrizen $A = (a_{ij}) \in \K^{I \times J}$ und $B = (b_{jk}) \in \K^{J \times K}$, welche durch beliebige endliche Mengen $I, J$ und $K$ indexiert sind, ist das Produkt $AB = C = (c_{ik}) \in K^{I \times K}$ durch 
+	\[
+	c_{ik} = \sum_{j \in J} a_{i,j} b_{j,k}
+	\]
+	gegeben. Im Fall von Tensoren $A \in \K^{I_1 \times \cdots \times I_m \times j_1 \times \cdots \times J_n}$ und $B \in \K^{J_1 \times \cdots \times J_n \times K_1 \times \cdots \times K_s}$ können wir das Produkt $C$ genau so einführen, indem wir $A$ als $I \times J$-Matrix und $B$ als $J \times K$-Matrix mit $I = I_1 \times \cdots \times I_m$, $J= J_1 \times \cdots \times j_n$ und $K= K_1 \times \cdots \times K_s$ auffassen. 
+	
+	Eine weitere Multiplikation, die wir für Tensoren einführen ist die Tensormultiplikation: 
+	\[
+	\otimes : \K^{I_1 \times \cdots \times I_m} \times \K^{J_1 \times \cdots \times  J_n} \to \K^{I_1 \times \cdots \times I_m \times J_1 \times \cdots \times J_n}. 
+	\]
+	Für $A = (a_{i_1\cdots i_m} ) \in \K^{I_1 \times \cdots \times I_m}$ und 
+	$B = (b_{j_1 \cdots j_n}) \in \K^{J_1 \times \cdots \times J_n}$ ist das Tensorprodukt $A \otimes B  =  C = (c_{i_1 \cdots i_m j_1 \cdots j_n})$ durch 
+	\[
+	c_{i_1 \cdots i_m j_1 \cdots j_n} = a_{i_1 \cdots i_m} b_{j_1 \cdots j_n}
+	\]
+	definiert. Das Tensorprodukt ist somit eine bilineare Abbildung, das heißt, die Operation $A \otimes B$ ist in $A$ und in $B$ linear. 
+	
+	
+	MULTIPLIKATION VON ZWEI TENSOREN ENTLANG DER DIMENSIONEN. 
+	
+	Seien $n_1 \times \cdots \times n_s$ und $m_1 \times \cdots \times n_t$ Formate der Tensoren, $S \subseteq \{1,\ldots, s\}$ und $T \subseteq \{1,\ldots, t\}$ Teilmengen mit der gleichen Kardinalität, und $\phi : S \to T$ bijektive Abbildung. Dann können wir eine Multiplikation entlang $\phi : S \to T$ definieren..... 
+	
+	\subsubsection{Tensorprodukt und Determinanten} 
+	
+	Wir bemerken zuerst, dass man die Determinante einer durch eine beliebige Meng $I$ indexierten quadratischen Matrix $A = (a_{ij}) \in \K^{I \times I}$ genauso wie im Fall $I = \{1,\ldots, n\}$, den wir diskutiert haben, einführen kann. Wenn wir die Menge $I$ durch eine bijektive Abbildung $ \phi :  \{1,\ldots,n\} \to I$ mit $n = |I|$ nummerieren, so können wir $\det(A)$ als die Determinante der Matrix $M = ( a_{\phi(i) \phi(j)} )_{i,j =1,\ldots, n}$ einführen. Es stellt sich heraus, dass $\det(A)$ auf diese Weise wohldefiniert ist, weil die Wahl der bijektiven Abbildung keine Auswirkung auf den Wert von $\det(A)$ hat. Für das fixierte $\phi$ kann jede andere bijektive Abbildung von $I$ nach $\{1,\ldots,n\}$ als die Komposition $\phi \circ \sigma$ mit einer Permutation $\sigma \in S_n$ realisiert werden. Es stellt sich heraus, das die Matrix $N = ( a_{\phi(\sigma(i)) \phi(\sigma(j))} )_{i,j=1,\ldots,n}$ die gleiche Determinante wie $M$ hat, denn wegen der Formel $\det(a_{\sigma(1)},\ldots,a_{\sigma(n)}) = \sign(\sigma) \det(a_1,\ldots,a_n)$, die man Zeilen- sowie Spaltenweise benutzen kann, gilt 
+	\[
+	\det(N) = \sign(\sigma) \det ( a_{\phi(i) \phi(\sigma(j))} ) = \sign(\sigma)^2 
+	\det( a_{\phi(i) \phi(j)} ) = \sign(\sigma)^2 \det(M) = \det(M). 
+	\] 
+	
+	Betrachten wir nun zwei quadratische Matrizen $A \in \K^{I \times I}$ und $B \in \K^{J \times J}$. Ihr Tensorprodukt $A \otimes B$ ist Tensor im Format $I \times I \times J \times J$. Für die Zwecke dieses Abschnitts lohnt es sich aber die $4$ Indizes bzw. Indexbereiche anders zu reihen: wir führen also $\otimes$ als 
+	\[
+	\otimes : \K^{I \times I} \times \K^{J \times J} \to \K^{I \times J \times I \times J} 
+	\]
+	ein, mit $(a_{i_1 i_2} ) \otimes (b_{j_1 j_2}) = (a_{i_1 j_1 i_2 j_2})$. Bemerkung, solche Anpassungen der Reihenfolge der Indexmengen sind in der Tensorrechnung üblich: man behält also eine gewisse Flexibilität bei der Einführung der Operation $\otimes$. Mit dieser Definition kann also $A \times B$ als eine durch $I \times J$-indexierte quadratische Matrix interpretiert werden. Dieses Matrix nennt man auch manchmal das Kronecker-Produkt von $A$ und $B$. 
+	
+	\begin{lm}
+		$(A \otimes B) (C \otimes D) = (AC \otimes BD)$. 
+	\end{lm} 
+	
+	\begin{thm}
+		Für $A \in \K^{m \times m}$ und $B \in \K^{n\times n}$ gilt $\det(A \otimes B) = \det(A)^n \det(B)^m$. 
+	\end{thm} 
+	\begin{proof} 
+		Wegen $A \otimes B = (A \otimes I_n) (I_m  \otimes B)$ gilt 
+		\[
+		\det(A \otimes B) = \det(A \otimes I_n) \det (I_m \otimes B). 
+		\]
+		Hierbei entspricht $A \times I_n$ einer Blockdiagonalenmatrix mit $n$ Diagonalblöcken, die gleich $A$ sind, und $I_m \times B$ entspricht einer Blockdiagonalblöcken Matrix mit $m$ Diagonalblöcken, die gleich $B$ sind. Wir erhalten also $\det( A \times I_n) = \det(A)^n$ und $\det(I_m \otimes B) = \det(B)^m$. 
+	\end{proof} 
+	
+	IM AUFBAU 
+	
+	\subsubsection{Tensoren und die Euklidische Struktur} 
+	
+	IM AUFBAU 
+	
+	\subsection{Tensoren und multilineare Abbildungen} 
+	
+	\subsubsection{Duale Vektorräume und duale Basen}
+	
+	Für ein Vektorraum $V$ über $V$ wird der der Raum $\Lin(V,\K)$ der duale Raum von $V$ genannt und als $V^\ast$ bezeichnet. 
+	
+	\begin{propn}
+		Sei $V$ $n$-dimensionale Vektorraum über $\K$ mit $n \in \N$. Dann gilt: 
+		\begin{enumerate} 
+			\item Zu jeder Basis $\cB=(b_1,\ldots,b_n)$ eine Basis von $V$ gibt es eine eindeutige Basis $\cB^\ast= (b_1^\ast,\ldots, b_n^\ast)$ mit $b^\ast_i(b_j) = \delta_{i,j}$ für alle $1 \le i ,j \le n$. 
+			\item Zu jeder basis $\cF= (f_1,\ldots,f_n)$  von $V^\ast$ gibt es eine endeutige Basis $\cF^\ast = (f_1^\ast,\ldots, f_n^\ast)$ von $V$ mit $f_i(f_j^\ast) = \delta_{i,j}$ für alle $i,j=1,\ldots,n$. 
+		\end{enumerate} 
+	\end{propn}
+	\begin{proof} 
+		(i) Wir setzen $b_i^\ast (x) := e_i^\top x_\cB$. Nach der Definition von $x_\cB$ gilt $x = \sum_{i=1}^n (e_i^\top x_\cB) b_i = \sum_{i=1}^n b_i^\ast(x) b_i$. Für $x = b_j$ gilt $x_\cB= e_j$, was die Existenz von $\cB^\ast$ verifiziert. Zur Eindeutigkeit: Ist $b_i^\ast(b_j) = \delta_{i,j}$ für alle $i,j$, so gilt $b_i^\ast(x) = b_i^\ast( \sum_{j=1}^n (e_j^\top x_\cB) b_j ) = e_j^\top x_\cB$. 
+		
+		Der Beweis von (ii) ist absolut analog, da man einfach die Rollen von $V$ und $^\ast$ vertausche kann. 
+	\end{proof} 
+	
+	Wir führen für die blineare Form $V^\ast \times V$ durch $(f,v) := f(v)$ ein. Durch die symmetrische Schreibweise $(f,v)$ wird hervorgehoben, dass $V$ bzgl. $V^\ast$ die gleiche Rolle spielt wie $V^\ast$ bzgl. $V$. 
+	
+	\begin{bsp}
+		Duale Basis zur Basis $f_1(x) = x_1 + x_2, f_2(x) = x_1 + x_3, f_3(x) = x_2 + x_3$ von $(\R^3)\ast$. Man hat 
+		\[
+		\begin{pmatrix}
+			f_1(x) \\ f_2(x) \\ f_3(x)  
+		\end{pmatrix} 
+		= 
+		\begin{pmatrix}
+			1 & 1& 0
+			\\ 1 & 0 & 1 
+			\\ 0 & 1 & 1 
+		\end{pmatrix}
+		x
+		\]
+		Gesucht werden Vektoren $b_1,b_2, b_3\in \R^3$ mit $f_i(b_j) = \delta_{i,j}$. Das bedeutet, dass wir die Vektoren $b_1,b_2,b_3$ aus der Gleichung 
+		\[
+		\begin{pmatrix}
+			1 & 1& 0
+			\\ 1 & 0 & 1 
+			\\ 0 & 1 & 1 
+		\end{pmatrix}		
+		\begin{pmatrix} b_1 & b_2 \\ b^3
+		\end{pmatrix} 
+		= I_3
+		\]
+		ermitteln sollen. Es reicht also, die Matrix auf der linken Seite zu invertieren. IM AUFBAU. 
+	\end{bsp} 
+	
+	\subsubsection{Tensoren und multilineare Formen} 
+	
+	Seien $V_1, \cdots V_r$ endlichdimensionale Vektorräume über $\K$ und sei $F : V_1 \times \cdots \times V_k \mapsto \K$ eine Funktion, die in jedem der $r$ Vektorargumente linear ist. Wir nennen eine solche Funktion eine multilineare Form. Bilineare Formen haben wir bereits betrachtet. Sei $n_i  = \dim(V_i)$ und wir fixieren in $V_i$ eine Basis $\cB_i = (b_{i,1},\ldots, b_{i,n_i})$. Wir können $F$ im System $\cB= (\cB_1,\ldots,\cB_r)$ der $r$ Basen folgendermaßen darstellen. Ist $v_i = \beta_{i,1} b_1 + \cdots + b_{i,n_i} b_{i,n_i}$, so hat man 
+	
+	\begin{align*}
+		F(v_1,\ldots,v_r) & = F \left( \sum_{j_1=1}^{n_1} \beta_{1,j_1} b_{1,j_1}, \cdots \sum_{j_r=1}^{n_r} b_{1,j_r} \right) 
+		\\ & = \sum_{ \substack{ j_1 =1,\ldots,n_1 \\ \vdots \\ j_r = 1,\ldots,n_r} } \beta_{1,j_1} \cdots \beta_{r,j_r} F(b_{j_1},\ldots, b_{j_r}). 
+	\end{align*}
+	
+	Die Multilineare Abbildung ist somit einduetig durch die Angabe vom Tensor 
+	
+	\begin{align*}
+		F_\cB = \left( F(b_{j_1},\ldots, b_{j_r}) \right)_{j_1,\ldots,j_r} \in \K^{n_1 \times \cdots n_r}
+	\end{align*} 
+	definiert. Diesen Tensor nennt man die Darstellung von $F$ in den Basen $\cB=(\cB_1,\ldots,\cB_r)$.  Darüber hinaus kann man das Auswerten von $F$ auf $(v_1,\ldots,v_r)$ als das Skalarprodukt
+	\[
+	F(v_1,\ldots,v_r) = \left< F_\cB \, , \, (v_1)_{\cB_1} \otimes \cdots \otimes (v_r)_{\cB_r} \right>
+	\]
+	darstellen. 
+	
+	\subsubsection{Koordinatentransformationen für Basendarstellungen multilinearer Formen}
+	
+	IM AUFBAU:  
+	
+	\begin{align*}
+		F_\cB = F_\cA \cdot ( T_{\cA_1 \leftarrow \cB_1}  \otimes \cdots \otimes T_{\cA_r \leftarrow \cB_r} ). 
+	\end{align*}
+	(Die Reihung der Dimensionen soll in dieser Formel geklärt werden)
+	
+	Sei $\Lin(V_1,\ldots,V_r ; \K)$ die Menge aller multilinearen Abbildungen von $V_1 \times \cdots \times V_r$ nach $\K$.
+	Diese Menge hat eine natürliche Struktur eines Vektorraums über $\K$ mit dieser Struktur ist 
+	
+	IM AUFBAU: Isomorphismus 
+	
+	\subsection{Tensoren und multilineare Abbildungen} 
+	
+	IM AUFBAU 
+	
+	
+	\subsection{Anwendungen der Tensoren} 
+	
+	\subsubsection{Quantenberechnungen} 
+	
+	
+	\subsection{Verallgemeinertes Hookesches Gesetz} 
+	
+	\subsection{ Tensorrang und schnelle Multiplikation von Matrizen} 
+	
+	\subsection{Quantitative Biologie}
+	
+	
+	%Für einen Vektorraum $V$ über $\K$ nennt man den Vektorraum $V^\ast := \Lin(V,\K)$ der linearen Funktionen auf $V$ \emph{dual} zu $V$. Für $\K=\R$ ist die Funktion $f (x_1,x_2,x_3,x_4) = 2 x_1 - 3 x_2 + 7 x_3 + x_4$ zum Beispiel ein Element aus $(\R^4)^\ast$. 
+	%Ist $n=\dim(V) \in \N$ und $b_1,\ldots,b_n$ Basis von $V$, so definiert man die duale Basis dazu als die Basis $y_1,\ldots,y_n$ von $V^\ast$ durch 
+	%\[
+	%y_i \,:\,	\alpha_1 b_1 + \cdots + \alpha_n b_n \mapsto \alpha_i 
+	%\]
+	%einführen. Dies ist tatsächlich eine Basis von $V^\ast$. Es gilt 
+	%\[
+	%	v = y_1(v) b_1 + \cdots + y_n(v) b_n
+	%\]
+	%für alle $v \in V$. Für jedes $f \in V^\ast$ hat man also 
+	%\[
+	%	f(v) = y_1(v) f(b_1) + \cdots + y_n(v) f(b_n) 
+	%\]
+	%Das heißt, 
+	%\[
+	%	f = f(b_1) y_1 + \cdots + f(b_n) y_n \in \lin(y_1,\ldots,y_n). 
+	%\]
+	
+	\section{Matroide}
+	
+	\section{Verschiedenes} 
+	
+	\subsection{Singulärwertzerlegung} 
+	
+	Die Singulärwertzerlegung formuliert man in der Regel mit Matrizen, es gibt aber eine entsprechende Formulierung mit linearen Abbildungen auf Euklidischen Räumen: 
+	
+	\begin{thm}
+		Seien $V, W$ endlich-dimensionale Euklidische Räume über $\K$ und  $F : V \to W$ lineare Abbidlung. Dann ist die Darstellung $F_{\cA,\cB}$ von $F$ bzgl. gewisser Orthonormalbasen $\cA = (a_1,\ldots,a_m)$ und $\cB= (b_1,\ldots,b_n)$ eine $m \times n$ Matrix, deren Diagonalemente nichnegative reelle Zahlen sind und die Elemente außerhalb der Diagonale gelich $0$ sind. Mit anderen Worten: $\scalar{F(a_i),b_j}$ liegt in $\R_{\ge 0}$ für $i  = j$ und ist $0$ für $i \ne j$. 
+	\end{thm}
+	\begin{proof}
+		Es gilt $V =  \ker(F)^\bot \obot \ker(F)$  und $W = \im(F) \obot \im(F)^\bot$. Daher kann die Basis von $V$ sowie die Basis für $W$ aus jeweils zwei orthonormalen Basen zusammengesetzt werden: $\cA = (\cA',\cA'')$ aus der Basis $\cA'$ von $\im(F)$ und einer Basis $\cA''$ von $\im(F)^\top$ und $\cB=(\cB', \cB'')$ aus einer Basis $\cB'$ von $\ker(F)^\bot$ und einer Basis $\cB''$ von $\ker(F)$. 
+		
+		Dabei können die orthonormale Basen von $\ker(F)$ und $\im(F)^\top$ beliebig gewählt werden, da die Behauptung für jede Wahl erfüllt ist. Somit kann $F$ durch die Einschränkung ersetzt werden, bei der $V$ auf $\ker(F)^\top$ und $W$ auf $\im(F)$ einngeschränkt sind. Eine solche Einschränkung ist eine Bijektion, weil sie injektiv ist un die Dimension von $\ker(F)^\top$ und $\im(F)$ (nach dem Rangsatz) gleich sind. 
+		
+		Auf diese Weise reduzieren wir den Fall von einem allgemeinen $F$ auf den Fall eines bijektiven $F$ mit $m = \dim(W) = \dim(V) =n$. In diesem Fall betrachten wir die Abbildung $F^\ast \circ F : V \to V$. Diese Abbildung ist als Komposition von zwei bijektiven Abbildungen bijektiv und sie ist seblstadjungiert. Nach dem Spektralsatz für selbstadjungierte Abbildungen besitzt $F^\ast \circ F$ eine Orthonormalbasis $\cB = (b_1,\ldots,b_n)$  aus den Eigenvektoren. Sei $\lambda_i$ der Eigenwert von $F^\ast \circ F$ zu $b_i$. Es gilt $\lambda_i> 0$ ,denn einerseits ist $\scalar{ (F^\ast \circ F)(b_i), b_i } = \scalar{ F(b_i), F(b_i)} > 0$ wegen $F(b_i) \ne 0$ und anderseits ist $\scalar{ (F^\ast \circ F)(b_i), b_i } = \scalar{\lambda_i b_i , b_i} = \lambda_i \scalar{ b_i , b_i}$ mit $\scalar{b_i,b_i}> 0$. Es stellt  sich heraus, dass die Behauptung mit $\cA = (a_1,\ldots,a_n)$ und $a_i = \frac{1}{\sqrt{\lambda_i}} F(b_i)$ erfüllt ist. Das System $\cA$ ist eine Orthonormalbasis von $W$, denn die Anzahl der Vektoren in diesem System ist $n=\dim(W)$ und man hat 
+		\begin{align*}
+			\scalar{ a_i , a_j} & = \scalar{ \frac{1}{\sqrt{\lambda_i}} F(b_i) , \frac{1}{\sqrt{\lambda_j}} F(b_j)} \\ & = \scalar{ \frac{1}{\sqrt{\lambda_i}} b_i , \frac{1}{\sqrt{\lambda_j}} (F^\ast \circ  F)(b_j)}  
+			\\ & = \scalar{ \frac{1}{\sqrt{\lambda_i}} b_i , \sqrt{\lambda_j}b_j}  
+			\\ &  = \sqrt{ \frac{\lambda_j}{\lambda_i} } \scalar{b_i , b_j} 
+			\\ & = \delta_{ij}. 
+		\end{align*}
+		
+		Des Weiteren gilt $\scalar{ F(b_i) , a_j}  = \scalar{ \sqrt{\lambda_i} a_i, a_j} = \sqrt{\lambda_i} \scalar{ a_i, a_j}$: dieser Wert ist $\sqrt{\lambda_i}$ für $i=j$ und $0$ für $i \ne j$. 
+	\end{proof} 
+	
+	
+	Die Singulärwertzerlegung hat zahlreiche Anwendungen: z.B. in Statistik und Bildverarbeitung, aber auch in der numerischen linearen Algebra und deren Anwendungen. 
+	
+	
+	
+\end{document}
