@@ -186,7 +186,18 @@ Hierbei nennt man $x_{j_1},\ldots,x_{j_r}$ in manchen Quellen die \emph{Leitvari
 
 \subsubsection{Gauß-Jordan-Verfahren}
 
-Das Gauß-Jordan-Verfahren ist eine geringfügige Modifikation des Gaus-Verfahrens bei der man in der $k$-ten Iteration die $k$-te Leitvariable $x_{j_k}$ nicht nur aus den nachfolgenden Gleichungen $z_i$ mit $i>k$ sondern auch aus den vorigen Gleichungen $z_i$ mit $i < k$ mit Transformationen vom Typ~3 entfernt. Wenn die Variablen in der Reihenfolge $x_1,\ldots,x_n$ abgearbeitet werden, so überführt das Gauß-Jordan-Verfahren das System in die sogenannte reduzierte Zeilenstufenform. Wir sagen, dass ein System in einer reduzierten Stufenform ist, wenn es in einer Stufenform ist und jede Leitvariable in genau einer Gleichung enthalten ist\footnote{in manchen Quellen fordert man zusätzlich, dass alle Pivotelemente gleich $1$ sind. Das lässt sich mit der Verwendung der Transformationen vom Typ 3 sicherstellen.}
+Das Gauß-Jordan-Verfahren ist eine geringfügige Modifikation des Gaus-Verfahrens, bei der sichergestellt wird, dass jede Leitvariable in nur einer Gleichung enthalten ist. Man kann es folgendermaßen beschreiben: 
+
+\begin{framed}
+\begin{itemize} 
+	\item Am Anfang gibt es keine Leitvariablen. 
+	\item Aus einer Gleichung, die keine Leitvariable enthält, wird eine Variable gewählt und als Leitvariable deklariert (wenn es so eine Wahl nicht mehr gibt, terminiert das Verfahren). Die neue Leitvariable wird aus allen anderen Gleichungen mit den Transformationen vom Typ 3 entfernt. 
+\end{itemize} 
+\end{framed} 
+
+Des Weiteren gibt es die Variante des Gauß-Jordan-Verfahrens, in der die Variablen in der Reihenfolge $x_1,\ldots,x_n$ abgearbeitet werden und die Gleichungen durch das Vertauschen der Zeilen genau so wie im Standard-Gauß-Verfahren sortiert werden. 
+
+Diese Version von Gauß-Jordan-Verfahrens  überführt das System in die sogenannte reduzierte Zeilenstufenform. Wir sagen, dass ein System in einer reduzierten Stufenform ist, wenn es in einer Stufenform ist und jede Leitvariable in genau einer Gleichung enthalten ist\footnote{in manchen Quellen fordert man zusätzlich, dass alle Pivotelemente gleich $1$ sind. Das lässt sich mit der Verwendung der Transformationen vom Typ 3 sicherstellen.}
 
 \begin{bsp}
 	Geben Sie eine parametrische Beschreibung der Geraden in $\R^3$, die als Lösungsmenge des LGS
