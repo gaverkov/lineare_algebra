@@ -1,3 +1,6 @@
+import PIL
+from PIL import Image, ImageOps
+
 def average(stuff):
     N=len(stuff)
     return sum(stuff)/N
@@ -25,7 +28,6 @@ def pca_demo(vectors,print_vectors=False,ptsize=25):
 
 pca_demo([ vector(RDF,[(t/4),(t/4)^2]) for t in range(5)],print_vectors=True)
 
-from PIL import Image, ImageOps
 
 def img_to_point_set(img,scaling=5,threshold=100):
     H=range(img.height)
@@ -34,7 +36,7 @@ def img_to_point_set(img,scaling=5,threshold=100):
     X=[vector(RDF,(x,h-y)) for x in W for y in H if img.getpixel((x,y))<threshold ]
     return X
 
-for FILE in ['line1.jpg','line2.jpg']:
+for FILE in ['line1.jpg','line2.jpg','line3.jpg']:
     img = PIL.Image.open(FILE)
     img = PIL.ImageOps.grayscale(img)
     X=img_to_point_set(img)
