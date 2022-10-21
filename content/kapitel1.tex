@@ -1,25 +1,37 @@
 \section{Mathematische Grundbegriffe}
 
+
+
 \subsection{Aussagen}
 
 \subsubsection{Aussage}
 
-Eine Aussage ist ein Satz, der entweder wahr oder falsch ist. Etwa:
+Bevor wir über Aussagen reden, lohnt es sich kurz über das Definieren und Bezeichnen zu reden. Das Definieren ist das Befüllen eines Wortes oder Ausdrucks mit einer eindeutigen Bedeutung. Das Bezeichnen ist was ähhliches: das ist das Befüllen eines symbolischen Ausdrucks mit einer Bedeutung. 
+ Eine Definition oder Bezeichnnung hat einen Gültigkeitsbereich. Man kann zum Beispiel schreiben: in meiner Abschlussarbeit nenne ich eine ganze Zahl schön, wenn sie durch $5$ teilbar ist. ``Schön'' wird somit zu  einer Abkürzung für ``ganze Zahl, die durch $5$ teilbar ist''. Wenn man bei der Diskussion eines Themas solche Art Zahlen öfter benötigt, kann man durch die Verwendung des Begriffs ``schön'' Aussagen kürzer fassen. Ein weiterer Vorteil ist, dass man interessante bzw. relevante Eigenschaften durch das Einführen der einschlägigen Definitionen konzeptualisiert und somit verdeutlicht und greifbar macht. Manche mathematische Strukturen werden mit Hilfe von gewissen Grundeigenschaften defininiert. Dann nennt man oft die Grundeigenschaften Axiome. Bei uns im Kurs werden Gruppen, Ringe, Körper und Vektorräume auf diese Weise eingeführt. Mathematische Fakten werden mit der Verwendung von Definitionen und Bezeichnungen als mathematische Aussagen formuliert. Das Bedeutet: rigorose Mathematik ist nichts anderes als eine Ansammlung von Definitionen, Bezeichnungen, Aussagen und deren Begrüdungen (die man, Beweise nennt). 
+
+Nun zu Aussagen. Eine (mathematische) Aussage ist eine Behauptung (meistens in der Form eines Satzes, in dem man sowohl Worte als auch mathematische Formeln nutzen darf), die  entweder wahr oder falsch ist. Die Information darüber, ob die Aussage wahr oder falsch ist, nennt man den Wahrheitswert der Aussage. 
+Hier Beispiele von Aussagen und Nicht-Aussagen: 
 \begin{itemize}
-	\item $ 2 < 1 $ (falsch)
-	\item $ 2 = 1 $ (falsch)
-	\item $ 2 > 1 $ (wahr)
-\end{itemize}
-\noindent Keine Aussagen:
-\begin{itemize}
-	\item Hallo!
-	\item Was gibt's Neues?
+	\item $ 2 < 1 $ (falsche Aussage)
+	\item $ 2 = 1 $ (falsche Aussage)
+	\item $ 2 > 1 $ (wahre Aussage)
+	\item $11$ ist eine Primzahl (es ist eine Aussage, sobald festgelegt ist, was es heißt, Primzahl zu sein). 
+	\item $0$ ist eine natürliche Zahl (Sobald man die Bedeutung des Begriffs natürliche Zahl geklärt hat, ist das eine Aussage. Ob wahr oder falsch, hängt davon ab, wie wir die natürlichen Zahlen definieren. Wenn man eine Theorie entwickelt oder eine Schrift verasst, entscheidet man selbst, mit welcher Bedeutung man Begriffe festlegt. Natürlich gibt es gewisse Standards wie man welche Fachbegriffe mit einer Bedeutung befüllt, aber auch die Freiheiten eigene Fachbegriffe im Kontext eigener Arbeit einzuführen)
+	\item ``Hallo!'' (keine Aussage, weil hier nichts Behauptet wird)
+	\item ``Was gibt's Neues?'' (keine Behauptung sondern eine Frage)
+	\item ``$1$ und $2$ sind nah beieinander'' (ist zwar eine Behauptung, aber keine Aussage, denn was heißt schon nah beieinander zu sein? Wenn wir aber vorher definieren, dass zwei natürlich Zahlen nah beinander sind, wenn der Betrag ihrer Differenz höchstens eins ist, so wird zu einer wahren Aussage.)
+	\item $(a+b)^2 = a^2 + 2 a b + b^2$ (hier fehlt die Erklärung, was eigentlich unter $a$ und $b$ gemeint ist. Wir könnten aber schreiben $(a+b)^2 = a^2 + 2 a b + b^2$ gilt für alle reellen Zahlen $a$ und $b$. Dann ist das eine wahre Aussage).
+	\item $a^2 + b^2 =c^2$.  Ist keine Aussage, weil hier nicht geklärt worden ist, was $a, b $ und $c$ überhaupt ist. 
+	item $E= m c^2$. Ebenso keine Aussage aus dem selben Grund. 
+	\item ``Die Erde ist rund''. (schon eine sinnvolle Behauptung, aber keine mathematische, denn  weißt heißt eigentlich ganz genau ``Die Erde'' und was heißt ganz genau ``rund sein''?) 
 \end{itemize}
 
+Für Mathematik (mathematische Schriften) ist charakteristisch, dass man in den mathematischen Aussagen im Gegensatz zu anderen Wissenschaften überhaupt keinen Interpretationsspielraum zulässt. Denn Begriffe werden eindeutig geklärt. Sobald dass geschehen ist, sind auch die Wahrheitswerte der Aussage eindeutig. Je genauer bei einem Forschungsthema Begriffe festgelegt werden, desto mathematischer wird das Thema in der Regel. 
 
-\begin{bem}[Benennung von Aussagen]\ Bei der Kategorisierung von beweisbaren mathematischen Aussagen gibt es die folgenden Tendenzen: 
+
+\begin{bem}[Betiteln mathematischer Aussagen] Beim Betiteln von bewiesenen mathematischen Aussagen gibt es die folgenden Tendenzen (die sich aus Tradition oder subjektiven Einschätzungen ergeben):
 	\begin{itemize}
-		\item Proposition: relativ einfach zu beweisen
+		\item Proposition: relativ einfach zu beweisen 
 		\item Theorem, Satz: bemerkenswert oder schwer zu beweisen
 		\item Lemma, Hilfssatz:  Hilfsaussage, die  technisch  ist und beim Beweis eines Theorems eingesetzt wird. 
 	\end{itemize}
@@ -30,18 +42,18 @@ Eine Aussage ist ein Satz, der entweder wahr oder falsch ist. Etwa:
 
 Seien $ A $ und $ B $ Aussagen. Dann definiert man anhand von $ A $ und $ B $ die folgenden Aussagen:
 \begin{itemize}
-	\item $ A \wedge B $ Konjunktion (\glqq und\grqq)
-	\item $ A \vee B $ Disjunktion (\glqq oder\grqq)
-	\item $ A \Rightarrow B $ Implikation
-	\item $ A \Leftrightarrow B $ Äquivalenz
-	\item $ A \:\dot{\vee}\: B $ ausschließende Disjunktion
-	\item $ \neg A $, $ \bar{A} $ Negation (Verneinung)
+	\item $ A \wedge B $ Konjunktion (\glqq und\grqq) ist genau dann wahr, wenn sowohl $A$ als auch $B$ wahr ist. 
+	\item $ A \vee B $ Disjunktion (\glqq oder\grqq) ist genau falsch, wenn sowohl $A$ als auch $B$ falsch ist. 
+	\item $ A \Rightarrow B $ Implikation ist genau dann falsch, wenn $A$ wahr und $B$ falsch ist. 
+	\item $ A \Leftrightarrow B $ Äquivalenz ist genau dann wahr, wenn die Wahrheitswerte von $A$ und $B$ gleich sind. 
+	\item $ A \:\dot{\vee}\: B $ ausschließende Disjunktion ist gen dann wahr, wenn die Wahrheitswerte von $A$ und $B$ verschieden sind. 
+	\item $ \neg A $, $ \bar{A} $ Negation (Verneinung) ist genau dann wahr, wenn $A$ falsch ist. 
 \end{itemize}
 
 \begin{bsp}\
 	\begin{itemize}
-		\item $ x,y \in \R, x = y \Rightarrow x^2 = y^2 $ (wahr)
-		\item $ x,y \in \R, x^2 = y^2 \Rightarrow x = y $ (falsch)	
+		\item Für alle $ x,y \in \R$ gilt: $x = y \Rightarrow x^2 = y^2 $ (wahr)
+		\item Für alle $ x,y \in \R$ gilt:  $x^2 = y^2 \Rightarrow x = y $ (falsch)	
 	\end{itemize}
 \end{bsp}
 
@@ -50,31 +62,53 @@ Seien $ A $ und $ B $ Aussagen. Dann definiert man anhand von $ A $ und $ B $ di
 
 \subsubsection{Menge}
 
-Eine Menge ist eine Ansammlung von Objekten. Diese Objekte nennt man Elemente der Menge. (intuitive Beschreibung, keine exakte Definition)
+Menge ist der Grundbegriff der Mathematik schlechthin. Im Prinzip kann man alle mathematischen Konzepte (Zahlen, Tupel usw.) auf dem Begriff der Menge aufbauend einführen. Das machen wir aber in diesem Kurs nicht, weil wir den übermäßigen und unnötigen Formalismus vermeiden wollen Die intuitive Beschreibung der Menge ist wie folgt: Eine Menge ist eine Ansammlung von unterscheidbaren Objekten; diese Objekte nennt man Elemente der Menge. Eine Menge $M$ ist genau dann eindeutig beschrieben, wenn man für jedes Objekt $x$ eindeutig beantworten kann, ob $x$ Element der Menge ist oder nicht. Die Menge $M=\{1,2,3\}$ etwa besteht aus genau drei Objekten - den natürlichen Zahlen $1$, $2$ und $3$. In diesem Fall ist ein Objekt $x$ genau dann Element der Menge $M$ wenn $x=1$ oder $x=2$ oder $x=3$ ist. Man kann auch Mengen einführen, deren Elemente ebenfalls Mengen sind, wie z.B. $\{\{1,2,3\},\{1,2\},\{2,3\}\}$. Die Angabe einer Menge beinhaltet keine Reihung deren Elemente. Das heißt: $\{1,2,3\}$ ist z.B. die selbe Menge wie $\{3,1,2\}$. Die Objekte, die durch die Beschreibung einer Menge in die Menge aufgenommen werden, haben auch keine Vielfachheit innerhalb der Menge. Das heißt z.B., dass $\{1,1,2,3\}$ die selbe Menge als $\{1,2,3\}$ ist. 
 
-Eine Weise, Mengen zu definieren, ist durch die Auflistung ihrer Elemente. Dabei stehen die geschweiften Klammer für Mengen, die drei Punkte bedeuten \glqq usw\grqq.
+Wir werden im Folgenden nur mit der oben eingeführten intuitiven Beschreibung des Begriffs Menge arbeiten. Es gibt auch eine exakte Beschreibung mit Hilfe von Axiomen (definierenden Grundeigenschaften), die wir aber in diesem Kurs nicht diskutieren werden. 
+
+Eine gängige Weise, Mengen zu definieren, ist durch die Auflistung ihrer Elemente. Dabei stehen die geschweiften Klammer für Mengen, die drei Punkte bedeuten \glqq usw\grqq.
 \begin{itemize}
 	\item $ \{1,2,5,7\} $
 	\item $ \{1\} $
 	\item $ \{1,\{2,5\},\{6\}\} $
 	\item $ \{1,2,3,\ldots\} $
 \end{itemize}
-Ist $ x $ Element der Menge $ X $, so schreibt man $ x \in X $. Ist $ x $ nicht Element der Menge $X$, so schreibt man $ x \notin X $.
+Ist $ x $ Element der Menge $ X $, so schreibt man $ x \in X $. Ist $ x $ kein Element der Menge $X$, so schreibt man $ x \notin X $. Die Lesart zu $x \in X$ ist: $x$ ist Element der Menge $X$. Die Lesart zu $x \not\in X$ ist: $x$ ist kein Element der Menge $X$. Hier und im Folgenden werden wir parallel zur Einführung neuer Begriffe oft auch Bezeichnungen für diese Begriffe einführen. Dadurch wird es möglich sein, über mathematische Themen mit der Verwendung der natürlichen Sprache (der Fachsprache der Mathematik) aber auch mit Hilfe von Formeln zu kommunizieren. 
 
-Seien $ A $ und $ B $ Mengen. Dann ist $ A $ genau dann eine Teilmenge von $ B $, wenn jedes Element von $ A $ auch Element von $ B $ ist ($ A \subseteq B \Leftrightarrow \forall\: x \in A : x \in B $).\footnote{In einigen mathematischen Quellen bezeichnet man die Inklusion als $ \subset $ und nicht als $ \subseteq $. Es gibt aber auch Quellen, in denen $ \subset $ die strikte Inklusion bezeichnet. Daher ziehe ich persönlich $ \subseteq $ vor.} Zwei Mengen $ A $ und $ B $ heißen genau dann gleich, wenn $ A \subseteq B $ und $ B \subseteq A $ gilt. $ A $ heißt genau dann echte Teilmenge einer Menge $ B $, wenn $ A \subseteq B $ und $ A \neq B $ erfüllt sind. Bezeichnung: $ A \varsubsetneq B $.
+Seien $ A $ und $ B $ Mengen. Dann ist $ A $ genau dann eine Teilmenge von $ B $, wenn jedes Element von $ A $ auch Element von $ B $ ist. Als Bezeichnung:  $ A \subseteq B :\Leftrightarrow \forall\: x \in A : x \in B $.\footnote{In einigen mathematischen Quellen bezeichnet man die Inklusion als $ \subset $ und nicht als $ \subseteq $. Es gibt aber auch Quellen, in denen $ \subset $ die strikte Inklusion bezeichnet. Daher ziehe ich persönlich $ \subseteq $ vor.}\footnote{Durch den Doppelpunkt in $:\Leftrightarrow$ wird verdeutlicht, dass wir hiermit eine neue Bezeichnung $\subseteq$ einführen. Das Gleiche macht man auch mit dem Gleichheitszeichen, indem man $:=$ schreibt.}  Zwei Mengen $ A $ und $ B $ heißen genau dann gleich, wenn $ A \subseteq B $ und $ B \subseteq A $ gilt. $ A $ heißt genau dann echte Teilmenge einer Menge $ B $, wenn $ A \subseteq B $ und $ A \neq B $ erfüllt sind. Bezeichnung: $ A \varsubsetneq B $.
+
+
+Beispiel: $\{Mo, Di, Mi, Do, Fr, Sa, So \} $  ist die Menge der Wochentage und $\{Sa,So\}$ ist die Menge der Wochenendtage. Die Menge der Wochenendtage ist eine Teilmenge der Menge der Wochenendtage. 
 
 \subsubsection{Zahlenmengen}
 
 \begin{itemize}
-	\item[$ \N $] $ := \{ 1,2,3,\ldots \} $ die Menge der natürlichen Zahlen\footnote{Die Definition des Begriffs natürliche Zahl sowie die Bedeutung der jeweiligen Bezeichnung $\N$ für die Menge der natürlichen Zahlen sind abhängig von einer konkreten Quelle. Manche Quellen definieren die Menge der natürlichen Zahlen als $ \set{0,1,2,\ldots} $, es ist mittlerweile sogar die ISO-Norm 80000-2, es gibt aber trotz der ISO-Norm sehr viele Quellen, in denen $0$ nicht in die Menge der natürlichen Zahl aufgenommen wird. Tendenziell wählt man  $\N = \{1,2,3,\ldots \}$ in der Analysis und $\N = \{0,1,2,\ldots\}$ in der theoretischen Informatik, Mengenlehre sowie der diskreten Mathematik.}
-	\item[$ \N_0 $] $ := \{ 0,1,2,\ldots \} $
-	\item[$ \Z $] $ := \{ 0,1,-1,2,-2,\ldots \} $ ganze Zahlen
-	\item[$ \Q $] $ := \{ \frac{p}{q} : p \in \Z, q \in \N \} $ rationale Zahlen
-	\item[$ \R $] reelle Zahlen
-	\item[$ \C $] komplexe Zahlen
+	\item Wir nennen die Menge $\N := \{ 1,2,3,\ldots \} $ die Menge der natürlichen Zahlen. Die Definition des Begriffs natürliche Zahl sowie die Bedeutung der jeweiligen Bezeichnung $\N$ für die Menge der natürlichen Zahlen sind abhängig von einer konkreten Quelle. Manche Quellen definieren die Menge der natürlichen Zahlen als $ \set{0,1,2,\ldots} $, es ist mittlerweile sogar die ISO-Norm 80000-2, es gibt aber trotz der ISO-Norm sehr viele Quellen, in denen $0$ nicht in die Menge der natürlichen Zahl aufgenommen wird. Tendenziell wählt man  $\N = \{1,2,3,\ldots \}$ in der Analysis und $\N = \{0,1,2,\ldots\}$ in der theoretischen Informatik, Mengenlehre sowie der diskreten Mathematik.
+	\item $ \N_0 := \{ 0,1,2,\ldots \} $
+	\item Wir nennen $ \Z  := \{ 0,1,-1,2,-2,\ldots \} $ die Menge ganzer Zahlen. 
+	\item Wir nennen die Menge $ \Q  := \{ \frac{p}{q} : p \in \Z, q \in \N \}$ die Menge rationaler Zahlen
+	\item Die Definition der Menge $ \R $ reeller Zahlen wird in der Analysis gegeben. 
+	\item Die Definition der Menge $\C$ der komplexen Zahlen wird in der Analysis gegeben. 
 \end{itemize}
 
-\noindent $ \Rightarrow \N \subseteq \N_0 \subseteq \Z \subseteq \Q \subseteq \R \subseteq \C $
+\noindent Für die oben eingeführten Menge gelten die Inklusionen $ \N \subseteq \N_0 \subseteq \Z \subseteq \Q \subseteq \R \subseteq \C $
+
+\begin{bem}[Intervalle]
+	Seien $ a,b \in \R $ mit $ a < b $. Dann werden dei verschiedenen Arten von  Intervallen wie folgt definiert:
+	\begin{align*}
+		[a,b] &:= \{ x \in \R : a \leq x \leq b \} & & \text{(abgeschlossenes Intervall mit den Endpunkten $a$ und $b$)}\\ 
+		(a,b) &:= \{ x \in \R : a < x < b \}  &  &\text{(offenes Intervall mit den Endpunkten $a$ und $b$)}\\
+		(a,b] &:= \{ x \in \R : a < x \leq b \} & & \text{(links offenes, rechts abgeschlossenes Intervall...)} \\ 
+		[a,b) &:= \{ x \in \R : a \leq x < b \} & & \text{(links abgeschlossenes, recht offenens Intervall...)} 
+	\end{align*}
+	Es werden auch die folgenden unbeschränkten Intervalle eingeführt:
+	\begin{align*}
+	 [a,\infty) & := \{ x \in \R \,:\, x \ge a\},
+	 \\  (a,\infty) &:= \{ x \in \R \,:\, x > a\},
+	 \\ (-\infty,b] &:= \{ x\in \R\,:\, x \le b\},
+	\\  (-\infty,b) &:= \{ x \in \R\,:\, x < b\}. 
+	\end{align*} 
+\end{bem}
 
 
 \subsubsection{Definition durch eine Bedingung}
@@ -83,27 +117,25 @@ Eine weitere Weise, Mengen zu definieren, ist durch Bedingungen. Format:
 \[
 			 \{ \text{AUSDRUCK} \,  : \, \text{BEDINGUNG} \}
 \]
-Die Lesart für den Doppelpunkt ist ``sodass''  bzw.  ``mit der Bedingung''.
+Die Lesart für den Doppelpunkt ist ``sodass''  bzw.  ``mit der Bedingung''.  (In manchen Quellen wird ein Vertikalstrich an der Stelle des Doppelpunkts benutzt.)
 
 Zum Beispiel beschreibt die Formel
  \[
  	\{ k^2 : k \in \N, \ k \, \text{ungerade} \} 
- \] die Menge aller Quadrate von positiven ungeraden Zahlen. Eine andere Beschreibung für dieselbe Menge ist 
+ \] die Menge aller Quadrate von positiven ungeraden ganzen Zahlen. Eine andere Beschreibung für dieselbe Menge ist 
  \[
- 	\{  (2i -i)^2  \, :\, i \in \N\}.
+ 	\{  (2i -1)^2  \, :\, i \in \N\}.
  \] 
 
 
 
 \subsubsection{Die leere Menge}
 
-Die leere Menge ist die Menge, die keine Elemente enthält. Bezeichnung: $ \emptyset $.
+Die leere Menge ist die Menge, die keine Elemente enthält. Sie wird als $ \emptyset $ bezeichnet. 
 
 \subsubsection{Potenzmenge}
 
-Sei $ X $ eine Menge. Dann ist die Potenzmenge von $ X $ die Menge aller Teilmengen von $ X $. Bezeichnung: $ 2^X $. Formal: $ 2^X := \{ A : A \subseteq X \} $. 
-
-Anmerkung: Ist $ | X | = n \in \N_0$, so gilt $| 2^X | = 2^n $.
+Sei $ X $ eine Menge. Dann ist die Potenzmenge von $ X $ als die Menge aller Teilmengen von $ X $ definiert. Die Potenzmenge von $X$ bezeichnen wir als  $ 2^X $. Formal: $ 2^X := \{ A : A \subseteq X \} $. Die Wahl dieser Bezeichnung ist duch die Tatsache motiviert, dass im Fall einer $n$-elementigen Menge $X$ mit $n \in \N_0$, die Potenzmenge von $X$ genau $2^n$ Elemente hat. 
 
 
 \subsubsection{Mengenoperationen}
@@ -123,7 +155,7 @@ Seinen $ A,B $ Mengen. $ A $ und $ B $ heißen genau dann disjunkt, wenn $ A \ca
 
 Für Objekte $ a,b $ kann man das \emph{geordnete Paar} $ (a,b) $ definieren. Für Objekte $ a,b,c,d $ definiert man die Gleichheit $ (a,b) = (c,d) $ durch $ a=c $ und $ b=d $. $ a $ heißt das erste Element des Paares $ (a,b) $ und $ b $ heißt das zweite Element.
 
-Für Mengen $ X,Y $ definiert man das \emph{Kreuzprodukt} $ A \times B $ durch $ A \times B := \{ (x,y) : x \in X, y \in Y \} $. Analog definiert man geordnete Tupel und das Kreuzprodukt $ A \times B \times C $ von Mengen $ X,Y $ und $ Z $. Noch allgemeiner kann man für jedes $ n \in \N $ geordnete $ n $-Tupel $ (x_1,\ldots,x_n) $ einführen und das Kreuzprodukt $ X_1 \times \ldots \times X_n := \{ (x_1,\ldots,x_n) : x_1 \in X_1, \ldots , x_n \in X_n \} $ von Mengen $ X1,\ldots,X_n $.
+Für Mengen $ X,Y $ definiert man das \emph{Kreuzprodukt} $ A \times B $ durch $ A \times B := \{ (x,y) : x \in X, y \in Y \} $. Analog definiert man geordnete Tripel und das Kreuzprodukt $ A \times B \times C $ von Mengen $ X,Y $ und $ Z $. Noch allgemeiner kann man für jedes $ n \in \N $ geordnete $ n $-Tupel $ (x_1,\ldots,x_n) $ einführen und das Kreuzprodukt $ X_1 \times \ldots \times X_n := \{ (x_1,\ldots,x_n) : x_1 \in X_1, \ldots , x_n \in X_n \} $ von Mengen $ X1,\ldots,X_n $.
 
 Für eine Menge $ X $ führt man die Bezeichnung
 \begin{equation*}
@@ -171,45 +203,54 @@ Wenn $ f $ eine Abbildung von $ X $ nach $ Y $ ist, dann bezeichnet man das durc
 %\end{table}
 
 \begin{itemize}
-	\item $ f : \R \to \R,\\ f(x) := x^2 -2x + 7 \:\forall\: x \in \R $
-	\item $ f : \R \setminus \{ 1 \} \to \R,\\ f(x) := \frac{1}{x-1} \:\forall\: x \in \R $
-	\item $ \sign: \R \to \R = \{ 1,0,1 \} $
-	\item $ f : 2^{\N} \to \N, f(A) := \min(A) \:\forall\: A \subseteq \N $, z.B. $ f( \{ 1,7,43 \} ) = 1 $
-	\item $ f : \N \to 2^\N, f(k) := \is{1}{k} \:\forall\: k \in \N $
+	\item $ f : \R \to \R$ mit $ f(x) := x^2 -2x + 7 $
+	\item $ f : \R \setminus \{ 1 \} \to \R$ mit $f(x) := \frac{1}{x-1}$
+	\item $ \sign: \R \to \R $ mit 
+	\[
+	 \sign(x) := \begin{cases} 1,  & \text{für} \ x>0, \\
+	 0,  &\text{für} \ x=0, 
+ \\ -1, & \text{für} \ x<0. \end{cases} 
+	\]
+	\item $ f : 2^{\N} \to \N$ mit $ f(A) := \min(A)$. Man hat für diese Abbildung  z.B. $ f( \{ 1,7,43 \} ) = 1 $
+	\item $ f : \N \to 2^\N$ mit  $f(k) := \is{1}{k}$
 \end{itemize}
 
-Zwei Abbildungen $ f,g : X \to Y $ heißen gleich, falls $ f(x) = g(x) $ für alle $ x \in X $ gilt. Durch $ Y^X $ bezeichnet man die Menge aller Abbildungen von $ X $ nach $ Y $.
+Zwei Abbildungen $ f,g : X \to Y $ heißen gleich, falls $ f(x) = g(x) $ für alle $ x \in X $ gilt. Als $ Y^X $ bezeichnen wir die Menge aller Abbildungen von $ X $ nach $ Y $.
 
 \subsubsection{Bild und Urbild}
 
 Seien $ X,Y,A,B $ Mengen mit $ A \subseteq X $ und $ B \subseteq Y $. Sei $ f : X \to Y $. Dann heißt $ f(A) := \{ f(x) : x \in A \} $ das Bild von $ A $ bzgl. $ f $ und $ f^{-1}(B) := \{ x \in X : f(x) \in B \} $ das Urbild von $ B $ bzgl. $ f $.
 
 \begin{bsp}
-	Sei $ f : \R \to \R $ mit $ f(x) := x^2 $ für alle $ x \in \R $.
-	\begin{itemize}
-		\item $ f( [1,2] ) = [1,4] $ $ \nearrow $ Abb. 1
-		\item $ f^{-1}( [1,4] ) = [1,2] \cup [-2,-1] $ $ \nearrow $ Abb. 2
-		\item
+	Für die Abbildung $ f : \R \to \R $ mit $ f(x) := x^2 $ hat man 
+	\[
+		 f( [1,2] ) = \{ x^2 \,:\, 1 \le x \le 2\} = [1,4] .
+	\]
+\begin{center}
+	\includegraphics[width=0.3\textwidth]{sage/bild_abb.pdf}
+\end{center} 
+	
+	Außerdem hat man die folgenen Urbilder: 
+	
+	\[
+		 f^{-1}( [1,4] ) = \{ x \in \R \,:\, x^2  \in [1,4] \} = [1,2] \cup [-2,-1] .
+	\] 
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{sage/urbild_abb.pdf}
+\end{center} 
+
+und
+
 		$ \begin{aligned}[t]
-			f^{-1}( [-7,8] ) &= \{ x \in \R : f(x) \in [-7,8] \} \\
-			&= \{ x \in \R : -7 \leq f(x) \leq 8 \} \\
-			&= \{ x \in \R : -7 \leq x^2 \leq 8 \} \\
-			&= \{ x \in \R : x^2 \leq 8 \} \\
-			&= \{ x \in \R : |x| \leq \sqrt{8} \} \\
-			&= [-\sqrt{8},\sqrt{8}]
+			f^{-1}( [-1,4] ) &= \{ x \in \R : f(x) \in [-1,4] \} \\
+			&= \{ x \in \R : -1 \leq f(x) \leq 4 \} \\
+			&= \{ x \in \R : -1 \leq x^2 \leq 4 \} \\
+			&= \{ x \in \R : x^2 \leq 4 \} \\
+			&= \{ x \in \R : |x| \leq 2 \} \\
+			&= [-2,2]
 		\end{aligned} $
-\end{itemize}
 \end{bsp}
 
-\begin{bem}[Intervalle]
-	Seien $ a,b \in \R $ mit $ a \leq b $. Dann können Intervalle wie folgt definiert werden:
-	\begin{align*}
-		[a,b] &:= \{ x \in \R : a \leq x \leq b \}\\
-		(a,b) &:= \{ x \in \R : a < x < b \}\\
-		(a,b] &:= \{ x \in \R : a < x \leq b \}\\
-		[a,b) &:= \{ x \in \R : a \leq x < b \}
-	\end{align*}
-\end{bem}
 
 \subsubsection{Injektivität, Surjektivität und Bijektivität}
 
@@ -232,7 +273,7 @@ Seien $ X,Y $ Mengen und sei $ f : X \to Y $. Dann heißt $ f $:
 		\item $ f : \R \setminus \{ 0 \} \to \R, f(x) = \frac{1}{x} $ für alle $ x \in \R $\\
 		surjektiv ? nein, 0 wird nicht angenommen\\
 		injektiv ? ja
-		\item $ f : \R \to R, f(x) = 2x + 3 $ für alle $ x \in \R $\\
+		\item $ f : \R \to \R, f(x) = 2x + 3 $ für alle $ x \in \R $\\
 		bijektiv ? ja
 	\end{itemize}
 \end{bsp}
@@ -276,7 +317,7 @@ Für die Familie $ (A_i)_{i \in I} $ definiert man
 \end{align*}
 
 \begin{bsp}
-	 $A_t := [t-1,t+1]$ ist die Menge aller Punkte in $\R$, deren Entfernung von $t \in \R$ höchstens $1$ ist. Dann ist $\bigcap{t \in [-1,1]} A_t = \{0\}$, denn $0$ ist der einzige Punkt in $\R$, dessen Entfernung zu allen Punkte in $[-1,1]$ höchstens $1$ ist. Des Weiteren ist $\bigcup_{t \in [-1,1]} A_t = [-2,2]$, denn alle Punkte im Intervall $[-2,2]$, und nur diese Punkte auf der reellen Achse $\R$, haben den Abstand höchstens $1$ zu einem Punkt aus $[-1,1]$. 
+	 $A_t := [t-1,t+1]$ ist die Menge aller Punkte in $\R$, deren Entfernung von $t \in \R$ höchstens $1$ ist. Dann ist $\bigcap_{t \in [-1,1]} A_t = \{0\}$, denn $0$ ist der einzige Punkt in $\R$, dessen Entfernung zu allen Punkte in $[-1,1]$ höchstens $1$ ist. Des Weiteren ist $\bigcup_{t \in [-1,1]} A_t = [-2,2]$, denn alle Punkte im Intervall $[-2,2]$, und nur diese Punkte auf der reellen Achse $\R$, haben den Abstand höchstens $1$ zu einem Punkt aus $[-1,1]$. 
 \end{bsp} 
 
 %\begin{bsp}
@@ -337,9 +378,9 @@ $ \exists\: x \in X : P(x) $ bezeichnet die Aussage \textquote{die Bedingung $ P
 \end{bem}
 
 \begin{bsp}
-	Sei $ (a_n)_{n \in \N} $ Folge reeller Zahlen (mit anderen Worten: $ a : \N \to \R $) und sei $ \alpha \in \R $. Dann heißt $ \alpha $ Limes von $ (a_n)_{n \in \N} $, falls das Folgende gilt:
+	Sei $ (x_n)_{n \in \N} $ Folge reeller Zahlen (mit anderen Worten: $ x : \N \to \R $) und sei $ a\in \R $. Dann heißt $ \alpha $ der Grenzwert von $ (x_n)_{n \in \N} $, wenn das Folgende gilt:
 	\begin{equation*}
-		\forall\: \epsilon \in \R^+ \:\exists\: N \in \N \:\forall\: n \in \N: \left( (n \geq N) \Rightarrow (|a_n - \alpha| < \epsilon) \right)
+		\forall\: \epsilon \in \R_{>0} \:\exists\: N \in \N \:\forall\: n \in \N: \left( (n \geq N) \Rightarrow (|x_n - a| < \epsilon) \right)
 	\end{equation*}
 \end{bsp} 
 
@@ -356,7 +397,7 @@ Wenn für $ x \in X $ und $ y \in Y $ die Bedingung $ (x,y) \in R $ gilt, so sch
 \begin{itemize}
 	\item $ X $ - Menge von Fahrzeugen\\
 	$ Y $ - Menge von Features von Fahrzeugen
-
+\begin{center}
 	\begin{tabular}{l|c|c|c|c}
 		& Ersatzrad & Radio & Navi & Automatik \\
 		\hline
@@ -365,6 +406,7 @@ Wenn für $ x \in X $ und $ y \in Y $ die Bedingung $ (x,y) \in R $ gilt, so sch
 		$ f_3 $ & 0 & 0 & 1 & 1 \\
 		$ f_4 $ & 0 & 1 & 1 & 0
 	\end{tabular}
+\end{center}
 	\item $ \leq, <, \geq, > $ auf $ \R $
 	\item $ \subseteq $ als Relation auf $ 2^X $ für eine Menge $ X $
 	\item Für $ a,b \in \N $ schreibt man $ a | b $, wenn $ b $ durch $ a $ ohne Rest teilbar ist.
