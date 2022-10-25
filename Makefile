@@ -1,10 +1,11 @@
 .PHONY: all
 all:
 	mkdir -p output
-	pdflatex -output-directory=output LineareAlgebra.tex
-	pdflatex -output-directory=output LineareAlgebra.tex
-	pdflatex -output-directory=output LineareAlgebra_pr.tex
-	pdflatex -output-directory=output LineareAlgebra_pr.tex
+	for f in LineareAlgebra LineareAlgebra_pr it2 it2_pr; \
+	do \
+	    pdflatex -output-directory=output $$f.tex; \
+			pdflatex -output-directory=output $$f.tex; \
+	done
 	rm output/*.aux
 	rm output/*.log
 	rm output/*.toc
