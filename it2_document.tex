@@ -1,0 +1,179 @@
+\usepackage{amsmath}
+\numberwithin{equation}{subsection} 
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{csquotes}
+
+%\usepackage[style=authortitle,    % Zitierstil
+%            pagetracker=true,     % ebd. bei wiederholten Angaben
+%            maxcitenames=3,       % ab 4 Autoren im Text: Autor1 u.a.
+%            backend=biber         % erstellt *.bcf für biber
+%            ]{biblatex}
+
+%\addbibresource{content/lit.bib}
+
+\usepackage{graphicx, float}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{stmaryrd}
+\usepackage{xfrac}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8} %every axis legend/.append style={nodes={text depth=,text width=5.5cm}}
+\usepackage{tcolorbox}
+
+\usepackage{blindtext}
+
+\usepackage{enumitem}
+\usepackage{marginnote}
+\usepackage{calc}
+
+% evt für Zitate von Prof. Averkov
+\usepackage{xcolor,framed}
+\colorlet{shadecolor}{gray!25}
+
+\usepackage{appendix}
+\usepackage{scrtime}
+
+\usepackage{multicol,mathtools}
+
+\usepackage{polynom}
+\polyset{style=B} % \polylongdiv rule! Styles B und C sehen gut aus!
+
+% ==================================================
+%  Neue Funktionen u.ä.
+% ==================================================
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\I}{\mathbb I}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+
+\newcommand{\sign}{\operatorname{sign}} % signum
+\newcommand{\id}{\operatorname{id}} % identity
+\newcommand{\im}{\operatorname{im}} % image
+\newcommand{\rang}{\operatorname{rang}} % rang
+\newcommand{\AverkovRe}{\operatorname{Re}} % real part
+\newcommand{\AverkovIm}{\operatorname{Im}} % imaginary part
+\newcommand{\lin}{\operatorname{lin}} % linear span
+\newcommand{\Lin}{\operatorname{Lin}} % set of linear functions
+\newcommand{\GL}{\operatorname{GL}} % general linear
+\newcommand{\ggT}{\operatorname{ggT}} % german gcd
+\newcommand{\Eig}{\operatorname{Eig}} % eigenraum
+\newcommand{\tr}{\operatorname{tr}} % trace / spur
+\newcommand{\diag}{\operatorname{diag}} % diagonal matrix
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\scalar}[1]{\left\langle #1 \right\rangle}
+
+\newcommand{\is}[2]{\{ #1,\ldots,#2 \}} % IndexSet{first}{last}
+\newcommand{\ot}{\leftarrow} % reverse from \to
+\newcommand{\bordernote}[1]{{\color{darkgray} #1}} % style for line notes and column notes for bordermatrices
+
+\newcommand{\vertical}[1]{\rotatebox[origin=c]{-90}{$ #1 $}}
+\newcommand{\obot}{\mathrel{\tikz[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]{ \node[circle,draw,inner sep=0pt,scale=0.625,line width=0.3pt]{$ \bot $}; }}} % mathrel for spacing like \oplus
+
+\theoremstyle{plain}
+\newtheorem*{propn}{Prop}
+\newtheorem*{thm}{Thm}
+\newtheorem*{lm}{Lem}
+\newtheorem*{klr}{Kor}
+
+\theoremstyle{definition}
+\newtheorem*{bsp}{Bsp}
+\newtheorem*{bspe}{Bsp}
+\newtheorem*{bem}{Bem}
+\newtheorem*{wdh}{Wiederholung}
+
+% Datumsformatierungen:
+\newcommand{\sectionwithdate}[2]
+{\section[#1]{#1 \hfill\normalfont\normalsize #2}}
+\newcommand{\subsectionwithdate}[2]
+{\subsection[#1]{#1 \hfill\normalfont\normalsize #2}}
+\newcommand{\subsubsectionwithdate}[2]
+{\subsubsection[#1]{#1 \hfill\normalfont\normalsize #2}}
+
+% Listenformatierung:
+\renewcommand{\labelenumi}{\normalfont (\roman{enumi})}
+\renewcommand{\labelenumii}{\normalfont (\alph{enumii})}
+\setlist[description]{font=\normalfont\textbf}
+
+% ==================================================
+%  Pakete, die unbedingt zum Schluss stehen müssen
+% ==================================================
+
+\usepackage{hyperref}
+
+% used for long labels in itemize and enumerate
+\newlength{\myindent}
+
+\usepackage{comment}
+\excludecomment{proof}
+%\renewenvironment{proof}{}{}
+
+% ==================================================
+%  Titelblatt, Selbstständigkeitserklärung
+% ==================================================
+
+\begin{document}
+	
+	% For every picture that defines or uses external nodes, you'll have to
+	% apply the 'remember picture' style. To avoid some typing, we'll apply
+	% the style to all pictures.
+	\tikzstyle{every picture}+=[remember picture]
+	
+	% Below we mix an ordinary equation with TikZ nodes. Note that we have to
+	% adjust the baseline of the nodes to get proper alignment with the rest of
+	% the equation.
+	\tikzstyle{na} = [baseline=-.5ex]
+	
+	%\pagenumbering{Roman}
+	\input{content/it2_titelseite.tex}
+	
+	% ==================================================
+	%  Inhalt
+	% ==================================================
+	
+	\tableofcontents
+	\cleardoublepage
+	
+	%\pagenumbering{arabic}
+	
+%	\input{content/kapitel1.tex}
+%	\clearpage
+	\input{content/it2_kapitel2.tex}
+	\clearpage
+	\begin{appendices}
+	\input{content/appendix_gauss.tex}
+	\end{appendices}
+	\clearpage
+	\input{content/kapitel3.tex}
+	\clearpage
+	\input{content/kapitel4.tex}
+	\clearpage
+	\input{content/kapitel5.tex}
+	\clearpage
+	\input{content/kapitel6.tex}
+	\clearpage
+	\input{content/kapitel7.tex}
+	
+	
+	
+	
+\end{document}

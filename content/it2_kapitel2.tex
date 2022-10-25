@@ -1,0 +1,543 @@
+\section{Ausgewählte algebraische Strukturen}
+
+Die algebraischen Strukturen dieses Kapitels haben zwei Formen. $(X,\ast)$ -- Grundmenge $X$, die mit einer Verknüpfung $\ast$ ausgestattet ist, und $(X,\cdot, +)$ -- Grundmenge, die mit zwei Verknüpfungen $\cdot$ und $+$ ausgestattet ist. 
+
+\subsection{Gruppen}
+
+\subsubsection{Binäroperationen}
+
+Sei $ X $ Menge und sei $ \ast : X \times X \to X $. Dann heißt $ \ast $ eine \emph{Binäroperation} (bzw. \emph{Binärverknüpfung}) auf $ X $.  Die Struktur $(X,\ast)$  mit einer Binäroperation $X \times X \to X$ nennt man in Algebra ein \emph{Magma}. 
+
+\begin{bsp}
+	$+, -, \cdot$ sind binäre Operationen auf $\Q$, $/$ ist eine binäre Operation auf $\Q \setminus \{0\}$, aber nicht auf $\Q$. 
+\end{bsp} 
+
+Man schreibt $ x \ast y $ statt $ \ast(x,y) $ für $ x,y \in X $. $ \ast $ heißt \emph{assoziativ}, wenn 
+\[
+	 x \ast ( y \ast z ) = ( x \ast y ) \ast z 
+\] für alle $ x,y,z \in X $. Ein Paar $(X,\ast)$, für welches $\ast : X \times X \to X$ assoziativ ist, nennt man in Algebra eine \emph{Halbgruppe}. 
+
+\begin{bsp}\ $+$ und $\cdot$ sind beide assoziativ auf $\Z$, sowie $\Q$, $\R$ und $\C$. $-$ ist nicht assoziativ auf $\Z$. 
+	
+	Für eine gegebene Menge $X$ ist $\circ$ ist eine assoziative Operationen auf der Menge aller Abbildungen von $X$ nach $X$. 
+\end{bsp}
+
+\begin{bem}
+	Bei einer Assoziativen Binäroperation hat die Wahl der Klammerung von $ x_1 \ast \ldots \ast x_n $ mit $ n \in \mathbb N $ und $ x_1,\ldots,x_n \in X $ keinen Einfluss auf den Wert dieses Ausdrucks. Zum Beispiel kann man mit einer mehrfachen Anwendung des Assoziativgesetzes zeigen, dass  $a \ast (b \ast (c \ast d)) = ((a \ast b) \ast c) \ast d$ für alle $a,b,c,d \in X$ gilt. Wie oft soll man das Assoziativgesetz anwenden, um dieses Gesetz herzuleiten? 
+\end{bem}
+
+\subsubsection{Gruppe}
+
+Sei $ G $ Menge und $ \ast : G \times G \to G $. Dann heißt $ (G,\ast) $ \emph{Gruppe}, falls:
+
+\setlength{\myindent}{
+	\maxof{
+		\widthof{(G1)}
+	}{
+		\widthof{(G2)}
+	}
+}
+\advance\myindent by \the\labelsep
+
+\begin{itemize}[leftmargin=\myindent]
+	\item[(G1)] $ \ast $ ist assoziativ, d.h. $ a \ast ( b \ast c ) = ( a \ast b ) \ast c $ für alle $ a,b,c \in G $.
+	\item[(G2)] Es existiert ein eindeutiges Element $ e \in G $, sodass für jedes $ a \in G $:
+	\begin{enumerate}[label={(\alph*)}]
+		\item $ e \ast a = a \ast e = a $ gilt
+		\item und ein eindeutiges Element $ b^{-1} \in G $ existiert mit $ a^{-1} \ast a = a \ast a^{-1} \ast e $.
+	\end{enumerate}
+\end{itemize}
+Das $ e \in G $ wird \emph{das neutrale Element} genannt und $a^{-1}$ das \emph{inverse Element} von $a$. Für $ a \in G $ heißt jedes $ b \in G $ mit $ b \ast a = e $ ein \emph{linkes inverses Element} von $ a $ bzgl. $ e $.
+
+Eine Gruppe $ (G,\ast) $ heißt \emph{abelsch} (oder \emph{kommutativ}), falls $ a \ast b = b \ast a $ für alle $ a,b \in G $ gilt.
+
+\begin{bem}
+	Oft wird die Gruppenoperation $ \ast $ durch $ \cdot $ bezeichnet. In diesem Fall sagt man, dass die Gruppe multiplikativ geschrieben wird. Man benutzt dann auch die Standardbegriffe und -bezeichnungen für die Multiplikation:
+	\begin{align}
+		ab &:= a \cdot b \\
+		a^n &:= \underbrace{a \cdot \ldots \cdot a}_{n \text{\: mal}} \quad (\text{für}\: n \in \mathbb N) \\
+		a^0 &:= e.
+	\end{align}
+	Damit die Definition $a^0 = e $ korrekt ist, muss noch bewiesen werden, dass das $e$ aus (G2)(a) eindeutig ist. Die Eindeutigkeit wird in Kürze bewiesen. 
+	
+	Eine multiplikativ geschriebene Gruppe muss nicht kommutativ sein (d.h. $ ab = ba $ muss in einer Gruppe $(G, \cdot)$ nicht gelten).
+\end{bem}
+
+\begin{bem}
+Wenn die Gruppe kommutativ ist, dann wird die Gruppenoperation auch oft durch $ + $ bezeichnet. In diesem Fall verwendet man die Bezeichnungen und Begriffe für die Addition:
+\begin{itemize}
+	\item Das Inverse zu $ a \in G $ wird durch $ -a $ bezeichnet und das Negative von $ a $ genannt.
+	\item $ na := \underbrace{a+ \ldots + a}_{n-mal} $ für alle $ n \in \N $ und $ a \in G $
+	\item Das neutrale Element wird durch $ 0 $ bezeichnet.
+\end{itemize}
+In einer kommutativen Gruppe $ (G, \cdot) $ gilt:
+\begin{itemize}
+	\item
+	$ (a+b)+c = a+(b+c) \quad \forall a,b,c \in G $
+	\item
+	$ a+b = b+a \quad \forall a,b \in G $
+	\item
+	Es existiert genau eine $ 0 \in G $ mit $ a+0 = a \quad \forall a \in G $
+	\item
+	für jedes $ a \in G $ existiert genau ein $ -a \in G $ mit $ a+ (-a) = 0 $
+\end{itemize}
+\end{bem}
+
+\begin{bsp}
+	Kommutative Gruppen: \hfill $ (\mathbb{Z}, +), \hfill (\mathbb{Q}, +), \hfill (\mathbb{R}, +), \hfill (\mathbb{Q} \backslash \{0\}, \cdot ), \hfill (\mathbb{R} \backslash \{0\}, \cdot ) $.
+\end{bsp}
+
+
+\begin{bsp}\
+\begin{itemize}
+	\item Sei $ n \in \N $. Wir bezeichnen durch $ S_n $ die Menge aller bijektiven Abbildungen von $ \is{1}{n} $ in $ \is{1}{n} $. Die Elemente von $ S_n $ nennt man \emph{Permutationen} von $ \is{1}{n} $.
+	
+	Man führt die Operation $ \cdot $ auf $ S_n $ ein, durch $ \sigma \cdot \tau := \sigma \circ \tau $ für alle $ \sigma,\tau \in S_n $.
+	
+	Wie sieht $ S_n $ aus? Für $ n = 1,2,3,\ldots $
+	\begin{itemize}
+		\item[$ S_1 : $] $ |S_1| = 1 $
+
+		\begin{center} 
+		\begin{tabular}{c|c}
+			$ i $ & $ e(i) $ \\
+			\hline
+			1 & 1
+		\end{tabular}
+		\end{center} 
+	
+		\item[$ S_2 : $] $ |S_1| = 2 $
+
+		\begin{center} 
+		\begin{tabular}{c|cc}
+			$ i $ & $ e(i) $ & $ \sigma(i) $ \\
+			\hline
+			1 & 1 & 2 \\
+			2 & 2 & 1
+		\end{tabular}
+		\end{center} 
+	
+		\item[$ S_3 : $] $ |S_1| = 6 $
+
+		\begin{center} 
+		\begin{tabular}{c|cccccc}
+			$ i $ & $ e(i) $ & $ \sigma(i) $ & $ \tau(i) $ & $ \phi_1(i) $ & $ \phi_2(i) $ & $ \phi_3(i) $ \\
+			\hline
+			1 & 1 & 3 & 2 & 1 & 3 & 2 \\
+			2 & 2 & 1 & 3 & 3 & 2 & 1 \\
+			3 & 3 & 2 & 1 & 2 & 1 & 3 
+		\end{tabular}
+		\end{center} 
+
+		Was ist $ \tau \phi_1 $? 	Was ist $ \phi_1 \tau $? Sind $\tau \phi_1$ und $\tau \phi_1$ gleich? 
+
+		\item[$ S_n : $] Die Anzahl der Elemente in $ S_n $ ist $ |S_n| := n! = \prod\limits_{i=1}^{n}i $ für jedes $ n \in \N $.
+
+		Anmerkung: $ 0! = 1 $. 
+	\end{itemize}
+	
+	\item Horizontale Spiegelung $ h $ und vertikale Spiegelung $ v $ auf ein Rechteck:
+	
+	Wir generieren die Menge aller Operationen, die durch Komposition von $ v $ und $ h $ (in einer beliebigen Reihenfolge) erzeugbar sind.
+	
+	Die Gruppe wird genau so wie $ S_n $ multiplikativ geschrieben.
+	\begin{align*}
+	h^2 &= e &(\text{neutral}) \\
+	v^2 &= e \\
+	hv &= vh &(\text{Drehung um 180°})
+	\end{align*}
+	Damit ist $ \{ e,h,v,hv \} $ die Menge aller Operationen. Deren Verknüpfungen lauten:
+	
+	\begin{center}
+	\begin{tabular}{c||c|c|c|c}
+		$ \cdot $ & e & h & v & hv \\
+		\hline \hline
+		e & e & h & v & hv \\
+		h & h & e & hv & v \\
+		v & v & hv & e & h \\
+		hv & hv & v & h & e
+	\end{tabular}
+	\end{center}
+	
+	\item Sei $ G $ die Menge aller Funktionen $ f : \R \to \R $ der Form $ f(x) := ax + b $ mit $ a \in \R \setminus \{ 0 \} $ und $ b \in \R $. Dann ist $ (G,\circ) $ eine Gruppe mit unendlich vielen Elementen.
+\end{itemize}
+\end{bsp}
+
+
+\subsubsection{Das Inverse des Produkts und der Potenz}
+\begin{propn}
+	Sei $ (G, \cdot) $ Gruppe, Seien $ a, b \in G $ und $ n \in \N $, dann gilt
+	\begin{align}
+		(ab)^{-1} &= b^{-1} a^{-1},\\
+		(a^{n})^{-1} &= (a^{-1})^{n}.
+	\end{align}
+\end{propn}
+\begin{proof}
+	Übungsaufgabe
+\end{proof}
+
+\noindent Mit der Berücksichtigung dieser Proposition setzen wir 
+\begin{align*}
+	(a)^{-n} &:= (a^{n})^{-1} = (a^{-1})^{n} \quad\text{für } n \in \N,\\
+	a^{0} &:= e. 
+\end{align*}
+
+\subsubsection{Zyklische Gruppen}
+Eine Gruppe $ (G, \cdot) $ heißt zyklisch, falls $ a \in G $ existiert, sodass jedes $ x \in G $ als $ x = a^n $ mit $ n \in \Z $ darstellbar ist. 
+
+Für eine additiv geschriebene Gruppe $ (G, +) $ lässt sich diese Eigenschaft so hinschreiben: es existiert ein $ a \in G $, sodass jedes $ x \in G $ als $ x = na $ mit $ n \in \Z $ darstellbar ist.)
+
+
+\begin{bsp}
+	$ (\Z, +) $ ist zyklisch. $ (\Q, +) $ ist nicht zyklisch.
+\end{bsp}
+
+\begin{propn}
+	Sei $ m \in \mathbb{N} $. Seien $ A,B \in \Z / m\mathbb{Z} $ (Restklassen). Dann existiert eine eindeutige Restklasse $ C \in \Z/m\Z $ mit $ a+b \in C $ für alle $ a \in A, b \in B $.
+\end{propn}
+
+\noindent Die Klasse $ C $ aus der Proposition wird durch $ A+B $ bezeichnet; mit $ A,B $ wie in der Proposition. Somit hat man eine Addition auf $ \Z/m\Z $ eingeführt.
+
+\begin{propn}
+	Sei $ m \in \mathbb{N} $. Dann ist $ ( \mathbb{Z} / m\mathbb{Z} , +) $ eine zyklische Gruppe.
+\end{propn}
+\begin{proof}
+	Die Gruppeneigenschaften kann man direkt verifizieren. Die Gruppe ist zyklisch, weil sie offensichtlich durch $[1]$ (die Restklasse von $1$) erzeugt wird. 
+\end{proof}
+
+\subsubsection{Untergruppen}
+Sei $ (G, \cdot) $ Gruppe und $ \emptyset \ne H \subseteq G $. Dann heißt $ H $ Untergruppe von $ (G, \cdot) $, falls für alle $ a,b \in H $ gilt:
+\begin{enumerate}
+	\item $ ab \in H $ (Abgeschlossenheit),
+	\item $ a^{-1} \in H $ (Existenz der Inversen innerhalb von $ H $).
+\end{enumerate}
+
+\begin{bem}
+	$ H $ ist genau dann eine Untergruppe von $ (G, \cdot) $, wenn $ \cdot $ eingeschränkt werden kann und $ (H, \cdot) $ eine Gruppe ist.
+\end{bem}
+
+
+\subsection{Ringe}
+
+\subsubsection{Ring}
+Sei $ R $ nichtleere Menge und $ + $ sowie $ \cdot $ Binäroperationen auf $ R $. Dann heißt $ (R,+,\cdot) $ Ring, falls:
+\begin{itemize}
+	\item[(R1)] $ (R,+) $ ist eine kommutative Gruppe
+	\item[(R2)] $ \cdot $ ist assoziativ
+	\item[(R3)] Es gelten die Distributivgesetze
+	\begin{enumerate}[label={(\alph*)}]
+		\item $ (a+b)c = ac+bc $
+		\item $ c(a+b) = ca+cb $
+	\end{enumerate}
+\end{itemize}
+Ein Ring $ (R, +, \cdot) $ heißt kommutativ, falls $ \cdot $ kommutativ ist. Ein Ring $ (R,+, \cdot) $ heißt ein Ring mit $ 1 $ bzw. unitärer Ring, falls ein Element $ 1 \in R $ mit $ 1 \cdot a = a \cdot 1 = a \quad \forall a \in R $ existiert.
+
+\begin{bsp}\
+	\begin{itemize}
+		\item
+			Kommutative Ringe mit 1:
+			
+			$ (\mathbb{Z},+, \cdot), \quad (\mathbb{Q},+, \cdot), \quad (\mathbb{R},+, \cdot) $.
+		\item
+			Sei $ X $ nichtleere Menge. Dann ist $ (\mathbb{R}^{X},+,\cdot) $ mit 
+			\begin{align*}
+				(f+g)(x) &:= f(x) + g(x) & \forall x \in X \\
+				(f \cdot g)(x) &:= f(x) \cdot g(x) & \forall x \in X
+			\end{align*}
+			ein Ring.
+		\item
+			Polynomringe und Matrizenringe (später)
+	\end{itemize}
+\end{bsp}
+
+\begin{bem}
+	In einem Ring $ (R,+,\cdot) $ gilt
+	\begin{equation}
+		a \cdot 0 = 0 \cdot a = 0.
+	\end{equation}
+\end{bem}
+\begin{proof}
+	\begin{align*}
+		&&a \cdot 0 &= a \cdot (0+0) = a \cdot 0+ a \cdot 0 \\
+		&\Rightarrow &\underbrace{a \cdot 0 + (-(a \cdot 0))}_{0} &= a \cdot 0 + \underbrace{a \cdot 0+(-(a \cdot 0))}_{0}\\
+		&\Rightarrow & 0 &= a \cdot 0 + 0 = a \cdot 0 \qedhere
+	\end{align*}
+\end{proof}
+
+\subsubsection{Polynomring in einer Unbestimmten}
+
+
+Sei $ R $ kommutativer Ring und $ x $ ein formales Symbol (das man auch eine Unbestimmte bzw. eine formale Variable nennt.). Die Menge $R[x]$ der Polynome in $x$ mit Koeffizienten in $x$ besteht aus den formalen Ausdrücken der Form
+\begin{equation}
+	f = \sum_{i=0}^{\infty} c_{i}x^{i} \label{eq:2_2_2_kommutativeRing}
+\end{equation}
+ mit $ c_{i} \in R $ für alle $i \in \N_0$ und $c_i \ne 0$ nur für endlich viele $i \in \N_0$. 
+
+Die Elemente von $ R[x] $ heißen Polynome in der Unbestimmten $ x $ mit Koeffizienten in $ R $, der Ausdruck $x^i$ heißt Monom vom Grad $i$, und der Ausdrücke $ c_ix^i $ bei $c_i \ne 0$ heißt der Term von $f$ vom Grad $i$. 
+
+
+Für $ f $ in \eqref{eq:2_2_2_kommutativeRing} definiert man den Grad $\deg f$ von $ f $ als den maximalen Grad eines Terms in $f$. Im Fall, dass $f$ ein Nullpolynom ist (das Polynom mit $c_i =0$ für alle $i \in \N_0$), setzt man $\deg f = -\infty$. Ein Polynom vom Grad höchstens $N \in \N_0$ lässt sich somit als $\sum_{i=0}^N c_i x^i$ darstellen. 
+
+Die Gleichheit der Polynome wird durch den Koeffizientenvergleich definiert. 
+
+In $ R[x] $ definiert man $ + $ und $ \cdot $ für $ f = \sum_{i=0}^{\infty} c_{i}x^{i} $ und $ g = \sum_{i=0}^{\infty} d_{i}x^{i} $ durch:
+\begin{align}
+	f+g &:= \sum_{i=0}^{\infty} (c_{i}+d_{i})x^{i} \\
+	f \cdot g &:= \sum_{i,j \in \N_0} c_i d_j x^{i+j} = \sum_{k=0}^\infty \left( \sum_{i=0}^k c_i d_{i-k} \right) x^k
+\end{align}
+
+\begin{propn}
+	Sei $ R $ ein kommutativer Ring und $ x $ eine Unbestimmte, dann ist $ R[x] $ ein kommutativer Ring. (Ohne Beweis).
+\end{propn}
+
+\begin{bsp}
+	Der Fall $ R = \Z $:
+	\begin{eqnarray*}
+		10 \in \Z[x] & \text{denn} & 10 = \sum_{i=0}^{\infty}c_{i}x^{i} \quad \text{ mit } c_{0} = 10, c_1 = c_2 = \cdots = 0. \\
+		5x \in \Z[x] & \text{denn} & 5x = \sum_{i=0}^{\infty}c_{i}x^{i} \quad \text{ mit } c_0= 0, \ c_{1} = 5, c_2 = c_3 = \cdots = 0 \\
+		1-5x+x^{3} \in \Z[x] & 
+		\text{denn} & c_{0} = 1,~ c_{1} = -5, ~c_2 = 0, ~c_{3} = 1,  c_4 = c_5 = \cdots = 0.
+	\end{eqnarray*}
+\end{bsp}
+
+\begin{bsp}
+\begin{align*}
+	f &= 1 + 2x + 5x^2 \\
+	g &= 3 - 7x + 6x^2 + x^3 \\
+	f + g &= (1+3) + (2+(-7))x + (5+6)x^2 + (0+1)x^5 \\
+	f \cdot g &= (1 \cdot 3) + (1 \cdot (-7) + 3 \cdot 2)x + (1 \cdot 6 + 2 \cdot (-7) + 5 \cdot 3)x^2 \\
+	&\quad + (1 \cdot 1 + 2 \cdot 6 + 5 \cdot (-7))x^3 + (2 \cdot 1 + 5 \cdot 6)x^4 + (5 \cdot 1)x^5
+\end{align*}
+\end{bsp}
+
+
+\begin{bem}
+	\begin{align*}
+		& f \stackrel{D^0}{\longrightarrow} f && f \stackrel{D^2}{\longrightarrow} f'' \\
+		& f \stackrel{D}{\longrightarrow} f' && f \stackrel{D^3}{\longrightarrow} f'''
+	\end{align*}
+	$ D $ kann man in ein Polynom aus $ R[x] $ einsetzen.
+	\begin{align*}{6}
+		( x - 1 )( x - 1 ) &= x^2 - 2x + 1 \\
+		\Leftrightarrow \quad ( x^1 - x^0 )( x^1 - x^0 ) &= x^2 - 2x^1 + x^0
+	\end{align*}
+	Für $ x $ den Operator $ D $ einsetzen:
+	\begin{align*}
+		\underbrace{(D^1 - D^0)(D^1 - D^0)}_\text{Operator} &= \underbrace{\vphantom{(D^1)} D^2 - 2D^1 + D^0}_\text{derselbe Operator} \\
+		(D^1 - D^0)(D^1 - D^0)f &= (f' - f)' - (f' - f) \\
+		(D^2 - 2D^1 + D^0)f &= f'' - 2f' + f \\
+		\Rightarrow \quad (f' - f)' - (f' - f) &= f'' - 2f' + f
+	\end{align*}
+(Ende der Nebenbemerkung)
+\end{bem}
+
+\noindent Sei $ f \in R[x], f = \sum_{i = 0}^{\infty} c_ix^i $. Sei $ a \in R $. Dann heißt $ f(a) := \sum_{i = 0}^{\infty} c_ia^i $ der Wert von $ f $ an der Stelle $ a $.
+
+Somit bestimmt $ f $ die Funktion $ a \in R \mapsto f(a) $ von $ R $ nach $ R $. Diese Funktion nennt man die durch $ f $ bestimmte Polynomialfunktion.
+
+Seien $ f,g \in R[x] $ und sei $ f = \sum_{i = 0}^{\infty} c_ix^i $. Wir definieren $ f(g(x)) $ durch
+\begin{equation*}
+	f(g(x)) := \sum\limits_{i = 0}^{\infty} c_ig(x)^i \in R[x].
+\end{equation*}
+Sei $ f \in R[x] $ und sei $ a \in R $. Dann heißt $ a $ eine \emph{Wurzel} (oder \emph{Nullstelle}) von $ f $, falls $ f(a) = 0 $ gilt.
+
+\begin{propn}
+	Sei $ R $ ein kommutativer Ring, sei $ x $ eine Unbekannte und sei $ f \in R[x] \setminus { 0 } $. Sei $ a \in R $ eine Nullstelle von $ f $. Dann existiert ein eindeutiges $ g \in R[x] $ mit $ f(x) = (x-a)g(x) $.
+\end{propn}
+\begin{proof}
+	$ a $ ist Nullstelle von $ f(x) \Rightarrow x=0 $  ist Nullstelle von $ f(x+a) $. Sei $ f(x+a) = \sum_{i=0}^{\infty} c_ix^i $ mit $ c_i \in R $ für alle $ i \in \N_0 $.
+	\begin{align*}
+		0 &= f(x+a) = c_0 + c_1 \cdot 0^1 + \ldots = c_0 \\
+		\Rightarrow \quad f(x+a) &= c_1x^1 + \ldots + c_nx_n \quad \text{(für $ n = \deg(f) \in \N $)} \\
+		&= x \underbrace{(c_1x^0 + \ldots c_nx^{n-1})}_{=: h \in R[x]}
+	\end{align*}
+	Man hat $ f(x+a) = x h(x) $. Wir setzen für $ x $ das Polynom $ x-a $ ein und erhalten $ f(x) = f(x-a+a) = (x-a)h(x-a) $. Das Polynom $ g(x) := h(x-a) $ erfüllt die Behauptung.
+	
+	Wir zeigen die Eindeutigkeit von $ g $. Seien $ g, \widetilde{g} \in R[x] $ mit $ f(x) = (x-a)g(x) = (x-a)\widetilde{g}(x) $.
+	Wir setzen für $ x $ das Polynom $ x+a $ ein: $ f(x+a) = xg(x+a) = x\widetilde{g}(x+a) $.
+	Nach Konstruktion sieht man, dass $ g(x+a) = \widetilde{g}(x+a) = h(x) $ gilt. Wir setzen nun für $ x $ das Polynom $ x-a $ ein: $ g(x) = \widetilde{g}(x) $. Das zeigt die Eindeutigkeit.
+\end{proof}
+
+\begin{bem}
+	Das Polynom $ g $ aus der vorigen Proposition lässt sich durch Division von Polynomen ermitteln. Ein konkretes Beispiel:
+\end{bem}
+\begin{bsp}
+	$ f := x^3 - 5x^2 + 7x - 2, a = 2 $. Was ist $ f(a) $? Wenn $ f(a) = 0 $, was ist $ g $ mit $ f(x) = (x-a)g(x) $?
+	
+	\begin{center} 
+	\polylongdiv{x^3-5 * x^2 + 7 * x -2}{x-2} \qquad $\Longrightarrow$ \qquad $f(2)=0$
+	\\
+	\polylongdiv{x^3-5 * x^2 + 7 * x -2}{x-3} \qquad $\Longrightarrow$ \qquad $f(3)=1$
+	\end{center}
+\end{bsp}
+
+\subsubsection{Restklassenringe}
+
+\begin{propn}
+	Sei $ m \in \N $ und seien $ A,B \in \Z/m\Z $. Dann existiert eine eindeutige Restklasse $ C \in \Z/m\Z $ mit $ a \cdot b \in C $ für alle $ a \in A $ und $ b \in B $.
+	
+	Für $ C, A, B $ wie oben schreibt man $ C := A \cdot B $. Somit hat man eine Multiplikation auf $ \Z/m\Z $ eingeführt.
+\end{propn}
+\begin{proof}
+	Übungsaufgabe.
+\end{proof}
+
+\begin{propn}
+	Sei $ m \in \N $. Dann ist $ ( \Z/m\Z, +, \cdot ) $ ein kommutativer Ring mit 1.
+\end{propn}
+\begin{proof}
+	Die Ringeigenschaften lassen sich direkt verifizieren. 
+\end{proof}
+
+\begin{bsp}[$ \Z/2\Z $]
+	Wir schreiben Einfachheit halber $x$ an der Stelle von $[x]$. Die Rechentafeln für $\Z / 2 \Z$ sind: 
+	\begin{center} 
+	\begin{tabular}{c|cc}
+		$ + $ & 0 & 1 \\
+		\hline
+		0 & 0 & 1 \\
+		1 & 1 & 0
+	\end{tabular}
+	\quad\quad\quad 
+	\begin{tabular}{c|cc}
+		$ \cdot $ & 0 & 1 \\
+		\hline
+		0 & 0 & 0 \\
+		1 & 0 & 1
+	\end{tabular}
+	\end{center} 
+\end{bsp}
+\begin{bsp}[$ \Z/3\Z $]
+	Mit der Vereinbarung wie in dem vorigen Tafeln haben die Rechentafeln für $\Z / 3 \Z$ die folgende Form: 
+	\begin{center} 
+	\begin{tabular}{c|ccc}
+		$ + $ & 0 & 1 & 2 \\
+		\hline
+		0 & 0 & 1 & 2 \\
+		1 & 1 & 2 & 0 \\
+		2 & 2 & 0 & 1
+	\end{tabular}
+	\quad\quad\quad 
+	\begin{tabular}{c|ccc}
+		$ \cdot $ & 0 & 1 & 2 \\
+		\hline
+		0 & 0 & 0 & 0 \\
+		1 & 0 & 1 & 2 \\
+		3 & 0 & 2 & 1
+	\end{tabular}
+	\end{center} 
+\end{bsp}
+
+\clearpage
+\subsection{Körper}
+
+\subsubsection{Körper}
+
+Sei $ \K $ Menge. Seien $ + $ und $ \cdot $ Binäroperationen auf $ \K $. $ \K $ heißt \emph{Körper}, falls
+\begin{itemize}
+	\item
+		$ (\K, +) $ ist eine kommutative Gruppe (mit dem neutralen Element 0)
+	\item
+		$ (\K \setminus \{0\}, \cdot) $ ist eine kommutative Gruppe (mit dem neutralen Element 1)
+	\item
+		Es gilt das Distributivgesetz $ a(b+c) = ab+ac$ (mit $a,b,c \in \K$).
+\end{itemize}
+Mit anderen Worten: Ein Körper $ (\K, +, \cdot) $ ist ein kommutativer Ring mit 1, in dem $ 0 \neq 1 $ gilt und alle Elemente aus $ \K \setminus \{0\} $ invertierbar sind.
+
+\begin{bsp}\
+	\begin{itemize}
+		\item $ (\Z, +, \cdot) $ ist Ring, kein Körper
+		\item $ (\Q, +, \cdot) $ ist Körper
+		\item $ (\R[x], +, \cdot) $ ist Ring, kein Körper
+		\item $ (\R, +, \cdot) $ ist Körper, auf dem die Analysis aufgebaut wird
+		\item $ (\Z/m\Z, +, \cdot) $ mit $ m \in \N $ ist Ring
+	\end{itemize}
+\end{bsp}
+
+\subsubsection{Restklassenkörper}
+
+Seien $ a,b \in \Z $. Dann heißt im Fall, dass $a$ und $b$ nicht beide gleich $0$ sind, das größte $k \in \N$, das $a$ sowie $b$ teilt, der größte gemeinsame Teiler von $a$ und $b$. Im Fall $a=b=0$ setzt man den größten gemeinsamen Teiler von $a$ und $b$ gleich $0$. Die Bezeichnungen dazu sind: $\gcd(a,b)$ und $\ggT(a,b)$. 
+
+\begin{propn}
+	Seien $ a,b \in \Z $. Dann existieren $ x,y \in \Z $ mit $ xa+yb = \ggT(a,b) $.
+\end{propn}
+\begin{proof}
+	Übungsaufgabe. Diese Aussage hat einen konstruktiven (algorithmischen) Beweis. Der Algorithmus heißt der erweiterte Euklidische Algorithmus. 
+\end{proof}
+
+\begin{thm}
+	Sei $ m \in \N $. $ \Z/m\Z $ ist genau dann ein Körper, wenn $ m $ eine Primzahl ist.
+\end{thm}
+\begin{proof}
+	Wenn $ m $ keine Primzahl ist, dann ist $ \Z/m\Z $ kein Körper (nicht nullteilerfrei). Wenn $ m $ eine Primzahl ist, ist $ \Z/m\Z $ ein Körper.
+\end{proof}
+
+\subsubsection{Körper Komplexer Zahlen}
+
+Man nennt einen Körper $ \K $ \emph{algebraisch abgeschlossen}, wenn jedes Polynom $ f \in \K[x] $ mit $ \deg f > 0 $ eine Nullstelle hat.
+
+\begin{bem}
+	$ \R $ ist \emph{nicht} algebraisch abgeschlossen.
+\end{bem}
+
+\begin{bem}[Intuition zu $ \C $]
+	Man führt ein formales Symbol $ i $ ein (imaginäre Einheit), mit der Eigenschaft $ i^2 = -1 $ ($ i $ ist Nullstelle von $ x^2+1 $).
+	\begin{equation*}
+		C := \{ a+ib : a,b \in \R \}
+	\end{equation*}
+\end{bem}
+
+\begin{bem}[Formale Definition von $ \C $]
+	Die Menge $ \C $ \emph{aller komplexen Zahlen} ist als $ \R \times \R $ mit der Addition 
+	\begin{equation*}
+		(a_{1},b_{1})+(a_{2},b_{2}) := (a_{1} + a_{2}, b_{1} + b_{2} )
+	\end{equation*} 
+	und der Multiplikation
+	\begin{equation*}
+		(a_{1},b_{1})\cdot (a_{2},b_{2}) := (a_{1} a_{2} - b_{1} b_{2}, a_{1} b_{2} - a_{2} b_{1})
+	\end{equation*}
+	definiert ($ \forall a_1, a_2, b_1, b_2 \in \R $).
+	
+	Jede reelle Zahl $ a \in \R $ wird als $ (a,0) \in \C $ definiert. Wir interpretieren also $ \R $ als Teilmenge von $ \C $.
+	
+	Die Zahl $ i := (0,1) \in \C $ heißt die imaginäre Einheit. Somit lässt sich jedes $ z \in \C $ als $ z = a+ib $ mit $ a,b \in \R $ schreiben. Dabei heißt $ a $ der Realteil von $ z $ ($ \Re(z) $ bzw. $ \AverkovRe(z) $) und $ b $ der Imaginärteil von $ z $ ($ \Im(z) $ bzw. $ \AverkovIm(z) $). Die Zahl $ \bar{z} = a -ib $ heißt komplex konjugiert zu $ z $.
+\end{bem}
+
+\begin{propn}
+	$ \C $ ist ein Körper.
+\end{propn}
+\begin{proof}
+	$ \C $ ist ein kommutativer Ring mit 1 (lässt sich direkt verifizieren).
+
+	Wir zeigen, dass für jedes $ z \in \C\setminus\{0\} $ eine Zahl $ w \in \C $ mit $ z \cdot w = 1 $ existiert. Sei $ z = a+ib $ mit $ a,b \in \R $. Man setze $ w := \frac{a-ib}{a^2+b^2} $. Dann ist
+	\begin{align*}
+		z \cdot w &= (a+ib)(a-ib)(a^2+b^2)^{-1} \\
+			&= (a^2 + b^2)(a^2+b^2)^{-1} \\
+			&= 1 \qedhere
+	\end{align*}
+\end{proof}
+ 
+Für $ z = a+ib $ mit $ a,b \in \R $ heißt
+\begin{equation*}
+	|z| = \sqrt{a^2+b^2}
+\end{equation*}
+der Betrag von $ z $.
+
+\begin{thm}
+	Sei $ f \in \C[x] $ mit $ n := \deg f > 0 $. Dann existieren $ \lambda_1, \lambda_2, \ldots, \lambda_n, c \in \C $ mit
+	\begin{equation}
+		f(x) = c(x-\lambda_1) \cdot \ldots \cdot (x - \lambda_n).
+	\end{equation}
+\end{thm}
+
+\begin{bem}
+	Wenn ein $ \lambda \in \C $ in der Folge $ \lambda_1, \lambda_2, \ldots, \lambda_n $ $ k $-mal vorkommt, dann heißt $ \lambda $ Nullstelle von $ f $ der Vielfachheit $ k $.
+\end{bem}
+
+\begin{bsp}
+\begin{align*}
+	f &:= x^2 -2x +1 &&= (x-1)^2 & \text{mit Nullstelle 1 der Vielfachheit 2} \\
+	f &:= x^2 +3x +2 &&= (x+1)(x+2) & \text{mit Nullstellen -1, -2 der Vielfachheit von je 1} \\
+	f &:= x^2 +4 && & \text{mit Nullstellen 2$ i $, -2$ i $ der Vielfachheit von je 1}
+\end{align*}
+\end{bsp}

@@ -1,0 +1,798 @@
+\clearpage
+\subsection{Die Jordansche Normalform}
+\label{sec:6_4}
+
+\subsubsection{Die Voraussetzungen}
+\label{sec:6_4_1}
+
+Das Hauptresultat dieses Abschnitts wird mit den folgenden Voraussetzungen formuliert.
+
+\begin{tcolorbox}
+	Sei $ V $ ein $ n $-dimensionaler Vektorraum über $ \K $ mit $ n \in \N $. Sei $ F \in \Lin(V) $ eine Abbildung, deren charakteristisches Polynom in Linearfaktoren zerfällt, d.h.
+	\begin{equation*}
+		p_F = (t - \lambda_1)^{r_1} \cdots (t - \lambda_k)^{r_k}
+	\end{equation*}
+	mit paarweise verschiedenen $ \lambda_1, \ldots, \lambda_k \in \K $ und $ r_1, \ldots, r_k \in \N $.
+\end{tcolorbox}
+
+\noindent Es sei daran erinnert, dass die vorige Voraussetzung im Fall $ \K = \C $ für jede lineare Abbildung $ F \in \Lin(V) $ erfüllt ist (im Gegenteil zum Fall $ \K = \R $).
+
+\subsubsection{Das Ziel und der Ansatz}
+
+Unter den Voraussetzungen aus \ref{sec:6_4_1} wollen wir eine Basis $ \B $ von $ V $ finden, für welche die Matrix $ F_\B $ möglichst wenig Nichtnullkomponenten außerhalb der Diagonalen hat (die genaue Struktur von $ F_\B $ wird später beschrieben).
+
+Im allgemeinen Fall wird die gesuchte Basis $ \B $ nicht nur aus Vektoren der Eigenräume $ \Eig(F,\lambda_i) = \ker(F - \lambda_i \id) $ bestehen, sondern auch aus Vektoren der Räume $ \ker(F - \lambda_i \id)^2 $, $ \ker(F - \lambda_i \id)^3 $, usw. Beachte hier: wenn eine einfache Anwendung einer Abbildung einen Vektor nicht auf $0$ bringt, dann könnte es immer noch sein, dass eine zweifache oder eine dreifache Anwendung den Vektor auf $0$ bringt. Mit anderen Worten wird der Kern der Potenz einer linearen Abbildung im Allgemeinen größer, wenn der Exponent wächst. 
+
+Wenn ein Vektor $ v \in \ker(F - \lambda_i \id) \setminus \{ 0 \} $ in $ \B $ aufgenommen wird, so hat $ F_\B $ bzgl. des Vektors $v$ die Struktur
+\begin{equation*}
+	F_\B = \bordermatrix{
+		& && \bordernote{v} && \cr
+		& \tikz[na] \node[coordinate] (6_4_2_n1) {};\hspace{0.5cm} && 0 & \tikz[na] \node[coordinate] (6_4_2_n3) {};\hspace{0.5cm} & \cr
+		& && \vdots && \cr
+		& && 0 && \cr
+		\bordernote{v} & && \lambda_i && \cr
+		& && 0 && \cr
+		& && \vdots && \cr
+		& & \ \tikz[na] \node[coordinate] (6_4_2_n2) {}; & 0 && \ \tikz[na] \node[coordinate] (6_4_2_n4) {}; \cr
+	},
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw[pattern=north east lines,draw=gray,pattern color=gray] (6_4_2_n1) rectangle (6_4_2_n2);
+		\draw[pattern=north east lines,draw=gray,pattern color=gray] (6_4_2_n3) rectangle (6_4_2_n4);
+	\end{tikzpicture}
+\end{equation*}
+denn $v$ ist Eigenvektor von $F$ zum Eigenwert $\lambda_i$, sodass man $F(v) = \lambda_i v$ hat. 
+
+Was passiert, wenn man nicht genug Eigenvektoren hat um eine Basis daraus zu bilden? 
+Wenn etwa ein Vektor $ w \in \ker(F - \lambda_i \id)^2 \setminus \ker(F - \lambda_i \id) $ in $ \B $ aufgenommen wird, dann wird die Konstruktion zu sein, dass man neben $w$  zusätzlich auch den Vektor $ v := (F - \lambda_i \id)(w) $ mit aufnimmt. So gilt $ v \neq 0 $ und $ (F - \lambda_i \id)(v) = 0 $, d.h. $ F(v) = \lambda_i v $ für $ v $ und $ (F - \lambda_i \id)(w) = v $, d.h. $ F(w) = \lambda_i w + v $. Somit hat $ F_\B $ bzgl. $v$ und $w$ die folgende Struktur
+\begin{equation*}
+	F_\B = \bordermatrix{
+		& && \bordernote{v} & \bordernote{w} && \cr
+		& \tikz[na] \node[coordinate] (6_4_2_n5) {};\hspace{0.5cm} && 0 & 0 & \tikz[na] \node[coordinate] (6_4_2_n7) {};\hspace{0.5cm} & \cr
+		& && \vdots & \vdots && \cr
+		& && 0 & 0 && \cr
+		\bordernote{v} & && \lambda_i & 1 && \cr
+		\bordernote{w} & && 0 & \lambda_i && \cr
+		& && \vdots & 0 && \cr
+		& && \vdots & \vdots && \cr
+		& & \ \tikz[na] \node[coordinate] (6_4_2_n6) {}; & 0 & 0 && \ \tikz[na] \node[coordinate] (6_4_2_n8) {}; \cr
+	}.
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw[pattern=north east lines,draw=gray,pattern color=gray] (6_4_2_n5) rectangle (6_4_2_n6);
+		\draw[pattern=north east lines,draw=gray,pattern color=gray] (6_4_2_n7) rectangle (6_4_2_n8);
+	\end{tikzpicture}
+\end{equation*}
+In den Spalten für $ v $ und $ w $: zweimal $ \lambda_i $ auf der Diagonalen und eine einzige Nichtnullkomponente (die 1) außerhalb der Diagonale. Zwar sehen wir in den beiden Spalten auch außerhalb der Diagonale Nichtnull-Elemente (in dieser Beispielsituation, nur ein Nichtnull-Element), aber nur wenige. 
+
+\subsubsection{Über das Addieren eines Vielfachen der identischen Abbildung}
+\label{sec:6_4_3}
+
+
+Die Änderungen, die dadurch entstehen, dass man zur einer linearen Abbildung ein vielfaches der identischen Abbildung dazu addieren, können sehr einfach verfolgt werden. Bzgl. der Diagonalisierbarkeit ändert sich zum Beispiel gar nichts, das charakteristische Polynom ändert sich durch eine Verschiebung, Eigenwerte verschieben sich ebenfalls. In der folgenden Proposition werden die Auswirkungen der Änderung von $F$ zu $ F + \alpha \id$ genau dargestellt. 
+
+\begin{propn}[Verschiebungstrick]
+	Sei $F : V \to V$ lineare Abbildung eines $n$-dimensionalen Vektorraums, mit $n \in \N$, und man betrachte die Abbildung $G : = F + \alpha \id$ mit $\alpha \in \K$.  Dann gilt:
+	\begin{enumerate}
+		\item
+		Für jedes $ \lambda \in \K $ gilt:
+		$ \lambda $ ist Eigenwert von $ F \Leftrightarrow \lambda + \alpha $ ist Eigenwert von $ G $.
+		\item
+		Für jedes $ \lambda \in \K $ gilt:
+		$ \Eig(F,\lambda) = \Eig(G,\lambda + \alpha) $.
+		
+		Insbesondere ist die geometrische Vielfachheit von jedem Eigenwert $ \lambda $ von $ F $ gleich der geometrischen Vielfachheit des entsprechenden Eigenwertes $ \lambda + \alpha $ von $ G $.
+		\item
+		Die algebraische Vielfachheit von jedem Eigenwert $ \lambda $ von $ F $ ist gleich der algebraischen Vielfachheit des entsprechenden Eigenwertes $ \lambda + \alpha $ von $ G $.
+		\item
+		Für die charakteristischen Polynome von $ F $ und $ G $ gilt: $ p_G(t) = p_F(t - \alpha) $.
+		\item
+		Für jede Basis $ \B $ von $ V $ gilt: $ G_\B = F_\B + \alpha I $.
+	\end{enumerate}
+\end{propn}
+\begin{proof}\
+	\begin{itemize}
+		\item[(i,ii)]
+		Sei $ v \in V \setminus \{ 0 \} $. Dann gilt:
+		\begin{align*}
+			&\ \text{$ \lambda \in \K $ ist Eigenwert von $ F $ zu $ v $} \\
+			\Leftrightarrow&\ F(v) = \lambda v \\
+			\Leftrightarrow&\ F(v) + \alpha v = (\lambda + \alpha)v \\
+			\Leftrightarrow&\ G(v) = (\lambda + \alpha)v \\
+			\Leftrightarrow&\ \text{$ \lambda + \alpha $ ist Eigenwert von $ G $ zu $ v $}
+		\end{align*}
+		\item[(v)]
+		Sei $ \B $ Basis von $ V $. Dann gilt $ G_\B = (F + \alpha \id)_\B = F_\B + \alpha \id_\B = F_\B + \alpha I $.
+		\item[(iv)]
+		Es gilt $ p_G(t) = p_{G_\B}(t) = \det(tI - G_\B) = \det(tI - F_\B - \alpha I) = \det((t-\alpha)I - F_\B) = p_{F_\B}(t-\alpha) = p_F(t-\alpha) $.
+		\item[(iii)]
+		folgt direkt aus (iv). \qedhere
+	\end{itemize}
+\end{proof}
+
+\noindent Unter den Voraussetzungen aus \ref{sec:6_4_1} können wir nun mit Hilfe der vorigen Proposition Behauptungen über $ G = F - \lambda_i \id $ (mit Eigenwert 0, d.h. $ G $ ist nicht invertierbar) zu Behauptungen über $ F $ konvertieren.
+
+\subsubsection{Das Lemma von Fitting}
+\label{sec:6_4_4}
+
+Das Lemma von Fitting ist das Herzstück der Theorie der Jordanschen Normalformen (JNF). Der Kontext zu diesem Lemma ist so. Wir beschäftigen uns in mit einem Eigenwert $\lambda_i$ von $F \in \Lin(V)$ und betrachten dafür die Abbildung $G := F - \lambda_i \id$. Der Kern von $G$ enthält die Eigenvektoren von $F$ zu $\lambda_i$, aber es kann sein, dass wir noch weitere Vektoren brauchen, die mit $\lambda_i$ zusammenhängen, aber keine Eigenvektoren sind, um am Ende die JNF von $F$ aufzubauen. In dem Lemma geht es darum, den zugrundeliegenden Vektorraum $V$ in Summe von zwei Vektorräumen zu zerlegen. Der eine Vektorraum, der im Lemma als $U_d$ bezeichnet wird, enthält die Eigenvektoren von $F$ zu $\lambda_i$  und die weiteren Vektoren, die mit $\lambda_i$ zusammenhängen. Der andere Vektorraum, der im Lemma als $W_d$ bezeichnet wird, ist der ``Rest''. Was ist die konzeptuelle Beschreibung von $U_d$? Der Raum $U_d$ besteht aus den Vektoren, die auf $0$ Abgebildet werden, wenn man zu diesen Vektoren $G$ \emph{oft genug} anwendet (bei Eigenvektoren von $F$ zum Eigenwert $\lambda_i$ ist einmal schon genug). Im Lemma taucht nur $G$ auf, nicht das $F$ (das $F$ hat man, wenn wir das Lemma später anwenden). Nun zum anderen Vektorraum $W_d$. Wenn wir $G$ zu $V$ anwenden, erhalten wir das Bild von $V$ bzgl. $G$: $V$ schrumpft also zu einem potenziell kleineren Vektorraum $\im(G)$. Wir bleiben aber nicht bei $\im(G)$ sondern wenden zu $\im(G)$ die Abbildung $G$ nochmal an, und so weiter. So entsteht durch die iterative Anwendung von $G$  eine Folge von Vektorräumen, die ineinander geschachtelt sind. Es ist also eine Art Matrjoschka (\url{https://de.wikipedia.org/wiki/Matrjoschka} ) aus Vektorräumen. Unser Räume sind aber endlich-dimensional, beim Schrumpfen verringert sich die Dimension. Irgendwann erreichen wir also den Raum $W_d$, der nicht mehr weiter geschrumpft wird. Der Raum $W_d$ ist die kleinste Puppe in unserer Matrjoschka. 
+
+%Das folgende Lemma zeigt, wie man $ G := F - \lambda_i \id $ aus zwei Abbildungen zusammensetzen kann.
+
+\begin{lm}
+	Sei $ V $ ein $ n $-dimensionaler Vektorraum über $ \K $ mit $ n \in \N $. Sei $ G \in \Lin(V) $ eine nicht-invertierbare Abbildung (d.h. 0 ist Eigenwert von $ G $). Sei $ r \in \N $ die algebraische Vielfachheit des Eigenwerts 0 von $ G $. Für $ i \in \N_0 $ seien
+	\begin{equation*}
+		U_i := \ker(G^i) \qquad\text{und}\qquad W_i := \im(G^i).
+	\end{equation*}
+	Dann existiert ein Wert $ d \in \is{1}{r} $ mit den folgenden Eigenschaften:
+	\begin{itemize}[font=\normalfont]
+		\item[(a1)]
+		$ \{ 0 \} = U_0 \varsubsetneq U_1 \varsubsetneq \ldots \varsubsetneq U_d = U_{d+1} = \ldots $
+		\item[(a2)]
+		$ V = W_0 \varsupsetneq W_1 \varsupsetneq \ldots \varsupsetneq W_d = W_{d+1} = \ldots $
+		\item[(b)]
+		$ V = U_d \oplus W_d $
+		\item[(c1)]
+		$ G(U_d) \subseteq U_d $ und $ S := G|_{U_d} \in \Lin(U_d) $ erfüllt die Bedingung $ S^d = 0 $.
+		\item[(c2)]
+		$ G(W_d) = W_d $ und $ T := G|_{W_d} \in \Lin(W_d) $ ist eine Bijektion.
+		\item[(d)]
+		Für die charakteristischen Polynome von $ G $, $ S $ und $ T $ gilt:
+		
+		$ \begin{aligned}
+			p_G &= p_S p_T \\
+			p_S &= t^r \\
+			p_T(0) &\neq 0
+		\end{aligned} $
+		\item[(e)]
+		$ \dim(U_d) = r $ und $ \dim(W_d) = n-r $.
+	\end{itemize}
+\end{lm}
+\begin{bem}[zu den Bezeichnungen]\ \\
+	$ X \varsubsetneq Y $ bedeutet $ X \subseteq Y, X \neq Y $ und $ X \varsupsetneq Y $ bedeutet $ X \supseteq Y, X \neq Y $. \\
+	$ G|_{U_d} \in \Lin(U_d) $ bedeutet, dass wir die Einschränkung von $ G $ auf $ U_d $ nicht (wie sonst üblich) als eine Abbildung von $ U_d $ nach $ V $ interpretieren wollen, sondern als eine Abbildung von $ U_d $ nach $ U_d $.
+\end{bem}
+\begin{proof}\
+	\begin{itemize}
+		\item[(a1)]
+		Zunächst wird (a1) für ein $ d \in \N $ gezeigt. Am Ende des Beweises von diesem Lemma wird die Ungleichung $ d \leq r $ nachgewiesen.
+		
+		Für jedes $ i \in \N_0 $ gilt $ U_i \subseteq U_{i+1} $, denn für jedes $ x \in V $ folgt aus $ G^i(x) = 0 $ die Gleichung $ G^{i+1}(x) = G(G^i(x)) = G(0) = 0 $. Somit hat man die Gleichheit $ U_i = U_{i+1} $ genau dann, wenn $ \dim(U_i) = \dim(U_{i+1}) $ gilt, und eine strikte Inklusion $ U_i \varsubsetneq U_{i+1} $, wenn $ \dim(U_i) < \dim(U_{i+1}) $ gilt. Weil $ V $ endlich-dimensional und $ (\dim(U_i)){}_{i \in \N} $ monoton ist, gilt $ \dim(U_i) = \dim(U_{i+1}) $ für ein $ i \in \N_0 $.
+		
+		Wir zeigen nun, dass aus der Gleichheit $ U_i = U_{i+1} $ die Gleichheit $ U_{i+1} = U_{i+2} $ folgt. Sei $ x \in U_{i+2} $, d.h. $ G^{i+2}(x) = 0 $. Somit gilt $ G^{i+1}(G(x)) = 0 $, d.h. $ G(x) \in U_{i+1} $. Damit ist ist $ G(x) \in U_i \Leftrightarrow G^i(G(x)) = 0 \Leftrightarrow G^{i+1}(x) = \Leftrightarrow x \in U_{i+1} $. Also gilt $ U_{i+2} \subseteq U_{i+1} $ und somit auch $ U_{i+1} = U_{i+2} $. Wir haben (a1) für ein $ d \in \N $ nachgewiesen.
+		\item[(a2)]
+		Nach dem Rangsatz gilt $ \dim(U_i) + \dim(W_i) = \dim(V) = n $ für jedes $ i \in \N_0 $. Somit hat man $ \dim(U_i) = \dim(U_{i+1}) $ genau dann, wenn $ \dim(W_i) = \dim(W_{i+1}) $ gilt, und $ \dim(U_i) < \dim(U_{i+1}) $ genau dann, wenn $ \dim(W_i) > \dim(W_{i+1}) $ gilt. Somit folgt (a2) aus (a1).
+		\item[(b)]
+		Wir zeigen, dass die Summe von $ U_d $ und $ W_d $ direkt ist, d.h. $ U_d \cap W_d = \{0\} $. Sei $ x \in U_d \cap W_d $, d.h. $ G^d(x) = 0 $ und $ x = G^d(v) $ für ein $ v \in V $. Durch Einsetzen erhält man $ G^d(G^d(v)) = 0 $, d.h. $ G^{2d}(v) = 0 $. Also $ v \in U_{2d} $ und wegen $ U_{2d} = U_d $ erhält man $ G^d(v) = 0 $. D.h. $ x = 0 $.
+		
+		Wir haben $ U_d \cap W_d = \{0\} $ gezeigt, also ist die Summe von $ U_d $ und $ W_d $ direkt. Nach dem Rangsatz gilt $ \dim(U_d) + \dim(W_d) = n $. Es folgt $ \dim(U_d \oplus W_d) = \dim(U_d) + \dim(W_d) = n = \dim(V) $, d.h. $ U_d \oplus W_d = V $.
+		\item[(c1)]
+		Aus der Definition der $ U_i $ folgt: \hfill 29.05.2015
+		\begin{align}
+			G(U_i) &= \set{G(x) : x \in V, G^i(x)=0} \nonumber \\
+			&= \set{G(x) : x \in V, G^{i-1}(G(x)) = 0} \nonumber \\
+			&\subseteq \set{y \in V : G^{i-1}(y) = 0} \nonumber \\
+			&= U_{i-1}
+			\label{eq:6_4_4:ast}
+		\end{align}
+		Somit gilt $ G(U_d) \subseteq U_{d-1} \subseteq U_d $. Aus der Definitionen von $ S $ und $ U_d $ folgt $ S^d(x) = G^d(x) = 0 $ für alle $ x \in U_d $.
+		\item[(c2)]
+		Wir zeigen $ G(W_i) = W_{i+1} $ für alle $ i \in \N_0 $. Es gilt:
+		\begin{align}
+			G(W_i) &= \set{G(y) : y \in W_i} \nonumber \\
+			&= \set{G(y) : y = G^i(x), x \in V} \nonumber \\
+			&= \set{G(G^i(x)) : x \in V} \nonumber \\
+			&= \set{G^{i+1}(x) : x \in V} \nonumber \\
+			&= W_{i+1}
+			\label{eq:6_4_4:astast}
+		\end{align}
+		Demnach ist $ G(W_d) = W_{d+1} = W_d $ nach (a). $ \Rightarrow T := G|_{W_d} \in \Lin(W_d) $ ist surjektiv und somit auch bijektiv (vgl. Kapitel 4).
+		\item[(d)]
+		Sei $ \A $ eine Basis von $ U_d $ und sei $ \B $ eine Basis von $ W_d $. Sei $ (\A,\B) $ die Basis, die durch das Zusammenfügen der Systeme $ \A $ und $ \B $ entsteht. Die Matrix von $ G $ in der Basis $ (\A,\B) $ hat die Form
+		\begin{align*}
+			F_{(\A,\B)} &= \begin{pmatrix}
+				S_\A & O \\
+				O & T_\B
+			\end{pmatrix} \\
+			\Rightarrow \enspace p_G &= \det\left( tI - \begin{pmatrix}
+				S_\A & O \\
+				O & T_\B
+			\end{pmatrix} \right) \\
+			&= \det\begin{pmatrix}
+				tI - S_\A & O \\
+				O & tI - T_\B
+			\end{pmatrix} \\
+			&= \det(tI - S_\A) \det(tI - T_\B) \\
+			&= p_S p_T
+		\end{align*}
+		Es ist $ p_T(0) \neq 0 $, da $ T $ bijektiv ist und somit 0 nicht als Eigenwert hat. Wir zeigen nun, dass $ p_S = t^r $ gilt. Dafür werden wir die Basis $ \A $ von $ U_d $ auf die folgende iterative Weise wählen:
+		
+		Iteration 1: Wähle eine Basis $ \A_1 $ von $ U_1 $.
+		
+		Iteration 2: Erweitere die Basis $ \A_1 $ mit einem System $ \A_2 $ zu einer Basis $ (\A_1,\A_2) $ von $ U_2 $, und so weiter \ldots
+		
+		Iteration $ d $: Erweitere die Basis $ (\A_1, \ldots, \A_{d-1}) $ mit einem System $ \A_d $ zur Basis $ (\A_1, \ldots, \A_d) $ von $ U_d $.
+		
+		Wir setzen $ \A = (\A_1, \ldots, \A_d) $. Die Matrix $ S_\A $ hat nun die folgende Struktur:
+		\begin{equation*}
+			S_\A = \bordermatrix{
+				& \bordernote{\A_1} & \bordernote{\A_2} & & \bordernote{\A_{d-1}} & \bordernote{\A_{d}} \cr
+				\bordernote{\A_1} & O & * & \dots & * & * \cr
+				\bordernote{\A_2} & O & O & \dots & * & * \cr
+				& \vdots & \vdots &\ddots& \vdots & \vdots \cr
+				\bordernote{\A_{d-1}} & O & O & \dots & O & * \cr
+				\bordernote{\A_d} & O & O & \dots & O & O \cr
+			},
+		\end{equation*}
+		wobei \fbox{$ O $} einen Null-Block bezeichnet und \fbox{$ \ast\vphantom{O} $} einen beliebigen Block. Somit ist $ S_\A $ eine obere Dreiecksmatrix mit Nullen auf der Diagonale und man hat $ p_S = t^{\dim(U_d)} $. Da $ p_G = p_Sp_T $ mit $ p_T(0) \neq 0 $ gilt, ist $ \dim(U_d) $ die algebraische Vielfachheit der Nullstelle 0 von $ p_G $, d.h. $ \dim(U_d) = r $.
+		\item[(e)]
+		folgt aus dem Beweis von (d) (vgl. $ \dim(U_d) = r $) und aus (b).
+		
+		Es bleibt die Ungleichung $ d \leq r $ zu zeigen. Da $ (\A_1, \ldots, \A_d) $ eine Basis von $ U_d $ ist mit $ \dim(U_d) = r $, und jedes dieser $ d $ Systeme mindestens einen Vektor enthält (vgl. $ U_1 \varsubsetneq \ldots \varsubsetneq U_d $ in (a1)), gilt $ d \leq r $. \qedhere
+	\end{itemize}
+\end{proof}
+\begin{bem}[zu den entarteten Fällen]
+	Wenn $ W_d = \set{0} $, setzen wir $ p_T = 1 $ (das macht man generell bei Abbildungen auf einem 0-dimensionalen Raum).
+\end{bem}
+\begin{bsp}
+	Sei $ G \in \K^{3 \times 3} $ mit $ \K = \R $ die Matrix
+	\begin{equation*}
+		\begin{pmatrix}
+			-1 & 1 & 0 \\
+			0 & -1 & 1 \\
+			1 & 0 & -1
+		\end{pmatrix}.
+	\end{equation*}
+	Wir interpretieren $ G $ als lineare Abbildung $ x \mapsto Gx $ des Raumes $ \R^3 $. Es ist $ p_G = \det(tI - G) = (t+1)^3 - 1 = t^3 + 3t^2 + 3t = t(t^2 + 3t + 1) $. Somit hat die Nullstelle 0 von $ p_G $ die algebraische Vielfachheit 1 und es gilt
+	\begin{align*}
+		\set{0} &= \ker(G^0) \varsubsetneq \ker(G^1) = \ker(G^2) = \ldots \\
+		\R^3 &= \im(G^0) \varsupsetneq \im(G^1) = \im(G^2) = \ldots
+	\end{align*}
+	da $ d \leq r = 1 $ im Lemma von Fitting. Wir berechnen eine Basis von $ \ker(G^1) $. Es ist $ \ker(G^1) = \lin((1,1,1)^\top) $. Da $ \R^3 = \ker(G^1) \oplus \im(G^1) $ gilt, ist $ \dim(\im(G^1)) = 2 $. Dabei ist
+	\begin{equation*}
+		\im(G^1) = \lin(\underbrace{(-1,0,1)^\top, (1,-1,0)^\top, (0,1,-1)^\top}_{\text{die Spalten von $ G $}})
+		= \lin(\underbrace{(-1,0,1)^\top, (1,-1,0)^\top}_{\text{linear unabhängig}}),
+	\end{equation*}
+	d.h. $ (-1,0,1)^\top, (1,-1,0)^\top $ ist eine Basis von $ \im(G^1) $. Nun können wir $ G $ in der Basis $ \B $ aus $ b_1 = (1,1,1)^\top $, $ b_2 = (-1,0,1)^\top $, $ b_3 = (1,-1,0)^\top $ darstellen:
+	\begin{equation*}
+		G_\B = \begin{pmatrix}
+			0 & 0 & 0 \\
+			0 & \ast & \ast \\
+			0 & \ast & \ast
+		\end{pmatrix}
+	\end{equation*}
+\end{bsp}
+\begin{bsp}
+	Sei $ G(x_1,x_2,x_3,x_4) = (x_2,x_3,x_3+x_4,x_4) $ und $ G \in \Lin(\R^4) $.
+\end{bsp}
+
+\subsubsection{Haupträume}
+\label{sec:6_4_5}
+
+Unter den Voraussetzungen aus \ref{sec:6_4_1} kann man nun das Lemma von Fitting auf die Abbildungen $ G := F - \lambda_i \id $ für $ i = 1, \ldots, k $ anwenden. Die Abbildung kann dann aus den $k$ Abbildungen $ F|_{U_d} \in \Lin(U_d) $, mit $ U_d $ wie im Lemma \ref*{sec:6_4_4}, zusammengesetzt werden. Wir analysieren eine solche Abbildung $ F|_{U_d} $.
+
+\begin{thm}
+	Sei $ V $ ein $ \K $-Vektorraum mit $ \dim(V) = n \in \N $, $ F \in \Lin(V) $ und $ \lambda \in \K $ Eigenwert von $ F $ mit algebraischer Vielfachheit $ r \in \N $. Sei $ H := \ker((F-\lambda \id)^r) $. Dann gilt:
+	\begin{enumerate}
+		\item
+		$ F(H) \subseteq H $
+		\item
+		Die Abbildung $ F|_H \in \Lin(H) $ hat das charakteristische Polynom $ (t-\lambda)^r $.
+	\end{enumerate}
+\end{thm}
+\begin{proof}\
+	\begin{enumerate}
+		\item
+		Betrachte die Abbildung $ G := F - \lambda\id \in \Lin(V) $. Nach dem Verschiebungstrick \ref{sec:6_4_3} hat $ G $ den Eigenwert 0 mit algebraischer Vielfachheit $ r $. Somit erfüllt $ G $ die Voraussetzungen des Lemmas von Fitting:
+		
+		Betrachte die Räume $ U_i = \ker(G^i) $ wie im Lemma. Es gilt: $ H = U_r $ und weil $ d \leq r $ auch $ H = U_d $. Nach (c1) im Lemma gilt $ G(H) \subseteq H $, und somit auch $ F(H) = (G + \lambda\id)(H) \subseteq H $.
+		\item
+		Nach der Behauptung (d) des Lemmas von Fitting ist das charakteristische Polynom von $ G|_H \in \Lin(H) $ gleich $ t^r $. Nach dem Verschiebungstrick ist das charakteristische Polynom von $ F|_H = (G+\lambda\id)|_H \in \Lin(H) $ gleich $ (t - \lambda)^r $. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\noindent Der Raum $ H $ aus dem vorigen Theorem wird \emph{Hauptraum} von $ F $ zu $ \lambda $ genannt. Es gilt:
+\begin{equation}
+	\Eig(F,\lambda) = \ker(F - \lambda\id) \subseteq H = \ker((F - \lambda\id)^r)
+\end{equation}
+
+Vektoren aus $H$ werden auch manchmal Hauptvektoren von $F$ zum Eigenwert $\lambda$ genannt. Die Hauptvektoren können in Stufen zerlegt werden: hierbei wird gezählt, wie oft man $ F - \lambda \id$ zum Vektor iterativ anwenden soll, um aus dem Vektor den Nullvektor zu erhalten. Die Eigenvektoren sind die Hauptvektoren der Stufe eins. Im Allgemeinen hat man aber auch Hauptvektoren höherer Stufen. 
+
+\subsubsection{Hauptraumzerlegung}
+
+Das folgende Theorem ist der erste Schritt auf dem Weg zur JNF. Wenn das charakterischte Polynom von $F$ in lineare Faktoren zerfällt und $F$ $k$ verschiedene Eigenwerte hat, so kann man $F$ in $k$ lineare Abbildungen zerfallen lassen: um JNF aufzustellen, muss man dann noch für jede der $k$ Abbildungen eine einfache Basisdarstellung bestimmen. 
+
+\begin{thm}
+	Unter den Voraussetzungen \ref{sec:6_4_1} ist $ V $ direkte Summe der Haupträume von $ F $ zu den Eigenwerten $ \lambda_1, \ldots, \lambda_k \in \K $, d.h. $ V = H_1 \oplus \ldots \oplus H_k $ mit $ H_i = \ker((F-\lambda_i\id)^{r_i}) $ für $ i = 1, \ldots, k $.
+\end{thm}
+\begin{proof}
+	Um die Formeln etwas zu vereinfachen, führe wir den Beweis exemplarisch für $ k = 3 $. Dann gilt $ p_F = (t-\lambda_1)^{r_1}(t-\lambda_2)^{r_2}(t-\lambda_3)^{r_3} $. Man zeige zuerst, dass die Summe der Räume $ H_1, H_2, H_3 $ direkt ist und anschließend, dass diese Summe mit $ V $ übereinstimmt.
+	
+	Betrachte beliebige Vektoren $ v_1 \in H_1, v_2 \in H_2, v_3 \in H_3 $ mit $ v_1 + v_2 + v_3 = 0 $ und zeige, dass $ v_1 = v_2 = v_3 = 0 $ gilt. Durch Anwendung von $ (F-\lambda_1\id)^{r_1} $ zu $ v_1 + v_2 + v_3 = 0 $ erhält man $ (F-\lambda_1\id)^{r_1}(v_2+v_3) = 0 $, da $ v_1 \in H_1 $. Nun wende $ (F-\lambda_2\id)^{r_2} $ darauf an: $ (F-\lambda_2\id)^{r_2} \circ (F-\lambda_1\id)^{r_1}(v_2+v_3) = 0 $.
+	Da die Menge $ \K[F] $ ein kommutativer Ring bzgl. $ + $ und $ \circ $ auf $ \Lin(V) $ ist, kann die Reihenfolge der beiden Abbildungen vertauscht werden: $ (F-\lambda_1\id)^{r_1} \circ (F-\lambda_2\id)^{r_2}(v_2 + v_3) = 0 $. Somit ist $ (F-\lambda_1\id)^{r_1} \circ (F-\lambda_2\id)^{r_2}(v_3) = 0 $, da $ v_2 \in H_2 $.
+	
+	Aus dem Theorem \ref{sec:6_4_5} folgt, dass $ \lambda_3 $ der einzige Eigenwert von $ F|_{H_3} \in Lin(H_3) $ ist. Somit ist $ \lambda_3 - \lambda_1 \neq 0 $ der einzige Eigenwert von $ (F-\lambda_1\id)|_{H_3} \in \Lin(H_3) $ und $ \lambda_3 - \lambda_2 \neq 0 $ der einzige Eigenwert von $ (F-\lambda_2\id)|_{H_3} \in \Lin(H_3) $.
+	
+	D.h. weder $ (F-\lambda_1\id)|_{H_3} \in \Lin(H_3) $ noch $ (F-\lambda_2\id)|_{H_3} \in \Lin(H_3) $ haben 0 als Eigenwert, d.h. die Abbildungen sind injektiv. Somit ist $ v_3 = 0 $. Analog zeigt man  $ v_1 = v_2 = 0 $.
+	Damit ist die Summe von $ H_1, H_2, H_3 $ direkt und es ist $ H_1 \oplus H_2 \oplus H_3 \subseteq V $. Zu zeigen bleibt die Gleichheit. Es gilt nach \ref{sec:6_4_5} oder Fitting
+	\begin{align*}
+		\dim(H_1 \oplus H_2 \oplus H_3) &= \dim(H_1) + \dim(H_2) + \dim(H_3) \\
+		&= r_1 + r_2 + r_3 \\
+		&= n = \dim(V),
+	\end{align*}
+	und damit $ H_1 \oplus H_2 \oplus H_3 = V $.
+\end{proof}
+
+\subsubsection{Hauptraumzerlegung für Matrizen}
+
+Das vorige Theorem können wir natürlich in der Sprache der Matrizen formulieren:
+
+\begin{thm}
+	Sei $ A \in \K^{n \times n} $ eine Matrix, deren charakteristisches Polynom in Linearfaktoren zerfällt, d.h. $ p_A = \prod_{k=1}^{n} (t - \lambda_k)^{r_k} $ mit paarweise verschiedenen $ \lambda_1, \ldots, \lambda_k \in \K $. Dann existiert eine invertierbare Matrix $ B \in \K^{n \times n} $ mit
+	\begin{equation*}
+		B^{-1}AB = \begin{pmatrix}
+			A_1 && \\
+			& \ddots & \\
+			&& A_k
+		\end{pmatrix}
+	\end{equation*}
+	wobei $ A_i \in \K^{r_i \times r_i} $ eine Matrix ist mit charakteristischem Polynom $ p_{A_i} = (t-\lambda_i)^{r_i} $ für jedes $ i \in \is{1}{k} $.
+\end{thm}
+\begin{proof}
+	Folgt direkt aus dem vorigen Theorem.
+\end{proof}
+
+\noindent Die Matrix $ \begin{pmatrix}
+	A_1 && \\
+	& \ddots & \\
+	&& A_k
+\end{pmatrix} $ wie im vorigen heißt \emph{blockdiagonal} mit \emph{Diagonalblöcken} $ A_1, \ldots, A_k $.
+
+
+Es bietet sich an, ein Beispiel zu betrachten. 
+
+\begin{bsp} 
+	Die Matrix 
+	\[
+	A = \begin{pmatrix}
+		1 & 1 & 0 \\
+		0 & 1 & 3 \\
+		0 & 0 & 2
+	\end{pmatrix} \in \Q^{3 \times 3} 
+	\]
+	hat ein charakteristisches Polynom, das bzgl. des Körpers 
+	$ \K = \Q $, in Linearfaktoren zerfällt: man hat 
+	\[ 
+	p_A = (t-1)^2 \cdot (t-2).
+	\]
+	Die Theorie sagt uns also, dass die Matrix $A$ in einer Basis in zwei Blöcke zerfällt, mit der Größen $2 \times 2$ und $1 \times 1$. Mit dem Block der Größe $1 \times 1$ hat man nicht viel Arbeit: dieser Block ist nichts anderes als der Eigenwert $2$, in die Basis wird also ein Eigenvektor zu $2$ aufgenommen. Die Bestimmung der größeren Blöcke kann unter Umständen etwas aufwändiger sein. 
+	
+	
+	Wir betrachten die Matrizen  $ A- 1\cdot I $ und bestimmen die Basis des $2 \times 2$ Blocks. Dafür berechnen wir. Es gilt
+	
+	\begin{align*}
+		\dim( \ker(A-1\cdot I)^1 ) & = \dim \left( \ker\begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & 3 \\
+			0 & 0 & 1
+		\end{pmatrix} \right) = 1
+	\end{align*}
+	Wegen 
+	\begin{equation*}
+		(A-1\cdot I)^2 = \begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & 3 \\
+			0 & 0 & 1
+		\end{pmatrix} \begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & 3 \\
+			0 & 0 & 1
+		\end{pmatrix} = \begin{pmatrix}
+			0 & 0 & 3 \\
+			0 & 0 & 3 \\
+			0 & 0 & 1
+		\end{pmatrix}
+	\end{equation*}
+	gilt 
+	\begin{align*} 
+		\dim(\ker(A-1\cdot I)^2) & =  2.
+	\end{align*}
+	
+	Die Dimensionen von $\ker(A - 1\cdot I)^i$ für $i \ge 2$ müssen wi nicht ausrechnen, den Theorie sagt uns, dass sich diese Dimensionen ab $i$ gleich der algebraischen Vielfachheit nicht mehr ändern. Die algebraische Vielfachheit von $1$ ist $2$. 
+	
+	Damit gilt
+	\begin{equation*}
+		\set{0} = \ker(A-1\cdot I)^0 \varsubsetneq \ker(A-1\cdot I)^1\varsubsetneq \ker(A-1\cdot I)^2 = \ker(A-1\cdot I)^3 = \ldots
+	\end{equation*}
+	
+	Wir werden eine Basis von $ \ker(A - 1\cdot I)^2 $ benutzen. Da wir $(A - 1\cdot I)^2$ explizit ausgerechnet haben, sieht man direkt, dass  $ e_1,e_2 $ eine Basis von $ \ker(A - 1\cdot I)^2 $ ist. 
+	
+	Für die Hauptraumzerlegung von $A$ brauchen wir noch einen Vektor für den $1 \times 1$ Block zum Eigenwert $2$ (den Eigenvektor zu $2$). Da $2$ die algebraische Vielfachheit $1$ hat, gilt: 
+	\begin{equation*}
+		\set{0} = \ker(A - 2I)^0 \varsubsetneq \underbrace{\ker(A - 2I)^1}_{\mathclap{\begin{minipage}{0.325\textwidth}
+					Das ist der Hauptraum zu 2; seine Dimension ist daher gleich 1.
+		\end{minipage}}} = \ker(A - 2I)^2 = \ldots
+	\end{equation*}
+	Wir bestimmen nun eine Basis von $ \ker(A-2I)^1 = \ker\begin{pmatrix}
+		-1 & 1 & 0 \\
+		0 & -1 & 3 \\
+		0 & 0 & 0
+	\end{pmatrix} $. 
+	
+	Man sieht dass der Vektor$ (3,3,1)^\top $ ist eine Basis dieses (eindimensionalen) Kerns von $A - 2 I$ bildet. 
+	
+	Die Hauptraumzerlegung erreicht man also mit der Basis $ \B = (e_1,e_2,(3,3,1)^\top) $. D.h. für die invertierbare Matrix $ B = (e_1,e_2,(3,3,1)^\top) $ hat man
+	\begin{equation*}
+		B^{-1}AB = \left(\begin{array}{cc|c}
+			1 & 1 & 0 \\
+			0 & 1 & 0 \\ \hline
+			0 & 0 & 2
+		\end{array}\right)
+	\end{equation*}
+	
+	Fragen: wie bestimmt man den $2 \times 2$ Block? Wie würde der $2 \times 2$ Block aussehen, wenn wir die Basis $ (1,1,0)^\top,(1,0,0)^\top,(3,3,1)^\top $ benutzen? 
+\end{bsp}
+
+
+\subsubsection{Jordansche Normalform für nilpotente Abbildungen}
+\label{sec:6_4_8}
+
+Eine lineare Abbildung $ G $ eines Vektorraums $ V $ heißt \emph{nilpotent}, falls $ G^i $ für ein $ i \in \N $ eine Nullabbildung ist. 
+
+Die Matrix der Form
+\begin{equation*}
+	\begin{pmatrix}
+		\lambda & 1 && \\
+		& \ddots & \ddots & \\
+		&& \ddots & 1 \\
+		&&& \lambda
+	\end{pmatrix}
+\end{equation*}
+heißt \emph{Jordan-Matrix} der Größe $ n \in \N $ zum Wert $ \lambda \in \K $. Wir leiten in diesem Abschnitt die JNF für nilpotente lineare Abbildungen her. Im nächsten Paragraphen erhalten wir als Folgerung daraus die JNF für allgemeine lineare Abbildungen. Um die Methode zum Aufbauen einer JNF zu verstehen, lohnt es sich eine konkrete nilpotente Abbildung anzuschauen, die durch ihre JNF gegeben ist. 
+
+\begin{bsp} Dieses Beispiel soll vorberieten, den Beweis des nachfolgenden Theorems zu verstehen. 
+	Wir betrachten eine nillpotente Abbildung eines $6$-dimensionalen Vektorraums, die in einer Basis $ \B = (b_1, \ldots, b_6) $ durch die folgende Blockdiagonalmatrix gegeben ist: 
+	\begin{equation*}
+		G_\B = \bordermatrix{
+			& b_1 & b_2 & b_3 & b_4 & b_5 & b_6 \cr
+			b_1 &0&1&0&&& \cr
+			b_2 &0&0&1&&& \cr
+			b_3 &0&0&0&&& \cr
+			b_4 &&&&0&1& \cr
+			b_5 &&&&0&0& \cr
+			b_6 &&&&&&0
+		}
+	\end{equation*}
+	Die Matrix hat drei Jordan-Matrizen zum Wert $0$ als Diagonalblöcke. 
+	Die Matrix sagt uns, dass die Abbildung $G$ auf den Basisvektoren auf die folgende Weise wirkt: 
+	\begin{equation*}
+		\begin{array}{ccccccc}
+			b_3 & \mapsto & b_2 & \mapsto & b_1 & \mapsto & 0
+			\\ && b_5 & \mapsto & b_4 & \mapsto & 0
+			\\ && & & b_6 & \mapsto & 0
+		\end{array}
+	\end{equation*}
+	Wie hängt diese Wirkung mit den Vektorräumen $U_1,\ldots,U_d$ aus dem Lemma vom Fitting zusammen? Man beachte, dass der Vektorraum $U_d$ aus dem Lemma von Fitting mit dem gesamten Raum $\K^6$ übereinstimmt, weil unser Abbildung nilpotent ist (jeder Vektor liegt in $U_d$, weil jeder Vektor auf $0$ abgebildet wird, wenn man die Abbildung $G$ zu dem Vektor oft genug anwendet). Wir sehen, dass in unserem Beispiel $d$ drei ist, denn nach einer dreifachen Anwendung von $G$ wird jeder Basisvektor gleich $0$ (und somit auch jeder andere Vektor unseres Vektorraums), und bei $b_3$ \emph{muss} man die Abbildung dreimal anwenden, um den Nullvektor zu erhalten. 
+	
+	Also ist $U_3 = \K^6$ und $U_2$ eine echte Teilmenge von $U_3$. Der Vektorraum $U_2$ entsteht aus all den Basisvektoren, bei denen die zweifache Anwendung der Abbildung ausreicht, um den Nullvektor zu erhalten. Man hat also $U_2 = \lin(b_2,b_1,b_5,b_4,b_6)$. Und $U_1$ entsteht aus den Basisvektoren, bei denn eine Anwendung der Abbildung ausreicht, um den Nullvektor zu erhalten. Man hat also $U_1 = \lin(b_1, b_4, b_6)$. 
+	
+	An diesem Beispiel haben wir den Weg zur Konstruktion der JNF rückwärts verfolgt. Bei der Eigentlichen Aufgaben ist eine nilpotente Abbildung $G$ gegeben. Dann berechnet man $U_1,\ldots,U_d$ und will anschließend eine JNF  $G_\B$ und die entsprechende Basis $\B$ berechnen. 
+	
+	Wie kommt man an die Basis $\B$ anhand der Vektorräume $U_1,\ldots,U_d$? Wir brauchen geeignete Räume, welche die `Lücken' zwischen aufeinanderfolgenden Vektorräumen der Folge $U_1,\ldots,U_d$ `stopfen'. 
+	In unserem Beispiel stopft $\lin(b_3)$ die Lücke zwischen $U_3$ und $U_2$, $\lin(b_2,b_5)$ stopft die Lücke zwischen $U_2$ und $U_1$, und $U_1$ ist als $\lin(b_1,b_4,b_6)$ beschrieben. Die Basisvektoren entstehen also durch das Stopfen der Lücken. Die Lücke zwischen $U_2$ und $U_3= \K^6$ war eindimensional. Wir benötigen also einen Vektor um, eine beliebige Basis von $U_2$, zu einer Basis vom gesamten Vektorraum zu erweitern. Diesen Vektor haben wir als $b_3$ in unserem Beispiel bezeichnet. Wir benutzen bei dem Aufbau der Basis durchgängig das folgende Prinzip: Wenn wir einen Vektor zur Basis $\B$ hinzugefügt haben, kommen auch  die Bilder des Vektors in die Basis, welche durch die iterative Anwendung der Abbildung $G$ entstehen. Wir fügen also auch $G(b_3) = b_2$ und $b_1 = G^2(b_3) = G (b_2)$ zur Basis hinzu. Den Vektor $G^3(b_3) =0$ dürfen wir natürlich nicht hinzufügen: in Basen hat man keine Nullvektoren. Was gilt nun für die neu hinzugefügten Vektoren: $b_2$ stopft zum Teil die Lücke zwischen $U_2$ und $U_1$, aber nicht komplett. $b_1$ liegt in $U_1$ erzeugt aber diesen Raum nicht. Wir beschäftigen uns also mit der nächsten Lücke: in der Lücke zwischen $U_2$ und $U_1$ liegt bereits $b_2$ und wir fügen $b_5$ noch hinzu, um diese Lücke auszufüllen. Nach dem Hinzufügen von $b_5$ fügen wir auch sein Bild $b_4 = G(b_5)$ hinzu. Der Vektor $b_4$ liegt in $U_1$. Nun hat man zwei Vektoren, und zwar $b_1$ und $b_4$, in $U_1$ gewählt. Diese beiden Vektoren erzeugt aber nicht $U_1$. Es wird als ein weiterer Vektoren hinzugefügt (in unserem Beispiel ist das nur ein Vektor $b_6$),  sodass man nach dieser Ergänzungen Vektoren $b_1, b_4, b_6$ erhält, die $U_1$ erzeugen. 
+	
+	Während der Konstruktion lässt man also nach und  nach Ketten von Vektoren wachsen, wobei jeder der Vektoren einer der Lücken zugeordnet werden kann. 
+	
+	In unserem Beispiel war hatten die Räume $U_1,\ldots,U_d$ die folgenden Dimensionen: $\dim(U_3) = 6, \dim(U_2) = 5, \dim (U_1) = 3$. Die Lücken haben also die Dimensionen $\dim(U_3) -\dim(U_2) = 6-5=1$, $\dim(U_2) -\dim(U_1) =  5-3=2$ und $\dim(U_1) = 3$. Wenn man uns $G$ wie im Beispiel geben würde, so würden wir nach der Bestimmung von $U_1,U_2,U_3$ die folgende erste Kette konstruieren: 
+	\begin{equation*}
+		\begin{array}{ccccccc}
+			b_3 & \mapsto & b_2 & \mapsto & b_1 & \mapsto & 0
+		\end{array}
+	\end{equation*}
+	(Die Wahl des Vektors $b_3$ der Kette ist übrigens nicht eindeutig.)
+	
+	Durch diese Kette haben wir in jeder der drei Lücken eine Dimension abgedeckt. 
+	
+	Dann kämme noch eine Kette hinzu, und wir hätten:  
+	\begin{equation*}
+		\begin{array}{ccccccc}
+			b_3 & \mapsto & b_2 & \mapsto & b_1 & \mapsto & 0
+			\\ && b_5 & \mapsto & b_4 & \mapsto & 0
+		\end{array}
+	\end{equation*}
+	Lücke Zwischen $U_3$ und $U_1$ ist in diesem Punkt komplett ausgefüllt, sowie die Lücke zwischen $U_2$ und $U_1$. Im letzten Schritt würde wir noch eine Kette hinzufügen, um $U_1$ auszufüllen:
+	\begin{equation*}
+		\begin{array}{ccccccc}
+			b_3 & \mapsto & b_2 & \mapsto & b_1 & \mapsto & 0
+			\\ && b_5 & \mapsto & b_4 & \mapsto & 0
+			\\ && & & b_6 & \mapsto & 0
+		\end{array}
+	\end{equation*}
+	Bei diesem Prozess entstand pro Schritt genau eine neue Kette. Im Allgemeinen können Verschiedene Situationen auftreten, etwa, dass man in einem der Schritt gar keine Kette oder mehrere Ketten hinzufügt. Wie viel Ketten in im $i$-ten Schritt hinzugefügt werden (für $i \in \{1,\ldots,d\}$), hängt von den Dimensionen der Vektorräume $U_1,\ldots,U_d$ ab. 
+\end{bsp}
+
+
+\begin{thm}
+	Sei $ G $ eine nilpotente lineare Abbildung eines $ n $-dimensionalen Vektorraums $ V $ über $ \K $ ($ n \in \N $). Dann existiert eine Basis $ \B $ von $ V $ derart, dass $ G_\B $ blockdiagonal und jeder Block von $ G_\B $ eine Jordan-Matrix zum Wert 0 ist. Die Matrix $ G_\B $ ist durch $ G $ bis auf die Reihenfolge der Blöcke eindeutig bestimmt.
+\end{thm}
+\begin{proof} Die Existenz von $\B$ un die Eindeutigkeit der Matrix $G_\B$ muss gezeigt werden. 
+	
+	\underline{Existenz:} Bei der Herleitung der Existenz von $\B$ lehnen wir uns an das Lemma von Fitting an und übernehmen die Bezeichnungen daraus. 
+	Das heißt, wir benutzen die Räume $ U_i = \ker(G^i) $ und $ W_i = \im(G^i) $ für und die Konstante $ d \in \N $ mit der Eigenschaft 
+	\begin{align*}
+		\set{0} &= U_0 \varsubsetneq \ldots \varsubsetneq U_d = U_{d+1} = \ldots \\
+		V &= W_0 \varsupsetneq \ldots \varsupsetneq W_d = W_{d+1} = \ldots
+	\end{align*}
+	Aus der Nilpotenz von $ G $ folgt $ U_d = V $. Wegen $ V = U_d \oplus W_d $ hat man somit $W_d = \set{0}$. 
+	
+	Im entarteten Fall $d=1$, ist $U_1 = V$, das heißt, der Kern von $G$ ist der gesamte Vektorraum $V$. Das bedeutet, $G$ ist Nullabbildung, dass dass $G_\B$ für jede Basis eine Nullmatrix ist. Der Wert $0$ ist Jordan-Matrix der Größe $1$ zum Wert $1$. Die $n \times n$ Nullmatrix ist also blockdigonal mit $n$ Jordan-Blöcken der Größe $1$ zum Wert $0$. 
+	
+	Als Nächstes betrachten wir den nicht-entarteten Fall $d \ge 2$. Wir befassen uns   mit den `Lücken' in der Kette $U_1 \varsubsetneq U_2 \varsubsetneq \cdots \varsubsetneq U_{d-1} \varsubsetneq U_d$  und als erste nehmen wir die Lücke zwischen $U_{d-1}$ und $U_d$ unter die Lupe. Diese wird mit einem Vektorraum `gestopft', den wir $V_d$ nennen. Das heißt, wir wählen einen Untervektorraum $V_d$ von $U_d$, mit der Eingenschaft $U_d = U_{d-1} \oplus V_d$. 
+	
+	Wegen $V_d \subseteq U_d$, werden die Vektoren aus $V_d$ durch $d$-fache Anwendung von $G$ auf $0$ abgebildet. Daraus folgt $G(V_d) \subseteq U_{d-1}$, oder mit Worten: die Vektoren aus $G(V_d)$ werden durch $(d-1)$-fache Anwendung von $G$ auf $0$ abgebildet. Der Vektorraum $U_{d-1}$ enthält somit die Untervektorräume $U_{d-2}$ und $G(V_d)$ als Untervektorräume. Es stellt sich heraus, dass die Summe der Vektorräume $U_{d-2} $und $G(V_d)$ direkt ist. Um das zu sehen, reicht es $U_{d-2} \cap G(V_d) =\{0\}$ zu verifizieren. Wir betrachten einen beliebigen Vektor $x \in G(V_d) \cap U_{d-2}$. Nach der Wahl von $x$, gilt $x = G(v)$ für ein $v \in V_d$ und $G^{d-2} (x) = 0$. Wenn wir den Ausdruck für $x$ in $G^{d-2} (x) = 0$ einsetzen, erhalten wir $0 = G^{d-2}(G(v)) = G^{d-1}(v)$. Das ergibt $v \in U_{d-1}$. Somit liegt $v$ in $V_d$ und $U_{d-1}$. Da die Summe von $V_d$ und $U_{d-1}$ nach der Wahl von $V_d$ direkt ist, folgt nun $v=0$. Somit ist auch $x = G(v)$ gleich $0$. Das zeigt $U_{d-2} \cap G(V_d) = \{0\}$. 
+	
+	Im Vektorraum $U_{d-1}$ ist also die direkte Summe $U_{d-2} \oplus G(V_d)$ als Untervektorraum enthalten. Nun erweitern wir $G(V_d)$ zu einem Untervektorraum $V_{d-1}$, um $U_{d-1}$ als direkte Summe von $U_{d-2}$ und $V_{d-1}$ darzustellen, wir wählen also einen Vektorraum $V_{d-1}$ mit $V_{d-1} \supseteq G(V_d)$ und $U_{d-1} = U_{d-2} \oplus V_{d-1}$. $V_{d-1}$ `stopft' somit die Lücke zwischen $U_{d-2}$ und $U_{d-1}$ und $G$ bildet den Vektorraum $V_d$, in der Lücke zwischen $U_d$ und $U_{d-1}$, in den Raum $V_{d-1}$, in der Lücke zwischen $U_{d-1}$ und $U_{d-2}$ ab. Wir zeigen noch zusätzlich, dass die Einschränkung von $G$ auf $V_d$ injektiv wirkt. Dafür betrachten wir ein beliebiges $x \in V_d$ mit $G(x) = 0$. Wenn wir zur Gleichung $G(x) =0$ die Abbildung $G^{d-2}$ anwenden, erhalten wir $G^{d-1} (x) =0$. Das ergibt $x \in U_{d-1}$. Der Vektor $x$ liegt also in $V_d \cap U_{d-1}$. Da die Summe von $V_d$ und $U_{d-1}$ direkt ist, hat man $V_d \cap U_{d-1} =\{0\}$. Das zeigt $x=0$. Die Abbildung $G$ ist also in der Tat injektiv auf $V_d$. 
+	
+	Nun setzen wir die oben beschriebene Konstruktion der Räume $V_d, V_{d-1},\ldots$ fort und erhalten die Räume $V_d,\ldots,V_1$ mit den folgenden Eigenschaften: 
+	\begin{enumerate}
+		\item
+		$ U_i = U_{i-1} \oplus V_i $ für alle $ i \in \is{1}{d} $
+		\item
+		$ G|_{V_i} $ ist injektiv und $ G(V_i) \subseteq V_{i-1} $ für alle $ i \in \is{2}{d} $.
+		\item
+		$ G|_{V_1} $ ist eine Nullabbildung.
+	\end{enumerate}
+	Informell: die Räume $V_d,\ldots,V_1$ stopfen die Lücken, jeder Raum $V_i$ wird injektiv in in den nächsten Raum $V_{i-1}$, es sein denn das war der Raum $V_1$ ($V_1$ wird auf $0$ abgebildet). 
+	
+	Insbesondere folgt aus (i) die Gleichheit $ U_i = V_1 \oplus \ldots \oplus V_i $ (wegen (i) und $ U_0 = \set{0} $) und, für den Fall $ i = d $, die Gleichheit $ V = U_d = V_1 \oplus \cdots \oplus V_d $. Anhand von $V_d,\ldots,V_1$ können wir nun eine gewünschte Basis $\B$ fixieren. Das machen wir iterativ folgendermaßen. 
+	
+	Wir fixieren eine Basis $\B_d$ von $V_d$. Da $G$ auf $V_d$ injektiv ist, ist $G(\B_d)$ ein linear unabhängiges System in $V_{d-1}$.  Da $G$ auf $V_{d-1}$ injektiv ist, ist $G(G(\B_d)) = G^2(\B_d)$ ein linear unabhängiges System in $V_{d-2}$ usw. Wir erhalten also die folgenden linear unabhängigen Systeme:
+	\begin{itemize}
+		\item[] $\B_d$ in $V_d$
+		\item[] $G(\B_d)$ in $V_{d-1}$
+		\item[] $\vdots$
+		\item[] $G^{d-1}(\B_d)$ in $V_1$. 
+	\end{itemize} 
+	Das System $\B_d$ ist bereits eine Basis von $V_d$, das nächste System $G(\B_d)$ ist aber im Allgemeinen keine Basis von $V_{d-1}$. Wir ergänzen also $G(\B_d)$ zu einer Basis $(G(\B_d), \B_{d-1})$ von $V_{d-1}$ (wenn $G(\B_d)$ bereits eine Basis von $V_{d-1}$ ist, ist $\B_{d-1}$ leer). Nun konstruieren wir anhand $\B_{d-1}$ linear unabhängige System $G(\B_{d-1}),\ldots, G^{d-2} (\B_{d-1})$ mit den folgenden Eigenschaften: 
+	\begin{itemize}
+		\item[] $\B_d$ ist Basis von $V_d$
+		\item[] $(G(\B_d),\B_{d-1})$ ist Basis von $V_{d-1}$
+		\item[] $(G^2(\B_d),G(\B_{d-1}))$ ist linear unabhängiges System in $V_{d-1}$
+		\item[] $\vdots$
+		\item[] $(G^{d-1}(\B_d), G^{d-2}(\B_{d-2}))$ ist linear unabhängiges System in $V_1$. 
+	\end{itemize} 
+	
+	Dieser Prozess lässt sich iterativ fortsetzen. Wir erhielten eine Basis für $V_1$, dann eine Basis für $V_{d-1}$, als nächstes erhalten wir eine Basis von $V_{d-2}$ usw. Am Ende des Prozesses haben wir die Vektorsysteme $\B_d,\ldots,\B_1$, für welche die folgenden Eingenschaften erfüllt sind: 
+	\begin{itemize}
+		\item[] $\B_d$ ist Basis von $V_d$
+		\item[] $(G(\B_d),\B_{d-1})$ ist Basis von $V_{d-1}$
+		\item[] $(G^2(\B_d),G(\B_{d-1}), \B_{d-2})$ ist Basis von $V_{d-1}$
+		\item[] $\vdots$
+		\item[] $(G^{d-1}(\B_d), G^{d-2}(\B_{d-2}),\ldots, \B_1)$ ist Basis von $V_1$. 
+	\end{itemize} 	
+	Durch das Zusammenfügen der oben gewählten Basen der Vektorräume $V_d,\ldots,V_1$ entsteht eine Basis $\B$ von $V = V_1 \oplus \cdots \oplus V_d$, für welche die Behauptung des Theorems erfüllt ist. 
+	Schauen wir uns mal an, wie die Abbildung auf den Vektoren unserer Basis $\B$ wirkt. Nach der Konstruktion bilden die Basisvektoren bzgl. der Wirkung von $G$ die folgenden Ketten: 
+	\begin{equation*}
+		\begin{array}{ccccccccc}
+			b & \mapsto & G(b) & \mapsto & \ldots & \mapsto & G^{i-1}(b) & \mapsto G^i(b) = 0 \\
+			\vertical{\in} && \vertical{\in} &&&& \vertical{\in} && \\
+			\B_i && G(\B_i) &&&& G^{i-1}(\B_i) && \\
+			\vertical{\subseteq} && \vertical{\subseteq} &&&& \vertical{\subseteq} && \\
+			V_i && V_{i-1} &&&& V_1 &&
+		\end{array}
+	\end{equation*}
+	Bei einer passenden Reihung der Vektoren hat also die Matrix $G_\B$ die Blockdiagonalstruktur, und genau $|\B_i|$ Diagonalblöcke von $G_\B$ sind Jordan-Matrizen der Größe $i$ zum Wert $0$. 
+	
+	\underline{Eindeutigkeit:} Die Eindeutigkeit ist eine Nebenbemerkung zum Beweis der Existenz. Die Räume $U_1,\ldots,U_d$ und ihre Dimensionen sind eindeutig durch $G$ bestimmt. Die Räume $V_1,\ldots,V_d$ sind zwar nicht eindeutig durch $G$ bestimmt, ihre Dimensionen sind aber eindeutig; denn aus $U_i = U_{i-1} \oplus V_i$ folgt $\dim(V_i) = \dim(U_i) - \dim(U_{i-1})$. Ist $\B$ eine Basis, in der die Matrix $G_\B$ die in der Behauptung beschriebene Struktur hat, so kann man die Basis $\B$ genau so wie oben im Existenzbeweis mit Hilfe von Vektorsystemene $\B_1,\ldots,\B_d$ strukturieren und  anhand der Vektoren aus $\B$ entsprechende Vektorräume $V_d,\ldots,V_1$ aufspannen, für welche $U_i = U_{i-1} \oplus V_i$ erfüllt ist. Die Anzahl der Vektoren in $\B_d$ ist gleich der Dimension von $V_d$ und somit eindeutig durch $G$ bestimmt. Die Anzahl der Vektoren in der Basis $(G(\B_d),\B_{d-1})$ ist die Dimension von $V_{d-1}$ und somit eindeutig durch $G$ bestimmt. Die Anzahl der Vektoren in $\B_{d-1}$ ist die Anzahl der Vektoren in $(G(\B_d),\B_{d-1})$ (gleich $\dim(V_{d-1})$) minus die Anzahl der Vektoren in $G(\B_d)$ (gleich $\dim(V_d)$). Somit ist die Anzahl der Vektoren in $\B_{d-1}$ gleich $\dim(V_d)-\dim(V_{d-1})$, dieser Wert ist eindeutig durch $G$ bestimmt. Eine iterative Fortsetzung dieses Arguments zeigt, dass die Anzahl der Vektoren in jedem der $d$ Systeme $\B_d,\ldots,\B_1$ eindeutig durch $G$ bestimmt ist. Die Anzahl der Vektoren in $|\B_i|$ ist aber die Anzahl der Diagonalblöcke der Größe $i$. Wir erhalten also die Eindeutigkeit. 
+\end{proof}
+
+Die Darstellung $G_\B$ von $G$ aus dem vorigen Theorem heißt die JNF von $G$. JNF für allgemeine lineare Abbildungen werden wir im folgenden Paragraphen einführen.
+
+Durch die Identifikation von Matrizen mit linearen Abbildungen können wir natürlich von nilpotenten Matrizen sprechen und von JNF solcher Matrizen. 
+
+\begin{bspe}\
+	\begin{enumerate}
+		\item
+		Wir berechnen die JNF der (nilpotenten) Matrix
+		\begin{equation*}
+			G = \begin{pmatrix}
+				0 & 1 & 3 \\
+				0 & 0 & 2 \\
+				0 & 0 & 0
+			\end{pmatrix} \in \R^{3 \times 3}.
+		\end{equation*}
+		Die Matrix ist tatsächlich nilpotent. Das kann man direkt überprüfen, oder durch Caley-Hamilton. Das charakteristische Polynom ist $t^3$, also gilt nach Cayley-Hamilton $ G^3 = 0 $. Im Lemma von Fitting werden die Räume $U_i$ spätestens ab $i=3$ gleich $\R^3$. Eine genauere Analyse ergibt
+		\begin{equation*}
+			\set{0} = U_0 \varsubsetneq U_1 \varsubsetneq U_2 \varsubsetneq U_3 = \R^3,
+		\end{equation*}
+		da $ \dim(U_1) = 1 $ und $ \dim(U_2) = 2 $ gilt. Die `Lücke' zwischen $U_3$ und $U_2$ sowie zwischen $U_2$ und $U_1$ ist also ein-dimensional. Wenn wir also einen Vektor aus $U_3 \setminus U_2$ und dann $G$ zu diesem Vektor iterativ anwenden, stopfen wir alle Lücken. Somit hat die JNF von $G$ einen einzigen Block: die Jordan-Matrix der Größe $3$ zum Wert $0$:
+		\begin{equation*}
+			\begin{pmatrix}
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+				0 & 0 & 0
+			\end{pmatrix}
+		\end{equation*}
+		Wie die JNF aussieht wissen wir also, eher wir eine konkrete Basis dazu fixieren. 
+		Um eine Basis zu konstruieren, wählen wir einen Vektor aus $ U_3 \setminus U_2 $. Das ist ein Vektor, der durch eine zweifache Anwendung von $G$ nicht gleich $0$ wird. Es gibt sehr viele solche Vektoren, zum Beispiel 
+		
+		$ e_3 $ ($ G^2e_3 = 2e_1 \neq 0 $). Durch die iterative Anwendung von $G$ zu $e_3$ entstehen die Vektoren. 
+		\begin{align*}
+			Ge_3 &=  \begin{pmatrix}
+				3 \\ 2 \\ 0
+			\end{pmatrix} &
+			G^2e_3 &= \begin{pmatrix}
+				2 \\ 0 \\ 0
+			\end{pmatrix}
+		\end{align*}
+		Die Matrix hat also die JNF 
+		\[
+		G_\B = \begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & 1 \\
+			0 & 0 & 0
+		\end{pmatrix} 
+		\] in der Basis 
+		\[ \B = \left( \begin{pmatrix}
+			2 \\ 0 \\ 0
+		\end{pmatrix}, \begin{pmatrix}
+			3 \\ 2 \\ 0
+		\end{pmatrix}, \begin{pmatrix}
+			0 \\ 0 \\ 1
+		\end{pmatrix} \right).
+		\]
+		\item
+		Wir bestimmen die JNF der (nilpotenten) Matrix 
+		\begin{align*}
+			G &= \begin{pmatrix}
+				4 & 1 & -1 \\
+				-8 & -2 & 2 \\
+				8 & 2 & -2
+			\end{pmatrix} \in \R^{3 \times 3}.
+		\end{align*}
+		Die Nilpotenz kann mit Hilfe von Cayley-Hamilton verifiziert werden, denn das charakteristische Polynom dieser Matrix ist $t^3$, sodass man $G^3 = 0$ hat. Die Anwendung von Cayley-Hamilton sagt uns aber nicht, welche kleinste Potenz der Matrix $G$ gleich $0$. Es stellt sich heraus, dass in diesem Beispiel bereits die zweite Potenz gleich $0$ ist: man man direkt verifizieren, dass $G^2 = 0$ ist. Wir brauchen also nur die Räume $U_1$ und $U_2$. Deren Dimensionen sind: 
+		\begin{align*}
+			\dim(U_1) &= \dim(\ker(G)) = 2 \\
+			\dim(U_2) &= \dim(\ker(G^2)) = 3
+		\end{align*}
+		Wir wählen einen Vektor in $ U_2 \setminus U_1 $, z.B. $ e_1 $ ist ein solcher Vektor. Eine iterative Anwendung von $G$ zu diesem Vektor ergibt noch den Vektor
+		\begin{align*}
+			G e_1 &= \begin{pmatrix}
+				4 \\ -8 \\ 8
+			\end{pmatrix} 
+		\end{align*}
+		Es ist klar, dass $G^2 e_1 = 0$ ist. Zwei Vektoren haben wir bereits in der Basis unserer JNF fixiert. Uns fehlt ein dritter Vektor: 
+		\begin{align*}
+			\B &= \left( \underbrace{\begin{pmatrix}
+					4 \\ -8 \\ 8
+			\end{pmatrix}}_{b_1}, \underbrace{\begin{pmatrix}
+					1 \\ 0 \\ 0
+			\end{pmatrix}}_{b_2}, \underbrace{\begin{pmatrix}
+					? \\ ? \\ ?
+			\end{pmatrix}}_{b_3} \right)
+		\end{align*}
+		Als $ b_3 $ wählt man einen Vektor aus $ U_1 $, der zum Vektor $ b_1 \in U_1 $ linear unabhängig ist, z.B. $ b_3 = e_1 - 4e_2 $. Also hat $G$ in der Basis
+		\begin{align*}
+			\B &= \left( \underbrace{\begin{pmatrix}
+					4 \\ -8 \\ 8
+			\end{pmatrix}}_{b_1}, \underbrace{\begin{pmatrix}
+					1 \\ 0 \\ 0
+			\end{pmatrix}}_{b_2}, \underbrace{\begin{pmatrix}
+					1 \\ -4 \\ 0
+			\end{pmatrix}}_{b_3} \right)
+		\end{align*}
+		die JNF 
+		\begin{equation*}
+			G_\B = \begin{pmatrix}
+				0 & 1 & \\
+				0 & 0 & \\
+				&& 0
+			\end{pmatrix}
+		\end{equation*}.
+	\end{enumerate}
+	Die JNF hat zwei Diagonalblöcke der Größen $2$ und $1$. 
+\end{bspe}
+
+\subsubsection{Jordansche Normalform für allgemeine lineare Abbildungen}
+\label{sec:6_4_9}
+
+Die Matrix $F_\B$ im folgenden Theorem heißt die JNF von $F$. 
+
+
+\begin{thm}
+	Seien die Voraussetzungen aus \ref{sec:6_4_1} erfüllt. Dann existiert eine Basis $ \B $ von $ V $, sodass $ F_\B $ blockdiagonal ist, wobei die Diagonalblöcke Jordan-Matrizen zu den Werten $ \lambda_1, \ldots, \lambda_k $ sind und für jedes $ i \in \is{1}{k} $ die Gesamtgröße der Jordan-Matrizen zum Wert $ \lambda_i $ gleich $ r_i $ ist. Die Matrix $ F_\B $ wie oben ist bis auf die Reihenfolge der Blöcke durch $ F $ eindeutig bestimmt.
+\end{thm}
+\begin{proof}\
+	\begin{description}[font = \normalfont]
+		\item[Existenz von $ \B $:]
+		Wir betrachten die Haupträume $ H_i := \ker(F-\lambda_i\id)^{r_i} $ mit $ i \in \is{1}{k} $. Die Abbildung $ F_i := F|_{H_i} \in \Lin(H_i) $ hat das charakteristische Polynom $ (t-\lambda_i)^{r_i} $. Daher hat die Abbildung $ G_i := F_i - \lambda_i \id $ das charakteristische Polynom $ t^{r_i} $. Nach dem Satz von Cayley-Hamilton ist $ G_i^{r_i} = 0 \Rightarrow G_i $ ist nilpotent. Nach Theorem \ref{sec:6_4_8} besitzt $ H_i $ eine Basis $ \B_i $, für welche die Matrix $ (G_i)_{\B_i} $ Jordansche Normalform hat (mit Jordan-Matrizen zum Wert 0). Demnach hat $ (F_i)_{\B_i} = (G_i)_{\B_i} + \lambda_i I $ Jordansche Normalform (mit Jordan-Matrizen zum Wert $ \lambda_i $).
+		
+		Da $ V = H_1 \oplus \ldots \oplus H_k $ gilt, ist $ \B = (\B_1, \ldots, \B_k) $ die gesuchte Basis von $ V $.
+		\item[Eindeutigkeit von $ F_\B $ (Beweisskizze):]
+		Man kehrt die obige Konstruktion um. Erklärung an einem Beispiel:
+		\begin{equation*}
+			F_\B = \bordermatrix{
+				& \bordernote{b_1} & \bordernote{b_2} & \bordernote{b_3} & \bordernote{b_4} & \bordernote{b_5} & \bordernote{b_6} \cr
+				\bordernote{b_1} & \lambda_1 & 1 &&&& \cr
+				\bordernote{b_2} & 0 & \lambda_1 &&&& \cr
+				\bordernote{b_3} &&& \lambda_1 &&& \cr
+				\bordernote{b_4} &&&& \lambda_2 & 1 & 0 \cr
+				\bordernote{b_5} &&&& 0 & \lambda_2 & 1 \cr
+				\bordernote{b_6} &&&& 0 & 0 & \lambda_2 \cr
+			}
+		\end{equation*}
+		Man sieht: $ b_1,b_2,b_3 $ ist Basis von $ H_1 $ und $ b_4,b_5,b_6 $ ist Basis von $ H_2 $. Darüber hinaus sieht man, dass $ (F-\lambda_1\id)|_{H_1} \in \Lin(H_1) $ und $ (F-\lambda_2\id)|_{H_2} $ nilpotent sind.
+		
+		Somit folgt die Eindeutigkeit von $ F_\B $ aus der Eindeutigkeit von den Haupträumen und aus der Eindeutigkeit im nilpotenten Fall. \qedhere
+	\end{description}
+\end{proof}
+
+\subsubsection{Jordansche Normalform für Matrizen}
+
+Natürlich kann man die Existenz der JNF komplett in der Sprache der Matrizen formulieren. Das machen wir im folgenden Theorem. 
+
+\begin{thm}
+	Sei $ A \in \K^{n \times n} $ ($ n \in \N $) eine Matrix, deren charakteristisches Polynom in Linearfaktoren zerfällt, d.h. $ p_A = \prod_{i=1}^{k} (t-\lambda_i)^{r_i} $ mit $ k \in \N $, $ \lambda_1, \ldots, \lambda_k \in \K $ und $ r_1, \ldots, $ $ r_k \in \N $. Dann existiert eine reguläre Matrix $ B \in \K^{n \times n} $ derart, dass $ B^{-1}AB $ blockdiagonal ist, wobei die Diagonalblöcke Jordan-Matrizen zu den Werten $ \lambda_1, \ldots, \lambda_k $ sind und für jedes $ i \in \is{1}{k} $ die Gesamtgröße der Jordan-Matrizen zum Wert $ \lambda_i $ gleich $ r_i $ ist. Die Matrix $ B^{-1}AB $ wie oben ist bis auf die Reihenfolge der Blöcke durch $ A $ eindeutig bestimmt.
+\end{thm}
+\begin{proof}
+	Folgt direkt aus Theorem \ref{sec:6_4_9}.
+\end{proof}
+\begin{bem}[zur Berechnung von Jordanschen Normalformen für Matrizen, deren charakteristisches Polynom zerfällt]
+	Das folgende `Rezept' zur Konstruktion von JNF einer Matrix $A$ ist eine Zusammenfassung der Überlegungen in diesem Abschnitt. Wir nehmen an, das charakteristische Polynom zerfällt in lineare Faktoren. 
+	\begin{enumerate}
+		\item
+		Man bestimmt die Hauptraumzerlegung, d.h. eine reguläre Matrix $ C $ mit
+		\begin{equation*}
+			C^{-1}AC = \begin{pmatrix}
+				A_1 && \\
+				& \ddots & \\
+				&& A_k
+			\end{pmatrix}
+		\end{equation*}
+		sodass $ A_i $ das charakteristische Polynom $ (t-\lambda_i)^r_i $ hat.
+		\item
+		Für jedes $ i \in \is{1}{k} $ eine invertierbare Matrix $ B_i $ bestimmen, sodass für die nilpotente Matrix $ A_i - \lambda_i I $ die Matrix $ B_i^{-1}(A_i-\lambda_iI)B_i $ Jordansche Normalform hat. Dann hat auch $ J_i = B_i^{-1}A_iB_i $ Jordansche Normalform (mit Jordan-Matrizen zum Wert $ \lambda_i $).
+		\item
+		Betrachte nun:
+		\begin{align*}
+			C^{-1}AC &= \begin{pmatrix}
+				A_1 && \\
+				& \ddots & \\
+				&& A_k
+			\end{pmatrix} \\ & = \begin{pmatrix}
+				B_1J_1B_1^{-1} && \\
+				& \ddots & \\
+				&& B_kJ_kB_k^{-1}
+			\end{pmatrix} \\
+			&= \begin{pmatrix}
+				B_1 && \\
+				& \ddots & \\
+				&& B_k
+			\end{pmatrix} \begin{pmatrix}
+				J_1 && \\
+				& \ddots & \\
+				&& J_k
+			\end{pmatrix} \begin{pmatrix}
+				B_1 && \\
+				& \ddots & \\
+				&& B_k
+			\end{pmatrix}^{-1}
+		\end{align*}
+		Das heißt, die JNF von $A$ ist die Matrix 
+		\[ B^{-1}AB = \begin{pmatrix}
+			J_1 && \\
+			& \ddots & \\
+			&& J_k
+		\end{pmatrix},
+		\]
+		wobei die Basis durch die Matrix 
+		\[ B = C \begin{pmatrix}
+			B_1 && \\
+			& \ddots & \\
+			&& B_k
+		\end{pmatrix} \]
+		dargestellt ist. 
+	\end{enumerate}
+\end{bem}
+
+\begin{bem}
+	Unser Weg zur Herleitung der Existenz von Jordanischen Normalformen war im Verhältnis zu anderen Überlegungen, die wir in diesem Kurs gemacht hatten, relativ lang: wir begannen mit dem Lemma von Fitting, dann kam die Hauptraumzerlegung, dann die Jordanische Normalform für nilpotente Abbildungen, und am Ende Jordanische Normalform für allgemeine Abbildungen. Die JNF ist ein Beispiel einer Aussage, an dem man sieht, dass die Behandlung mancher Fakten gewisse Zeit und Geduld erfordert.
+\end{bem} 

@@ -1,0 +1,186 @@
+
+
+\section{Eliminationsverfahren zur Lösung von LGS}
+
+\subsection{Lineare Gleichungssysteme (LGS)}
+
+Im Folgenden seien $ \K $ ein Körper, $ m,n \in \N $ und $ a_{ij}, b_i \in \K $ für alle $ i \in \is{1}{m}, j \in \is{1}{n} $. Wir definieren ein\emph{lineares Gleichungssystem} bzgl. des Körpers $\K$ als ein System der Form
+\begin{equation}
+	\sum_{j=1}^{n} a_{ij} x_j = b_i \qquad  (i=1,\ldots,m). 
+	\label{B1.1}
+\end{equation}
+mit unbekannten $ x_1, \ldots, x_n $ aus $ \K $. Die Menge
+\begin{equation}
+	X := \{(x_1, \ldots, x_n) \in \K^n : \text{\eqref{B1.1} gilt} \}
+	\label{B1.2}
+\end{equation}
+heißt die Lösungsmenge von \eqref{B1.1}.
+
+Das Ziel ist die folgenden Fragen algorithmisch zu beantworten:
+\begin{enumerate}
+	\item
+		Ist $ X = \emptyset $?
+	\item
+		Besteht X aus genau einem Element aus $ \mathbb{K}^n $?
+\end{enumerate}
+Außerdem wollen wir in dem Fall $ X \neq \emptyset $ eine explizite Beschreibung von $ X $ ermitteln. Man schreibt \eqref{B1.1} oft als eine Tabelle:
+\begin{center}
+\begin{tabular}{c|ccc|c}
+	& $ x_1 $ & $ \ldots $ & $ x_n $ & \\
+	\hline
+	$ z_1 $ & $ a_{1,1} $ & $ \ldots $ & $ a_{1,n} $ & $ b_1 $ \\
+	$ z_2 $ & $ a_{2,1} $ & $ \ldots $ & $ a_{2,n} $ & $ b_2 $ \\
+	\vdots & \vdots &  & \vdots & \vdots \\
+	$ z_m $ & $ a_{m,1} $ & $ \ldots $ & $ a_{m,n} $ & $ b_m $ \\
+	\hline
+\end{tabular}
+\end{center}
+Hierbei nutzen wir $ z_i $ als eine (optionale) Bezeichnung für die $ i $-te Gleichung ($ z $ wie Zeile). 
+
+\begin{bsp}
+	Die Gleichung 
+	\[
+		 \left\{ \begin{array}{rcrcr}
+		x_1 &+& x_2 &=& 15\\
+		x_1 &-& 2x_2 &=& 3
+	\end{array} \right. 
+	\]
+	wird tabellarisch als 
+	\begin{center}
+	\begin{tabular}{r|rr|r}
+		& $ x_1 $ & $ x_2 $ & \\
+		\hline
+		$ z_1 $ & 1 & 1 & 15 \\
+		$ z_2 $ & 1 & -2 & 3 \\
+		\hline
+	\end{tabular}
+	\end{center} 
+	dargestellt. 
+\end{bsp}
+ 
+\subsection{Elementartransformationen eines LGS}
+
+Für Gleichungen $ z_i $ und $ z_k $ mit $ i,k \in \is{1}{m} $ und einem Parameter $ \alpha \in \K $ definieren wir die Gleichung
+\begin{align}
+\begin{split}
+	z_i + \alpha z_k &:= \sum_{j=1}^{n} a_{ij} x_j + \alpha \left( \sum_{j=1}^{n} a_{kj}x_j \right) \\
+	&= \sum_{j=1}^{n}\left( \alpha_{ij} + \alpha a_{kj} \right)x_j = b_i + \alpha b_k.
+\end{split}
+\end{align}
+Wir führen die folgenden 3 Arten der Elementartransformationen für \eqref{B1.1} ein:
+\begin{description}
+	\item[Typ 1.]
+		Für $ i,k \in \is{1}{n} $ werden die Gleichungen $ z_i $ und $ z_k $ vertauscht.
+		\\ \textbf{Bezeichnung:} $ z_i \leftrightarrow z_k $.
+	\item[Typ 2.]
+		Für $ i \in \is{1}{m} $ und $ \alpha \in \K\setminus\{0\} $ wird $ z_i $ durch $ \alpha z_i $ ersetzt. \\ 
+		\textbf{Bezeichnung:} $ z_i := \alpha z_i $ 
+	\item[Typ 3.]
+		Für $ i,k \in \is{1}{m} $ mit $ i \neq k $ und für $ \alpha \in \K $ wird $ z_i $ durch $ z_i + \alpha z_k $ ersetzt. \\ 
+		\textbf{Bezeichnung:} $ z_i :=  z_i + \alpha z_k $.
+\end{description}
+
+\begin{propn}
+	Elementartransformationen eines linearen Gleichungssystems ändern die Lösungsmenge des Systems nicht.
+\end{propn}
+\begin{proof} \ 
+	\begin{description}[font=\normalfont]
+		\item[Typ 1]
+			ist klar.
+		\item[Typ 2:]
+			Sei $ i \in \is{1}{m} $ und $ \alpha \in \K\setminus\{0\} $.
+			Ist $ z_i $ erfüllt, dann ist auch $ \alpha z_i $ erfüllt. Umgekehrt: Ist $ \alpha z_i $ erfüllt, dann ist auch $ \alpha^{-1}\left( \alpha z_i \right) = z_i $ erfüllt.
+		\item[Typ 3:]
+			Seien $ i,k \in \is{1}{m} $ und $ \alpha \in \K $. Wenn $ z_i $ und $ z_k $ erfüllt sind, dann sind auch $ z_i + \alpha z_k $ und $ z_k $ erfüllt. Umgekehrt: Wenn $ z_i + \alpha z_k $ und $ z_k $ erfüllt sind, dann sind auch $ (z_i + \alpha z_k ) - \alpha z_k = z_i $ und $ z_k $ erfüllt.\qedhere
+	\end{description}
+\end{proof}
+Für $ i $ und $ j $ sagen wir, dass die Gleichung $ z_i $ die Unbekannte $ x_j $ \textit{enthält}, falls $ a_{ij} \neq 0 $ ist. Ansonsten sagen wir, dass $ z_i $ die Unbekannte $ x_i $ \emph{nicht enthält}.
+
+
+\subsubsection{Gauß-Verfahren}
+
+Wir sagen, dass die Gleichung $z_i$ die $j$-te Variable des LGS \emph{enthält}, wenn $a_{i,j} \ne 0$ gilt. Wenn das LGS eine Variable $x_{j}$ in einer Gleichung enthält, so kann die Variable aus allen anderen Gleichungen des Systems durch Transformationen vom Typ~3 entfernt werden. Man erhält somit ein äquivalentes LGS, in dem $x_j$ in einer einzigen Gleichung enthalten ist. 
+
+Der Grundgedanke der Eliminationsverfahren zur Lösung der LGS ist, dass man nun $x_j$ aus der Gleichung $z_i$ eindeutig ermitteln kann, sobald die Werte aller anderen Variablen festgelegt sind. Die Eliminationsverfahren basieren auf der iterativen Anwendung der vorigen Beobachtung. 
+
+
+\begin{framed} 
+	Das \emph{Gauß-Verfahren} geht nach dem folgenden Muster vor.
+	
+	\begin{itemize} 
+		\item In der ersten Iteration wird eine Variable $x_{j_1}$ gefunden, die in einer der Gleichungen $z_1,\ldots,z_m$ enthalten ist. Durch das Vertauschen der Gleichungen können wir sicher stellen, dass $x_{j_1}$ in $z_1$ enthalten ist. Nun wird $x_{j_1}$ aus $z_2,\ldots,z_m$ mit Hilfe der Transformationen vom Typ~3 entfernt. 
+	
+		\item In der zweiten Iteration wird eine Variable $x_{j_2}$ gefunden, die einer der Gleichungen $z_2,\ldots,z_m$ enthalten ist. Durch das Vertauschen der Gleichungen $z_2,\ldots,z_m$ können wir sicher stellen, dass $x_{j_2}$ in $z_2$ enthalten ist. Die Variable $x_{j_2}$ wird aus den Gleichungen $z_3,\ldots,z_m$ mit Hilfe der Transformationen vom Typ~3 entfernt. 
+	
+		\item Nach der $k$-ten Iteration hat man im aktuellen LGS $k$ Variablen $x_{j_1},\ldots,x_{j_k}$ fixiert, wobei $x_{j_s}$ in der Gleichung $z_s$ aber nicht in den Gleichungen $z_i$ mit $i > s$ enthalten ist. 
+		\item 	Hat man nach der $k$-ten Iteration in den Gleichungen $z_i$ mit $i > k$ keine Variablen mehr, so terminiert das Verfahren. Dies ist spätestens in der $m$-ten Iteration der Fall, da nach $m$ Iterationen alle $m$ Gleichungen des LGS bereits abgearbeitet sind. 
+	\end{itemize} 
+	
+	Da die Elementartransformationen die Lösungsmenge des LGS nicht ändern, erhalten wir nach jeder Iteration sowie nach der Terminierung des Verfahrens ein LGS, das zum Ausgangssystem äquivalent ist. 
+	\end{framed}
+
+Wenn man im Gauß-Verfahren die Variablen in der Reihenfolge $x_1,\ldots,x_n$ abarbeitet, d.h., bei der Wahl einer Variable $x_{j_k}$ wählt in der $k$-ten Iteration aus den Gleichungen $z_{k+1},\ldots,z_k$ wählt man stets eine Variable mit dem kleinstmöglichen Index, dann erzeugt das Gauß-Verfahren nach seiner Terminierung ein LGS in der sogenannten Zeilenstufenform. 
+
+Man sagt, dass ein LGS  in Unbekannten $x_1,\ldots,x_n$ die \emph{Zeilenstufenform} hat, wenn für gewisse Indizes $1 \le j_1 < \ldots < j_r \le n$ folgende Eigenschaften erfüllt sind: 
+\begin{itemize}
+	\item Für jedes $i=1,\ldots,r$ enthält die $i$-te Gleichung des LGS die Variable $x_{j_i}$ aber nicht die Variablen $x_1,\ldots,x_{j_i-1}$. 
+	\item Für jedes $i>r$ enthält die $i$-te Gleichung des LGS keine Variablen. 
+\end{itemize}
+
+Hierbei nennt man $x_{j_1},\ldots,x_{j_r}$ in manchen Quellen die \emph{Leitvariablen} und alle anderen Variablen die \emph{freien Variablen}. In der linearen Optimierung nennt man $x_{j_1},\ldots,x_{j_r}$ die Basisvariablen und alle anderen Variablen Nichtbasisvariablen. Die Koeffizienten $a_{1,j_1},\ldots,a_{r,j_r} \in \K \setminus \{0\}$ nennt man die \emph{Pivotelemente}. Es ist klar, dass man durch Anwendung der Transformationen vom Typ~2 alle Pivotelemente gleich $1$ setzen kann. 
+
+\begin{propn}
+	Ist LGS ein System in einer Zeilenstufenform mit Leitvariablen $x_{j_1},\ldots,x_{j_r}$ und $j_1 < \ldots < j_r$, so gilt: 
+	\begin{enumerate}[label=(\alph*)]
+		\item Das  LGS hat genau dann keine Lösungen, wenn es eine Gleichung der Form $0=b_i$ mit der rechten Seite $b_i \in \K \setminus \{0\}$ enthält. 
+		\item Das LGS hat genau eine eindeutige Lösung, wenn es keine Gleichung der Form $0 = b_i$ mit $b_i \in \K \setminus \{0\}$ und keine freien Variablen enthält.
+		\item Wenn das LGS mehr als eine Lösung hat, dann gibt es zu jeder Wahl der Werte für freie Variablen eine eindeutige Wahl der Werte der Leitvariablen, für welche das System erfüllt ist. 
+	\end{enumerate}
+\end{propn}
+\begin{proof}
+	(a) Wenn das System eine Gleichung der Form $0 = b_i$ mit der rechten Seite $b_i \ne 0$ enthält, ist das System nicht lösbar. Wenn das System keine solche Gleichungen enthält, so können wir alle freien Variablen (falls man welche hat) gleich $0$ setzen. Aus der Gleichung $z_r$ lässt sich nun der Wert von $x_{i_r}$ ermitteln, der Gleichung $z_r$ erfüllt, aus der Gleichung $z_{r-1}$ der Wert von $x_{i_{r-1}}$ usw., bis die Werte aller Leitvariablen so gewählt sind, dass die Gleichungen $z_1,\ldots,z_r$ erfüllt sind. Die Gleichungen $z_i> 0$ mit $i > r$ haben die Form $0=0$ und sind somit automatisch erfüllt. 
+	
+	(b) Systeme mit Gleichungen der Form $0 = b_i$ mit einer Rechten Seite $b_i \ne 0$ haben keine Lösungen. Systeme ohne solche Gleichungen und mit freien Variable, können die freien Variablen auf mindestens zwei verschiedene weisen belegt werden. Zu jeder dieser Belegung finden sich wie im Beweis von (a) die Belegungen der Leitvariablen, die as System erfüllen. So konstruiert man zwei verschiedene Lösungen des Systems. Alle sonstigen Systeme enthalten weder Gleichungen der Form $0 =b_i$ mit $b_i \ne 0$ noch freie Variablen. Bei diesen System ergibt sich ein eindeutiger Wert von $x_{i_r}$ aus $z_r$, dann ein eindeutiger Wert von $x_{i_{r-1}}$ aus $z_{r-1}$ usw., bis die Werte von allen Variablen eindeutig festgelegt sind. 
+	
+	(c) folgt direkt aus den vorigen Überlegungen zur Wahl der Werte von Leitvariablen in Abhängigkeit von den freien Variablen.
+\end{proof}
+
+\begin{bsp}
+	Lösen Sie das LGS bzgl. $\Q$, $\R$ und $\Z / 7 \Z$. 
+	\[
+	\left\{
+	\begin{array}{ccccccc}
+		 x_1 &  +&  2 x_2 & + & 3 x_3 &  = & 4
+\\		 2 x_1 & + & x_2 & -&  x_3 & =&  5
+\\		 x_1 & + & x_2 & + & x_3 & = & 2
+	\end{array}\right. 
+	\]
+\end{bsp} 
+
+\subsubsection{Gauß-Jordan-Verfahren}
+
+Das Gauß-Jordan-Verfahren ist eine geringfügige Modifikation des Gaus-Verfahrens, bei der sichergestellt wird, dass jede Leitvariable in nur einer Gleichung enthalten ist. Man kann es folgendermaßen beschreiben: 
+
+\begin{framed}
+\begin{itemize} 
+	\item Am Anfang gibt es keine Leitvariablen. 
+	\item Iteration: Aus einer Gleichung, die keine Leitvariable enthält, wird eine Variable gewählt und als Leitvariable deklariert (wenn es so eine Wahl nicht mehr gibt, terminiert das Verfahren). Die neue Leitvariable wird aus allen anderen Gleichungen mit den Transformationen vom Typ 3 entfernt. 
+\end{itemize} 
+\end{framed} 
+
+Des Weiteren gibt es die Variante des Gauß-Jordan-Verfahrens, in der die Variablen in der Reihenfolge $x_1,\ldots,x_n$ abgearbeitet werden und die Gleichungen durch das Vertauschen der Zeilen genau so wie im Standard-Gauß-Verfahren sortiert werden. 
+
+Diese Version von Gauß-Jordan-Verfahrens  überführt das System in die sogenannte reduzierte Zeilenstufenform. Wir sagen, dass ein System in einer reduzierten Stufenform ist, wenn es in einer Stufenform ist und jede Leitvariable in genau einer Gleichung enthalten ist\footnote{in manchen Quellen fordert man zusätzlich, dass alle Pivotelemente gleich $1$ sind. Das lässt sich mit der Verwendung der Transformationen vom Typ 3 sicherstellen.}
+
+\begin{bsp}
+	Geben Sie eine parametrische Beschreibung der Geraden in $\R^3$, die als Lösungsmenge des LGS
+	\[
+	\left\{
+\begin{array}{ccccccc}
+	x_1 &  +&  2 x_2 & + & 3 x_3 &  = & 4
+	\\		 2 x_1 & + & x_2 & -&  x_3 & =&  5
+\end{array}\right. 
+	\]
+	gegeben ist. 
+\end{bsp} 
+
