@@ -7,7 +7,7 @@
 \subsubsection{Aussage}
 
 Bevor wir über Aussagen reden, lohnt es sich kurz über das Definieren und Bezeichnen zu reden. Das Definieren ist das Befüllen eines Wortes oder Ausdrucks mit einer eindeutigen Bedeutung. Das Bezeichnen ist was ähhliches: das ist das Befüllen eines symbolischen Ausdrucks mit einer Bedeutung. 
- Eine Definition oder Bezeichnnung hat einen Gültigkeitsbereich. Man kann zum Beispiel schreiben: in meiner Abschlussarbeit nenne ich eine ganze Zahl schön, wenn sie durch $5$ teilbar ist. ``Schön'' wird somit zu  einer Abkürzung für ``ganze Zahl, die durch $5$ teilbar ist''. Wenn man bei der Diskussion eines Themas solche Art Zahlen öfter benötigt, kann man durch die Verwendung des Begriffs ``schön'' Aussagen kürzer fassen. Ein weiterer Vorteil ist, dass man interessante bzw. relevante Eigenschaften durch das Einführen der einschlägigen Definitionen konzeptualisiert und somit verdeutlicht und greifbar macht. Manche mathematische Strukturen werden mit Hilfe von gewissen Grundeigenschaften defininiert. Dann nennt man oft die Grundeigenschaften Axiome. Bei uns im Kurs werden Gruppen, Ringe, Körper und Vektorräume auf diese Weise eingeführt. Mathematische Fakten werden mit der Verwendung von Definitionen und Bezeichnungen als mathematische Aussagen formuliert. Das Bedeutet: rigorose Mathematik ist nichts anderes als eine Ansammlung von Definitionen, Bezeichnungen, Aussagen und deren Begrüdungen (die man, Beweise nennt). 
+ Eine Definition oder Bezeichnnung hat einen Gültigkeitsbereich. Man kann zum Beispiel schreiben: in meiner Abschlussarbeit nenne ich eine ganze Zahl schön, wenn sie durch $5$ teilbar ist. ``Schön'' wird somit zu  einer Abkürzung für ``ganze Zahl, die durch $5$ teilbar ist''. Wenn man bei der Diskussion eines Themas solche Art Zahlen öfter benötigt, kann man durch die Verwendung des Begriffs ``schön'' Aussagen kürzer fassen. Ein weiterer Vorteil ist, dass man interessante bzw. relevante Eigenschaften durch das Einführen der einschlägigen Definitionen konzeptualisiert und somit verdeutlicht und greifbar macht. Manche mathematische Strukturen werden mit Hilfe von gewissen Grundeigenschaften definiert. Dann nennt man oft die Grundeigenschaften Axiome. Bei uns im Kurs werden Gruppen, Ringe, Körper und Vektorräume auf diese Weise eingeführt. Mathematische Fakten werden mit der Verwendung von Definitionen und Bezeichnungen als mathematische Aussagen formuliert. Das Bedeutet: rigorose Mathematik ist nichts anderes als eine Ansammlung von Definitionen, Bezeichnungen, Aussagen und deren Begründungen (die man, Beweise nennt). 
 
 Nun zu Aussagen. Eine (mathematische) Aussage ist eine Behauptung (meistens in der Form eines Satzes, in dem man sowohl Worte als auch mathematische Formeln nutzen darf), die  entweder wahr oder falsch ist. Die Information darüber, ob die Aussage wahr oder falsch ist, nennt man den Wahrheitswert der Aussage. 
 Hier Beispiele von Aussagen und Nicht-Aussagen: 
@@ -219,7 +219,7 @@ Zwei Abbildungen $ f,g : X \to Y $ heißen gleich, falls $ f(x) = g(x) $ für al
 
 \subsubsection{Bild und Urbild}
 
-Seien $ X,Y,A,B $ Mengen mit $ A \subseteq X $ und $ B \subseteq Y $. Sei $ f : X \to Y $. Dann heißt $ f(A) := \{ f(x) : x \in A \} $ das Bild von $ A $ bzgl. $ f $ und $ f^{-1}(B) := \{ x \in X : f(x) \in B \} $ das Urbild von $ B $ bzgl. $ f $.
+Seien $ X,Y,A,B $ Mengen mit $ A \subseteq X $ und $ B \subseteq Y $. Sei $ f : X \to Y $. Dann heißt $ f(A) := \{ f(x) : x \in A \} $ das \emph{Bild} von $ A $ bzgl. $ f $ und $ f^{-1}(B) := \{ x \in X : f(x) \in B \} $ das \emph{Urbild} von $ B $ bzgl. $ f $.
 
 \begin{bsp}
 	Für die Abbildung $ f : \R \to \R $ mit $ f(x) := x^2 $ hat man 
@@ -230,7 +230,7 @@ Seien $ X,Y,A,B $ Mengen mit $ A \subseteq X $ und $ B \subseteq Y $. Sei $ f : 
 	\includegraphics[width=0.3\textwidth]{sage/bild_abb.pdf}
 \end{center} 
 	
-	Außerdem hat man die folgenen Urbilder: 
+	Außerdem hat man die folgenden Urbilder: 
 	
 	\[
 		 f^{-1}( [1,4] ) = \{ x \in \R \,:\, x^2  \in [1,4] \} = [1,2] \cup [-2,-1] .
@@ -332,9 +332,9 @@ Für die Familie $ (A_i)_{i \in I} $ definiert man
 
 \subsubsection{Summen und Produkte}
 
-Eine Menge $ X $ heißt endlich, falls $ X = \emptyset $ oder falls eine bijektive Abbildung von $ \is{1}{n} $ nach $ X $ existiert mit $ n \in \N $. Der Wert $ n $ heißt die Anzahl der Elemente (Kardinalität) von $ X $ und wird durch $ |X| $ bezeichnet.
+Eine Menge $ X $ heißt \emph{endlich}, falls $ X = \emptyset $ oder falls eine bijektive Abbildung von $ \is{1}{n} $ nach $ X $ existiert mit $ n \in \N $. Der Wert $ n $ heißt die \emph{Anzahl der Elemente} (\emph{Kardinalität}) von $ X $ und wird durch $ |X| $ bezeichnet.
 
-Man setzt die Kardinalität von $ \emptyset $ gleich 0. $ |X| $ ist wohl definiert, d.h. eine Menge kann nicht zwei unterschiedliche Kardinalitäten haben.
+Man setzt die Kardinalität von $ \emptyset $ gleich $0$. $ |X| $ ist wohl definiert, d.h. eine Menge kann nicht zwei unterschiedliche Kardinalitäten haben.
 
 Sei $ X $ eine nichtleere endliche Menge. Dann kann $ X $ als $ X = \is{x_1}{x_n} $ dargestellt werden mit  $ x_i \neq x_j \Leftrightarrow i \neq j $ für alle $ i,j \in \is{1}{n} $.
 
@@ -347,7 +347,7 @@ Für eine Abbildung $ f : X \to \R $ definiert man
 
 Im Fall $ X = \emptyset $ definiert man für $ f : X \to \R $ und $ \sum\limits_{x \in X} f(x) = 0 $ und $ \prod\limits_{x \in X} f(x) = 1 $. Die Summe und das Produkt über eine Menge $X$ sind wohldefiniert (d.h., die beiden Werte sind von der Nummerierung $x_1,\ldots,x_n$ der Elemente von $X$ unabhängig).
 
-F'ru $n \in \N_0$ stehen die Bezeichnungen $\sum_{i=1}^n$ bzw. $\prod_{i=1}^n$ für die Summe bzw. das Produkt über alle ganzzahligen $i$ mit $1 \le i \le n$. 
+Für $n \in \N_0$ stehen die Bezeichnungen $\sum_{i=1}^n$ bzw. $\prod_{i=1}^n$ für die Summe bzw. das Produkt über alle ganzzahligen $i$ mit $1 \le i \le n$. 
 
 
 
@@ -391,7 +391,7 @@ $ \exists\: x \in X : P(x) $ bezeichnet die Aussage \textquote{die Bedingung $ P
 
 Seien $ X,Y $ Mengen. Dann heißt eine Teilmenge $ R $ von $ X \times Y $ eine (binäre) \emph{Relation} zwischen (den Elementen von) $ X $ und $ Y $.
 
-Wenn für $ x \in X $ und $ y \in Y $ die Bedingung $ (x,y) \in R $ gilt, so schreibt man $ x R y $. Wenn $ X = Y $, dann sagt man, dass $ R $ eine (binäre) Relation auf $ X $ ist.
+Wenn für $ x \in X $ und $ y \in Y $ die Bedingung $ (x,y) \in R $ gilt, so schreibt man $ x \, R \, y $. Wenn $ X = Y $, dann sagt man, dass $ R $ eine (binäre) Relation auf $ X $ ist.
 
 \begin{bsp}\ % hack to force itemize to new line
 \begin{itemize}
