@@ -176,7 +176,7 @@ Eine Gruppe $ (G,\ast) $ heißt \emph{abelsch} (oder \emph{kommutativ}), falls $
 \subsubsection{Eindeutigkeit des inversen Elements}
 
 \begin{propn}
-	Sei $ (G,\cdot) $ Gruppe, sei $ a \in G $ und seien $ a,b \in G $ linke Inverse zu $ a $, d.h. $ ba = e $ und $ ca = e $. Dann gilt $ b = c $.
+	Sei $ (G,\cdot) $ Gruppe, sei $ a \in G $ und seien $ b,c \in G $ linke Inverse zu $ a $, d.h. $ ba = e $ und $ ca = e $. Dann gilt $ b = c $.
 \end{propn}
 \begin{proof}
 	Nach 2.1.3 gilt $ ac = e $. Wegen 2.1.5 hat man $ b = be $. Das Einsetzen von $ ac $ für $ e $ ergibt $ b = b(ac) $. $ b = b(ac) \overset{\text{(G1)}}{=} (ba)c = ec = c $.
@@ -195,6 +195,7 @@ In einer Gruppe $ (G, \cdot ) $ gilt:
 	\item
 		Für jedes $ a \in G $ existiert genau ein $  a^{-1} \in G $ mit $ aa^{-1} = a^{-1}a = e $
 \end{enumerate}
+Diese Eigenschaften nutzen manche Quellen, um den Begriff einer Gruppe einzuführen. 
 Wenn die Gruppe kommutativ ist, dann wird die Gruppenoperation auch oft durch $ + $ bezeichnet. In diesem Fall verwendet man die Bezeichnungen und Begriffe für die Addition:
 \begin{itemize}
 	\item Das Inverse zu $ a \in G $ wird durch $ -a $ bezeichnet und das Negative von $ a $ genannt.
@@ -336,7 +337,7 @@ Die Gleichheit der Polynome wird durch den Koeffizientenvergleich definiert.
 In $ R[x] $ definiert man $ + $ und $ \cdot $ für $ f = \sum_{i=0}^{\infty} c_{i}x^{i} $ und $ g = \sum_{i=0}^{\infty} d_{i}x^{i} $ durch:
 \begin{align}
 	f+g &:= \sum_{i=0}^{\infty} (c_{i}+d_{i})x^{i} \\
-	f \cdot g &:= \sum_{i,j \in \N_0} c_i d_j x^{i+j} = \sum_{k=0}^\infty \left( \sum_{i=0}^k c_i d_{i-k} \right) x^k
+	f \cdot g &:= \sum_{i,j \in \N_0} c_i d_j x^{i+j} = \sum_{k=0}^\infty \left( \sum_{i=0}^k c_i d_{k-i} \right) x^k
 \end{align}
 
 \begin{propn}
@@ -370,16 +371,16 @@ In $ R[x] $ definiert man $ + $ und $ \cdot $ für $ f = \sum_{i=0}^{\infty} c_{
 		& f \stackrel{D}{\longrightarrow} f' && f \stackrel{D^3}{\longrightarrow} f'''
 	\end{align*}
 	$ D $ kann man in ein Polynom aus $ R[x] $ einsetzen.
-	\begin{align*}{6}
+	\begin{align*}
 		( x - 1 )( x - 1 ) &= x^2 - 2x + 1 \\
 		\Leftrightarrow \quad ( x^1 - x^0 )( x^1 - x^0 ) &= x^2 - 2x^1 + x^0
 	\end{align*}
 	Für $ x $ den Operator $ D $ einsetzen:
 	\begin{align*}
 		\underbrace{(D^1 - D^0)(D^1 - D^0)}_\text{Operator} &= \underbrace{\vphantom{(D^1)} D^2 - 2D^1 + D^0}_\text{derselbe Operator} \\
-		(D^1 - D^0)(D^1 - D^0)f &= (f' - f)' - (f' - f) \\
-		(D^2 - 2D^1 + D^0)f &= f'' - 2f' + f \\
-		\Rightarrow \quad (f' - f)' - (f' - f) &= f'' - 2f' + f
+		(D^1 - D^0)(D^1 - D^0)f &= (u' - u)' - (u' - u) \\
+		(D^2 - 2D^1 + D^0)f &= u'' - 2u' + u \\
+		\Rightarrow \quad (u' - u)' - (u' - u) &= u'' - 2u' + u
 	\end{align*}
 (Ende der Nebenbemerkung)
 \end{bem}
@@ -395,7 +396,7 @@ Seien $ f,g \in R[x] $ und sei $ f = \sum_{i = 0}^{\infty} c_ix^i $. Wir definie
 Sei $ f \in R[x] $ und sei $ a \in R $. Dann heißt $ a $ eine \emph{Wurzel} (oder \emph{Nullstelle}) von $ f $, falls $ f(a) = 0 $ gilt.
 
 \begin{propn}
-	Sei $ R $ ein kommutativer Ring, sei $ x $ eine Unbekannte und sei $ f \in R[x] \setminus { 0 } $. Sei $ a \in R $ eine Nullstelle von $ f $. Dann existiert ein eindeutiges $ g \in R[x] $ mit $ f(x) = (x-a)g(x) $.
+	Sei $ R $ ein kommutativer Ring, sei $ x $ eine Unbekannte und sei $ f \in R[x] \setminus \{ 0 \} $. Sei $ a \in R $ eine Nullstelle von $ f $. Dann existiert ein eindeutiges $ g \in R[x] $ mit $ f(x) = (x-a)g(x) $.
 \end{propn}
 \begin{proof}
 	$ a $ ist Nullstelle von $ f(x) \Rightarrow x=0 $  ist Nullstelle von $ f(x+a) $. Sei $ f(x+a) = \sum_{i=0}^{\infty} c_ix^i $ mit $ c_i \in R $ für alle $ i \in \N_0 $.
@@ -476,7 +477,7 @@ Sei $ f \in R[x] $ und sei $ a \in R $. Dann heißt $ a $ eine \emph{Wurzel} (od
 		\hline
 		0 & 0 & 0 & 0 \\
 		1 & 0 & 1 & 2 \\
-		3 & 0 & 2 & 1
+		2 & 0 & 2 & 1
 	\end{tabular}
 	\end{center} 
 \end{bsp}
@@ -536,7 +537,7 @@ Man nennt einen Körper $ \K $ \emph{algebraisch abgeschlossen}, wenn jedes Poly
 \begin{bem}[Intuition zu $ \C $]
 	Man führt ein formales Symbol $ i $ ein (imaginäre Einheit), mit der Eigenschaft $ i^2 = -1 $ ($ i $ ist Nullstelle von $ x^2+1 $).
 	\begin{equation*}
-		C := \{ a+ib : a,b \in \R \}
+		\C := \{ a+ib : a,b \in \R \}
 	\end{equation*}
 \end{bem}
 
@@ -547,13 +548,17 @@ Man nennt einen Körper $ \K $ \emph{algebraisch abgeschlossen}, wenn jedes Poly
 	\end{equation*} 
 	und der Multiplikation
 	\begin{equation*}
-		(a_{1},b_{1})\cdot (a_{2},b_{2}) := (a_{1} a_{2} - b_{1} b_{2}, a_{1} b_{2} - a_{2} b_{1})
+		(a_{1},b_{1})\cdot (a_{2},b_{2}) := (a_{1} a_{2} - b_{1} b_{2}, a_{1} b_{2} + a_{2} b_{1})
 	\end{equation*}
 	definiert ($ \forall a_1, a_2, b_1, b_2 \in \R $).
 	
 	Jede reelle Zahl $ a \in \R $ wird als $ (a,0) \in \C $ definiert. Wir interpretieren also $ \R $ als Teilmenge von $ \C $.
 	
-	Die Zahl $ i := (0,1) \in \C $ heißt die imaginäre Einheit. Somit lässt sich jedes $ z \in \C $ als $ z = a+ib $ mit $ a,b \in \R $ schreiben. Dabei heißt $ a $ der Realteil von $ z $ ($ \Re(z) $ bzw. $ \AverkovRe(z) $) und $ b $ der Imaginärteil von $ z $ ($ \Im(z) $ bzw. $ \AverkovIm(z) $). Die Zahl $ \bar{z} = a -ib $ heißt komplex konjugiert zu $ z $.
+	Die Zahl $ i := (0,1) \in \C $ heißt die imaginäre Einheit. Somit lässt sich jedes $ z \in \C $ als $ z = a+ib $ mit $ a,b \in \R $ schreiben. Dabei heißt $ a $ der Realteil von $ z $ ($ \Re(z) $ bzw. $ \AverkovRe(z) $) und $ b $ der Imaginärteil von $ z $ ($ \Im(z) $ bzw. $ \AverkovIm(z) $). Die Zahl $ \bar{z} = a -ib $ heißt komplex konjugiert zu $ z $. Der Wert
+	\begin{equation*}
+		|z| = \sqrt{a^2+b^2}
+	\end{equation*}
+	heißt der Betrag von $ z $.
 \end{bem}
 
 \begin{propn}
@@ -570,11 +575,6 @@ Man nennt einen Körper $ \K $ \emph{algebraisch abgeschlossen}, wenn jedes Poly
 	\end{align*}
 \end{proof}
  
-Für $ z = a+ib $ mit $ a,b \in \R $ heißt
-\begin{equation*}
-	|z| = \sqrt{a^2+b^2}
-\end{equation*}
-der Betrag von $ z $.
 
 \begin{thm}
 	Sei $ f \in \C[x] $ mit $ n := \deg f > 0 $. Dann existieren $ \lambda_1, \lambda_2, \ldots, \lambda_n, c \in \C $ mit
