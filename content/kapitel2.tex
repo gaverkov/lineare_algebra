@@ -575,16 +575,21 @@ Man nennt einen Körper $ \K $ \emph{algebraisch abgeschlossen}, wenn jedes Poly
 	\end{align*}
 \end{proof}
  
+ \begin{thm}
+ 	Der Körper $\C$ ist algebraisch abgeschlossen. 
+ \end{thm} 
+Das vorige Theorem kann mit den Mitteln der Analysis bewiesen werden. 
 
-\begin{thm}
+\begin{klr}
 	Sei $ f \in \C[x] $ mit $ n := \deg f > 0 $. Dann existieren $ \lambda_1, \lambda_2, \ldots, \lambda_n, c \in \C $ mit
 	\begin{equation}
-		f(x) = c(x-\lambda_1) \cdot \ldots \cdot (x - \lambda_n).
+		f(x) = c \, (x-\lambda_1) \cdot \ldots \cdot (x - \lambda_n).
 	\end{equation}
-\end{thm}
+Diese Darstellung von $f$ ist bis auf die Indexierung der Nullstellen $\lambda_1,\ldots,\lambda_n$ eindeutig. 
+\end{klr}
 
 \begin{bem}
-	Wenn ein $ \lambda \in \C $ in der Folge $ \lambda_1, \lambda_2, \ldots, \lambda_n $ $ k $-mal vorkommt, dann heißt $ \lambda $ Nullstelle von $ f $ der Vielfachheit $ k $.
+	Wenn in der vorigen Darstellung von $f$ ein Wert $ \lambda \in \C $ in der Folge $ \lambda_1, \lambda_2, \ldots, \lambda_n $ $ k $-mal vorkommt, dann heißt $ \lambda $ Nullstelle von $ f $ der Vielfachheit $ k $.
 \end{bem}
 
 \begin{bsp}
