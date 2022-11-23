@@ -11,7 +11,7 @@ Sei $ n \in \N $. Die Menge $ \K^n $ wird
 ausgestattet, die durch 
 \begin{align*}
 	(x_1, \ldots, x_n) + (y_1, \ldots, y_n) &:= (x_1+y_1, \ldots, x_n+y_n)\\
-	\alpha (x_1, \ldots, x_n) &:= (\alpha x_1, \ldots,\alpha x_n)
+	\alpha \cdot (x_1, \ldots, x_n) &:= (\alpha x_1, \ldots,\alpha x_n)
 \end{align*}
 für alle $ (x_1, \ldots, x_n), (y_1, \ldots, y_n) \in \K^n $ und alle $ \alpha \in \K $ definiert sind.\\[10pt]
 Sei $ X $ nichtleere Menge ($ X $ kann unendlich sein). % $ X $ oder $ |X| $?
@@ -123,7 +123,7 @@ Ein LGS, dessen alle rechten Seiten gleich $0$ sind, nennt man homogen. Die Lös
 	Sei $\K = \Z/ 2 \Z = \{0,1\}$. In der Codierungstheorie heißen die UVR von $\K^n$ binäre lineare Codes der Länge $n$. Die Lösungsmenge 
 	\begin{align*}
 		W & = \{ (x_1,x_2,x_3) \in \K^3 \,:\, x_1 + x_2 + x_3 = 0 \}
-		\\ & = \{ (0,0,0), (1,0,1), (0,1,0), (1,1,0) \}. 
+		\\ & = \{ (0,0,0), (1,0,1), (0,1,1), (1,1,0) \}. 
 	\end{align*}
 	der homogenen Gleichung $x_1 + x_2 + x_3=0$ 
 	ist etwa ein binärer linearer Code der Länge $3$. Bei einer digitalen Kommunikation mit der Verwendung von $W$, kann man zwei Bits $(a,b) \in \K^2$ als den Code $x=(a, b, a+b) \in W$ verschicken. Empfängt man infolge einer Störung nicht $x$ sondern einen anderen Vektor $y \in \K^3$, der nicht zu $W$ gehört, so weiß man, dass während der Übertragung ein Fehler aufgetreten ist. Durch unser Beispiel-Code $W$ kann $y$ nicht zu $x$ korrigiert werden, es gibt aber andere Codes, mit denen man eine gewisse Anzahl an Fehlern in $y$ korrigieren kann. 
@@ -187,12 +187,13 @@ die \emph{lineare Hülle} von $ (v_i)_{i \in I} $. Insbesondere gilt
 \begin{equation}
 	\lin_\K (v_1, \ldots, v_r) := \{ \lambda_1 v_1 + \ldots + \lambda_r v_r : \lambda_1, \ldots, \lambda_r \in \K \}.
 \end{equation}
-Hier und im folgenden: wenn die Wahl des Index $ \K $ klar ist, wird der Index weg gelassen.
 
 Man kann auch von der linearen Hülle einer Menge $ M \subseteq V $ reden:
 \begin{equation}
-\lin(M) := \{ \lambda_1 v_1 + \ldots + \lambda_r v_r : \lambda_1, \ldots, \lambda_r \in \K, v_1, \ldots, v_r \in M, r \in \N_0 \}
+\lin_\K(M) := \{ \lambda_1 v_1 + \ldots + \lambda_r v_r : \lambda_1, \ldots, \lambda_r \in \K, v_1, \ldots, v_r \in M, r \in \N_0 \}
 \end{equation}
+
+Hier und im folgenden: wenn die Wahl des Index $ \K $ klar ist, wird der Index weg gelassen.
 
 
 \begin{propn}
@@ -225,9 +226,9 @@ Sei $ r \in \N_0 $ und seien $ v_1, \ldots, v_r $ Vektoren in einem Vektorraum �
 
 Sei $ I $ Menge und $ v_i \in V $ für jedes $ i \in I $. Die Vektoren $ v_i $ mit $ i \in I $ heißen linear unabhängig, falls für jede endliche Teilmenge $ J $ von $ I $ die Vektoren $ v_j $ mit $ j \in J $ linear unabhängig sind. Die Vektoren $ v_i $ mit $ i \in I $ heißen \emph{linear abhängig}, falls sie nicht linear unabhängig sind. 
 
-	Vektoren $ v_1, \ldots, v_r \in V $ mit $ r \in \N_0 $ sind genau dann linear abhängig, wenn $ \lambda_1, \ldots, \lambda_r $ mit $ \lambda_1v_1 + \ldots + \lambda_rv_r = 0 $ und $ ( \lambda_1, \ldots, \lambda_r ) \neq ( 0, \ldots, 0 ) $ existieren.
+	Vektoren $ v_1, \ldots, v_r \in V $ mit $ r \in \N_0 $ sind genau dann linear abhängig, wenn $ \lambda_1, \ldots, \lambda_r \in \K$ mit $ \lambda_1v_1 + \ldots + \lambda_rv_r = 0 $ und $ ( \lambda_1, \ldots, \lambda_r ) \neq ( 0, \ldots, 0 ) $ existieren.
 
-	Ein System aus  Nullvektoren ist linear unabhängig.
+	Ein System aus  $0$ Vektoren (d.h, $v_1,\ldots,v_r$ mit $r=0$) ist linear unabhängig.
 	
 \begin{bsp}
 	Vektoren $v_1= (2,-1,3), v_2 = (1,2,0)$ und $v_3 = (-4,7,-9)$ aus $\R^3$ sind linear abhängig, denn $ 3 v_1 - 2 v_2 + v_3 = (0,0,0)$. Je, zwei der drei Vektoren $v_1, v_2, v_3$ sind aber linear unabhängig. 
@@ -267,7 +268,7 @@ Sei $ I $ Menge und $ v_i \in V $ für jedes $ i \in I $. Die Vektoren $ v_i $ m
 		\item Ein einziger Vektor $ v $ ist genau dann linear abhängig, wenn $ v = 0 $.
 		\item Gehört $ 0 \in V $ zu einer Familie von Vektoren, so sind diese linear abhängig.
 		\item Kommt der gleiche Vektor in einer Familie von Vektoren mehrmals vor, so sind die Vektoren der Familie linear abhängig. 
-		\item Für $ r \in \N, r \geq 2 $ sind Vektoren $ v_i, \ldots, v_r \in V $ genau dann linear abhängig, wenn ein $ j \in \{ 1, \ldots, r \} $ existiert mit $ v_j \in \lin \bigl(v_i \bigr)_{i \in \{ 1, \ldots, r \} \setminus \{ j \} } $.
+		\item Für $ r \in \N, r \geq 2 $ sind Vektoren $ v_i, \ldots, v_r \in V $ genau dann linear abhängig, wenn ein $ k \in \{ 1, \ldots, r \} $ existiert mit $ v_k \in \lin \bigl(v_i \bigr)_{i \in \{ 1, \ldots, r \} \setminus \{ k\} } $.
 	\end{enumerate}
 \end{propn}
 
@@ -276,7 +277,7 @@ Sei $ I $ Menge und $ v_i \in V $ für jedes $ i \in I $. Die Vektoren $ v_i $ m
 	\item[(iv)]
 	Sind $ v_1, \ldots, v_r $ linear abhängig, so gilt $ 0 = \lambda_1v_1 + \ldots + \lambda_rv_r $ mit gewissen $ \lambda_1, \ldots, \lambda_r \in \K $ und mit $ \lambda_k \neq 0 $ für ein $ k \in \{ 1, \ldots, r \} \Rightarrow -\lambda_kv_k = \sum_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} \lambda_iv_i \Rightarrow v_k = \sum_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} - \frac{\lambda_i}{\lambda_k}v_i $.
 	
-	Umgekehrt: wenn $ v_k \in lin(v_i)_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} $, d.h. $ v_k = \sum_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} \lambda_iv_i $ mit $ \lambda_i \in \K $ für alle $ i \in \{ 1, \ldots, r \} \setminus \{ k \} $, so kann man $ \lambda_k := -1 $ setzen und erhält $ 0 = \sum_{i = 1}^r \lambda_iv_i $ mit $ ( \lambda_1, \ldots, \lambda_r ) \neq ( 0, \ldots, 0 ) $. Also sind $ v_1, \ldots, v_r $ linear abhängig. \qedhere
+	Umgekehrt: wenn $ v_k \in \lin(v_i)_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} $, d.h. $ v_k = \sum_{i \in \{ 1, \ldots, r \} \setminus \{ k \}} \lambda_iv_i $ mit $ \lambda_i \in \K $ für alle $ i \in \{ 1, \ldots, r \} \setminus \{ k \} $, so kann man $ \lambda_k := -1 $ setzen und erhält $ 0 = \sum_{i = 1}^r \lambda_iv_i $ mit $ ( \lambda_1, \ldots, \lambda_r ) \neq ( 0, \ldots, 0 ) $. Also sind $ v_1, \ldots, v_r $ linear abhängig. \qedhere
 \end{itemize}
 \end{proof}
 

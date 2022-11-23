@@ -70,7 +70,7 @@ Für Gleichungen $ z_i $ und $ z_k $ mit $ i,k \in \is{1}{m} $ und einem Paramet
 Wir führen die folgenden 3 Arten der Elementartransformationen für \eqref{B1.1} ein:
 \begin{description}
 	\item[Typ 1.]
-		Für $ i,k \in \is{1}{n} $ werden die Gleichungen $ z_i $ und $ z_k $ vertauscht.
+		Für $ i,k \in \is{1}{m} $ werden die Gleichungen $ z_i $ und $ z_k $ vertauscht.
 		\\ \textbf{Bezeichnung:} $ z_i \leftrightarrow z_k $.
 	\item[Typ 2.]
 		Für $ i \in \is{1}{m} $ und $ \alpha \in \K\setminus\{0\} $ wird $ z_i $ durch $ \alpha z_i $ ersetzt. \\ 
@@ -110,7 +110,7 @@ Der Grundgedanke der Eliminationsverfahren zur Lösung der LGS ist, dass man nun
 	\begin{itemize} 
 		\item In der ersten Iteration wird eine Variable $x_{j_1}$ gefunden, die in einer der Gleichungen $z_1,\ldots,z_m$ enthalten ist. Durch das Vertauschen der Gleichungen können wir sicher stellen, dass $x_{j_1}$ in $z_1$ enthalten ist. Nun wird $x_{j_1}$ aus $z_2,\ldots,z_m$ mit Hilfe der Transformationen vom Typ~3 entfernt. 
 	
-		\item In der zweiten Iteration wird eine Variable $x_{j_2}$ gefunden, die einer der Gleichungen $z_2,\ldots,z_m$ enthalten ist. Durch das Vertauschen der Gleichungen $z_2,\ldots,z_m$ können wir sicher stellen, dass $x_{j_2}$ in $z_2$ enthalten ist. Die Variable $x_{j_2}$ wird aus den Gleichungen $z_3,\ldots,z_m$ mit Hilfe der Transformationen vom Typ~3 entfernt. 
+		\item In der zweiten Iteration wird eine Variable $x_{j_2}$ gefunden, die einer der Gleichungen $z_2,\ldots,z_m$ enthalten ist. Durch das Vertauschen der Gleichungen $z_2,\ldots,z_m$ können wir sicherstellen, dass $x_{j_2}$ in $z_2$ enthalten ist. Die Variable $x_{j_2}$ wird aus den Gleichungen $z_3,\ldots,z_m$ mit Hilfe der Transformationen vom Typ~3 entfernt. 
 	
 		\item Nach der $k$-ten Iteration hat man im aktuellen LGS $k$ Variablen $x_{j_1},\ldots,x_{j_k}$ fixiert, wobei $x_{j_s}$ in der Gleichung $z_s$ aber nicht in den Gleichungen $z_i$ mit $i > s$ enthalten ist. 
 		\item 	Hat man nach der $k$-ten Iteration in den Gleichungen $z_i$ mit $i > k$ keine Variablen mehr, so terminiert das Verfahren. Dies ist spätestens in der $m$-ten Iteration der Fall, da nach $m$ Iterationen alle $m$ Gleichungen des LGS bereits abgearbeitet sind. 
@@ -155,6 +155,14 @@ Hierbei nennt man $x_{j_1},\ldots,x_{j_r}$ in manchen Quellen die \emph{Leitvari
 \\		 x_1 & + & x_2 & + & x_3 & = & 2
 	\end{array}\right. 
 	\]
+\end{bsp} 
+
+\begin{bsp}[Ausblick: Lösung der Randwertaufgaben] 
+	Nehmen wir an, wir sind auf der Suche nach einer Funktion $x : [0,1] \to \R$, welche die Differentialgleichung $x'' + p(t) x = f(t)$ für gegebene Funktionen $p, f: [0,1] \to \R$ und die Bedingungen $x(0) = l , x(1) = r$ erfüllt. Eine numerische Approximation dieser Aufgabe kann man folgendermaßen ermitteln. Man fixiert $N  \in\N$, setzt $h := 1/ N$ definiert $x_i $ als die Approximation von $x(h i)$ für $i=0,\ldots,N$. Die zweite Ableitung von $x''$ an der Stelle $i/N$ für $i \in \{1,\ldots,N-1\}$ ist annähernd $(x_{i-1} - 2 x_i + x_{i+1})/ h^2$. Es ergeben sich die Gleichungen 
+	\[
+		 (x_{i-1} - 2 x_i + x_{i+1}) / h^2 + p(i/N) x_i = f(i/N)
+	\]
+	mit $i=1,\ldots,N-1$ als Approximation der Differentialgleichung und die Gleichungen $x_0= l$ und $x_N = r$ als das Analogon der Bedingungen $x(0)=l, x_(1) =r$. Es ergibt sich also ein LGS in den $N+1$ Unbekannten $x_0,\ldots,x_N$ und den $N+1$ Gleichungen. Man kann dieses LGS mit dem Gauß-Verfahren lösen, es gibt aber auch andere Verfahren, die solche Art spezielle LGS schneller als das Gauß-Verfahren lösen können. \footnote{(Quelle dazu: Bachwalow: Numerische Methoden, Seite~434 (ru)} 
 \end{bsp} 
 
 \subsubsection{Gauß-Jordan-Verfahren}
