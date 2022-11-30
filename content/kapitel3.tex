@@ -23,6 +23,14 @@ Wir definieren in $ \K^X $ $ + : \K^X \times \K^X \to \K^X $ und $ \cdot : \K \t
 
 TODO: Bild mit Vektoren $u=(3,1)$, $v=(1,2)$, $u+v$, $2 u$ und $-v$. 
 
+\begin{center}
+	\begin{tikzpicture} 
+		\draw[->,very thick] (0,0) -- (3,1) node[right]{$u$};
+		\draw[->,very thick] (0,0) -- (1,2) node[above]{$v$};
+		\draw[->,very thick] (0,0) -- (3+1,1+2) node[above]{$u+v$};
+	\end{tikzpicture} 
+\end{center} 
+
 \begin{bsp} 
 $\K^X$ benutzt man unter anderem in Kontexten, bei denen man die Variablen nicht mit Nummern sondern mit anderen Labels versehen will, in $\R^X$ mit 
 \[
@@ -305,16 +313,28 @@ Ein VR $ V $ heißt \emph{endlich erzeugt}, falls $ V $ eine endliche Basis besi
 \begin{proof}
 \begin{description}[font=\normalfont]
 	\item[(i) $ \Rightarrow $ (ii):]
-	Sei (i) erfüllt. Angenommen, (ii) wäre nicht erfüllt. Dann gilt $ v_r := \sum_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \lambda_iv_i $ für ein $ r \in \{ 1, \ldots, n \} $ und gewisse $ \lambda_i \in \K $ mit $ i \in \{ 1, \ldots, n \} \setminus \{ r \} $. Dann gilt $ 0 = \sum_{i = 1}^n \lambda_iv_i $, wobei $ \lambda_r := -1 $ gesetzt wird. Es gilt $ (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0) $. D.h. $ v_1, \ldots, v_n $ sind linear abhängig, Widerspruch zu (i).
+	Sei (i) erfüllt. Angenommen, (ii) wäre nicht erfüllt. Dann gilt 
+	\[ v_r := \sum_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \lambda_iv_i 
+	\] für ein $ r \in \{ 1, \ldots, n \} $ und gewisse $ \lambda_i \in \K $ mit $ i \in \{ 1, \ldots, n \} \setminus \{ r \} $. Dann gilt 
+	\[ 0 = \sum_{i = 1}^n \lambda_iv_i ,\] wobei $ \lambda_r := -1 $ gesetzt wird. Es gilt $ (\lambda_1, \ldots, \lambda_n) \neq (0, \ldots, 0) $. D.h. $ v_1, \ldots, v_n $ sind linear abhängig, Widerspruch zu (i).
 	
 	\item[(ii) $ \Rightarrow $ (iii):]
-	Sei (ii) erfüllt. Angenommen, (iii) wäre nicht erfüllt. Dann existiert $ v \in V $ derart, dass $ v = \sum_{i=1}^n \lambda_iv_i = \sum_{i=1}^n \mu_iv_i $ mit $ \lambda_1, \ldots, \lambda_n, \mu_1, \ldots, \mu_n \in \K $ und mit $ \lambda_r \neq \mu_r $ für mindestens ein $ r \in \{ 1, \ldots, n \} $. Dann $ 0 = \sum_{i=1}^n (\lambda_i - \mu_i)v_i \Rightarrow 0 = \sum_{i=1}^n \frac{\lambda_i - \mu_i}{\lambda_r - \mu_r}v_i \Rightarrow v_r = \sum_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \frac{\lambda_i - \mu_i}{\lambda_r - \mu_r}v_i \Rightarrow v_r \in \lin(v_i)_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \Rightarrow$ Widerspruch zu (ii).
+	Sei (ii) erfüllt. Angenommen, (iii) wäre nicht erfüllt. Dann existiert $ v \in V $ derart, dass 
+	\[ v = \sum_{i=1}^n \lambda_iv_i = \sum_{i=1}^n \mu_iv_i 
+	\]
+	 mit $ \lambda_1, \ldots, \lambda_n, \mu_1, \ldots, \mu_n \in \K $ und mit $ \lambda_r \neq \mu_r $ für mindestens ein $ r \in \{ 1, \ldots, n \} $. Dann 
+	 \begin{align*} 0 = \sum_{i=1}^n (\lambda_i - \mu_i)v_i & \Rightarrow 0 = \sum_{i=1}^n \frac{\lambda_i - \mu_i}{\lambda_r - \mu_r}v_i \\ & \Rightarrow v_r = \sum_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \frac{\lambda_i - \mu_i}{\mu_r - \lambda_r}v_i 
+	 \end{align*}
+	 Also ist $v_r \in \lin(v_i)_{i \in \{ 1, \ldots, n \} \setminus \{ r \}} \Rightarrow$ Widerspruch zu (ii).
 	
 	\item[(iii) $ \Rightarrow $ (iv):]
 	Angenommen, (iii) gilt. Zu zeigen: (iv). Anwendung von (iii) für den Fall $ v = 0 $ ergibt die lineare Unabhängigkeit von $ v_i, \ldots, v_n $. Sei $ v \in V $ beliebig. Nach (iii) existieren $ \lambda_1, \ldots, \lambda_r \in \K $ mit $ v = \sum_{i=1}^r \lambda_iv_i \Rightarrow \lambda_1v_1 + \ldots + \lambda_rv_r + (-1)v = 0 $, wobei $ \lambda_i \neq 0 $. D.h. $ v_1, \ldots, v_r, v $ sind linear abhängig.
 	
 	\item[(iv) $ \Rightarrow $ (i):]
-	Angenommen, (iv) gilt. Wir zeigen (i). Es muss gezeigt werden, dass $ V = \lin(v_1, \ldots, v_n) $ gilt. Sei $ v \in V $ beliebig. Wegen (iv) sind $ v_1, \ldots, v_n, v $ linear abhängig. D.h. $ \lambda_1v_1 + \lambda_nv_n + \lambda v = 0 $ für gewisse $ \lambda_1, \ldots, \lambda_n, \lambda \in \K $ mit $ \lambda_i \neq 0 $. Es gilt $ \lambda \neq 0 $, denn sonst wären $ v_1, \ldots, v_n $ linear abhängig, was der Bedingung (iv) widerspricht. Es folgt $ v = \sum_{i=1}^n \frac{\lambda_i}{\lambda}v_i \in \lin(v_1, \ldots, v_n) $. \qedhere
+	Angenommen, (iv) gilt. Wir zeigen (i). Es muss gezeigt werden, dass $ V = \lin(v_1, \ldots, v_n) $ gilt. Sei $ v \in V $ beliebig. Wegen (iv) sind $ v_1, \ldots, v_n, v $ linear abhängig. D.h. $ \lambda_1v_1 + \lambda_nv_n + \lambda v = 0 $ für gewisse $ \lambda_1, \ldots, \lambda_n, \lambda \in \K $ mit $ \lambda_i \neq 0 $. Es gilt $ \lambda \neq 0 $, denn sonst wären $ v_1, \ldots, v_n $ linear abhängig, was der Bedingung (iv) widerspricht. Es folgt \[
+	 v =  \sum_{i=1}^n \left(-\frac{\lambda_i}{\lambda}\right)v_i \in \lin(v_1, \ldots, v_n) .\]
+	  \qedhere
+	 
 \end{description}
 \end{proof}
 
@@ -338,6 +358,73 @@ Ein VR $ V $ heißt \emph{endlich erzeugt}, falls $ V $ eine endliche Basis besi
 	
 	Man wiederholt den vorigen Schritt solange, bis $ v_i \not\in \lin(v_j)_{j \in \{ 1, \ldots, m \}\setminus\{ i \}} $ für alle $ i \in \{ 1, \ldots, m \} $ gilt. Nach Theorem 3.4.2 ist $ v_1, \ldots, v_m $ mit den vorigen Eigenschaften eine Basis.
 \end{proof}
+
+\begin{bsp}[Nutzung vom Gauß- bzw. Gauß-Jordan-Verfahren zur Bestimmung der Basis einer linearen Hülle] Wie kommt man an eine Basis von $\lin(v_1,v_2,v_3,v_4) \subseteq \R^3$ für 
+	\begin{align*} 
+			v_1 & = \left(1,\,2,\,3\right)
+			\\ v_2 & = \left(2,\,1,\,3\right)
+			\\ v_3 & = \left(5,\,4,\,9\right)
+			\\ v_4 & = \left(-1,\,1,\,0\right)
+	\end{align*} 
+	Die komponentenweise ausgeschriebene Gleichung $\lambda_1 v_1 + \cdots + \lambda_4 v_4 =0$ ist ein LGS mit $4$ Unbekannten $\lambda_1,\ldots,\lambda_4$ und $3$ Gleichungen (eine pro Komponente): 
+	\begin{center} 
+	\begin{tabular}{llll|l}
+		$\lambda_1$ & $\lambda_2$ & $\lambda_3$ & $\lambda_4$ & $0$ 
+		\\ \hline 
+		$1$ & $2$ & $5$ & $-1$ & $0$
+		\\ $2$ & $1$ & $4$ & $1$ & $0$
+		\\ $3$ & $3$ & $9$ & $0$ & $0$
+	\end{tabular} 
+	\end{center} 
+	Das Gauß-Jordan-Verfahren überführt dieses System in eine Zeilenstufenform. Wir nutzen SageMath dafür: 
+	\begin{verbatim}
+A=matrix(QQ,[(1,2,5,-1,0),(2,1,4,1,0),(3,3,9,0,0)])
+print("Das System mit der Matrix")
+print(A) 
+print("hat eine Zeilenstufenform mit der Matrix")
+print(A.echelon_form())
+	\end{verbatim} 
+	Und erhalten die Darstellung
+	\begin{center} 
+	\begin{tabular}{llll|l}
+		$\lambda_1$ & $\lambda_2$ & $\lambda_3$ & $\lambda_4$ & $0$ 
+		\\ \hline 
+		\boxed{$1$} & $0$ & $1$ & $1$ & $0$
+		\\ $0$ & \boxed{$1$} & $2$ & $-1$ & $0$
+		\\ $0$ & $0$ & $0$ & $0$ & $0$
+	\end{tabular} 
+	\end{center} 
+	Das bedeutet, dass die Vektorgleichung $\lambda_1 v_1 + \cdots + \lambda_4 v_4$ zum dem System der Gleichungen 
+	\begin{align*} 
+			\lambda_1 & = - \lambda_3 - \lambda_4,
+			\lambda_2  & = - 2\lambda_3 + \lambda_4.  
+	\end{align*} 
+	Das zeigt, dass $\lambda_1 v_1 + \lambda_2 v_2$, was ja $\lambda_1 v_1 + \cdots + \lambda_4 =0$ mit $\lambda_3=\lambda_4 =0$, nur dann ein Nullvektor ist, wenn $\lambda_1 = - 0 - 0$ und $\lambda_2 = -2 \cdot 0 + 0$ ist. Also sind $v_1, v_2$ linear unabhängig. Das zeigt aber auch, dass $\lin(v_1,\ldots,v_4) = \lin(v_1, v_2)$ gilt da sowohl $v_3$ als auch $v_4$ als Linearkombination von $v_1$ und $v_2$ darstellbar sind. Zur Bestimmung von $\lambda_1, \lambda_2$ mit $v_3 = \lambda_1 v_1 + \lambda_2 v_2$, ist man auf der Suche nach einer Darstellung $\lambda_1 v_1  + \lambda_2 v_2 + \lambda_3 v_3 + \lambda_4 v_4$ mit $\lambda_3 = -1$ und $\lambda_4$. Solche $\lambda_1,\lambda_2$ findet man aus der reduzierten Stufenform, weil diese $\lambda_1,\lambda_2$ in Abhängigkeit von $\lambda_3, \lambda_4$ darstellt. Komplett analog findet man auch eine Darstellung für $v_4.$ Hier noch ein Bild, dass die Positionen der Vektoren $v_1,\ldots, v_4$ zueinander darstellt: 
+	\begin{center} 
+			\begin{tikzpicture} 
+				\draw[blue!30!white] (-3,-3) grid (3,3);
+				\draw[->,very thick,red] (0,0) -- (1,0) node[right]{$v_1$};
+				\draw[->,very thick,red] (0,0) -- (0,1) node[above]{$v_2$};
+				\draw[->,very thick] (0,0) -- (1,2) node[above right]{$v_3$};
+				\draw[->,very thick] (0,0) -- (1,-1) node[below right]{$v_4$};
+			\end{tikzpicture} 
+	\end{center} 
+	Das Bild ist für die Ebene $\lin(v_1,v_2)$, die in $\R^3$ eingebettet ist; die Vektoren sind aber nicht winkeltreu gezeichnet, sonder lediglich so, dass die linearen Abhängigkeiten stimmen. 
+	\begin{center} 
+					\begin{tikzpicture} 
+							\filldraw[fill=blue!30!white]  (9,9,18)  --  (3,-3,0) -- (-9,-9,-18) -- (-3,3,0)  -- cycle;
+							\draw[->,red,very thick] (0,0,0) -- (1,2,3) node[above]{$v_1$};
+							\draw[->,red,very thick] (0,0,0) -- (2,1,3) node[right]{$v_2$};
+							\draw[->,very thick] (0,0,0) -- (5,4,9);
+							\draw[->,very thick] (0,0,0) -- (-1,1,0) ;
+							\draw[->,black!30!white] (0,0,0) -- (5,0,0) node[right]{$x_1$};
+							% AXES
+							\draw[->,black!70!white] (0,0,0) -- (5,0,0) node[right]{$x_1$};
+							\draw[->,black!70!white] (0,0,0) -- (0,5,0) node[right]{$x_2$};
+							\draw[->,black!70!white] (0,0,0) -- (0,0,10) node[above]{$x_3$};
+					\end{tikzpicture} 
+	\end{center} 
+\end{bsp} 
 
 \subsubsection{Austauschlemma}
 
