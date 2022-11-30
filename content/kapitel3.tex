@@ -403,27 +403,28 @@ print(A.echelon_form())
 	\begin{center} 
 			\begin{tikzpicture} 
 				\draw[blue!30!white] (-3,-3) grid (3,3);
-				\draw[->,very thick,red] (0,0) -- (1,0) node[right]{$v_1$};
-				\draw[->,very thick,red] (0,0) -- (0,1) node[above]{$v_2$};
-				\draw[->,very thick] (0,0) -- (1,2) node[above right]{$v_3$};
-				\draw[->,very thick] (0,0) -- (1,-1) node[below right]{$v_4$};
+				\draw[->,very thick,red] (0,0) -- (0,1) node[above]{$v_1$};
+				\draw[->,very thick,red] (0,0) -- (1,0) node[right]{$v_2$};
+				\draw[->,very thick] (0,0) -- (2,1) node[above right]{$v_3$};
+				\draw[->,very thick] (0,0) -- (-1,1) node[above left]{$v_4$};
 			\end{tikzpicture} 
 	\end{center} 
-	Das Bild ist für die Ebene $\lin(v_1,v_2)$, die in $\R^3$ eingebettet ist; die Vektoren sind aber nicht winkeltreu gezeichnet, sonder lediglich so, dass die linearen Abhängigkeiten stimmen. 
+	Das Bild ist für die Ebene $\lin(v_1,v_2)$, die in $\R^3$ eingebettet ist; die Vektoren sind aber nicht winkeltreu gezeichnet, sonder lediglich so, dass die linearen Abhängigkeiten stimmen. Die Ebene im Raum $\R^3$ sieht so aus: 
 	\begin{center} 
 					\begin{tikzpicture} 
 							\filldraw[fill=blue!30!white]  (9,9,18)  --  (3,-3,0) -- (-9,-9,-18) -- (-3,3,0)  -- cycle;
 							\draw[->,red,very thick] (0,0,0) -- (1,2,3) node[above]{$v_1$};
 							\draw[->,red,very thick] (0,0,0) -- (2,1,3) node[right]{$v_2$};
-							\draw[->,very thick] (0,0,0) -- (5,4,9);
-							\draw[->,very thick] (0,0,0) -- (-1,1,0) ;
-							\draw[->,black!30!white] (0,0,0) -- (5,0,0) node[right]{$x_1$};
+							\draw[->,very thick] (0,0,0) -- (5,4,9) node[above right]{$v_3$};
+							\draw[->,very thick] (0,0,0) -- (-1,1,0) node[above left]{$v_4$};
 							% AXES
-							\draw[->,black!70!white] (0,0,0) -- (5,0,0) node[right]{$x_1$};
-							\draw[->,black!70!white] (0,0,0) -- (0,5,0) node[right]{$x_2$};
-							\draw[->,black!70!white] (0,0,0) -- (0,0,10) node[above]{$x_3$};
+							\draw[->,thick,black!80!white] (0,0,0) -- (-2,-2,4) node[left]{$\scriptsize (-2,-2,4)$}; 
+							%\draw[->,black!80!white] (0,0,0) -- (5,0,0) node[right]{$x_1$};
+							%\draw[->,black!80!white] (0,0,0) -- (0,5,0) node[right]{$x_2$};
+							%\draw[->,black!80!white] (0,0,0) -- (0,0,10) node[above]{$x_3$};
 					\end{tikzpicture} 
 	\end{center} 
+	Der Vektor $(-2,2,4)$, der zur Ebene $\lin(v_1,v_2)$ senkrecht ist, dient hier lediglich der räumlichen Orientierung. 
 \end{bsp} 
 
 \subsubsection{Austauschlemma}
