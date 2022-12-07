@@ -397,7 +397,7 @@ print(A.echelon_form())
 	Das bedeutet, dass die Vektorgleichung $\lambda_1 v_1 + \cdots + \lambda_4 v_4$ zum dem System der Gleichungen 
 	\begin{align*} 
 			\lambda_1 & = - \lambda_3 - \lambda_4,
-			\lambda_2  & = - 2\lambda_3 + \lambda_4.  
+		\\	\lambda_2  & = - 2\lambda_3 + \lambda_4.  
 	\end{align*} 
 	Das zeigt, dass $\lambda_1 v_1 + \lambda_2 v_2$, was ja $\lambda_1 v_1 + \cdots + \lambda_4 =0$ mit $\lambda_3=\lambda_4 =0$, nur dann ein Nullvektor ist, wenn $\lambda_1 = - 0 - 0$ und $\lambda_2 = -2 \cdot 0 + 0$ ist. Also sind $v_1, v_2$ linear unabhängig. Das zeigt aber auch, dass $\lin(v_1,\ldots,v_4) = \lin(v_1, v_2)$ gilt da sowohl $v_3$ als auch $v_4$ als Linearkombination von $v_1$ und $v_2$ darstellbar sind. Zur Bestimmung von $\lambda_1, \lambda_2$ mit $v_3 = \lambda_1 v_1 + \lambda_2 v_2$, ist man auf der Suche nach einer Darstellung $\lambda_1 v_1  + \lambda_2 v_2 + \lambda_3 v_3 + \lambda_4 v_4$ mit $\lambda_3 = -1$ und $\lambda_4$. Solche $\lambda_1,\lambda_2$ findet man aus der reduzierten Stufenform, weil diese $\lambda_1,\lambda_2$ in Abhängigkeit von $\lambda_3, \lambda_4$ darstellt. Komplett analog findet man auch eine Darstellung für $v_4.$ Hier noch ein Bild, dass die Positionen der Vektoren $v_1,\ldots, v_4$ zueinander darstellt: 
 	\begin{center} 
@@ -546,6 +546,8 @@ print(A.echelon_form())
 	$ \lin(a) $ mit $ a \in \R^3 \setminus \{ 0 \} $ sind Geraden durch den Nullpunkt: die UVRs der Dimension 1. $ \lin(a,b) $ mit linear unabhängigen $ a $ und $ b $ aus $ \R^3 $ sind die Ebenen durch den Nullpunkt die UVRs der Dimension 2.
 	\item Sei $ x $ eine Unbestimmte. Dann ist $ \K[x] $ Vektorraum über $ \K $. $ \dim\K[x] = \infty $, denn $ 1, x^2, x^3, \ldots $ sind unendlich viele linear unabhängige Vektoren aus $ \K[x] $.
 	\item $ \dim_\Q(\R) = \infty $
+	\item $\dim_\R(\C) = 2$
+	\item $\dim_\Q \lin(1,\sqrt{2}) = 2$, weil $\sqrt{2}$ irrational ist. 
 \end{itemize}
 \end{bsp}
 
@@ -756,6 +758,67 @@ dann ist
 \begin{bem}
 	Der Beweis des vorigen Theorems enthält ein Verfahren zur Bestimmung einer Basis $ v_{i_1} , \ldots , v_{i_r} $ von $ \lin(v_1, \ldots, v_n) $ für Vektorsysteme $ v_1,\ldots,v_r $ mit $ v_i \in \K^m $ und $ n,m \in \N $.
 \end{bem}
+
+\begin{bsp}
+	Wir betrachten die Matrix
+	\[
+		 A= \begin{pmatrix} 
+		 		2 & 2 & 1 & 0 & 0 \\ 
+		 		0 & 2 & 3 & 2 & 0 
+		 \end{pmatrix} 
+	\]
+	deren $5$ Spalten $s_1, \ldots, s_5$, das Haus von Nikolaus beschreiben: 
+	\begin{center} 
+			\begin{tikzpicture} 
+					\node (1) at (2,0) {$s_1$};
+					\node (2) at (2,2) {$s_2$};
+					\node (3) at (1,3) {$s_3$};
+					\node (4) at (0,2) {$s_4$};
+					\node (5)  at (0,0) {$s_5$};
+					\draw[black!20!white] (-1,-1) grid (3,4);
+					\draw (5) -- (1) -- (2) -- (3) -- (4) -- (5) -- (2) -- (4)  -- (1);
+			\end{tikzpicture} 
+	\end{center} 
+	Der Rang von $A$ ist $2$, denn das Haus von Nikolaus ist zweidimensional. Wenn wir eine Zeilentransformationen durchführen, indem wir etwa von der zweiten Zeile die erste addieren, erhalten wir eine Modifikation: die Matrix 
+	\[
+		 A= \begin{pmatrix} 
+			2 & 2 & 1 & 0 & 0 \\ 
+		-2 & 0 & 2 & 2 & 0 
+		\end{pmatrix} 
+	\]
+	welche dem folgenden verzehrten Haus von Nikolaus entspricht
+	\begin{center} 
+			\begin{tikzpicture} 
+	\node (1) at (2,-2) {$s_1$};
+	\node (2) at (2,0) {$s_2$};
+	\node (3) at (1,2) {$s_3$};
+	\node (4) at (0,2) {$s_4$};
+	\node (5)  at (0,0) {$s_5$};
+	\draw[black!20!white] (-1,-2) grid (3,3);
+	\draw (5) -- (1) -- (2) -- (3) -- (4) -- (5) -- (2) -- (4)  -- (1);
+\end{tikzpicture}
+\end{center}  
+	Führen wir dagegen eine Spaltentransformation aus, so modifiziert sich in unserem Haus die Position eines der $5$ Punkte. Etwa man addieren des $2$fachen der dersten Spalte zur dritten Spalten ergibt sich die Matrix 
+	\[
+A= \begin{pmatrix} 
+	2 & 2 & 5 & 0 & 0 \\ 
+	0 & 2 & 3 & 2 & 0 
+\end{pmatrix} 
+\]
+und das Bild 
+	\begin{center} 
+	\begin{tikzpicture} 
+		\node (1) at (2,0) {$s_1$};
+		\node (2) at (2,2) {$s_2$};
+		\node (3) at (5,3) {$s_3$};
+		\node (4) at (0,2) {$s_4$};
+		\node (5)  at (0,0) {$s_5$};
+		\draw[black!20!white] (-1,-1) grid (6,4);
+		\draw (5) -- (1) -- (2) -- (3) -- (4) -- (5) -- (2) -- (4)  -- (1);
+	\end{tikzpicture} 
+\end{center} 
+	Das Haus von Nikolaus kann durch die Spaltentranformationen komplett seine Form verlieren, es bleibt aber trotzdem zweidimensional. 
+\end{bsp} 
 
 \clearpage
 \subsection{Summen von Vektorräumen}
