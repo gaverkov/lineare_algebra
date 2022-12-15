@@ -10,7 +10,7 @@ IM AUFBAU: Bilder - Quadrat mit einem Piktogramm drin.
 \subsubsection{90°-Drehung}
 	90°-Drehung mit Drehzentrum in $ 0 $ im Gegenuhrzeigersinn.\\
 	$ F: \R^2 \to \R^2, (x_1,x_2) \mapsto (-x_2,x_1) $
-
+	
 \subsubsection{Projektion in $ \R^3 $}
 	$ F : \R^3 \to \R^3, (x_1,x_2,x_3) \mapsto (x_1, x_2, 0) $
 
@@ -58,7 +58,7 @@ Seien $ V $ und $ W $ Vektorräume über $ \K $. Sei $ F: V \to W $. Die Abbildu
 	Offensichtlich gelten (L1) und (L2) genau dann, wenn folgendes gilt:
 	\begin{itemize}[leftmargin=\myindent]
 		\item[(L)]
-			$ F(\lambda v + \mu w) = \lambda F(V) + \mu F(w) \quad \forall v,w \in V, \forall \lambda, \mu \in \K $
+			$ F(\lambda v + \mu w) = \lambda F(v) + \mu F(w) \quad \forall v,w \in V, \forall \lambda, \mu \in \K $
 	\end{itemize}
 \end{bem}
 
@@ -79,7 +79,7 @@ Seien $ V $ und $ W $ Vektorräume über $ \K $. Sei $ F: V \to W $. Die Abbildu
 		\item
 			$ \dim(F(V)) \leq \dim(V) $
 		\item
-			Ist $ F $ bijektiv, dann ist auch $ F' : W \to V $ linear.
+			Ist $ F $ bijektiv, dann ist auch $ F^{-1} : W \to V $ linear.
 	\end{enumerate}
 \end{propn}
 \begin{proof}
@@ -135,7 +135,7 @@ Seien $ V $ und $ W $ Vektorräume über $ \K $. Sei $ F: V \to W $. Die Abbildu
 
 \subsubsection{Vektorräume der linearen Abbildungen}
 
-Seien $ U $ und $ V $ Vektorräume über $ \K $. Wir bezeichnen durch $ \Lin_\K(V,W) $ die Menge aller linearen Abbildungen von $ V $ nach $ W $.
+Seien $ V$ und $ W $ Vektorräume über $ \K $. Wir bezeichnen durch $ \Lin_\K(V,W) $ die Menge aller linearen Abbildungen von $ V $ nach $ W $.
 
 \begin{propn}
 	Seien $ V $ und $ W $ Vektorräume über $ \K $. Die Menge $ \Lin(V,W) $ mit den Operationen $ (F+G)(v) := F(v) + G(v) \quad \forall v \in V $ (Addition) und $ (\lambda \cdot F)(v) := \lambda \cdot F(v) \quad \forall \lambda \in \K, v \in V $ (Skalarmultiplikation) ist ein Vektorraum.

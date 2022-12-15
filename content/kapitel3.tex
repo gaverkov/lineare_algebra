@@ -794,11 +794,11 @@ dann ist
 	\node (3) at (1,2) {$s_3$};
 	\node (4) at (0,2) {$s_4$};
 	\node (5)  at (0,0) {$s_5$};
-	\draw[black!20!white] (-1,-2) grid (3,3);
+	\draw[black!20!white] (-1,-3) grid (3,3);
 	\draw (5) -- (1) -- (2) -- (3) -- (4) -- (5) -- (2) -- (4)  -- (1);
 \end{tikzpicture}
 \end{center}  
-	Führen wir dagegen eine Spaltentransformation aus, so modifiziert sich in unserem Haus die Position eines der $5$ Punkte. Etwa man addieren des $2$fachen der dersten Spalte zur dritten Spalten ergibt sich die Matrix 
+	Führen wir dagegen eine Spaltentransformation aus, so modifiziert sich in unserem Haus die Position eines der $5$ Punkte. Etwa man addieren des $2$fachen der ersten Spalte zur dritten Spalten ergibt sich die Matrix 
 	\[
 A= \begin{pmatrix} 
 	2 & 2 & 5 & 0 & 0 \\ 
@@ -971,13 +971,13 @@ Sei $ V $ Vektorraum über $ \K $, sei $ W_1, \ldots, W_k $ ($ k \in \N $) Unter
 	
 	$ \sum_{i=1}^{k} \sum_{j=1}^{r_i} \mu_{ij} v_{ij} = 0 \quad \forall \mu_{ij} \in \K $. Sei $ w_i := \sum_{j=1}^{r_i}  \mu_{ij} v_{ij} $, dann gilt $ \sum_{i=1}^{k} w_i = 0 $.
 	
-	Da die Summe $ v = w_1 + \ldots + w_k $ direkt ist, folgt $ w_1 = \ldots = w_k = 0 $. Das heißt $ w_i = \sum_{j=1}^{r_j} \mu_{ij} v_{ij} = 0 \quad \forall i \in \{1, \ldots, k \} $. Da $ v_{i1}, \ldots, v_{ir_j} $ eine Basis bilden, folgt $ \mu_{ij} = 0 \quad \forall i \forall j $.
+	Da die Summe $ v = w_1 + \ldots + w_k $ direkt ist, folgt $ w_1 = \ldots = w_k = 0 $. Das heißt $ w_i = \sum_{j=1}^{r_i} \mu_{ij} v_{ij} = 0 \quad \forall i \in \{1, \ldots, k \} $. Da $ v_{i1}, \ldots, v_{ir_j} $ eine Basis bilden, folgt $ \mu_{ij} = 0 \quad \forall i \forall j $.
 	
 	\item[(ii)$ \Rightarrow $(i):]
 	Sei (ii) erfüllt.
 	Sei $ w_i \in W_i $ für $ i \in \{1,\ldots,k\} $ und sei $ \sum_{i = 1}^{k} w_i = 0 $. Da $ v_{i1}, \ldots, v_{ir_j} $ eine Basis von $ w_i $ ist, gilt $ w_i = \sum_{j = 1}^{r_j} \mu_{ij} v_{ij} $ für gewisse $ \mu_{ij} \in \K $.
 	
-	Durch einsetzen erhält man $ \sum_{i = 1}^{n} \sum_{j = 1}^{r_j} \mu_{ij} v_{ij} = 0  $. Da $ \mathcal{B} $ eine Basis ist, folgt $ \mu_{ij} = 0 \quad \forall i \forall j $. Das bedeutet $ w_1 = \ldots = w_k = 0 $.
+	Durch Einsetzen erhält man $ \sum_{i = 1}^{n} \sum_{j = 1}^{r_i} \mu_{ij} v_{ij} = 0  $. Da $ \mathcal{B} $ eine Basis ist, folgt $ \mu_{ij} = 0 \quad \forall i \forall j $. Das bedeutet $ w_1 = \ldots = w_k = 0 $.
 	
 	\item[(ii)$ \Rightarrow $(iii):]
 	klar, denn die Dimension ist die Anzahl der Vektoren in einer Basis des Raumes.
@@ -1011,7 +1011,7 @@ Die Abbildung $(x_1,\ldots,x_n) \mapsto (1 : x_1 : \ldots :x_n)$ ist die Standar
 	Zwei Punkte in $\bP(V)$ können als $0$-dimensionale projektive Unterräume $\bP(A)$ und$\bP(B)$ definiert werden, wobei $A$ und $B$ zwei verschiedene $1$-dimensionale Untervektorräume von $V$ sind. 
 	
 	\emph{Existenz:} Der Vektorraum $A+B$ hat Dimension $\dim(A) + \dim(B)  = 2$. Also ist $\bP(A+B)$ die projektive Gerade, welche die Punkte $\bP(A)$ und $\bP(B)$ enthält. 
-	
+option	
 	\emph{Eindeutigkeit:} Wir betrachten nun eine beliebige projektive Gerade, d.h., den projektiven Raum $\bP(U)$, der durch einen $2$-dimensionalen Untervektorraum $U$ von $V$ definiert ist. Wenn $\bP(A)$ und $\bP(B)$ in $\bP(U)$ liegen, dann gilt $A \subseteq U$ und $B \subseteq U$. Dann folgt aber auch $A + B \subseteq U$. Da $A+B$ und $U$ zwei-dimensional sind, erhalten wir $A + B= U$.  Das bedeutet $\bP(U) = \bP(A+B)$. 
 \end{proof} 
 
