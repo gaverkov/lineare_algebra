@@ -649,13 +649,13 @@ Wir beschreiben die 3 Typen der Elementartransformationen von LGS durch Matrizen
 			 &  &  &  &  & \ddots &  \\ 
 			 &  &  &  &  &  & 1
 			\end{matrix} \right)
-			= I_n + (\alpha-1)e_ie_i^\top
+			= I_m + (\alpha-1)e_ie_i^\top
 		\end{equation*}
 		$ T_2(\alpha) $ ist umkehrbar und $ T_2(\alpha)^{-1} = T_2(\frac{1}{\alpha}) $.
 	\item[Typ 3.]
 		(Für $ i,j\in\{ 1,\ldots,m \} $ und $ \alpha\in\K $ wird zu der $ i $-ten Gleichung das $ \alpha $-fache der $ j $-ten Gleichung addiert.)
 		\begin{equation*}
-			T_3(\alpha) = I_n + \alpha e_ie_j^\top
+			T_3(\alpha) = I_m + \alpha e_ie_j^\top
 		\end{equation*}
 		$ Ax=b $ wird zu $ (T_3(\alpha)A)x = T_3(\alpha)b $ überführt. $ T_3 $ ist invertierbar und $ T_3(\alpha)^{-1} = T_3(-\alpha) $.
 \end{description}
