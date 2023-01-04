@@ -288,7 +288,7 @@ c_{22} &= a_{21}b_{12} + a_{22}b_{22}
 	\[
 		A = \begin{pmatrix} 
 			| & & |
-	\\		a_1 & & a_n 
+	\\		a_1 & \cdots & a_n 
 	\\	| & & |
 		\end{pmatrix} 
 	\]
@@ -299,15 +299,43 @@ c_{22} &= a_{21}b_{12} + a_{22}b_{22}
 	Das heißt, $A x$ ist die Linearkombination der Spalten von $A$, deren Koeffizienten die Komponenten des Vektors $x$ sind. 
 \end{bem}
 
+\begin{bem}
+	Nützliche Links: {\\ \scriptsize 
+	 \url{https://de.wikipedia.org/wiki/Matrizenmultiplikation} \\ 
+	 \url{https://en.wikipedia.org/wiki/Matrix_multiplication} } 
+\end{bem} 
+
+\begin{bem}[Matrizenmutliplikation in den Wirtschaftlichenkontexten] 
+	Man betrachte: 
+	\begin{itemize} 
+		\item Nutrienten (Kohlenhydrate, Fette, Proteine, Vitamine, Mineralstoffe, Wasser)
+		\item Ingredienten (Zucker, Mehl, Eier, Tomaten usw.). 
+		\item Gerichte (Kartoffelsalat, Eierschecke usw.). 
+	\end{itemize} 
+	
+	$A = (a_{g,i})_{g,i}$ - Gericht-Ingredienten-Matrix : wie viele Einheiten des Ingredienten pro ein Gericht (eine Einheit des Gerichts). 
+	
+	$B = (b_{i,n})_{i,n}$  - Ingredienten-Nutrienten-Matrix: wie viele Einheiten des Nutrienten pro eine Einheit des Ingredienten. 
+	
+	$C = A B$ ist die -Gericht-Nutrienten-Matrix: wie viele Einheiten des Nutrienten pro ein Gericht (eine Einheit des Gerichts). 
+	\[
+		c_{g,n} = \sum_{i} a_{g,i} b_{i,n}.
+	\]
+	
+	Ähnliche Art Kalkulatinen, die man als Multiplikation von Matrizen auffassen kann, sind omnipräsent in den wirtschaftlichen Kontexten. 
+\end{bem} 
+
 \subsubsection{Matrix einer linearen Abbildung von $ \K^n $ nach $ \K^m $}
 
+
 \begin{propn}
-	Sei $ F : \K^m \to \K^n $ linear ($ m,n \in \N $). Dann existiert genau eine Matrix $ A \in \K^{m \times n} $ mit $ F(x) = Ax $ für alle $ x \in \K^n $. Es gilt \[
+	Sei $ F : \K^n\to \K^m $ linear ($ m,n \in \N $). Dann existiert eine eindeutige Matrix $ A \in \K^{m \times n} $ mit $ F(x) = Ax $ für alle $ x \in \K^n $. Es gilt \[
 		 A = \begin{pmatrix} 
 		 | & & |
 		 \\ F(e_1) & \cdots &  F(e_n) 
-		 \\ | & & | \end{pmatrix} 
+		 \\ | & & | \end{pmatrix}, 
 	\]
+	d.h., die Spalten von $A$ entstehen durch die Auswertung von $F$ auf den Vektoren der Standardbasis $e_1,\ldots,e_n$. 
 \end{propn}
 \begin{proof}
 	Sei $ x = (x_1, \ldots, x_n) \in \K^n $. Dann ist $ x = x_1e_1 + \ldots + x_ne_n $. Somit gilt
@@ -324,7 +352,42 @@ c_{22} &= a_{21}b_{12} + a_{22}b_{22}
 	Es bleibt die Eindeutigkeit von $ A $ zu zeigen. Sei $ F(x) = Ax $ für alle $ x \in \K^n $. Für $ x = e_i $ ($ i \in \{ 1, \ldots, n \} $) gilt $ F(e_i) = Ae_i $. Dabei ist $ Ae_i $ die $ i $-te Spalte von $A$. Das zeigt die Eindeutigkeit. 
 \end{proof}
 
-\noindent Für $ F $ und $ A $ wie in der vorigen Proposition nennen wir $ A $ die Matrix von $ F $. $ F $ heißt die durch $ A $ definierte lineare Abbildung.
+\noindent Für $ F $ und $ A $ wie in der vorigen Proposition nennen wir $ A $ die Matrix von $ F $. $ F $ heißt die \emph{durch $ A $ definierte lineare Abbildung.}
+
+\begin{bsp} 
+ Die Drehung $F : \R^2 \to \R^2$ um $135^\circ = 90^\circ + 45^\circ$ im Gegenuhrzeigersinn wird durch die Drehung der Standarbasisvektoren $e_1$ und $e_2$ berechnet. $F(x) = x_1 F(e_1) + x_2 F(e_2)$. Das bedeutet salopp gesagt, Folgendes. Um $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ zu drehen, müssen $e_1$ und $e_2$ gedreht werden; dann dreht sich $x$ mit. Stellen Sie sich vor, $x$ ist einen Karton eingepackt, dessen Platzierung durch $e_1$ und $e_2$ bestimmt wird. Nun wird der Karton gedreht, indem man $e_1$ und $e_2$ dreht, sodass sich $x$ dadurch mitdreht. Für $F(e_1)$ und $F(e_2)$ hat man aus den geometrischen Betrachtungen die Darstellung 
+ \begin{align*} 
+ 		F(e_1)  & = {\color{green!50!black} \begin{pmatrix}  -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} 
+ 		\end{pmatrix} }
+ 	& 
+ 		F(e_2)  & = {\color{red!80!black} \begin{pmatrix}  -\frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}}. 
+\end{pmatrix} } 
+ \end{align*} 
+Das zeigt, 
+\[
+	F(x)  = x_1 \begin{pmatrix}  -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} 
+	\end{pmatrix}  + x_2 \begin{pmatrix}  -\frac{1}{\sqrt{2}} \\ - \frac{1}{\sqrt{2}}. 
+\end{pmatrix},
+\]
+oder in der Matrixform: 
+\[
+	F (x) = \begin{pmatrix} {\color{green!50!black} -\frac{1}{\sqrt{2}}} & { \color{red!80!black} -\frac{1}{\sqrt{2}}} \\
+		{\color{green!50!black} \frac{1}{\sqrt{2}} } & { \color{red!80!black} - \frac{1}{\sqrt{2}}} \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}. 
+\]
+\begin{center} 
+\begin{tikzpicture}[scale=1.5]
+	\draw[gray] (0,0) grid (4,3);
+	\draw[->,line width = 1mm,green!50!black] (0,0) -- (1,0) node[below]{$e_1$};
+	\draw[->,line width = 1mm,red!80!black] (0,0) -- (0,1) node[left]{$e_2$};
+	\draw[->,line width = 1mm,blue!80!black] (0,0) -- (4,3) node[right]{$x$};
+
+	\draw[pink, rotate around={135:(0,0)}] (0,0) grid (4,3);
+	\draw[->,line width = 1mm,green!60!gray, rotate around={135:(0,0)}] (0,0) -- (1,0) node[left]{$F(e_1)$};
+	\draw[->,line width = 1mm,red!30!white, rotate around={135:(0,0)}] (0,0) -- (0,1) node[right]{$F(e_2)$} ;
+	\draw[->,line width = 1mm,blue!30!white, rotate around={135:(0,0)}] (0,0) -- (4,3) node[left]{$F(x)$} ;
+\end{tikzpicture} 
+\end{center} 
+\end{bsp} 
 
 \begin{bsp}\
 	\begin{itemize}
@@ -394,7 +457,13 @@ c_{22} &= a_{21}b_{12} + a_{22}b_{22}
 	Seien $ l,m,n \in \N $, seien $ G:\K^n\to\K^m $ und $ F:\K^m\to\K^l $ linear. Sei $ B \in \K^{m \times n} $ die Matrix von $ G $ und sei $ A \in \K^{l \times m} $ die Matrix von $ F $. Dann ist $ AB $ die Matrix von $ F \circ G $.
 \end{thm}
 \begin{proof}
-	Es gilt $ F(y) = Ay $ und $ G(x) = Bx $ für alle $ x \in \K^n $ und alle $ y \in \K^m $. Daher gilt $ (F \circ G)(x) = F(G(x)) = F(Bx) = A \cdot (B \cdot x) $.
+	Nach den Voraussetzungen gilt $ F(y) = Ay $ und $ G(x) = Bx $ für alle $ x \in \K^n $ und alle $ y \in \K^m $, oder als Diagramm:  	
+	\begin{equation*}
+		\K^l    \xleftarrow[A \in \K^{l \times m}]{\hspace{3ex} F(y) = B y \hspace{3ex}}   \K^m  \xleftarrow[B \in \K^{m \times n}]{\hspace{3ex}  G(x) = Ax \hspace{3ex}} \K^n
+	\end{equation*} 
+
+	
+Daher gilt $ (F \circ G)(x) = F(G(x)) = F(Bx) = A \cdot (B \cdot x) $.
 	
 	Zu zeigen: $ A \cdot (B \cdot x) = (A \cdot B) \cdot x $. Sei $ x=(x_1,\ldots,x_n) $, sei $ A = {{(a_{ij})}_{i=1}^l}_{j=1}^m $ und sei $ B = {{(b_{jk})}_{j=1}^m}_{k=1}^n $. Man hat: 
 	\begin{align*}
@@ -453,7 +522,7 @@ Für $ m,n\in\N $ ist die Menge $ \K^{m \times n} $ aller Matrizen der Größe $
 \end{align}
 
 \begin{thm}
-	Seien $ m,n,r,s\in\N $. Seien $ A,A'\in\K^{m \times n} $, $ B,B'\in\K^{r \times s} $ und $ \lambda\in\K $. Dann gilt:
+	 Seien $ A,A'\in\K^{m \times n} $, $ B,B'\in\K^{n \times k}, C \in \K^{k \times p} $ ($n,k,p \in \N$) und $ \lambda\in\K $. Dann gilt:
 	\begin{enumerate}[label=\normalfont(\roman*)]
 		\item $ A \cdot ( B + B') = A \cdot B + A \cdot B' $
 		\item $ (A + A') \cdot B = A \cdot B + A' \cdot B $
@@ -495,7 +564,7 @@ Für jede Matrix $ A\in\K^{m \times n} $ ($ m,n\in\N $) gilt offensichtlich $ I_
 	Das neutrale Element bzgl. der Multiplikation ist die Einheitsmatrix $ I_n $. Die Matrix in $ \K^{n \times n} $ ($ n\in\N $), deren Einträge alle gleich Null sind, wird die \emph{Nullmatrix} genannt und durch $ O $ bezeichnet.
 \end{propn}
 \begin{proof}
-	Alle Ringeigenschaften lassen sich direkt verifizieren. Es sei bemerkt, dass man im Wesentlichen keinen Unterschied zwischen $ \K^{n \times n} $ und $ \Lin(\K^n) $ hat. Man sagt: die Ringe $ K^{n \times n} $ und $ \Lin(\K^n) $ sind isomorph (die genaue Definition wird erstmal nicht angegeben; $ \rightsquigarrow $ gleich, aber nicht dasselbe).
+	Alle Ringeigenschaften lassen sich direkt verifizieren. Es sei bemerkt, dass man im Wesentlichen keinen Unterschied zwischen $ \K^{n \times n} $ und $ \Lin(\K^n) $ hat. Man sagt: die Ringe $ \K^{n \times n} $ und $ \Lin(\K^n) $ sind isomorph (die genaue Definition wird erstmal nicht angegeben; $ \rightsquigarrow $ gleich, aber nicht dasselbe).
 \end{proof}
 
 \subsubsection{Invertierbarkeit von Matrizen}
@@ -530,10 +599,11 @@ Sei $ n\in\N $ und $ A\in\K^{n \times n} $. Dann heißt $ A $ \emph{invertierbar
 
 \subsubsection{Allgemeine lineare Gruppe}
 
-Für $ n\in\N $ sei (\glqq General Linear\grqq)
+Für $ n\in\N $ ist die allgemeine lineare Gruppe als 
 \begin{equation}
-	\GL_n(\K) := \{ A\in\K^{n \times n} : \text{$ A $ ist invertierbar} \}.
+	\GL_n(\K) := \{ A\in\K^{n \times n} : \text{$ A $ ist invertierbar} \}
 \end{equation}
+definiert (GL ist  Abkürzung für  sei (\glqq General Linear\grqq - engl.)
 
 \begin{propn}
 	Sei $ n\in\N $. Dann gilt $ A \cdot B \in \GL_n(\K) $ für alle $ A,B \in \GL_n(\K) $ und darüber hinaus ist $ (\GL_n(\K),\cdot) $ eine Gruppe.
@@ -541,9 +611,12 @@ Für $ n\in\N $ sei (\glqq General Linear\grqq)
 
 \subsubsection{Elementartransformationen linearer Gleichungssysteme und Matrizenmultiplikation}
 
+Ein lineares Gleichungsytem in der Matrixform $A  x = b$ ist durch die Matrix $A$ der linken Seiten und den Vektor $b$ der rechten Seiten gegeben. Wie ändern sich $A$ und $b$, wenn man zum System die Elementartransformationen anwenden? Es stellt sich heraus, dass man solche Änderungen durch Matrixmultiplikation darstellen kann. 
+
 Wir betrachten ein beliebiges LGS $ \sum_{j=1}^{n} a_{ij}x_j = b_i \quad \forall i \in\{ 1,\ldots,m \} $ ($ m,n\in\N $) in Unbekannten $ x_1,\ldots,x_n\in\K $, mit $ a_{ij},b_i\in\K \quad \forall i,j $. Das System kann als $ Ax = b $ geschrieben werden, wobei
 \begin{equation*}
-	A = {{(a_{ij})}_{i=1}^m}_{j=1}^n, \quad b = {(b_i)}_{i=1}^m, \quad x = {(x_j)}_{j=1}^n.
+	A =  (a_{ij} )_{\substack{ i=1,\ldots,m \\ j =1,\ldots,n}} 
+		, \quad b = {(b_i)}_{i=1}^m, \quad x = {(x_j)}_{j=1}^n.
 \end{equation*}
 Wir beschreiben die 3 Typen der Elementartransformationen von LGS durch Matrizenmultiplikation.
 
@@ -551,7 +624,18 @@ Wir beschreiben die 3 Typen der Elementartransformationen von LGS durch Matrizen
 	\item[Typ 1.]
 		(Vertauschen der Gleichungen $ i $ und $ j $ mit $ i,j \in \{ 1,\ldots,m \}, i \neq j $.)
 		
-		Das neue System hat die Form $ (T_1A)x = T_1b $, wobei $ T_1 $ die Einheitsmatrix mit vertauschten Zeilen $ i $ und $ j $ ist. $ T_1 $ ist invertierbar und $ (T_1)^{-1}=T_1 $.
+		Das neue System hat die Form $ T_1(Ax) = T_1b $, wobei $ T_1 $ die Einheitsmatrix mit vertauschten Zeilen bzw. Spalten $ i $ und $ j $ ist. $ T_1 $ ist invertierbar und $ (T_1)^{-1}=T_1 $. Etwa, für eine Matrix mit zwei Gleichungen und den Tausch von den beiden Gleichungen hat man 
+		\[ 
+			T_1 \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} = \begin{pmatrix} b_2 \\ b_1 \end{pmatrix} 
+			\] 
+			Das heißt, dass man 
+			\[
+				T_1 = \begin{pmatrix} 1 & 0 \\ 
+					0 & 1 
+				\end{pmatrix} 
+			\]
+			hat. Diese Matrix lässt sich als $T_1 = I_2 - (e_1 - e_2) (e_1 - e_2)^\top$ beschreiben. Allgemein beim Vertauschen von $i$-ten und $j$-ten Gleichung eines Systems mit $m$ Gleichungen hat man 
+			$T_1 = I_m - (e_i-e_j)(e_i-e_j)^\top$. 
 	\item[Typ 2.]
 		(Für $ i\in\{ 1,\ldots,m \} $ und $ \alpha\in\K\setminus\{0\} $ wird die $ i $-te Gleichung mit $ \alpha $ multipliziert.)
 		\begin{equation*}
