@@ -1,0 +1,48 @@
+Woche 1:
+	Intro: lineare Welt - Gleichungen, Mengen, Transformationen
+	Anwendungen: 
+		wirklich überall. 
+		Konkret: 
+			PageRank 
+			Fehlerkorrektur in verrauschten Kanälen, 
+			Data Science - Analyse von Datenmenge (Maschinelles Lernern, Statistik)
+			KI 
+			Optimierung
+			Reduktion des Nichtlinearen Falls auf den linearen
+	LGS, Elimination: noch keine Definition eines Körpers
+
+Woche 2: 
+	Vektoren in K^n
+		+, Skalarprodukt
+		Linearkombination, l
+		Lineare Hülle, 
+		Lineare (Un)Abhängigkeit 
+		Beispiel zu Koordinatensystemen: was ist das? (erstmal, intuitiv). 
+		Gauß hilft Abhängigkeiten zu finden. 
+	Etwas Algebra und die modulare Arithmetik 
+		Als Struktur reichen zunächst unitäre kommutative Ringe, Z Musterbeispiel. 
+		und Körper. Q, R Musterbeispiele. 
+		Z_n wird eingeführt
+		Beispiele n=5,6 - Körper, kein Körper
+		Z_n Körper nur wenn n prim ist (ohne Beweis)
+
+Woche 3: 
+		Bsp: Modellbeispiel zur Kodierungstheorie, sehr ähnlich zur Idee der QR-Codes. 
+	 	Affine Funktion an 
+		In unseren Strukturen wie Körper und Vektorraum werden oft die Gruppen sehen...
+		Gruppe (G,*).
+		Abelsche Gruppe. 
+		Bei einem Körper (K,+,*) ist (K,+) Abelsche Gruppe aber auch (K \ 0, *). 
+		Vektorräume haben auch was mit Gruppen zu tun. 	
+
+	Allgemeine Vektorräume: Unterräume, Basen, Dimension. 
+		Vektorraum (VR) allgemein eingeführt. 
+		Untervektorraum. 
+		Untervektorraum ist Vektorraum. 
+		Lineare Unabhängigkeit und Ko. - wieder. 
+		Erzeugendensystem
+		Basis 
+		Genauer klären, wie man mit Gauß, die lineare 
+		
+
+	
