@@ -29,6 +29,13 @@ Woche 2:
 Woche 3: 
 		Bsp: Modellbeispiel zur Kodierungstheorie, sehr ähnlich zur Idee der QR-Codes. 
 	 	Affine Funktion an 
+			Alice, Bob Straße mit Lärm, Alice sagt alles dreimal. 
+			Ein Fehler wird korrigiert. 
+			Geht es besser?
+			Ja, alles zweimal. 
+			(a,b) -> a x+ b : x=0,1,2,3
+			Alternative (a,b) -> (a-b) x + b : x =0,1,2,3 (Message+Prüfwerte)
+			Als lineare Hüller: 2-dim Raum im 4-dim. Raum
 		In unseren Strukturen wie Körper und Vektorraum werden oft die Gruppen sehen...
 		Gruppe (G,*).
 		Abelsche Gruppe. 
