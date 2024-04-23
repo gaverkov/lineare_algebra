@@ -44,12 +44,17 @@ Woche 3:
 
 	Allgemeine Vektorräume: Unterräume, Basen, Dimension. 
 		Vektorraum (VR) allgemein eingeführt. 
+		Beispiele, wie man abstrakt mit Axiomen argumentiert: 
+			0*v = 0
+			(-1)*v = -v
 		Untervektorraum. 
-		Untervektorraum ist Vektorraum. 
-		Lineare Unabhängigkeit und Ko. - wieder. 
+		Untervektorraum ist ein Vektorraum. 
+Woche 4: 
+		Lineare Unabhängigkeit und Abhängigkeit
 		Erzeugendensystem
 		Basis 
-		Genauer klären, wie man mit Gauß, die lineare 
+		Genau erklären, wie man unter u_1,\ldots,u_m 
+		mit Gauß eine Basis von lin(u_1,..,u_m) findet. 
 		
 
 	
