@@ -1,0 +1,40 @@
+Wochen 1-4: Grundlagen der linearen Algebra 
+
+W1.V1: Wiederholung Basics.
+W1. V2: Gruppen, Ringe.
+W2.V1: Ostermontag.
+W2.V2: Polynomringe, Restklassenringe. Körper.
+W3.V1: Gauß-Verfahren. Vektorräume.
+W3.V2: Untervektorräume, Linear-Kombination,
+W4.V1: Lineare Abhängigkeit und Unabhängigkeit
+W4.V2: Basis, Dimension,
+
+Wochen 5-8: Lineare Abbildungen
+W5.V1: Bestimmung einer Basis der linearen Hülle, Matrizen, Rang, Summe von Vektorräumen, Lineare Hülle
+W5.V2: Matrix einer Abbildung, Multiplikation von Matrizen
+W6.V1: Bild, Kern, Rangssatz.
+W6.V2: Injektivität, Surjektivität mit Bild und Kern (Beweise)
+W7.V1: Invertieren von Matrizen/Abbildungen.
+W7.V2: Elementartransformationen von Matrizen als Multiplikation
+W8.V1: Koordinatensysteme=Basiswechsel. 
+W8.V2: Basisdarstellung und Basiswechsel für lineare Abbildungen
+
+Wochen 9-12: Determinanten und Eigenwerte 
+W9.V1: Pfinstmontag
+W9.V2: Determinanten axiomatisch.
+W10.V1. Rechenregeln und -Verfahren. Leibniz-Formel
+W10.V2. Leibniz-Formel. Laplace-Entwicklung.
+W11.V1. Cramersche-Regel. Determinante und Rang.
+W11.V2. Eigenwerte/Eigenvektoren. Eigenraum. Diagonalisierbarkeit.
+W12.V1. Das charakteristische Polynom und die Diagonalisierbarkeit.
+W12. V2. Diskussion einer Anwendung: Principal Component Analysis (Abhängigkeiten in Datensätzen, Gesichtserkennung)
+
+
+Wochen 13-15: Euklidische Räume und quadratische Formen 
+
+W13 V1. Kriterium der Diagonalisierbarkeit. Euklidische Räume. Die Ungleichung von Cauchy-Schwarz.
+W13 V2. Winkel. Projektion. Gram-Schmidt-Verfahren.
+W14.V1. Gram-Schmidt-Verfahren.
+W14.V2. Orthogonale Projektion. Adjungierte Abbildungen. Isometrien.Selbst-adjungierte Abbildungen.
+W15.V1. Quadratische Formen.
+W15.V2. Diagonalisierung quadratischer Formen. 
