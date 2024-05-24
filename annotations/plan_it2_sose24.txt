@@ -55,6 +55,28 @@ Woche 4:
 		Basis 
 		Genau erklären, wie man unter u_1,\ldots,u_m 
 		mit Gauß eine Basis von lin(u_1,..,u_m) findet. 
-		
 
-	
+Wochen 5-7: Berechnungen von Basen in verschiedenen Kontexten, Summe von Vektorräumen, Dimensionsformel fÜr die Summe. 
+		Lineare Abbildungen. 
+
+Probeklausur
+
+Noch zu diskutieren: 
+	Lineare Abbildungen
+		Lineare Abbildungen und deren Beschreibung mit Matrizen
+		Bild, Kern
+		Rangsatz
+		Basiswechsel allgemein und bei Abbildungen
+
+	Determinanten
+		Definition
+		Berechnung mit Gauß
+		Leibniz-Formel
+
+	Eigenwerte und Eigenvektoren
+		Eigenwerte, Eigenvektoren
+		Diagonalisierbarkeit
+
+			
+	Euklidische Räume
+		Orthogonalbasis
