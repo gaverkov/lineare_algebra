@@ -59,9 +59,9 @@ Hier ist $f(y)$ für ein $y \in Y$ schlicht nicht definiert. In Python entsprich
 
 Die Zahl 5 kann also ein Wert der Funktion `len` sein, aber keine zulässige Eingabe.
 
-Wenn wir nun mit der falschen Definition arbeiten und etwa $x = \text{"Hallo"}$ und $y = 5$ einsetzen, erhalten wir genau so einen Fehler: Der Ausdruck ist gar nicht sinnvoll gebildet.
+Wenn wir nun mit der falschen Definition an unserer Beispielfunktion `len` arbeiten und etwa $x = \text{"Hallo"}$ und $y = 5$ einsetzen, erhalten wir genau so einen Fehler: Der Ausdruck ist gar nicht sinnvoll gebildet.
 
-Wie kommt es zu solchen Fehlern? Meine Vermutung: Man schreibt mechanisch. Man schreibt $f: X \to Y$ hin, ohne sich klarzumachen, was das bedeutet.
+Wie kommt es zu solchen Fehlern? Meine Vermutung: Man schreibt mechanisch. Man schreibt $f: X \to Y$ hin, ohne sich klarzumachen, was das bedeutet. Mit anderen Worten: man weiß eigentlich selber gar nicht, was man schreibt. 
 
 Aber genau das ist entscheidend: Diese Schreibweise legt fest, auf welchen Objekten $f$ überhaupt angewendet werden darf und welche Werte herauskommen können. Und daran muss man sich im weiteren Argumentieren konsequent halten.
 
