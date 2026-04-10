@@ -104,7 +104,7 @@ Spätestens jetzt ist es an der Zeit, wirklich mit Brüchen zu rechnen.
 
 ## Die Rolle der Klammern 
 
-Setzen Sie bitte Klammern passend: egal, ob in Mathe-Berechnungen oder im Programmcode. `10 * ( Pommes + Cola)` ist nicht das Selbe wie `10 * Pommes + Cola`. Wirklich nicht! Genau so mit dem Programmcode: Es macht einen Unterschied, ob ein Befehl in der Schleife steht oder außerhalb. 
+Setzen Sie bitte Klammern passend: egal, ob in Berechnungen oder im Programmcode. `10 * ( Pommes + Cola)` ist nicht dasselbe wie `10 * Pommes + Cola`. Wirklich nicht! Genauso mit dem Programmcode: Es macht einen Unterschied, ob ein Befehl in der Schleife steht oder außerhalb. 
 
 ```python
 for i in range(10):
@@ -112,7 +112,7 @@ for i in range(10):
 	print("Cola")
 ```
 
-ist nicht das Selbe wie 
+ist nicht dasselbe wie 
 
 ```python
 for i in range(10): 
@@ -120,4 +120,5 @@ for i in range(10):
 print("Cola")
 ```
 
-Wieso um aller Welt vernachlässigen ausgerechnet Programmierer (m/w/d) die Klammern? Ich verstehe es nicht. Kann mir das bitte jemand erklären? Muss man ein Genie sein, um Klammern zu setzen? 
+Wieso um alles in der Welt vernachlässigen ausgerechnet Programmierer (m/w/d) die Klammern? Ich verstehe es nicht. Kann mir das bitte jemand erklären? Muss man ein Genie sein, um Klammern zu setzen? Verstehen Sie mich richtig. Ich bin einfach manchmal frustriert, weil es so viele Dinge auf der Welt gibt, die ich nicht verstehe. Das mit den Klammern gehört definitiv dazu.
+
