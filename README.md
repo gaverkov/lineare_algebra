@@ -101,3 +101,23 @@ Wenn Sie mit Brüchen wirklich rechnen können, bekommen Sie solche Aufgaben sau
 Das heißt: Seit der 5. Klasse haben Sie immer wieder mit Brüchen gearbeitet — erst Brüche, dann wieder Brüche, dann nochmals Brüche, bis Sie das Abitur erreicht und schließlich die Universität betreten haben.
 
 Spätestens jetzt ist es an der Zeit, wirklich mit Brüchen zu rechnen.
+
+## Die Rolle der Klammern 
+
+Setzen Sie bitte Klammern passend: egal, ob in Mathe-Berechnungen oder im Programmcode. `10 * ( Pommes + Cola)` ist nicht das Selbe wie `10 * Pommes + Cola`. Wirklich nicht! Genau so mit dem Programmcode: Es macht einen Unterschied, ob ein Befehl in der Schleife steht oder außerhalb. 
+
+```python
+for i in range(10):
+	print("Pommes")
+	print("Cola")
+```
+
+ist nicht das Selbe wie 
+
+```python
+for i in range(10): 
+	print("Pommes")
+print("Cola")
+```
+
+Wieso um aller Welt vernachlässigen ausgerechnet Programmierer (m/w/d) die Klammern? Ich verstehe es nicht. Kann mir das bitte jemand erklären? Muss man ein Genie sein, um Klammern zu setzen? 
