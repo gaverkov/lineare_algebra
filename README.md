@@ -37,3 +37,33 @@ Kapitel 10: Matroide (*LinAlg 2, *IT-2)
 Kapitel 11: Verschiedenes (*LinAlg 2, *IT-2)
 
 		Singulärwertzerlegung
+
+# Mathe-Basics
+
+## Konsistenz, Konsistenz und nochmals Konsistenz
+
+Nehmen wir folgendes Beispiel. Jemand definiert die Injektivität einer Funktion $f: X \to Y$ durch die Bedingung, dass $f(x) \ne f(y)$ für alle $x \in X$ und $y \in Y$ gelten soll.
+
+Warum ist diese Definition falsch? Lesen wir sie Schritt für Schritt.
+
+Die Schreibweise $f: X \to Y$ bedeutet: Die Funktion $f$ ordnet jedem Element aus $X$ genau ein Element aus $Y$ zu. Das ist die grundlegende Definition einer Abbildung.
+
+Nun betrachten wir die angebliche Definition der Injektivität. Dort wird $f$ auch auf ein $y \in Y$ angewendet, also $f(y)$. Aber: Ist $f$ überhaupt auf Elementen aus $Y$ definiert? Nein. Laut Voraussetzung nimmt $f$ nur Elemente aus $X$ als Eingabe.
+
+Ein konkretes Beispiel: Sei $X$ die Menge aller Strings über einem Alphabet und $Y$ die Menge der nichtnegativen ganzen Zahlen. Definiere $f(x)$ als die Länge des Strings $x$. Dann ist $f$ eine Abbildung $f: X \to Y$.
+
+Hier ist $f(y)$ für ein $y \in Y$ schlicht nicht definiert. In Python entspricht das etwa:
+
+- `len("Hallo")` funktioniert,
+- `len(5)` führt zu einem Laufzeitfehler.
+
+Die Zahl 5 kann also ein Wert von $f$ sein, aber keine zulässige Eingabe.
+
+Wenn wir nun mit der falschen Definition arbeiten und etwa $x = \text{"Hallo"}$ und $y = 5$ einsetzen, erhalten wir genau so einen Fehler: Der Ausdruck ist gar nicht sinnvoll gebildet.
+
+Wie kommt es zu solchen Fehlern? Meine Vermutung: Man schreibt mechanisch. Man schreibt $f: X \to Y$ hin, ohne sich klarzumachen, was das bedeutet.
+
+Aber genau das ist entscheidend: Diese Schreibweise legt fest, auf welchen Objekten $f$ überhaupt angewendet werden darf und welche Werte herauskommen können. Und daran muss man sich im weiteren Argumentieren konsequent halten.
+
+
+**Bitte, bitte, bitte:** Schreiben Sie nicht mechanisch. Lesen Sie, was Sie schreiben, und prüfen Sie, ob es überhaupt sinnvoll ist. Das gilt nicht nur für mathematische Texte, sondern ebenso für beliebige Texte und für Programmcode.
