@@ -57,7 +57,7 @@ Hier ist $f(y)$ für ein $y \in Y$ schlicht nicht definiert. In Python entsprich
 - `len("Hallo")` funktioniert,
 - `len(5)` führt zu einem Laufzeitfehler.
 
-Die Zahl 5 kann also ein Wert von $f$ sein, aber keine zulässige Eingabe.
+Die Zahl 5 kann also ein Wert der Funktion `len` sein, aber keine zulässige Eingabe.
 
 Wenn wir nun mit der falschen Definition arbeiten und etwa $x = \text{"Hallo"}$ und $y = 5$ einsetzen, erhalten wir genau so einen Fehler: Der Ausdruck ist gar nicht sinnvoll gebildet.
 
