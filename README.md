@@ -1,3 +1,5 @@
+[Moodle-Kurs anlegen/duplizieren howto](https://www.b-tu.de/elearning/btu/course/view.php?id=14880&section=2#kurskopie)
+
 # Lineare Algebra 1 & 2 und IT-2
 
 
