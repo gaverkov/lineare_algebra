@@ -92,7 +92,7 @@ Spaß beiseite: Können *Sie* mit Brüchen rechnen? Welchen gemeinsamen Nenner w
 
 Ist Ihr gemeinsamer Nenner $66$ oder $726$? Beides ist möglich — aber es gibt einen wichtigen Unterschied.
 
-Wenn Sie später Aufgaben zur Induktion lösen und mit Ausdrücken wie $n!$ und $(n+1)!$ arbeiten, werden Sie diesen Unterschied deutlich spüren.
+Wenn Sie später etwa irgendwelche Aufgaben zur Induktion lösen und mit Ausdrücken im Nenner wie $n!$ und $(n+1)!$ arbeiten, werden Sie diesen Unterschied deutlich spüren.
 
 Wenn Sie mit Brüchen wirklich rechnen können, bekommen Sie solche Aufgaben sauber gelöst. Wenn Sie nur „im Prinzip“ mit Brüchen rechnen können, wird es schwierig.
 
