@@ -16,8 +16,22 @@ Beweisen und Argumentieren kommen in der IT-2-Klausur relativ geringfügig vor, 
 
 Ein häufiges Missverständnis entsteht dadurch, dass der Stoff aus der folgenden Perspektive betrachtet wird: Man lernt Methoden 1, 2 und 3 auswendig und erwartet, diese in der Prüfung wieder abrufen zu können. Das heißt: man ignoriert bei der Vorebereitung alles bis auf das letzte Glied der Kette. Das kann nicht gut gehen. Versuchen Sie stattdessen, den Stoff als eine Gesamtheit aufzufassen – mit den Zusammenhängen zwischen den verschiedenen Begriffen, Aussagen und Methoden.
 
+## Gedankenexperiment
 
+Wenn ich in einem Satz zusammenfassen müsste, was Studierenden in IT-Modulen am häufigsten fehlt, würde ich es so formulieren: die Erfahrung, präzise zu formulieren. Das erschwert wiederum das präzise Denken, denn: je präziser man formuliert, desto präziser kann man auch denken.
 
+Machen wir ein Gedankenexperiment. Stellen Sie sich vor, Sie diskutieren mit jemandem das Gauß-Verfahren. Die andere Person möchte es wirklich verstehen. Das Gespräch könnte ungefähr so verlaufen:
+
+- **A:** Wir hatten in IT-2 das Gauß-Verfahren.
+- **B:** Was ist das?
+- **A:** Das ist eine Methode zur Lösung linearer Gleichungssysteme.
+- **B:** Was ist ein lineares Gleichungssystem?
+- **A:** *Sie erklären es und stoßen dabei auf weitere Begriffe wie Lösungsmenge, Menge, Körper, algebraische Struktur usw.*
+- **B:** *Die Person fragt weiter: Was ist eine Lösungsmenge? Was ist ein Körper? Warum funktioniert das Gauß-Verfahren? Welche Eigenschaften der verwendeten Operationen werden dabei genutzt?*
+
+Wenn Sie alle diese Fragen beantworten können – präzise und im Zusammenhang –, dann beherrschen Sie das Thema wirklich.
+
+Sie können dieses Gedankenexperiment auf jedes Thema anwenden. Sie werden dabei schnell merken, ob Sie ein Thema tatsächlich verstanden haben. 
 
 # Lineare Algebra 1 & 2 und IT-2
 
