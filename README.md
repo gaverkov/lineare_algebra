@@ -1,5 +1,24 @@
 [Moodle-Kurs anlegen/duplizieren howto](https://www.b-tu.de/elearning/btu/course/view.php?id=14880&section=2#kurskopie)
 
+# Tipps zur Vorbereitung auf die IT-2-Prüfung
+
+Sie können sich den Stoff als die folgende Kette vorstellen:
+
+**Begriffe -> allgemeine Aussagen (Theoreme usw.) -> Beweise der formulierten Aussagen -> Rechenmethoden als Nebenprodukt des Vorigen.**
+
+Wichtig ist: Wenn Sie rechnen, sollten Sie auch verstehen, **was** Sie berechnen. Wenn Sie zum Beispiel eine Basis bestimmen, sollten Sie erklären können, was eine Basis überhaupt ist. Idealerweise verstehen Sie außerdem, warum die verwendete Methode tatsächlich eine Basis liefert.
+
+Häufig kommt die Frage auf, wie der Stoff in der Klausur auf die Bereiche *Rechnen*, *Beweisen*, *Begriffe kennen* und *Aussagen kennen* verteilt ist. Eine grobe Einteilung ist zwar möglich, sie greift aber zu kurz. Denn auch die Rechenmethoden setzen letztlich alles voraus, was in der Kette davor steht: Begriffe, Aussagen und deren Verständnis.
+
+Erfahrungsgemäß scheitern Studierende bei Rechenaufgaben meist nicht daran, dass sie nicht rechnen können – das können sie in der Regel durchaus. Schwierigkeiten entstehen vielmehr dadurch, dass sie nicht genau verstehen, **was** sie eigentlich berechnen und **warum** die verwendete Methode funktioniert.
+
+Beweisen und Argumentieren kommen in der IT-2-Klausur relativ geringfügig vor, da man innerhalb von 1,5 Stunden nicht viel beweisen kann. Geprüft werden vor allem Begriffe, allgemeine Aussagen und Rechenmethoden. Die Fähigkeit, präzise zu denken und Zusammenhänge zu erkennen, ist aber der Schlüssel zu allem.
+
+Ein häufiges Missverständnis entsteht dadurch, dass der Stoff aus der folgenden Perspektive betrachtet wird: Man lernt Methoden 1, 2 und 3 auswendig und erwartet, diese in der Prüfung wieder abrufen zu können. Das heißt: man ignoriert bei der Vorebereitung alles bis auf das letzte Glied der Kette. Das kann nicht gut gehen. Versuchen Sie stattdessen, den Stoff als eine Gesamtheit aufzufassen – mit den Zusammenhängen zwischen den verschiedenen Begriffen, Aussagen und Methoden.
+
+
+
+
 # Lineare Algebra 1 & 2 und IT-2
 
 
