@@ -29,7 +29,7 @@ Machen wir ein Gedankenexperiment. Stellen Sie sich vor, Sie diskutieren mit jem
 - **A:** *Sie erklären es und stoßen dabei auf weitere Begriffe wie Lösungsmenge, Menge, Körper, algebraische Struktur usw.*
 - **B:** *Die Person fragt weiter: Was ist eine Lösungsmenge? Was ist ein Körper? Warum funktioniert das Gauß-Verfahren? Welche Eigenschaften der verwendeten Operationen werden dabei genutzt?*
 
-Wenn Sie alle diese Fragen beantworten können – präzise und im Zusammenhang –, dann beherrschen Sie das Thema wirklich.
+Wenn Sie alle diese Fragen präzise und im Zusammenhang beantworten können, dann beherrschen Sie das Thema wirklich.
 
 Sie können dieses Gedankenexperiment auf jedes Thema anwenden. Sie werden dabei schnell merken, ob Sie ein Thema tatsächlich verstanden haben. 
 
